@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Learn CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#22244D;--violet:#545AC0;--orange:#E66A40;--lav:#EDEDFB;--ink:#282C37;--space:#9DA2B3;--smoke:#D3D6E0;--cloud:#EDEFF7;--bg:#F1F2F8;--white:#fff;--sb:220px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex}
+.sb{width:var(--sb);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;display:flex;flex-direction:column;z-index:200}
+.sb-logo{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-logo img{height:19px}
+.sb-tag{margin-top:7px;display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#EF7738;background:rgba(239,119,56,.12);padding:3px 8px;border-radius:20px}
+.sb-sec{padding:14px 10px 3px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.22)}
+.sb-btn{display:flex;align-items:center;gap:8px;padding:7px 12px;margin:1px 5px;border-radius:7px;font-size:12px;font-weight:500;color:rgba(255,255,255,.52);cursor:pointer;border:none;background:transparent;width:calc(100% - 10px);text-align:left;transition:all .15s}
+.sb-btn svg{width:14px;height:14px;flex-shrink:0;opacity:.65}
+.sb-btn:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sb-btn.active{color:#fff;background:rgba(255,255,255,.1);border-left:2px solid #EF7738}
+.sb-space{flex:1}
+.sb-foot{padding:12px 16px;border-top:1px solid rgba(255,255,255,.07);font-size:10px;color:rgba(255,255,255,.2)}
+.main{margin-left:var(--sb);flex:1;display:flex;flex-direction:column}
+.topbar{background:var(--white);border-bottom:1px solid var(--cloud);height:52px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.tb-l{display:flex;align-items:center;gap:8px}
+.tb-title{font-size:14px;font-weight:700;color:var(--navy)}
+.tb-sub{font-size:12px;color:var(--space)}
+.tb-r{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:all .15s;white-space:nowrap}
+.btn svg{width:12px;height:12px}
+.btn-p{background:var(--orange);color:#fff}.btn-p:hover{background:#CD5025}
+.btn-v{background:var(--violet);color:#fff}.btn-v:hover{background:#43489A}
+.btn-g{background:var(--cloud);color:var(--ink)}.btn-g:hover{background:var(--smoke)}
+.btn-d{background:#FEE2E2;color:#EF4444}.btn-d:hover{background:#FECACA}
+.btn-sm{padding:4px 10px;font-size:11px}
+.content{padding:20px 24px;flex:1}
+.panel{display:none}.panel.active{display:block}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--white);border:1px solid var(--cloud);border-radius:10px;padding:14px 16px}
+.stat-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--space);margin-bottom:4px}
+.stat-v{font-size:22px;font-weight:800;color:var(--navy)}
+.stat-v.o{color:var(--orange)}
+.pg-tb{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.srch{display:flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--smoke);border-radius:8px;padding:5px 11px}
+.srch svg{width:13px;height:13px;color:var(--space)}
+.srch input{border:none;outline:none;font-size:12px;font-family:'Inter',sans-serif;color:var(--ink);background:transparent;width:160px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.pc{background:var(--white);border:1px solid var(--cloud);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .18s}
+.pc:hover{border-color:var(--violet);box-shadow:0 4px 18px rgba(84,90,192,.1);transform:translateY(-1px)}
+.pc-th{height:120px;background:linear-gradient(135deg,var(--lav),#dde0f5);display:flex;align-items:center;justify-content:center;position:relative}
+.pc-letter{font-size:52px;font-weight:800;color:rgba(84,90,192,.12);user-select:none}
+.pc-bdg{position:absolute;top:9px;right:9px;font-size:9px;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+.bl{background:#DCFCE7;color:#16A34A}.bd{background:#FEF9C3;color:#854D0E}
+.pc-body{padding:12px 14px}
+.pc-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
+.pc-slug{font-size:11px;color:var(--space);font-family:monospace;margin-bottom:8px}
+.pc-acts{display:flex;gap:5px}
+.pc-add{background:transparent;border:2px dashed var(--smoke);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;cursor:pointer;transition:all .2s;gap:8px;color:var(--space)}
+.pc-add:hover{border-color:var(--violet);background:var(--lav);color:var(--violet)}
+.pc-add svg{width:28px;height:28px}
+.pc-add span{font-size:12px;font-weight:600}
+.el{display:grid;grid-template-columns:1fr 300px;gap:18px;align-items:start}
+.ef{display:flex;flex-direction:column;gap:12px}
+.fc{background:var(--white);border:1px solid var(--cloud);border-radius:11px;overflow:hidden}
+.fch{padding:10px 14px;border-bottom:1px solid var(--cloud);display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.fch:hover{background:#FAFBFF}
+.fci{width:24px;height:24px;border-radius:6px;background:var(--lav);display:grid;place-items:center;flex-shrink:0}
+.fci svg{width:12px;height:12px;color:var(--violet)}
+.fct{font-size:12px;font-weight:700;color:var(--navy);flex:1}
+.fca{width:12px;height:12px;color:var(--space);transition:transform .18s;flex-shrink:0}
+.fc.col .fca{transform:rotate(-90deg)}
+.fcb{padding:12px 14px;display:grid;gap:10px}
+.fc.col .fcb{display:none}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.fld{display:flex;flex-direction:column;gap:4px}
+.lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--space)}
+input[type=text],textarea{width:100%;padding:7px 10px;border:1px solid var(--smoke);border-radius:7px;font-size:12px;font-family:'Inter',sans-serif;color:var(--ink);outline:none;transition:border-color .15s;background:var(--white)}
+input[type=text]:focus,textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(84,90,192,.1)}
+textarea{resize:vertical;min-height:56px;line-height:1.5}
+.chg input,.chg textarea{border-color:#EF7738 !important}
+.img-f{border:1.5px dashed var(--smoke);border-radius:7px;padding:10px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s}
+.img-f:hover{border-color:var(--violet);background:var(--lav)}
+.img-f input[type=file]{display:none}
+.img-th{width:48px;height:48px;border-radius:5px;background:var(--cloud);flex-shrink:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.img-th img{width:100%;height:100%;object-fit:cover}
+.img-ph svg{width:16px;height:16px;color:var(--smoke)}
+.img-inf{flex:1;min-width:0}
+.img-nm{font-size:11px;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.img-ht{font-size:10px;color:var(--space);margin-top:1px}
+.es{display:flex;flex-direction:column;gap:12px}
+.ic{background:var(--white);border:1px solid var(--cloud);border-radius:11px;padding:14px}
+.ict{font-size:11px;font-weight:700;color:var(--navy);margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em}
+.sr-row{display:flex;gap:6px;margin-bottom:10px}
+.so{flex:1;padding:6px;text-align:center;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid var(--smoke);color:var(--space);transition:all .15s}
+.sl{border-color:#22C55E!important;background:#DCFCE7!important;color:#16A34A!important}
+.sd{border-color:#EAB308!important;background:#FEF9C3!important;color:#854D0E!important}
+.al{display:flex;flex-direction:column;gap:6px}
+.ov{position:fixed;inset:0;background:rgba(34,36,77,.5);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.ov.open{display:flex}
+.modal{background:var(--white);border-radius:16px;padding:24px;width:min(440px,90vw);box-shadow:0 20px 60px rgba(34,36,77,.2)}
+.mt{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.ms{font-size:12px;color:var(--space);margin-bottom:18px}
+.dz{border:2px dashed var(--smoke);border-radius:10px;padding:32px;text-align:center;cursor:pointer;transition:all .2s}
+.dz:hover,.dz.over{border-color:var(--violet);background:var(--lav)}
+.dz input{display:none}
+.mf{display:flex;justify-content:flex-end;gap:7px;margin-top:18px}
+.mfl{display:grid;gap:10px;margin-bottom:4px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(6px);background:var(--navy);color:#fff;padding:9px 18px;border-radius:9px;font-size:12px;font-weight:500;opacity:0;transition:all .22s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.emp{text-align:center;padding:52px 20px;color:var(--space);grid-column:1/-1}
+.emp svg{width:40px;height:40px;margin:0 auto 10px;opacity:.25}
+.emp h3{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.emp p{font-size:12px;line-height:1.6;max-width:280px;margin:0 auto 14px}
+@media(max-width:800px){.sb{display:none}.main{margin-left:0}.el{grid-template-columns:1fr}.g2,.g3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<aside class="sb">
+  <div class="sb-logo">
+    <img src="https://cdn.prod.website-files.com/646488437ff4a57776de2aeb/681b81aeec7d10bd6dcb8882_Asset%203.svg" alt="Onelearn">
+    <div class="sb-tag">CMS</div>
+  </div>
+  <div class="sb-sec">Navigation</div>
+  <button class="sb-btn active" onclick="goTo('dashboard',this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    Tableau de bord
+  </button>
+  <button class="sb-btn" onclick="goTo('pages',this)">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+    Mes pages
+  </button>
+  <button class="sb-btn" onclick="openImport()">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+    Importer
+  </button>
+  <div class="sb-space"></div>
+  <div class="sb-foot">One Learn CMS v1.0</div>
+</aside>
+
+<div class="main">
+  <header class="topbar">
+    <div class="tb-l">
+      <span class="tb-title" id="tb-title">Tableau de bord</span>
+      <span style="color:var(--smoke)">/</span>
+      <span class="tb-sub" id="tb-sub">Vue générale</span>
+    </div>
+    <div class="tb-r" id="tb-r"></div>
+  </header>
+  <div class="content">
+
+    <div class="panel active" id="p-dashboard">
+      <div class="stats-row">
+        <div class="stat"><div class="stat-l">Pages</div><div class="stat-v" id="s-pages">0</div></div>
+        <div class="stat"><div class="stat-l">En ligne</div><div class="stat-v o" id="s-live">0</div></div>
+        <div class="stat"><div class="stat-l">Brouillons</div><div class="stat-v" id="s-draft">0</div></div>
+        <div class="stat"><div class="stat-l">Modifications</div><div class="stat-v o" id="s-mods">0</div></div>
+      </div>
+      <div id="d-grid" class="grid"></div>
+    </div>
+
+    <div class="panel" id="p-pages">
+      <div class="pg-tb">
+        <div class="srch">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="srch" placeholder="Rechercher..." oninput="renderPages()">
+        </div>
+        <button class="btn btn-p" onclick="openImport()">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Importer
+        </button>
+      </div>
+      <div id="pg-grid" class="grid"></div>
+    </div>
+
+    <div class="panel" id="p-editor">
+      <div class="el">
+        <div class="ef" id="ef"></div>
+        <div class="es" id="es"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- IMPORT -->
+<div class="ov" id="m-import">
+  <div class="modal">
+    <div class="mt">Importer une page</div>
+    <div class="ms">Glissez un fichier HTML ou cliquez pour le sélectionner</div>
+    <div class="dz" id="dz" onclick="document.getElementById('fi').click()">
+      <input type="file" id="fi" accept=".html" onchange="handleFile(event)">
+      <div style="font-size:28px;margin-bottom:8px">📄</div>
+      <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px">Glisser-déposer ou cliquer</div>
+      <div style="font-size:11px;color:var(--space)">Fichier HTML uniquement</div>
+      <button class="btn btn-v" style="margin-top:12px" type="button">Parcourir</button>
+    </div>
+    <div class="mf"><button class="btn btn-g" onclick="closeM('m-import')">Annuler</button></div>
+  </div>
+</div>
+
+<!-- DUPLIQUER -->
+<div class="ov" id="m-dup">
+  <div class="modal">
+    <div class="mt">Dupliquer la page</div>
+    <div class="ms">La copie sera en brouillon avec un nouveau nom</div>
+    <div class="mfl">
+      <div class="fld"><label class="lbl">Nom</label><input type="text" id="dup-n" placeholder="ex: Formation Revit"></div>
+      <div class="fld"><label class="lbl">Slug</label><input type="text" id="dup-s" placeholder="ex: revit"></div>
+    </div>
+    <div class="mf">
+      <button class="btn btn-g" onclick="closeM('m-dup')">Annuler</button>
+      <button class="btn btn-p" onclick="confirmDup()">Dupliquer</button>
+    </div>
+  </div>
+</div>
+
+<!-- RENOMMER -->
+<div class="ov" id="m-ren">
+  <div class="modal">
+    <div class="mt">Renommer</div>
+    <div class="ms">Modifier le nom et le slug de cette page</div>
+    <div class="mfl">
+      <div class="fld"><label class="lbl">Nom</label><input type="text" id="ren-n"></div>
+      <div class="fld"><label class="lbl">Slug</label><input type="text" id="ren-s"></div>
+    </div>
+    <div class="mf">
+      <button class="btn btn-g" onclick="closeM('m-ren')">Annuler</button>
+      <button class="btn btn-p" onclick="confirmRen()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── IndexedDB ──────────────────────────────────
+var db = null;
+function openDB(cb) {
+  if (db) { cb(db); return; }
+  var r = indexedDB.open('onelearn-cms', 1);
+  r.onupgradeneeded = function(e) {
+    e.target.result.createObjectStore('pages', { keyPath: 'id' });
+  };
+  r.onsuccess = function(e) { db = e.target.result; cb(db); };
+  r.onerror = function() { toast('Erreur IndexedDB'); };
+}
+function dbAll(cb)     { openDB(function(d) { d.transaction('pages').objectStore('pages').getAll().onsuccess = function(e) { cb(e.target.result); }; }); }
+function dbGet(id, cb) { openDB(function(d) { d.transaction('pages').objectStore('pages').get(id).onsuccess = function(e) { cb(e.target.result); }; }); }
+function dbPut(p, cb)  { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').put(p).onsuccess = function() { if(cb) cb(); }; }); }
+function dbDel(id, cb) { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').delete(id).onsuccess = function() { if(cb) cb(); }; }); }
+
+// ── State ──────────────────────────────────────
+var CID = null, CF = {}, CIM = {}, changes = 0, dupId = null, renId = null;
+
+// ── Navigation ────────────────────────────────
+function goTo(name, btn) {
+  document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.sb-btn').forEach(function(b) { b.classList.remove('active'); });
+  var panel = document.getElementById('p-' + name);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  var titles = { dashboard: ['Tableau de bord','Vue générale'], pages: ['Mes pages','Gérer vos pages'], editor: ['Éditeur','Modifier le contenu'] };
+  var t = titles[name] || ['',''];
+  document.getElementById('tb-title').textContent = t[0];
+  document.getElementById('tb-sub').textContent = t[1];
+  document.getElementById('tb-r').innerHTML = '';
+  if (name === 'dashboard') renderDash();
+  if (name === 'pages') renderPages();
+}
+
+// ── Dashboard ─────────────────────────────────
+function renderDash() {
+  dbAll(function(pages) {
+    var live = pages.filter(function(p) { return p.status === 'live'; }).length;
+    document.getElementById('s-pages').textContent = pages.length;
+    document.getElementById('s-live').textContent = live;
+    document.getElementById('s-draft').textContent = pages.length - live;
+    document.getElementById('s-mods').textContent = changes;
+    var g = document.getElementById('d-grid');
+    if (!pages.length) {
+      g.innerHTML = '<div class="emp"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><h3>Aucune page</h3><p>Importez votre première landing page HTML.</p><button class="btn btn-p" onclick="openImport()">Importer une page</button></div>';
+      return;
+    }
+    g.innerHTML = pages.slice(-6).reverse().map(cardHTML).join('') + addCard();
+  });
+}
+
+// ── Pages list ────────────────────────────────
+function renderPages() {
+  var q = (document.getElementById('srch') || {}).value || '';
+  dbAll(function(pages) {
+    var f = pages.filter(function(p) { return !q || p.name.toLowerCase().indexOf(q.toLowerCase()) > -1; });
+    var g = document.getElementById('pg-grid');
+    if (!f.length) {
+      g.innerHTML = '<div class="emp"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg><h3>Aucune page</h3><p>Importez une landing page.</p><button class="btn btn-p" onclick="openImport()">Importer</button></div>';
+      return;
+    }
+    g.innerHTML = f.map(cardHTML).join('') + addCard();
+  });
+}
+
+function addCard() {
+  return '<div class="pc-add" onclick="openImport()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg><span>Importer une page</span></div>';
+}
+
+function cardHTML(p) {
+  var id = p.id;
+  return '<div class="pc">' +
+    '<div class="pc-th" onclick="editPage(\'' + id + '\')">' +
+    '<div class="pc-letter">' + p.name[0].toUpperCase() + '</div>' +
+    '<span class="pc-bdg ' + (p.status === 'live' ? 'bl' : 'bd') + '">' + (p.status === 'live' ? 'En ligne' : 'Brouillon') + '</span>' +
+    '</div>' +
+    '<div class="pc-body">' +
+    '<div class="pc-name" onclick="editPage(\'' + id + '\')">' + esc(p.name) + '</div>' +
+    '<div class="pc-slug">/' + esc(p.slug) + '</div>' +
+    '<div class="pc-acts">' +
+    '<button class="btn btn-g btn-sm" onclick="editPage(\'' + id + '\')" title="Éditer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>' +
+    '<button class="btn btn-g btn-sm" onclick="openDup(\'' + id + '\')" title="Dupliquer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></button>' +
+    '<button class="btn btn-g btn-sm" onclick="openRen(\'' + id + '\')" title="Renommer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/></svg></button>' +
+    '<button class="btn btn-g btn-sm" onclick="dlPage(\'' + id + '\')" title="Télécharger"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></button>' +
+    '<button class="btn btn-d btn-sm" onclick="delPage(\'' + id + '\')" title="Supprimer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>' +
+    '</div></div></div>';
+}
+
+// ── Import ─────────────────────────────────────
+function openImport() { document.getElementById('m-import').classList.add('open'); }
+
+function handleFile(e) {
+  var file = e.target.files[0];
+  if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev) {
+    var html = ev.target.result;
+    var raw = file.name.replace('.html', '');
+    var name = raw.replace(/-/g, ' ').replace(/(^|\s)\S/g, function(c) { return c.toUpperCase(); });
+    var page = {
+      id: 'p' + Date.now(),
+      name: name,
+      slug: raw,
+      status: 'draft',
+      created: new Date().toISOString(),
+      modified: new Date().toISOString(),
+      html: html,
+      fields: extractFields(html),
+      images: extractImages(html)
+    };
+    dbPut(page, function() {
+      closeM('m-import');
+      document.getElementById('fi').value = '';
+      toast('✅ Importée : ' + name);
+      renderDash();
+      renderPages();
+    });
+  };
+  reader.readAsText(file);
+}
+
+// drag & drop
+var dzEl = document.getElementById('dz');
+dzEl.addEventListener('dragover', function(e) { e.preventDefault(); dzEl.classList.add('over'); });
+dzEl.addEventListener('dragleave', function() { dzEl.classList.remove('over'); });
+dzEl.addEventListener('drop', function(e) {
+  e.preventDefault(); dzEl.classList.remove('over');
+  var f = e.dataTransfer.files[0];
+  if (f && f.name.endsWith('.html')) {
+    var dt = new DataTransfer(); dt.items.add(f);
+    document.getElementById('fi').files = dt.files;
+    handleFile({ target: document.getElementById('fi') });
+  }
+});
+
+// ── Field extraction ───────────────────────────
+function extractFields(html) {
+  var f = {};
+  function match(re, flags) { var m = html.match(new RegExp(re, flags || '')); return m ? (m[1] || m[0]) : ''; }
+  function strip(s) { return (s || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').trim(); }
+
+  f.promo_label = match('OFFRE[^<]{0,25}');
+  f.promo_text  = match("jusqu'au[^<]{0,60}");
+  f.phone       = match('(\\d{2} \\d{2} \\d{2} \\d{2} \\d{2})');
+  f.deadline    = match('(\\d{2}/\\d{2}/\\d{4})');
+
+  var h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/);
+  if (h1) f.hero_h1 = strip(h1[1]);
+  var sub = html.match(/Formation 100%[^<]{0,200}/);
+  if (sub) f.hero_sub = strip(sub[0]);
+  var bdg = html.match(/Sessions ouvertes[^<]{0,80}/);
+  if (bdg) f.hero_badge = strip(bdg[0]);
+  f.cta1 = html.indexOf('Réserver mon appel') > -1 ? 'Réserver mon appel gratuit' : '';
+  f.cta2 = html.indexOf('Tester mon éligibilité') > -1 ? 'Tester mon éligibilité CPF' : '';
+
+  var sre = /font-semibold text-orange">(.*?)<\/p>/g, sm, sn = [];
+  while ((sm = sre.exec(html)) && sn.length < 4) sn.push(sm[1].trim());
+  for (var i = 0; i < 4; i++) f['s' + (i+1) + 'n'] = sn[i] || '';
+
+  var pm = html.match(/6 semaines pour passer[^<]{0,80}/); if (pm) f.prog_h2 = strip(pm[0]);
+  var pdm = html.match(/Un parcours structuré[^<]{0,200}/); if (pdm) f.prog_desc = strip(pdm[0]);
+  var fb = html.match(/15 ans d'expérience[^<]{0,200}/); if (fb) f.fred_bio = strip(fb[0]);
+  f.fred_role = html.indexOf('Designer 3D') > -1 ? 'Designer 3D & spécialiste SolidWorks' : '';
+  var eb = html.match(/\+10 ans dans l'architecture[^<]{0,200}/); if (eb) f.edou_bio = strip(eb[0]);
+  f.edou_role = html.indexOf('Architecte &') > -1 ? 'Architecte & référent BIM' : '';
+
+  var pr = html.match(/text-5xl font-semibold text-navy">(\d[\d\s€]+)</); if (pr) f.price = pr[1].trim();
+  var po = html.match(/line-through[^>]*>([^<]{1,20})</); if (po) f.price_old = po[1].trim();
+  var pc = html.match(/text-2xl font-semibold text-orange">(\d[\d€]+)</); if (pc) f.price_cpf = pc[1].trim();
+
+  var tre = /"([^"]{40,200})"/g, tm, tq = [];
+  while ((tm = tre.exec(html)) && tq.length < 3) {
+    if (/semaines|formateur|CPF|modéliser|freelance|reconversion/.test(tm[1])) tq.push(tm[1]);
+  }
+  var tn = ['Didier','Jérémie','Mathilde'], tr = ['Syndic de copropriété','Paysagiste','Designer freelance'];
+  for (var j = 0; j < 3; j++) { f['t'+(j+1)+'q'] = tq[j] || ''; f['t'+(j+1)+'n'] = tn[j]; f['t'+(j+1)+'r'] = tr[j]; }
+
+  var ch = html.match(/<h2 class="font-display text-4xl[^>]*>([\s\S]*?)<\/h2>/); if (ch) f.cta_h2 = strip(ch[1]);
+  var cs = html.match(/Choisissez directement[^<]{0,200}/); if (cs) f.cta_sub = strip(cs[0]);
+  return f;
+}
+
+function extractImages(html) {
+  var imgs = [], re = /src="(data:image\/([^;]+);base64,[^"]{50,})" alt="([^"]*)"/g, m, c = 0;
+  while ((m = re.exec(html)) && c < 10) { imgs.push({ src: m[1], alt: m[3] }); c++; }
+  return imgs;
+}
+
+// ── Editor ─────────────────────────────────────
+function editPage(id) {
+  CID = id; CF = {}; CIM = {}; changes = 0;
+  dbGet(id, function(page) {
+    if (!page) { toast('Page introuvable'); return; }
+    document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.sb-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('p-editor').classList.add('active');
+    document.getElementById('tb-title').textContent = page.name;
+    document.getElementById('tb-sub').textContent = 'Éditeur de contenu';
+    document.getElementById('tb-r').innerHTML =
+      '<button class="btn btn-g" onclick="goTo(\'pages\',null)">← Retour</button>' +
+      '<button class="btn btn-p" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>';
+    Object.assign(CF, page.fields || {});
+    buildEditor(page);
+  });
+}
+
+function mkField(key, label, val, type) {
+  var input = type === 'ta'
+    ? '<textarea id="f_' + key + '" rows="2" onchange="trackF(this,\'' + key + '\')">' + esc(val || '') + '</textarea>'
+    : '<input type="text" id="f_' + key + '" value="' + esc(val || '') + '" onchange="trackF(this,\'' + key + '\')">';
+  return '<div class="fld" id="fw_' + key + '"><label class="lbl">' + label + '</label>' + input + '</div>';
+}
+function mkFC(title, body, id) {
+  return '<div class="fc" id="fc-' + id + '">' +
+    '<div class="fch" onclick="tfc(this)"><div class="fci"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg></div>' +
+    '<div class="fct">' + title + '</div>' +
+    '<svg class="fca" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg></div>' +
+    '<div class="fcb">' + body + '</div></div>';
+}
+function tfc(h) { h.closest('.fc').classList.toggle('col'); }
+function trackF(el, key) {
+  CF[key] = el.value;
+  var w = document.getElementById('fw_' + key); if (w) w.classList.add('chg');
+  changes++; document.getElementById('s-mods').textContent = changes;
+  toast('Modifié');
+}
+
+function buildEditor(page) {
+  var f = page.fields || {}, imgs = page.images || [];
+  var h = '';
+  h += mkFC('Promo & Contact',
+    '<div class="g3">' + mkField('promo_label','Label offre',f.promo_label) + mkField('promo_text','Texte promo',f.promo_text) + mkField('phone','Téléphone',f.phone) + '</div>' +
+    mkField('deadline','Date limite offre',f.deadline), 'promo');
+  h += mkFC('Hero',
+    mkField('hero_h1','Titre H1',f.hero_h1,'ta') +
+    '<div class="g2">' + mkField('hero_sub','Sous-titre',f.hero_sub,'ta') + mkField('hero_badge','Badge disponibilité',f.hero_badge) + '</div>' +
+    '<div class="g2">' + mkField('cta1','CTA principal',f.cta1) + mkField('cta2','CTA secondaire',f.cta2) + '</div>', 'hero');
+  h += mkFC('Chiffres clés',
+    '<div class="g2">' + mkField('s1n','Stat 1',f.s1n) + mkField('s2n','Stat 2',f.s2n) + '</div>' +
+    '<div class="g2">' + mkField('s3n','Stat 3',f.s3n) + mkField('s4n','Stat 4',f.s4n) + '</div>', 'stats');
+  h += mkFC('Programme',
+    mkField('prog_h2','Titre',f.prog_h2) + mkField('prog_desc','Description',f.prog_desc,'ta'), 'prog');
+  h += mkFC('Formateurs',
+    '<div class="g2">' + mkField('fred_role','Frédéric — Spécialité',f.fred_role) + mkField('edou_role','Edouard — Spécialité',f.edou_role) + '</div>' +
+    '<div class="g2">' + mkField('fred_bio','Frédéric — Bio',f.fred_bio,'ta') + mkField('edou_bio','Edouard — Bio',f.edou_bio,'ta') + '</div>', 'form');
+  var tH = '';
+  for (var i = 1; i <= 3; i++) tH += '<div class="g2">' + mkField('t'+i+'n','Prénom',f['t'+i+'n']) + mkField('t'+i+'r','Métier',f['t'+i+'r']) + '</div>' + mkField('t'+i+'q','Citation',f['t'+i+'q'],'ta');
+  h += mkFC('Témoignages', tH, 'temo');
+  h += mkFC('Tarifs',
+    '<div class="g3">' + mkField('price','Prix affiché',f.price) + mkField('price_old','Prix barré',f.price_old) + mkField('price_cpf','Prix CPF',f.price_cpf) + '</div>', 'tarifs');
+  h += mkFC('Final CTA', mkField('cta_h2','Titre',f.cta_h2,'ta') + mkField('cta_sub','Sous-titre',f.cta_sub), 'cta');
+
+  if (imgs.length) {
+    var imgH = '<div class="g2">';
+    imgs.forEach(function(img, idx) {
+      imgH += '<div class="img-f" onclick="document.getElementById(\'ii' + idx + '\').click()">' +
+        '<input type="file" id="ii' + idx + '" accept="image/*" onchange="repImg(this,' + idx + ')">' +
+        '<div class="img-th"><img src="' + img.src.substring(0, 60) + '..." id="ip' + idx + '" style="display:none"><div class="img-ph" id="ph' + idx + '"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div></div>' +
+        '<div class="img-inf"><div class="img-nm">' + esc(img.alt || 'Image ' + (idx+1)) + '</div><div class="img-ht">Cliquer pour remplacer</div></div>' +
+        '</div>';
+    });
+    imgH += '</div>';
+    // Load images lazily
+    setTimeout(function() {
+      imgs.forEach(function(img, idx) {
+        var el = document.getElementById('ip' + idx);
+        var ph = document.getElementById('ph' + idx);
+        if (el && ph) { el.src = img.src; el.style.display = 'block'; ph.style.display = 'none'; }
+      });
+    }, 100);
+    h += mkFC('Images', imgH, 'imgs');
+  }
+
+  document.getElementById('ef').innerHTML = h;
+  document.querySelectorAll('.fc').forEach(function(c, i) { if (i > 1) c.classList.add('col'); });
+
+  document.getElementById('es').innerHTML =
+    '<div class="ic"><div class="ict">Statut</div>' +
+    '<div class="sr-row" id="sr-row">' +
+    '<div class="so ' + (page.status === 'live' ? 'sl' : '') + '" onclick="setSt(\'live\',this)">En ligne</div>' +
+    '<div class="so ' + (page.status !== 'live' ? 'sd' : '') + '" onclick="setSt(\'draft\',this)">Brouillon</div>' +
+    '</div>' +
+    '<div class="fld"><label class="lbl">Slug / URL</label><input type="text" id="ed-slug" value="' + esc(page.slug) + '"></div>' +
+    '</div>' +
+    '<div class="ic"><div class="ict">Actions</div><div class="al">' +
+    '<button class="btn btn-g" style="width:100%;justify-content:flex-start" onclick="openDup(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> Dupliquer</button>' +
+    '<button class="btn btn-g" style="width:100%;justify-content:flex-start" onclick="openRen(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/></svg> Renommer</button>' +
+    '<button class="btn btn-p" style="width:100%;justify-content:flex-start" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>' +
+    '<button class="btn btn-d" style="width:100%;justify-content:flex-start" onclick="delPage(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg> Supprimer</button>' +
+    '</div></div>' +
+    '<div class="ic"><div class="ict">Info</div><div style="font-size:11px;color:var(--space);display:grid;gap:5px">' +
+    '<span>Créée : ' + (page.created ? new Date(page.created).toLocaleDateString('fr-FR') : '—') + '</span>' +
+    '<span>Modifiée : ' + (page.modified ? new Date(page.modified).toLocaleDateString('fr-FR') : '—') + '</span>' +
+    '</div></div>';
+}
+
+function setSt(v, el) {
+  document.querySelectorAll('#sr-row .so').forEach(function(o) { o.classList.remove('sl','sd'); });
+  el.classList.add(v === 'live' ? 'sl' : 'sd');
+  dbGet(CID, function(p) { if (p) { p.status = v; dbPut(p); } });
+  toast(v === 'live' ? 'Statut : En ligne' : 'Statut : Brouillon');
+}
+
+function repImg(inp, idx) {
+  var file = inp.files[0]; if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    CIM[idx] = e.target.result;
+    var el = document.getElementById('ip' + idx); if (el) { el.src = e.target.result; el.style.display = 'block'; }
+    var ph = document.getElementById('ph' + idx); if (ph) ph.style.display = 'none';
+    toast('Image remplacée');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── Save & Download ────────────────────────────
+function saveAndDl() {
+  dbGet(CID, function(page) {
+    if (!page) { toast('Page introuvable'); return; }
+    var out = page.html, f = CF;
+
+    function rep(search, replacement) {
+      if (!search || !replacement || search === replacement) return;
+      var escaped = search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+      out = out.replace(new RegExp(escaped, 'g'), replacement);
+    }
+
+    if (f.phone) out = out.replace(/\d{2} \d{2} \d{2} \d{2} \d{2}/g, f.phone);
+    if (f.deadline) out = out.replace(/\d{2}\/\d{2}\/\d{4}/g, f.deadline);
+    if (f.promo_text) { var m1 = out.match(/jusqu'au[^<]{0,60}/); if (m1) rep(m1[0], f.promo_text); }
+    if (f.hero_badge) { var m2 = out.match(/Sessions ouvertes[^<]{0,80}/); if (m2) rep(m2[0], f.hero_badge); }
+    if (f.hero_sub)   { var m3 = out.match(/Formation 100%[^<]{0,200}/); if (m3) rep(m3[0], f.hero_sub); }
+    if (f.prog_h2)    { var m4 = out.match(/6 semaines pour passer[^<]{0,80}/); if (m4) rep(m4[0], f.prog_h2); }
+    if (f.fred_bio)   { var m5 = out.match(/15 ans d'expérience[^<]{0,200}/); if (m5) rep(m5[0], f.fred_bio); }
+    if (f.edou_bio)   { var m6 = out.match(/\+10 ans dans l'architecture[^<]{0,200}/); if (m6) rep(m6[0], f.edou_bio); }
+    if (f.fred_role) out = out.replace(/Designer 3D &amp; spécialiste SolidWorks/g, f.fred_role.replace(/&/g,'&amp;'));
+    if (f.edou_role) out = out.replace(/Architecte &amp; référent BIM/g, f.edou_role.replace(/&/g,'&amp;'));
+    if (f.price)     out = out.replace(/1 650€/g, f.price);
+    if (f.price_old) out = out.replace(/1 833€/g, f.price_old);
+
+    for (var i = 1; i <= 3; i++) {
+      if (f['t'+i+'q'] && page.fields['t'+i+'q']) rep('"' + page.fields['t'+i+'q'] + '"', '"' + f['t'+i+'q'] + '"');
+    }
+
+    var imgList = page.images || [];
+    Object.keys(CIM).forEach(function(idx) {
+      var orig = imgList[parseInt(idx)];
+      if (orig && orig.src) { out = out.replace(orig.src, CIM[idx]); imgList[parseInt(idx)].src = CIM[idx]; }
+    });
+
+    var newSlug = (document.getElementById('ed-slug') || {}).value || page.slug;
+    page.html = out; page.fields = Object.assign({}, page.fields, f);
+    page.images = imgList; page.slug = newSlug; page.modified = new Date().toISOString();
+    dbPut(page);
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([out], { type: 'text/html' }));
+    a.download = newSlug + '-modifie.html';
+    a.click(); URL.revokeObjectURL(a.href);
+    toast('✅ Téléchargé : ' + newSlug + '-modifie.html');
+  });
+}
+
+function dlPage(id) {
+  dbGet(id, function(p) {
+    if (!p) return;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([p.html], { type: 'text/html' }));
+    a.download = p.slug + '.html'; a.click(); URL.revokeObjectURL(a.href);
+    toast('✅ ' + p.slug + '.html');
+  });
+}
+
+// ── Duplicate ──────────────────────────────────
+function openDup(id) {
+  dupId = id;
+  dbGet(id, function(p) {
+    document.getElementById('dup-n').value = p.name + ' — Copie';
+    document.getElementById('dup-s').value = p.slug + '-copie';
+    document.getElementById('m-dup').classList.add('open');
+  });
+}
+function confirmDup() {
+  var n = document.getElementById('dup-n').value.trim();
+  var s = document.getElementById('dup-s').value.trim();
+  if (!n || !s) { toast('Remplissez les deux champs'); return; }
+  dbGet(dupId, function(p) {
+    var np = JSON.parse(JSON.stringify(p));
+    np.id = 'p' + Date.now(); np.name = n; np.slug = s;
+    np.status = 'draft'; np.created = new Date().toISOString(); np.modified = new Date().toISOString();
+    dbPut(np, function() { closeM('m-dup'); toast('✅ Dupliquée : ' + n); renderPages(); renderDash(); });
+  });
+}
+
+// ── Rename ─────────────────────────────────────
+function openRen(id) {
+  renId = id;
+  dbGet(id, function(p) {
+    document.getElementById('ren-n').value = p.name;
+    document.getElementById('ren-s').value = p.slug;
+    document.getElementById('m-ren').classList.add('open');
+  });
+}
+function confirmRen() {
+  var n = document.getElementById('ren-n').value.trim();
+  var s = document.getElementById('ren-s').value.trim();
+  if (!n || !s) { toast('Remplissez les deux champs'); return; }
+  dbGet(renId, function(p) {
+    p.name = n; p.slug = s; p.modified = new Date().toISOString();
+    dbPut(p, function() { closeM('m-ren'); toast('✅ Renommée : ' + n); renderPages(); renderDash(); });
+  });
+}
+
+// ── Delete ─────────────────────────────────────
+function delPage(id) {
+  if (!confirm('Supprimer cette page ? Action irréversible.')) return;
+  dbDel(id, function() { toast('Supprimée'); goTo('pages', null); renderPages(); renderDash(); });
+}
+
+// ── Utils ──────────────────────────────────────
+function closeM(id) { document.getElementById(id).classList.remove('open'); }
+function esc(s) { return (s || '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function toast(msg) {
+  var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(function() { t.classList.remove('show'); }, 2400);
+}
+
+document.querySelectorAll('.ov').forEach(function(o) {
+  o.addEventListener('click', function(e) { if (e.target === o) o.classList.remove('open'); });
+});
+
+renderDash();
+</script>
+</body>
+</html>
