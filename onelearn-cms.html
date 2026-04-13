@@ -53,7 +53,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);min-he
 .bl{background:#DCFCE7;color:#16A34A}.bd{background:#FEF9C3;color:#854D0E}
 .pc-body{padding:12px 14px}
 .pc-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:2px}
-.pc-slug{font-size:11px;color:var(--space);font-family:monospace;margin-bottom:8px}
+.pc-slug{font-size:11px;color:var(--space);font-family:monospace;margin-bottom:4px}
+.pc-url{font-size:10px;color:var(--violet);font-family:monospace;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .pc-acts{display:flex;gap:5px}
 .pc-add{background:transparent;border:2px dashed var(--smoke);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;cursor:pointer;transition:all .2s;gap:8px;color:var(--space)}
 .pc-add:hover{border-color:var(--violet);background:var(--lav);color:var(--violet)}
@@ -136,6 +137,10 @@ textarea{resize:vertical;min-height:56px;line-height:1.5}
     Importer
   </button>
   <div class="sb-space"></div>
+  <button class="sb-btn" onclick="openTokenSettings()">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    Paramètres GitHub
+  </button>
   <div class="sb-foot">One Learn CMS v1.0</div>
 </aside>
 
@@ -232,6 +237,21 @@ textarea{resize:vertical;min-height:56px;line-height:1.5}
   </div>
 </div>
 
+<!-- TOKEN GITHUB -->
+<div class="ov" id="m-token">
+  <div class="modal">
+    <div class="mt">Token GitHub</div>
+    <div class="ms">Créez un token sur <strong>github.com → Settings → Developer settings → Personal access tokens (classic)</strong> avec le scope <code>repo</code>, puis collez-le ici.</div>
+    <div class="mfl">
+      <div class="fld"><label class="lbl">Personal Access Token</label><input type="text" id="tk-inp" placeholder="ghp_..."></div>
+    </div>
+    <div class="mf">
+      <button class="btn btn-g" onclick="closeM('m-token')">Annuler</button>
+      <button class="btn btn-p" onclick="saveToken()">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -250,6 +270,98 @@ function dbAll(cb)     { openDB(function(d) { d.transaction('pages').objectStore
 function dbGet(id, cb) { openDB(function(d) { d.transaction('pages').objectStore('pages').get(id).onsuccess = function(e) { cb(e.target.result); }; }); }
 function dbPut(p, cb)  { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').put(p).onsuccess = function() { if(cb) cb(); }; }); }
 function dbDel(id, cb) { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').delete(id).onsuccess = function() { if(cb) cb(); }; }); }
+
+// ── GitHub Config & API ────────────────────────
+var GH = {
+  owner: 'juliette-stack-onelearn',
+  repo: 'onelearn-solidworks',
+  branch: 'main',
+  pagesBase: 'https://juliette-stack-onelearn.github.io/onelearn-solidworks/',
+  seedFile: 'onelearn-solidworks-final.html'
+};
+GH.token = function() { return localStorage.getItem('gh_token') || ''; };
+GH.api = function(method, path, body, cb) {
+  var opts = { method: method, headers: { 'Authorization': 'Bearer ' + GH.token(), 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json' } };
+  if (body) opts.body = JSON.stringify(body);
+  fetch('https://api.github.com/repos/' + GH.owner + '/' + GH.repo + path, opts)
+    .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, data: j }; }); })
+    .then(function(r) { cb(r.ok ? null : (r.data.message || 'Erreur GitHub'), r.data); })
+    .catch(function(e) { cb(e.message, null); });
+};
+GH.getFilePublic = function(filename, cb) {
+  fetch('https://raw.githubusercontent.com/' + GH.owner + '/' + GH.repo + '/' + GH.branch + '/' + filename)
+    .then(function(r) { return r.ok ? r.text().then(function(t) { cb(null, t); }) : cb(null, null); })
+    .catch(function() { cb(null, null); });
+};
+GH.putFileLarge = function(filename, content, cb) {
+  GH.api('POST', '/git/blobs', { content: content, encoding: 'utf-8' }, function(err, blob) {
+    if (err) { cb(err); return; }
+    GH.api('GET', '/git/refs/heads/' + GH.branch, null, function(err, ref) {
+      if (err) { cb(err); return; }
+      var headSha = ref.object.sha;
+      GH.api('GET', '/git/commits/' + headSha, null, function(err, commit) {
+        if (err) { cb(err); return; }
+        GH.api('POST', '/git/trees', { base_tree: commit.tree.sha, tree: [{ path: filename, mode: '100644', type: 'blob', sha: blob.sha }] }, function(err, tree) {
+          if (err) { cb(err); return; }
+          GH.api('POST', '/git/commits', { message: 'CMS: update ' + filename, tree: tree.sha, parents: [headSha] }, function(err, newCommit) {
+            if (err) { cb(err); return; }
+            GH.api('PATCH', '/git/refs/heads/' + GH.branch, { sha: newCommit.sha }, function(err) { cb(err); });
+          });
+        });
+      });
+    });
+  });
+};
+GH.deleteFile = function(filename, cb) {
+  GH.api('GET', '/contents/' + filename, null, function(err, data) {
+    if (err || !data || !data.sha) { if (cb) cb(); return; }
+    GH.api('DELETE', '/contents/' + filename, { message: 'CMS: delete ' + filename, sha: data.sha }, function() { if (cb) cb(); });
+  });
+};
+
+// ── Token management ───────────────────────────
+function requireToken(cb) {
+  if (GH.token()) { cb(); return; }
+  openTokenSettings(cb);
+}
+function openTokenSettings(onSaveCb) {
+  document.getElementById('m-token').classList.add('open');
+  document.getElementById('tk-inp').value = GH.token();
+  window._tkCb = onSaveCb || null;
+}
+function saveToken() {
+  var tk = document.getElementById('tk-inp').value.trim();
+  if (!tk) { toast('Token requis'); return; }
+  toast('Validation...');
+  fetch('https://api.github.com/repos/' + GH.owner + '/' + GH.repo, {
+    headers: { 'Authorization': 'Bearer ' + tk, 'Accept': 'application/vnd.github+json' }
+  }).then(function(r) {
+    if (r.ok) {
+      localStorage.setItem('gh_token', tk);
+      closeM('m-token');
+      toast('✅ Token enregistré');
+      if (window._tkCb) { window._tkCb(); window._tkCb = null; }
+    } else { toast('❌ Token invalide ou accès refusé'); }
+  }).catch(function() { toast('❌ Erreur réseau'); });
+}
+
+// ── Auto-seed ──────────────────────────────────
+function maybeAutoSeed() {
+  dbAll(function(pages) {
+    if (pages.length > 0) { renderDash(); return; }
+    toast('Chargement de la page de base...');
+    GH.getFilePublic(GH.seedFile, function(err, html) {
+      if (!html) { renderDash(); return; }
+      var page = {
+        id: 'p' + Date.now(), name: 'SolidWorks — Formation',
+        slug: 'onelearn-solidworks-final', status: 'live', liveSlug: 'onelearn-solidworks-final',
+        created: new Date().toISOString(), modified: new Date().toISOString(),
+        html: html, fields: extractFields(html), images: extractImages(html)
+      };
+      dbPut(page, function() { toast('✅ Page importée automatiquement'); renderDash(); });
+    });
+  });
+}
 
 // ── State ──────────────────────────────────────
 var CID = null, CF = {}, CIM = {}, changes = 0, dupId = null, renId = null;
@@ -314,8 +426,10 @@ function cardHTML(p) {
     '</div>' +
     '<div class="pc-body">' +
     '<div class="pc-name" onclick="editPage(\'' + id + '\')">' + esc(p.name) + '</div>' +
-    '<div class="pc-slug">/' + esc(p.slug) + '</div>' +
+    '<div class="pc-slug">/' + esc(p.slug) + '.html</div>' +
+    (p.status === 'live' && p.liveSlug ? '<div class="pc-url" title="' + GH.pagesBase + p.liveSlug + '.html">↗ ' + GH.pagesBase + p.liveSlug + '.html</div>' : '') +
     '<div class="pc-acts">' +
+    (p.status === 'live' && p.liveSlug ? '<a href="' + GH.pagesBase + p.liveSlug + '.html" target="_blank" class="btn btn-v btn-sm" title="Voir en ligne"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></a>' : '') +
     '<button class="btn btn-g btn-sm" onclick="editPage(\'' + id + '\')" title="Éditer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>' +
     '<button class="btn btn-g btn-sm" onclick="openDup(\'' + id + '\')" title="Dupliquer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></button>' +
     '<button class="btn btn-g btn-sm" onclick="openRen(\'' + id + '\')" title="Renommer"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/></svg></button>' +
@@ -415,6 +529,33 @@ function extractFields(html) {
 
   var ch = html.match(/<h2 class="font-display text-4xl[^>]*>([\s\S]*?)<\/h2>/); if (ch) f.cta_h2 = strip(ch[1]);
   var cs = html.match(/Choisissez directement[^<]{0,200}/); if (cs) f.cta_sub = strip(cs[0]);
+
+  // Formateurs galerie 5-8
+  var tDefName = ['Sarah M.','Thomas R.','Camille B.','Julien F.'];
+  var tDefRole = ['SolidWorks','Modélisation 3D','CAO Mécanique','Design industriel'];
+  var tDefExp = ["9 ans d'exp.","7 ans d'exp.","6 ans d'exp.","8 ans d'exp."];
+  for (var tgi = 5; tgi <= 8; tgi++) {
+    var idx0 = tgi - 5;
+    var tnm = html.match(new RegExp('data-trainer-name="' + tgi + '"[^>]*>([^<]+)<'));
+    var trl = html.match(new RegExp('data-trainer-role="' + tgi + '"[^>]*>([^<]+)<'));
+    var tep = html.match(new RegExp('data-trainer-exp="' + tgi + '"[^>]*>([^<]+)<'));
+    f['t'+tgi+'_name'] = tnm ? tnm[1].trim() : tDefName[idx0];
+    f['t'+tgi+'_role'] = trl ? trl[1].trim() : tDefRole[idx0];
+    f['t'+tgi+'_exp']  = tep ? tep[1].trim() : tDefExp[idx0];
+  }
+
+  // Recruteurs marquee
+  var recDef = ['Bouygues','Safran','Vinci','Dassault','Schneider','Eiffage','Renault','Airbus'];
+  var recSec = html.match(/Ils recrutent[\s\S]*?<\/section>/);
+  if (recSec) {
+    var recRe = /font-display[^"]*">([\w\u00C0-\u024F]+)<\/span>/g, rm, ri = 0, seen = {};
+    while ((rm = recRe.exec(recSec[0])) && ri < 8) {
+      var rn = rm[1].trim();
+      if (!seen[rn]) { seen[rn] = true; f['rec'+(ri+1)] = rn; ri++; }
+    }
+  }
+  for (var rk = 1; rk <= 8; rk++) { if (!f['rec'+rk]) f['rec'+rk] = recDef[rk-1] || ''; }
+
   return f;
 }
 
@@ -436,7 +577,8 @@ function editPage(id) {
     document.getElementById('tb-sub').textContent = 'Éditeur de contenu';
     document.getElementById('tb-r').innerHTML =
       '<button class="btn btn-g" onclick="goTo(\'pages\',null)">← Retour</button>' +
-      '<button class="btn btn-p" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>';
+      '<button class="btn btn-g" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>' +
+      '<button class="btn btn-p" onclick="publishPage()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V12m0 0V8m0 4h4m-4 0H3m14 4v-4m0 0V8m0 4h4m-4 0h-4M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Publier</button>';
     Object.assign(CF, page.fields || {});
     buildEditor(page);
   });
@@ -487,6 +629,19 @@ function buildEditor(page) {
   h += mkFC('Tarifs',
     '<div class="g3">' + mkField('price','Prix affiché',f.price) + mkField('price_old','Prix barré',f.price_old) + mkField('price_cpf','Prix CPF',f.price_cpf) + '</div>', 'tarifs');
   h += mkFC('Final CTA', mkField('cta_h2','Titre',f.cta_h2,'ta') + mkField('cta_sub','Sous-titre',f.cta_sub), 'cta');
+  var tgH = '';
+  for (var tgi = 5; tgi <= 8; tgi++) {
+    tgH += '<div class="g3">' +
+      mkField('t'+tgi+'_name','Formateur '+(tgi-4)+' — Nom',f['t'+tgi+'_name']) +
+      mkField('t'+tgi+'_role','Spécialité',f['t'+tgi+'_role']) +
+      mkField('t'+tgi+'_exp','Expérience',f['t'+tgi+'_exp']) +
+      '</div>';
+  }
+  h += mkFC('Formateurs galerie', tgH, 'tg');
+  var recH = '<div class="g2">';
+  for (var ri = 1; ri <= 8; ri++) recH += mkField('rec'+ri,'Recruteur '+ri,f['rec'+ri]);
+  recH += '</div>';
+  h += mkFC('Recruteurs', recH, 'rec');
 
   if (imgs.length) {
     var imgH = '<div class="g2">';
@@ -523,9 +678,16 @@ function buildEditor(page) {
     '<div class="ic"><div class="ict">Actions</div><div class="al">' +
     '<button class="btn btn-g" style="width:100%;justify-content:flex-start" onclick="openDup(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg> Dupliquer</button>' +
     '<button class="btn btn-g" style="width:100%;justify-content:flex-start" onclick="openRen(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z"/></svg> Renommer</button>' +
-    '<button class="btn btn-p" style="width:100%;justify-content:flex-start" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>' +
+    '<button class="btn btn-g" style="width:100%;justify-content:flex-start" onclick="saveAndDl()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg> Télécharger</button>' +
+    '<button class="btn btn-p" style="width:100%;justify-content:flex-start" onclick="publishPage()"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V12m0 0V8m0 4h4m-4 0H3m14 4v-4m0 0V8m0 4h4m-4 0h-4M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg> Publier sur GitHub</button>' +
     '<button class="btn btn-d" style="width:100%;justify-content:flex-start" onclick="delPage(\'' + page.id + '\')"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="12" height="12"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg> Supprimer</button>' +
     '</div></div>' +
+    (page.status === 'live' && page.liveSlug ?
+      '<div class="ic"><div class="ict">Publication</div><div style="font-size:11px;color:var(--space);display:grid;gap:8px">' +
+      '<span style="color:#16A34A;font-weight:600">✅ En ligne</span>' +
+      '<a href="' + GH.pagesBase + page.liveSlug + '.html" target="_blank" style="color:var(--violet);font-family:monospace;font-size:10px;word-break:break-all;text-decoration:none">' + GH.pagesBase + page.liveSlug + '.html ↗</a>' +
+      '<span style="color:var(--space);font-size:10px">Délai de mise à jour : ~1 min</span>' +
+      '</div></div>' : '') +
     '<div class="ic"><div class="ict">Info</div><div style="font-size:11px;color:var(--space);display:grid;gap:5px">' +
     '<span>Créée : ' + (page.created ? new Date(page.created).toLocaleDateString('fr-FR') : '—') + '</span>' +
     '<span>Modifiée : ' + (page.modified ? new Date(page.modified).toLocaleDateString('fr-FR') : '—') + '</span>' +
@@ -551,51 +713,103 @@ function repImg(inp, idx) {
   reader.readAsDataURL(file);
 }
 
+// ── Build HTML for export (shared by download & publish) ──
+function buildHtmlForExport(page, cb) {
+  var out = page.html, f = CF;
+  function rep(search, replacement) {
+    if (!search || !replacement || search === replacement) return;
+    var escaped = search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    out = out.replace(new RegExp(escaped, 'g'), replacement);
+  }
+  if (f.phone) out = out.replace(/\d{2} \d{2} \d{2} \d{2} \d{2}/g, f.phone);
+  if (f.deadline) out = out.replace(/\d{2}\/\d{2}\/\d{4}/g, f.deadline);
+  if (f.promo_text) { var m1 = out.match(/jusqu'au[^<]{0,60}/); if (m1) rep(m1[0], f.promo_text); }
+  if (f.hero_badge) { var m2 = out.match(/Sessions ouvertes[^<]{0,80}/); if (m2) rep(m2[0], f.hero_badge); }
+  if (f.hero_sub)   { var m3 = out.match(/Formation 100%[^<]{0,200}/); if (m3) rep(m3[0], f.hero_sub); }
+  if (f.prog_h2)    { var m4 = out.match(/6 semaines pour passer[^<]{0,80}/); if (m4) rep(m4[0], f.prog_h2); }
+  if (f.fred_bio)   { var m5 = out.match(/15 ans d'expérience[^<]{0,200}/); if (m5) rep(m5[0], f.fred_bio); }
+  if (f.edou_bio)   { var m6 = out.match(/\+10 ans dans l'architecture[^<]{0,200}/); if (m6) rep(m6[0], f.edou_bio); }
+  if (f.fred_role) out = out.replace(/Designer 3D &amp; spécialiste SolidWorks/g, f.fred_role.replace(/&/g,'&amp;'));
+  if (f.edou_role) out = out.replace(/Architecte &amp; référent BIM/g, f.edou_role.replace(/&/g,'&amp;'));
+  if (f.price)     out = out.replace(/1 650€/g, f.price);
+  if (f.price_old) out = out.replace(/1 833€/g, f.price_old);
+  for (var i = 1; i <= 3; i++) {
+    if (f['t'+i+'q'] && page.fields['t'+i+'q']) rep('"' + page.fields['t'+i+'q'] + '"', '"' + f['t'+i+'q'] + '"');
+  }
+  var imgList = page.images || [];
+  Object.keys(CIM).forEach(function(idx) {
+    var orig = imgList[parseInt(idx)];
+    if (orig && orig.src) { out = out.replace(orig.src, CIM[idx]); imgList[parseInt(idx)].src = CIM[idx]; }
+  });
+  // Formateurs galerie 5-8
+  for (var tgi = 5; tgi <= 8; tgi++) {
+    ['name','role','exp'].forEach(function(attr) {
+      var key = 't' + tgi + '_' + attr;
+      var oldVal = (page.fields || {})[key];
+      var newVal = f[key];
+      if (oldVal && newVal && oldVal !== newVal) {
+        out = out.replace(
+          new RegExp('(data-trainer-' + attr + '="' + tgi + '"[^>]*>)[^<]*(<)', 'g'),
+          '$1' + newVal.replace(/\$/g,'$$$$') + '$2'
+        );
+      }
+    });
+  }
+
+  // Recruteurs marquee (chaque nom apparaît 2× pour la boucle infinie)
+  for (var ri = 1; ri <= 8; ri++) {
+    var oldRec = (page.fields || {})['rec'+ri];
+    var newRec = f['rec'+ri];
+    if (oldRec && newRec && oldRec !== newRec) {
+      var escapedOld = oldRec.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      out = out.replace(new RegExp('>' + escapedOld + '<\\/span>', 'g'), '>' + newRec + '</span>');
+    }
+  }
+
+  var newSlug = (document.getElementById('ed-slug') || {}).value || page.slug;
+  page.html = out; page.fields = Object.assign({}, page.fields, f);
+  page.images = imgList; page.slug = newSlug; page.modified = new Date().toISOString();
+  cb(page, out);
+}
+
 // ── Save & Download ────────────────────────────
 function saveAndDl() {
   dbGet(CID, function(page) {
     if (!page) { toast('Page introuvable'); return; }
-    var out = page.html, f = CF;
-
-    function rep(search, replacement) {
-      if (!search || !replacement || search === replacement) return;
-      var escaped = search.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-      out = out.replace(new RegExp(escaped, 'g'), replacement);
-    }
-
-    if (f.phone) out = out.replace(/\d{2} \d{2} \d{2} \d{2} \d{2}/g, f.phone);
-    if (f.deadline) out = out.replace(/\d{2}\/\d{2}\/\d{4}/g, f.deadline);
-    if (f.promo_text) { var m1 = out.match(/jusqu'au[^<]{0,60}/); if (m1) rep(m1[0], f.promo_text); }
-    if (f.hero_badge) { var m2 = out.match(/Sessions ouvertes[^<]{0,80}/); if (m2) rep(m2[0], f.hero_badge); }
-    if (f.hero_sub)   { var m3 = out.match(/Formation 100%[^<]{0,200}/); if (m3) rep(m3[0], f.hero_sub); }
-    if (f.prog_h2)    { var m4 = out.match(/6 semaines pour passer[^<]{0,80}/); if (m4) rep(m4[0], f.prog_h2); }
-    if (f.fred_bio)   { var m5 = out.match(/15 ans d'expérience[^<]{0,200}/); if (m5) rep(m5[0], f.fred_bio); }
-    if (f.edou_bio)   { var m6 = out.match(/\+10 ans dans l'architecture[^<]{0,200}/); if (m6) rep(m6[0], f.edou_bio); }
-    if (f.fred_role) out = out.replace(/Designer 3D &amp; spécialiste SolidWorks/g, f.fred_role.replace(/&/g,'&amp;'));
-    if (f.edou_role) out = out.replace(/Architecte &amp; référent BIM/g, f.edou_role.replace(/&/g,'&amp;'));
-    if (f.price)     out = out.replace(/1 650€/g, f.price);
-    if (f.price_old) out = out.replace(/1 833€/g, f.price_old);
-
-    for (var i = 1; i <= 3; i++) {
-      if (f['t'+i+'q'] && page.fields['t'+i+'q']) rep('"' + page.fields['t'+i+'q'] + '"', '"' + f['t'+i+'q'] + '"');
-    }
-
-    var imgList = page.images || [];
-    Object.keys(CIM).forEach(function(idx) {
-      var orig = imgList[parseInt(idx)];
-      if (orig && orig.src) { out = out.replace(orig.src, CIM[idx]); imgList[parseInt(idx)].src = CIM[idx]; }
+    buildHtmlForExport(page, function(page, out) {
+      dbPut(page);
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([out], { type: 'text/html' }));
+      a.download = page.slug + '-modifie.html';
+      a.click(); URL.revokeObjectURL(a.href);
+      toast('✅ Téléchargé : ' + page.slug + '-modifie.html');
     });
+  });
+}
 
-    var newSlug = (document.getElementById('ed-slug') || {}).value || page.slug;
-    page.html = out; page.fields = Object.assign({}, page.fields, f);
-    page.images = imgList; page.slug = newSlug; page.modified = new Date().toISOString();
-    dbPut(page);
-
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([out], { type: 'text/html' }));
-    a.download = newSlug + '-modifie.html';
-    a.click(); URL.revokeObjectURL(a.href);
-    toast('✅ Téléchargé : ' + newSlug + '-modifie.html');
+// ── Publish to GitHub Pages ────────────────────
+function publishPage() {
+  requireToken(function() {
+    dbGet(CID, function(page) {
+      if (!page) { toast('Page introuvable'); return; }
+      var oldSlug = page.liveSlug || null;
+      toast('Publication en cours...');
+      buildHtmlForExport(page, function(updatedPage, out) {
+        var filename = updatedPage.slug + '.html';
+        GH.putFileLarge(filename, out, function(err) {
+          if (err) { toast('❌ Erreur GitHub : ' + err); return; }
+          if (oldSlug && oldSlug !== updatedPage.slug) {
+            GH.deleteFile(oldSlug + '.html');
+          }
+          updatedPage.status = 'live';
+          updatedPage.liveSlug = updatedPage.slug;
+          dbPut(updatedPage, function() {
+            toast('✅ Publié ! Dispo dans ~1 min sur GitHub Pages');
+            editPage(CID);
+          });
+        });
+      });
+    });
   });
 }
 
@@ -626,7 +840,7 @@ function confirmDup() {
     var np = JSON.parse(JSON.stringify(p));
     np.id = 'p' + Date.now(); np.name = n; np.slug = s;
     np.status = 'draft'; np.created = new Date().toISOString(); np.modified = new Date().toISOString();
-    dbPut(np, function() { closeM('m-dup'); toast('✅ Dupliquée : ' + n); renderPages(); renderDash(); });
+    dbPut(np, function() { closeM('m-dup'); toast('✅ Dupliquée : ' + n); renderPages(); renderDash(); editPage(np.id); });
   });
 }
 
@@ -667,7 +881,7 @@ document.querySelectorAll('.ov').forEach(function(o) {
   o.addEventListener('click', function(e) { if (e.target === o) o.classList.remove('open'); });
 });
 
-renderDash();
+maybeAutoSeed();
 </script>
 </body>
 </html>
