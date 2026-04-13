@@ -524,7 +524,7 @@ function extractFields(html) {
   while ((tm = tre.exec(html)) && tq.length < 3) {
     if (/semaines|formateur|CPF|modéliser|freelance|reconversion/.test(tm[1])) tq.push(tm[1]);
   }
-  var tn = ['Didier','Jérémie','Mathilde'], tr = ['Syndic de copropriété','Paysagiste','Designer freelance'];
+  var tn = ['Didier','Jérémie','Lucas'], tr = ['Syndic de copropriété', 'Paysagiste', 'Designer industriel · ancien apprenant'];
   for (var j = 0; j < 3; j++) { f['t'+(j+1)+'q'] = tq[j] || ''; f['t'+(j+1)+'n'] = tn[j]; f['t'+(j+1)+'r'] = tr[j]; }
 
   var ch = html.match(/<h2 class="font-display text-4xl[^>]*>([\s\S]*?)<\/h2>/); if (ch) f.cta_h2 = strip(ch[1]);
@@ -555,6 +555,16 @@ function extractFields(html) {
     }
   }
   for (var rk = 1; rk <= 8; rk++) { if (!f['rec'+rk]) f['rec'+rk] = recDef[rk-1] || ''; }
+
+  // Champs génériques data-cms
+  var dcKeys = (html.match(/data-cms="([^"]+)"/g) || []).map(function(s) { return s.replace(/data-cms="|"/g, ''); });
+  var dcUniq = dcKeys.filter(function(k, i) { return dcKeys.indexOf(k) === i; });
+  dcUniq.forEach(function(key) {
+    if (f[key] !== undefined) return;
+    var re = new RegExp('data-cms="' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>([^<]*)(?=<)');
+    var m = html.match(re);
+    if (m) f[key] = m[1].trim();
+  });
 
   return f;
 }
@@ -616,8 +626,10 @@ function buildEditor(page) {
     '<div class="g2">' + mkField('hero_sub','Sous-titre',f.hero_sub,'ta') + mkField('hero_badge','Badge disponibilité',f.hero_badge) + '</div>' +
     '<div class="g2">' + mkField('cta1','CTA principal',f.cta1) + mkField('cta2','CTA secondaire',f.cta2) + '</div>', 'hero');
   h += mkFC('Chiffres clés',
-    '<div class="g2">' + mkField('s1n','Stat 1',f.s1n) + mkField('s2n','Stat 2',f.s2n) + '</div>' +
-    '<div class="g2">' + mkField('s3n','Stat 3',f.s3n) + mkField('s4n','Stat 4',f.s4n) + '</div>', 'stats');
+    '<div class="g2">' + mkField('stats1_v','Stat 1 — Valeur',f.stats1_v) + mkField('stats1_l','Stat 1 — Label',f.stats1_l) + '</div>' +
+    '<div class="g2">' + mkField('stats2_v','Stat 2 — Valeur',f.stats2_v) + mkField('stats2_l','Stat 2 — Label',f.stats2_l) + '</div>' +
+    '<div class="g2">' + mkField('stats3_v','Stat 3 — Valeur',f.stats3_v) + mkField('stats3_l','Stat 3 — Label',f.stats3_l) + '</div>' +
+    '<div class="g2">' + mkField('stats4_v','Stat 4 — Valeur',f.stats4_v) + mkField('stats4_l','Stat 4 — Label',f.stats4_l) + '</div>', 'stats');
   h += mkFC('Programme',
     mkField('prog_h2','Titre',f.prog_h2) + mkField('prog_desc','Description',f.prog_desc,'ta'), 'prog');
   h += mkFC('Formateurs',
@@ -628,7 +640,19 @@ function buildEditor(page) {
   h += mkFC('Témoignages', tH, 'temo');
   h += mkFC('Tarifs',
     '<div class="g3">' + mkField('price','Prix affiché',f.price) + mkField('price_old','Prix barré',f.price_old) + mkField('price_cpf','Prix CPF',f.price_cpf) + '</div>', 'tarifs');
-  h += mkFC('Final CTA', mkField('cta_h2','Titre',f.cta_h2,'ta') + mkField('cta_sub','Sous-titre',f.cta_sub), 'cta');
+  var faqH = '';
+  var faqQs = ['Combien coûte vraiment la formation ?','Temps par semaine ?','Prérequis ?','100% en ligne ?','CPF insuffisant ?','Matériel requis ?'];
+  for (var fi = 1; fi <= 6; fi++) {
+    faqH += '<div class="g2">' +
+      mkField('faq'+fi+'_q','Q' + fi + ' — Question', f['faq'+fi+'_q']) +
+      mkField('faq'+fi+'_a','R' + fi + ' — Réponse', f['faq'+fi+'_a'], 'ta') +
+      '</div>';
+  }
+  h += mkFC('FAQ', faqH, 'faq');
+  h += mkFC('Final CTA',
+    mkField('cta_h2','Titre',f.cta_h2,'ta') +
+    '<div class="g2">' + mkField('cta_sub','Sous-titre (hero)',f.cta_sub) + mkField('cta_badge','Badge disponibilité',f.cta_badge) + '</div>' +
+    mkField('cta_sub2','Sous-titre (section)',f.cta_sub2), 'cta');
   var tgH = '';
   for (var tgi = 5; tgi <= 8; tgi++) {
     tgH += '<div class="g3">' +
@@ -765,6 +789,20 @@ function buildHtmlForExport(page, cb) {
       out = out.replace(new RegExp('>' + escapedOld + '<\\/span>', 'g'), '>' + newRec + '</span>');
     }
   }
+
+  // Substitution générique data-cms
+  var dcExp = (out.match(/data-cms="([^"]+)"/g) || []).map(function(s) { return s.replace(/data-cms="|"/g, ''); });
+  var dcExpUniq = dcExp.filter(function(k, i) { return dcExp.indexOf(k) === i; });
+  dcExpUniq.forEach(function(key) {
+    if (!f[key]) return;
+    var oldV = (page.fields || {})[key];
+    if (!oldV || oldV === f[key]) return;
+    var escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    out = out.replace(
+      new RegExp('(data-cms="' + escapedKey + '"[^>]*>)[^<]*(<)', 'g'),
+      '$1' + f[key].replace(/\$/g, '$$$$') + '$2'
+    );
+  });
 
   var newSlug = (document.getElementById('ed-slug') || {}).value || page.slug;
   page.html = out; page.fields = Object.assign({}, page.fields, f);
