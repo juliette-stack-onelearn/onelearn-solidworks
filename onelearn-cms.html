@@ -534,7 +534,7 @@ function extractFields(html) {
   var tDefName = ['Sarah M.','Thomas R.','Camille B.','Julien F.'];
   var tDefRole = ['SolidWorks','Modélisation 3D','CAO Mécanique','Design industriel'];
   var tDefExp = ["9 ans d'exp.","7 ans d'exp.","6 ans d'exp.","8 ans d'exp."];
-  for (var tgi = 5; tgi <= 8; tgi++) {
+  for (var tgi = 5; tgi <= 13; tgi++) {
     var idx0 = tgi - 5;
     var tnm = html.match(new RegExp('data-trainer-name="' + tgi + '"[^>]*>([^<]+)<'));
     var trl = html.match(new RegExp('data-trainer-role="' + tgi + '"[^>]*>([^<]+)<'));
@@ -654,7 +654,7 @@ function buildEditor(page) {
     '<div class="g2">' + mkField('cta_sub','Sous-titre (hero)',f.cta_sub) + mkField('cta_badge','Badge disponibilité',f.cta_badge) + '</div>' +
     mkField('cta_sub2','Sous-titre (section)',f.cta_sub2), 'cta');
   var tgH = '';
-  for (var tgi = 5; tgi <= 8; tgi++) {
+  for (var tgi = 5; tgi <= 13; tgi++) {
     tgH += '<div class="g3">' +
       mkField('t'+tgi+'_name','Formateur '+(tgi-4)+' — Nom',f['t'+tgi+'_name']) +
       mkField('t'+tgi+'_role','Spécialité',f['t'+tgi+'_role']) +
@@ -766,7 +766,7 @@ function buildHtmlForExport(page, cb) {
     if (orig && orig.src) { out = out.replace(orig.src, CIM[idx]); imgList[parseInt(idx)].src = CIM[idx]; }
   });
   // Formateurs galerie 5-8
-  for (var tgi = 5; tgi <= 8; tgi++) {
+  for (var tgi = 5; tgi <= 13; tgi++) {
     ['name','role','exp'].forEach(function(attr) {
       var key = 't' + tgi + '_' + attr;
       var oldVal = (page.fields || {})[key];
