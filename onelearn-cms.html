@@ -685,13 +685,13 @@ function buildEditor(page) {
     var curSrc = f['rec_img_'+ri] || '';
     recH += '<div class="img-f" onclick="document.getElementById(\'ri'+ri+'\').click()">' +
       '<input type="file" id="ri'+ri+'" accept="image/*" onchange="repRecImg(this,'+ri+')">' +
-      '<div class="img-th"><img id="rip'+ri+'" src="'+(curSrc?curSrc.substring(0,60)+'...':'')+'" style="'+(curSrc?'':'display:none')+'">' +
+      '<div class="img-th"><img id="rip'+ri+'" src="'+curSrc+'" style="'+(curSrc?'':'display:none')+'">' +
       '<div class="img-ph" id="rph'+ri+'" style="'+(curSrc?'display:none':'')+'"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div></div>' +
-      '<div class="img-inf"><div class="img-nm">Recruteur '+ri+'</div><div class="img-ht">Cliquer pour remplacer</div></div>' +
+      '<div class="img-inf"><div class="img-nm">Entreprise '+ri+'</div><div class="img-ht">Cliquer pour remplacer</div></div>' +
       '</div>';
   }
   recH += '</div>';
-  h += mkFC('Recruteurs', recH, 'rec');
+  h += mkFC('Entreprises', recH, 'rec');
 
   if (imgs.length) {
     var imgH = '<div class="g2">';
