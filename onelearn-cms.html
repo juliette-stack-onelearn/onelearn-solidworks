@@ -767,11 +767,10 @@ function repRecImg(inp, idx) {
   var file = inp.files[0]; if (!file) return;
   var reader = new FileReader();
   reader.onload = function(e) {
-    if (!page.fields) page.fields = {};
-    page.fields['rec_img_'+idx] = e.target.result;
+    CF['rec_img_'+idx] = e.target.result;
     var el = document.getElementById('rip'+idx); if (el) { el.src = e.target.result; el.style.display = 'block'; }
     var ph = document.getElementById('rph'+idx); if (ph) ph.style.display = 'none';
-    toast('Logo recruteur remplacé');
+    toast('Logo entreprise remplacé');
   };
   reader.readAsDataURL(file);
 }
@@ -824,7 +823,8 @@ function buildHtmlForExport(page, cb) {
     var recImg = f['rec_img_'+ri];
     if (recImg) {
       var recRe = new RegExp('(data-rec-img="' + ri + '"[^>]*src=")[^"]*(")', 'g');
-      out = out.replace(recRe, '$1' + recImg + '$2');
+      var safeImg = recImg.replace(/\$/g, '$$$$');
+      out = out.replace(recRe, '$1' + safeImg + '$2');
     }
   }
 
