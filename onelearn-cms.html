@@ -544,17 +544,11 @@ function extractFields(html) {
     f['t'+tgi+'_exp']  = tep ? tep[1].trim() : tDefExp[idx0];
   }
 
-  // Recruteurs marquee
-  var recDef = ['Bouygues','Safran','Vinci','Dassault','Schneider','Eiffage','Renault','Airbus'];
-  var recSec = html.match(/Ils recrutent[\s\S]*?<\/section>/);
-  if (recSec) {
-    var recRe = /font-display[^"]*">([\w\u00C0-\u024F]+)<\/span>/g, rm, ri = 0, seen = {};
-    while ((rm = recRe.exec(recSec[0])) && ri < 8) {
-      var rn = rm[1].trim();
-      if (!seen[rn]) { seen[rn] = true; f['rec'+(ri+1)] = rn; ri++; }
-    }
+  // Recruteurs marquee — images (data-rec-img attributes)
+  for (var ri = 1; ri <= 8; ri++) {
+    var rim = html.match(new RegExp('data-rec-img="' + ri + '"[^>]*src="([^"]+)"'));
+    f['rec_img_'+ri] = rim ? rim[1] : '';
   }
-  for (var rk = 1; rk <= 8; rk++) { if (!f['rec'+rk]) f['rec'+rk] = recDef[rk-1] || ''; }
 
   // Champs génériques data-cms
   var dcKeys = (html.match(/data-cms="([^"]+)"/g) || []).map(function(s) { return s.replace(/data-cms="|"/g, ''); });
@@ -687,7 +681,15 @@ function buildEditor(page) {
   }
   h += mkFC('Formateurs galerie', tgH, 'tg');
   var recH = '<div class="g2">';
-  for (var ri = 1; ri <= 8; ri++) recH += mkField('rec'+ri,'Recruteur '+ri,f['rec'+ri]);
+  for (var ri = 1; ri <= 8; ri++) {
+    var curSrc = f['rec_img_'+ri] || '';
+    recH += '<div class="img-f" onclick="document.getElementById(\'ri'+ri+'\').click()">' +
+      '<input type="file" id="ri'+ri+'" accept="image/*" onchange="repRecImg(this,'+ri+')">' +
+      '<div class="img-th"><img id="rip'+ri+'" src="'+(curSrc?curSrc.substring(0,60)+'...':'')+'" style="'+(curSrc?'':'display:none')+'">' +
+      '<div class="img-ph" id="rph'+ri+'" style="'+(curSrc?'display:none':'')+'"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg></div></div>' +
+      '<div class="img-inf"><div class="img-nm">Recruteur '+ri+'</div><div class="img-ht">Cliquer pour remplacer</div></div>' +
+      '</div>';
+  }
   recH += '</div>';
   h += mkFC('Recruteurs', recH, 'rec');
 
@@ -761,6 +763,19 @@ function repImg(inp, idx) {
   reader.readAsDataURL(file);
 }
 
+function repRecImg(inp, idx) {
+  var file = inp.files[0]; if (!file) return;
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    if (!page.fields) page.fields = {};
+    page.fields['rec_img_'+idx] = e.target.result;
+    var el = document.getElementById('rip'+idx); if (el) { el.src = e.target.result; el.style.display = 'block'; }
+    var ph = document.getElementById('rph'+idx); if (ph) ph.style.display = 'none';
+    toast('Logo recruteur remplacé');
+  };
+  reader.readAsDataURL(file);
+}
+
 // ── Build HTML for export (shared by download & publish) ──
 function buildHtmlForExport(page, cb) {
   var out = page.html, f = CF;
@@ -804,13 +819,12 @@ function buildHtmlForExport(page, cb) {
     });
   }
 
-  // Recruteurs marquee (chaque nom apparaît 2× pour la boucle infinie)
+  // Recruteurs marquee — logos image (×2 dans la marquee dupliquée)
   for (var ri = 1; ri <= 8; ri++) {
-    var oldRec = (page.fields || {})['rec'+ri];
-    var newRec = f['rec'+ri];
-    if (oldRec && newRec && oldRec !== newRec) {
-      var escapedOld = oldRec.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      out = out.replace(new RegExp('>' + escapedOld + '<\\/span>', 'g'), '>' + newRec + '</span>');
+    var recImg = f['rec_img_'+ri];
+    if (recImg) {
+      var recRe = new RegExp('(data-rec-img="' + ri + '"[^>]*src=")[^"]*(")', 'g');
+      out = out.replace(recRe, '$1' + recImg + '$2');
     }
   }
 
