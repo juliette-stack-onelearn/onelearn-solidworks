@@ -624,7 +624,9 @@ function buildEditor(page) {
   h += mkFC('Hero',
     mkField('hero_h1','Titre H1',f.hero_h1,'ta') +
     '<div class="g2">' + mkField('hero_sub','Sous-titre',f.hero_sub,'ta') + mkField('hero_badge','Badge disponibilité',f.hero_badge) + '</div>' +
-    '<div class="g2">' + mkField('cta1','CTA principal',f.cta1) + mkField('cta2','CTA secondaire',f.cta2) + '</div>', 'hero');
+    '<div class="g2">' + mkField('cta1','CTA principal',f.cta1) + mkField('cta2','CTA secondaire',f.cta2) + '</div>' +
+    '<div class="g2">' + mkField('hero_trust1','Trustpilot — Note',f.hero_trust1) + mkField('hero_trust2','Trustpilot — Label',f.hero_trust2) + '</div>' +
+    '<div class="g2">' + mkField('promo_badge','Badge promo (topbar)',f.promo_badge) + '</div>', 'hero');
   h += mkFC('Chiffres clés',
     '<div class="g2">' + mkField('stats1_v','Stat 1 — Valeur',f.stats1_v) + mkField('stats1_l','Stat 1 — Label',f.stats1_l) + '</div>' +
     '<div class="g2">' + mkField('stats2_v','Stat 2 — Valeur',f.stats2_v) + mkField('stats2_l','Stat 2 — Label',f.stats2_l) + '</div>' +
@@ -633,12 +635,33 @@ function buildEditor(page) {
   h += mkFC('Programme',
     mkField('prog_h2','Titre',f.prog_h2) + mkField('prog_desc','Description',f.prog_desc,'ta'), 'prog');
   h += mkFC('Formateurs',
+    '<div class="g2">' + mkField('f1_name','Frédéric — Nom',f.f1_name) + mkField('f2_name','Edouard — Nom',f.f2_name) + '</div>' +
     '<div class="g2">' + mkField('fred_role','Frédéric — Spécialité',f.fred_role) + mkField('edou_role','Edouard — Spécialité',f.edou_role) + '</div>' +
     '<div class="g2">' + mkField('fred_bio','Frédéric — Bio',f.fred_bio,'ta') + mkField('edou_bio','Edouard — Bio',f.edou_bio,'ta') + '</div>', 'form');
+  h += mkFC('Pour qui',
+    '<div class="g2">' + mkField('pourqui_label','Label section',f.pourqui_label) + mkField('pourqui_h2','Titre H2',f.pourqui_h2,'ta') + '</div>' +
+    '<div class="g2">' + mkField('pq1_title','Profil 1 — Titre',f.pq1_title) + mkField('pq1_desc','Description',f.pq1_desc,'ta') + '</div>' +
+    '<div class="g2">' + mkField('pq2_title','Profil 2 — Titre',f.pq2_title) + mkField('pq2_desc','Description',f.pq2_desc,'ta') + '</div>' +
+    '<div class="g2">' + mkField('pq3_title','Profil 3 — Titre',f.pq3_title) + mkField('pq3_desc','Description',f.pq3_desc,'ta') + '</div>' +
+    '<div class="g2">' + mkField('pq4_title','Profil 4 — Titre',f.pq4_title) + mkField('pq4_desc','Description',f.pq4_desc,'ta') + '</div>', 'pourqui');
+  h += mkFC('Métiers & débouchés',
+    '<div class="g2">' + mkField('metiers_label','Label section',f.metiers_label) + mkField('metiers_h2','Titre H2',f.metiers_h2,'ta') + '</div>' +
+    '<div class="g2">' + mkField('job1_title','Métier 1 — Titre',f.job1_title) + mkField('job1_desc','Secteur',f.job1_desc) + '</div>' +
+    '<div class="g2">' + mkField('job2_title','Métier 2 — Titre',f.job2_title) + mkField('job2_desc','Secteur',f.job2_desc) + '</div>' +
+    '<div class="g2">' + mkField('job3_title','Métier 3 — Titre',f.job3_title) + mkField('job3_desc','Secteur',f.job3_desc) + '</div>' +
+    '<div class="g2">' + mkField('job4_title','Métier 4 — Titre',f.job4_title) + mkField('job4_desc','Secteur',f.job4_desc) + '</div>' +
+    mkField('ia_title','Bloc IA — Titre',f.ia_title,'ta'), 'metiers');
+  h += mkFC('Pourquoi One Learn',
+    '<div class="g2">' + mkField('pourquoi_label','Label section',f.pourquoi_label) + mkField('pourquoi_h2','Titre H2',f.pourquoi_h2,'ta') + '</div>' +
+    '<div class="g2">' + mkField('adv1_title','Avantage 1 — Titre',f.adv1_title) + mkField('adv1_desc','Description',f.adv1_desc,'ta') + '</div>' +
+    '<div class="g2">' + mkField('adv2_title','Avantage 2 — Titre',f.adv2_title) + mkField('adv2_desc','Description',f.adv2_desc,'ta') + '</div>' +
+    '<div class="g2">' + mkField('adv3_title','Avantage 3 — Titre',f.adv3_title) + mkField('adv3_desc','Description',f.adv3_desc,'ta') + '</div>', 'pourquoi');
   var tH = '';
   for (var i = 1; i <= 3; i++) tH += '<div class="g2">' + mkField('t'+i+'n','Prénom',f['t'+i+'n']) + mkField('t'+i+'r','Métier',f['t'+i+'r']) + '</div>' + mkField('t'+i+'q','Citation',f['t'+i+'q'],'ta');
   h += mkFC('Témoignages', tH, 'temo');
   h += mkFC('Tarifs',
+    mkField('tarif_h2','Titre section',f.tarif_h2) +
+    '<div class="g2">' + mkField('tarif_name','Nom de l\'offre',f.tarif_name) + mkField('tarif_sub','Sous-titre offre',f.tarif_sub) + '</div>' +
     '<div class="g3">' + mkField('price','Prix affiché',f.price) + mkField('price_old','Prix barré',f.price_old) + mkField('price_cpf','Prix CPF',f.price_cpf) + '</div>', 'tarifs');
   var faqH = '';
   var faqQs = ['Combien coûte vraiment la formation ?','Temps par semaine ?','Prérequis ?','100% en ligne ?','CPF insuffisant ?','Matériel requis ?'];
@@ -652,7 +675,8 @@ function buildEditor(page) {
   h += mkFC('Final CTA',
     mkField('cta_h2','Titre',f.cta_h2,'ta') +
     '<div class="g2">' + mkField('cta_sub','Sous-titre (hero)',f.cta_sub) + mkField('cta_badge','Badge disponibilité',f.cta_badge) + '</div>' +
-    mkField('cta_sub2','Sous-titre (section)',f.cta_sub2), 'cta');
+    mkField('cta_sub2','Sous-titre (section)',f.cta_sub2) +
+    '<div class="g2">' + mkField('cta_advisor_name','Conseiller — Nom',f.cta_advisor_name) + mkField('cta_advisor_role','Conseiller — Rôle',f.cta_advisor_role) + '</div>', 'cta');
   var tgH = '';
   for (var tgi = 5; tgi <= 13; tgi++) {
     tgH += '<div class="g3">' +
