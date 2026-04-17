@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Formation SolidWorks en ligne – Certifiante &amp; financée à 100% | One Learn</title>
-<meta name="description" content="Formez-vous à Solidworks en 4 à 6 semaines avec un formateur dédié. 97% de réussite, licence offerte, financement CPF. Réservez votre appel gratuit." />
+<meta name="description" content="Formez-vous à Solidworks en 4 à 6 semaines avec un formateur dédié. 97% de réussite, licence offerte, financement CPF. Réserve ton appel gratuit." />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@ tailwind.config = {
   .font-display { font-family: 'Satoshi', 'Inter', sans-serif; font-weight: 700; }
   .grain { /* removed: grain texture not in One Learn brand */ }
   .marquee { animation: scroll 30s linear infinite; }
-  .rec-logo { filter: grayscale(1); opacity: 0.45; transition: filter 0.3s ease, opacity 0.3s ease; }
+  .rec-logo { filter: grayscale(1); opacity: 0.45; transition: filter 0.3s, opacity 0.3s; }
   .rec-logo:hover { filter: none; opacity: 1; }
   @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
   details[open] summary .chev { transform: rotate(180deg); }
@@ -69,7 +69,7 @@ tailwind.config = {
         <span class="w-1.5 h-1.5 rounded-full bg-orange animate-pulse"></span>
         OFFRE −10%
       </span>
-      <span class="hidden sm:inline truncate">jusqu'au 30/04/2026 · cumulable avec votre CPF</span>
+      <span class="hidden sm:inline truncate">jusqu'au 30/04/2026 · cumulable avec ton CPF</span>
     </div>
     <div class="flex items-center gap-3">
       <a id="tb-cta" href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn-solidworks" class="hidden sm:inline-flex items-center gap-2 bg-orange text-white px-4 py-1.5 rounded-full font-semibold text-xs whitespace-nowrap hover:bg-orange-700 transition" style="display:none;">
@@ -129,17 +129,21 @@ tailwind.config = {
         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
         Sessions ouvertes en avril · 12 places restantes</div>
 
+      <div class="flex items-center gap-2 mb-4">
+        <img data-cms="hero_software_logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAxMjAgMzIiPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iNjAiIHk9IjIxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOWNhM2FmIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZvbnQtd2VpZ2h0PSI2MDAiPkxvZ288L3RleHQ+PC9zdmc+" alt="Logo logiciel" style="height:32px;width:auto;opacity:0.75;">
+      </div>
+
       <h1 class="font-display text-[1.9rem] sm:text-[2.4rem] lg:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">
-        Maîtrisez Solidworks<br>
+        Maîtrise SolidWorks<br>
         en <span class="relative inline-block">
           <span class="relative z-10">6 semaines</span>
           <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 50 0, 100 6 T 198 5" stroke="#EF7738" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
         </span>,
-        avec un formateur rien que pour vous.
+        avec un formateur rien que pour toi.
       </h1>
 
       <p class="mt-4 text-base text-ink/70 max-w-xl leading-relaxed">
-        Formation 100% en ligne, certifiante et<strong class="text-ink">finançable à 100%</strong> via votre CPF, OPCO ou France Travail. Licence Solidworks offerte pendant toute la formation.
+        Formation 100% en ligne, certifiante et<strong class="text-ink">finançable à 100%</strong> via ton CPF, OPCO ou France Travail. Licence Solidworks offerte pendant toute la formation.
       </p>
 
       <!-- USPs -->
@@ -148,7 +152,7 @@ tailwind.config = {
           <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
           </div>
-          <span><strong>+10h en visio</strong> avec votre formateur expert, à la carte selon vos disponibilités</span>
+          <span><strong>+10h en visio</strong> avec ton formateur expert, à la carte selon tes disponibilités</span>
         </li>
         <li class="flex items-start gap-3">
           <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
@@ -199,11 +203,21 @@ tailwind.config = {
              class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
         <div class="absolute inset-0 grain opacity-15"></div>
+        <!-- Badge logiciel flottant -->
+        <div class="absolute top-5 right-5 z-20 flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3" style="box-shadow:0 8px 32px rgba(34,36,77,0.22);">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#005387 0%,#0079BE 100%);">
+            <span style="color:#fff;font-family:Arial,sans-serif;font-weight:900;font-size:13px;letter-spacing:-0.03em;">SW</span>
+          </div>
+          <div>
+            <p style="font-family:'Satoshi','Inter',sans-serif;font-size:12px;font-weight:800;color:#282C37;line-height:1.1;margin:0 0 3px 0;">SolidWorks 2024</p>
+            <p style="font-family:'Inter',sans-serif;font-size:10px;color:#9DA2B3;margin:0;">Licence offerte</p>
+          </div>
+        </div>
 
         <!-- Caption -->
         <div class="absolute bottom-6 left-6 right-6 text-cream z-10">
-          <p class="font-display text-xl sm:text-2xl leading-tight">Apprenez en visio, à votre rythme</p>
-          <p class="text-sm text-cream/75 mt-1.5">Avec votre formateur et la communauté One Learn.</p>
+          <p class="font-display text-xl sm:text-2xl leading-tight">Apprends en visio, à ton rythme</p>
+          <p class="text-sm text-cream/75 mt-1.5">Avec ton formateur et la communauté One Learn.</p>
         </div>
 
 
@@ -265,27 +279,27 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4">
     <p class="text-center text-xs uppercase tracking-[0.2em] text-ink/50 font-semibold mb-6" data-cms="recruiters_label">Ils recrutent nos anciens apprenants</p>
     <div class="overflow-hidden">
-      <div class="marquee flex gap-12 items-center w-max">
+            <div class="marquee flex gap-12 items-center w-max">
         <!-- set 1 -->
-        <img data-rec-img="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+Qm91eWd1ZXM8L3RleHQ+PC9zdmc+" alt="Bouygues" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+U2FmcmFuPC90ZXh0Pjwvc3ZnPg==" alt="Safran" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+VmluY2k8L3RleHQ+PC9zdmc+" alt="Vinci" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="4" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+RGFzc2F1bHQ8L3RleHQ+PC9zdmc+" alt="Dassault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="5" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+U2NobmVpZGVyPC90ZXh0Pjwvc3ZnPg==" alt="Schneider" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="6" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+RWlmZmFnZTwvdGV4dD48L3N2Zz4=" alt="Eiffage" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="7" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+UmVuYXVsdDwvdGV4dD48L3N2Zz4=" alt="Renault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="8" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+QWlyYnVzPC90ZXh0Pjwvc3ZnPg==" alt="Airbus" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <!-- set 2 (duplicate for infinite scroll) -->
-        <img data-rec-img="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+Qm91eWd1ZXM8L3RleHQ+PC9zdmc+" alt="Bouygues" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+U2FmcmFuPC90ZXh0Pjwvc3ZnPg==" alt="Safran" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+VmluY2k8L3RleHQ+PC9zdmc+" alt="Vinci" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="4" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+RGFzc2F1bHQ8L3RleHQ+PC9zdmc+" alt="Dassault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="5" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+U2NobmVpZGVyPC90ZXh0Pjwvc3ZnPg==" alt="Schneider" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="6" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+RWlmZmFnZTwvdGV4dD48L3N2Zz4=" alt="Eiffage" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="7" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+UmVuYXVsdDwvdGV4dD48L3N2Zz4=" alt="Renault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
-        <img data-rec-img="8" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjMxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjYwMCIgZmlsbD0iIzZiNzI4MCI+QWlyYnVzPC90ZXh0Pjwvc3ZnPg==" alt="Airbus" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkJvdXlndWVzPC90ZXh0Pjwvc3ZnPg==" alt="Bouygues" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlNhZnJhbjwvdGV4dD48L3N2Zz4=" alt="Safran" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlZpbmNpPC90ZXh0Pjwvc3ZnPg==" alt="Vinci" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="4" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkRhc3NhdWx0PC90ZXh0Pjwvc3ZnPg==" alt="Dassault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="5" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlNjaG5laWRlcjwvdGV4dD48L3N2Zz4=" alt="Schneider" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="6" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkVpZmZhZ2U8L3RleHQ+PC9zdmc+" alt="Eiffage" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="7" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlJlbmF1bHQ8L3RleHQ+PC9zdmc+" alt="Renault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="8" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkFpcmJ1czwvdGV4dD48L3N2Zz4=" alt="Airbus" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <!-- set 2 -->
+        <img data-rec-img="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkJvdXlndWVzPC90ZXh0Pjwvc3ZnPg==" alt="Bouygues" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlNhZnJhbjwvdGV4dD48L3N2Zz4=" alt="Safran" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="3" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlZpbmNpPC90ZXh0Pjwvc3ZnPg==" alt="Vinci" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="4" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkRhc3NhdWx0PC90ZXh0Pjwvc3ZnPg==" alt="Dassault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="5" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlNjaG5laWRlcjwvdGV4dD48L3N2Zz4=" alt="Schneider" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="6" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkVpZmZhZ2U8L3RleHQ+PC9zdmc+" alt="Eiffage" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="7" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPlJlbmF1bHQ8L3RleHQ+PC9zdmc+" alt="Renault" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
+        <img data-rec-img="8" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxNjAgNDgiPjxyZWN0IHdpZHRoPSIxNjAiIGhlaWdodD0iNDgiIHJ4PSI4IiBmaWxsPSIjZTVlN2ViIi8+PHRleHQgeD0iODAiIHk9IjI4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI2MDAiPkFpcmJ1czwvdGV4dD48L3N2Zz4=" alt="Airbus" class="rec-logo" style="height:40px;width:auto;flex-shrink:0;">
       </div>
-    </div>
+      </div>
   </div>
 </section>
 
@@ -323,9 +337,9 @@ tailwind.config = {
 
       <!-- DROITE : Titre + grille 2×2 -->
       <div class="order-1 lg:order-2">
-        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Cette formation est faite pour vous si...</p>
+        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Cette formation est faite pour toi si...</p>
         <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight mb-10">
-          Vous voulez maîtriser un outil indispensable sur le marché.
+          Tu veux maîtriser un outil indispensable sur le marché.
         </h2>
 
         <div class="grid grid-cols-2 gap-4">
@@ -334,8 +348,8 @@ tailwind.config = {
             <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
             </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Vous démarrez de zéro</h3>
-            <p class="text-xs text-ink/60 leading-relaxed">Aucune base nécessaire. Vous apprenez le dessin technique et la 3D depuis les fondamentaux.</p>
+            <h3 class="font-display text-base font-semibold mb-1.5">Tu démarres de zéro</h3>
+            <p class="text-xs text-ink/60 leading-relaxed">Aucune base nécessaire. Tu apprends le dessin technique et la 3D depuis les fondamentaux.</p>
           </div>
           <!-- Carte 2 -->
           <div class="group bg-white rounded-2xl p-6 border border-ink/5 hover:border-orange/30 hover:-translate-y-1 transition shadow-card">
@@ -358,7 +372,7 @@ tailwind.config = {
             <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
             </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Vous êtes en reconversion</h3>
+            <h3 class="font-display text-base font-semibold mb-1.5">Tu es en reconversion</h3>
             <p class="text-xs text-ink/60 leading-relaxed">Visez un poste salarié ou lancez-vous en freelance dans la 3D et la CAO.</p>
           </div>
         </div>
@@ -405,7 +419,7 @@ tailwind.config = {
                 <h3 class="font-display text-xl font-semibold">Fondations : interface & esquisses 2D</h3>
                 <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaines 1-2</span>
               </div>
-              <p class="text-sm text-ink/60 mt-1.5">Vous prenez vos marques sur Solidworks et apprenez à dessiner toute pièce en 2D, base indispensable de la modélisation 3D.</p>
+              <p class="text-sm text-ink/60 mt-1.5">Tu prends tes marques sur SolidWorks et dessines tes premières pièces en 2D, base indispensable de la modélisation 3D.</p>
             </div>
           </div>
           <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -454,7 +468,7 @@ tailwind.config = {
                 <h3 class="font-display text-xl font-semibold">Modélisation 3D paramétrique</h3>
                 <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaines 2-3</span>
               </div>
-              <p class="text-sm text-ink/60 mt-1.5">Créez vos premières pièces volumiques et maîtrisez les fonctions clés utilisées en bureau d'études.</p>
+              <p class="text-sm text-ink/60 mt-1.5">Tu crées tes premières pièces volumiques et maîtrisez les fonctions clés utilisées en bureau d'études.</p>
             </div>
           </div>
           <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -554,7 +568,7 @@ tailwind.config = {
                 <h3 class="font-display text-xl font-semibold">Projet final & passage de certification</h3>
                 <span class="text-[10px] uppercase tracking-wider font-bold bg-orange text-white px-2 py-1 rounded-full">Semaine 6</span>
               </div>
-              <p class="text-sm text-ink/60 mt-1.5">Vous concevez un projet industriel complet de A à Z et passez votre certification reconnue par France Compétences.</p>
+              <p class="text-sm text-ink/60 mt-1.5">Tu conçois un projet industriel complet de A à Z et passes ta certification reconnue par France Compétences.</p>
             </div>
           </div>
           <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -574,7 +588,7 @@ tailwind.config = {
             </div>
             <div>
               <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Projet final</p>
-              <p class="text-sm text-ink/80 mt-0.5"><strong>Conception complète d'un produit industriel</strong> : un projet ambitieux qui valide votre niveau professionnel et vient enrichir votre portfolio pour décrocher des missions ou un poste.</p>
+              <p class="text-sm text-ink/80 mt-0.5"><strong>Conception complète d'un produit industriel</strong> : un projet ambitieux qui valide ton niveau professionnel et enrichit ton portfolio pour décrocher des missions ou un poste.</p>
             </div>
           </div>
         </div>
@@ -596,7 +610,7 @@ tailwind.config = {
           </div>
           <div style="flex:1; min-width:0;">
             <p style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#E66A40; margin-bottom:3px;">Félicitations 🎉</p>
-            <p style="font-size:15px; font-weight:700; color:#22244D; line-height:1.3;">Vous êtes certifié SolidWorks !</p>
+            <p style="font-size:15px; font-weight:700; color:#22244D; line-height:1.3;">Tu es certifié SolidWorks !</p>
             <p style="font-size:12px; color:#9DA2B3; margin-top:2px;">Formation validée · Certification France Compétences</p>
           </div>
           <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn-solidworks" style="background:#E66A40; color:#fff; padding:8px 16px; border-radius:50px; font-size:12px; font-weight:700; text-decoration:none; white-space:nowrap; flex-shrink:0;">
@@ -794,7 +808,7 @@ tailwind.config = {
 
       <!-- GAUCHE : Titre + 4 cartes empilées -->
       <div>
-        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Vos débouchés</p>
+        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Tes débouchés</p>
         <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight mb-4">
           Une compétence recherchée, et qui le restera.
         </h2>
@@ -922,8 +936,8 @@ tailwind.config = {
               <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
             </div>
             <div>
-              <p class="font-semibold text-cream">L'IA devient votre copilote</p>
-              <p class="text-sm text-cream/60 mt-0.5">Vous gagnez en productivité en pilotant les outils, pas en les subissant.</p>
+              <p class="font-semibold text-cream">L'IA devient ton copilote</p>
+              <p class="text-sm text-cream/60 mt-0.5">Tu gagnes en productivité en pilotant les outils, pas en les subissant.</p>
             </div>
           </div>
         </div>
@@ -934,7 +948,7 @@ tailwind.config = {
 </section>
 
 <!-- ============ POURQUOI ONE LEARN ============ -->
-<section class="py-20 bg-cream relative">
+<section class="py-20 relative" style="background:linear-gradient(160deg,#F5F5FD 0%,#ffffff 55%,#FDF4F0 100%);">
   <div class="absolute inset-0 grain opacity-40"></div>
   <div class="relative max-w-7xl mx-auto px-4">
     <div class="max-w-3xl mb-14">
@@ -945,52 +959,52 @@ tailwind.config = {
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">Un formateur dédié, pas une plateforme froide</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">+10h en visio individuelle avec un pro qui exerce le métier. Vous prenez RDV directement dans son agenda quand vous voulez.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un formateur dédié, pas une plateforme froide</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">+10h en visio individuelle avec un pro qui exerce le métier. Tu prends RDV directement dans son agenda quand tu veux.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">Un programme calibré sur vos objectifs</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">Pas un cours générique : le contenu est adapté à votre projet (reconversion, montée en compétence, freelance) après un échange initial.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un programme calibré sur tes objectifs</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Pas un cours générique : le contenu est adapté à ton projet (reconversion, montée en compétence, freelance) après un échange initial.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">Une certification reconnue, garantie</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">Inscrite à France Compétences. 97% de réussite. Et si vous échouez, on vous rembourse intégralement. Sans condition.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une certification reconnue, garantie</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Inscrite à France Compétences. 97% de réussite. Et si tu échoues, on te rembourse intégralement. Sans condition.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5m-18 0v8l9 5 9-5V8m-18 0l9 5m9-5l-9 5"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5m-18 0v8l9 5 9-5V8m-18 0l9 5m9-5l-9 5"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">La licence Solidworks offerte</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">Une licence complète mise à votre disposition pendant toute la formation pour vous entraîner depuis chez vous, sans frais cachés.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">La licence Solidworks offerte</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Une licence complète mise à ta disposition pendant toute la formation pour t'entraîner depuis chez toi, sans frais cachés.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">Un accompagnement financement complet</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">Notre équipe monte votre dossier CPF, OPCO ou France Travail à votre place. 85% de nos apprenants bénéficient d'une prise en charge majoritaire de leur formation.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un accompagnement financement complet</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Notre équipe monte ton dossier CPF, OPCO ou France Travail à ta place. 85% de nos apprenants bénéficient d'une prise en charge majoritaire de leur formation.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
-          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
         </div>
-        <h3 class="font-display text-xl font-semibold mb-2">Une communauté de +1 000 anciens apprenants</h3>
-        <p class="text-sm text-ink/60 leading-relaxed">Accès à un réseau actif de professionnels formés chez nous, avec retours d'expérience et opportunités d'emploi régulières.</p>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une communauté de +1 000 anciens apprenants</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Accès à un réseau actif de professionnels formés chez nous, avec retours d'expérience et opportunités d'emploi régulières.</p>
       </div>
     </div>
   </div>
@@ -1332,7 +1346,7 @@ tailwind.config = {
       <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">
         Une seule offre, tout compris.
       </h2>
-      <p class="mt-5 text-ink/60">Un reste à charge minimal grâce à votre CPF, OPCO ou France Travail.</p>
+      <p class="mt-5 text-ink/60">Un reste à charge minimal grâce à ton CPF, OPCO ou France Travail.</p>
     </div>
 
     <div class="grid lg:grid-cols-5 gap-6 mb-10">
@@ -1352,7 +1366,7 @@ tailwind.config = {
             <span class="ml-auto text-right">
               <span class="block text-xs text-ink/50">à partir de</span>
               <span class="block font-display text-2xl font-semibold text-orange">150€</span>
-              <span class="block text-xs text-emerald-600 font-semibold">avec votre CPF*</span>
+              <span class="block text-xs text-emerald-600 font-semibold">avec ton CPF*</span>
             </span>
           </div>
 
@@ -1360,7 +1374,7 @@ tailwind.config = {
           <ul class="space-y-3 text-sm">
             <li class="flex gap-3">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
-              <span><strong>+10h en visio individuelle</strong> avec votre formateur dédié, à la carte dans son agenda</span>
+              <span><strong>+10h en visio individuelle</strong> avec ton formateur dédié, à la carte dans son agenda</span>
             </li>
             <li class="flex gap-3">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></span>
@@ -1414,7 +1428,7 @@ tailwind.config = {
               <p class="font-display text-lg font-semibold leading-tight">Certifié, ou remboursé.</p>
             </div>
           </div>
-          <p class="text-sm text-ink/60 leading-relaxed">Si vous ne validez pas votre certification, nous vous remboursons intégralement. Sans condition. C'est pour ça que 97% de nos apprenants l'obtiennent.</p>
+          <p class="text-sm text-ink/60 leading-relaxed">Si tu ne valides pas ta certification, on te rembourse intégralement. Sans condition. C'est pour ça que 97% de nos apprenants l'obtiennent.</p>
         </div>
 
         <!-- Financements -->
@@ -1535,7 +1549,7 @@ tailwind.config = {
             <!-- Q1 -->
             <div class="sim-q" data-q="1">
               <p class="text-xs uppercase tracking-wider text-ink/40 font-bold mb-1">Question 1/5</p>
-              <p class="font-display text-base font-semibold mb-3 text-navy">Quel est votre statut professionnel actuel&nbsp;?</p>
+              <p class="font-display text-base font-semibold mb-3 text-navy">Quel est ton statut professionnel actuel&nbsp;?</p>
               <div class="space-y-2">
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Salarié(e)">Salarié(e) <svg class="w-4 h-4 text-ink/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Demandeur d'emploi">Demandeur d'emploi <svg class="w-4 h-4 text-ink/25" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
@@ -1550,7 +1564,7 @@ tailwind.config = {
             <!-- Q2 -->
             <div class="sim-q hidden" data-q="2">
               <p class="text-xs uppercase tracking-wider text-ink/40 font-bold mb-1">Question 2/5</p>
-              <p class="font-display text-base font-semibold mb-3 text-navy">Quel est votre objectif principal aujourd'hui&nbsp;?</p>
+              <p class="font-display text-base font-semibold mb-3 text-navy">Quel est ton objectif principal aujourd'hui&nbsp;?</p>
               <div class="space-y-2">
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Mieux maîtriser des outils pour mon travail">Mieux maîtriser des outils pour mon travail <svg class="w-4 h-4 text-ink/25 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Préparer une reconversion">Préparer une reconversion <svg class="w-4 h-4 text-ink/25 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
@@ -1574,7 +1588,7 @@ tailwind.config = {
             <!-- Q4 -->
             <div class="sim-q hidden" data-q="4">
               <p class="text-xs uppercase tracking-wider text-ink/40 font-bold mb-1">Question 4/5</p>
-              <p class="font-display text-base font-semibold mb-3 text-navy">Quelle est votre priorité dans le financement&nbsp;?</p>
+              <p class="font-display text-base font-semibold mb-3 text-navy">Quelle est ta priorité dans le financement&nbsp;?</p>
               <div class="space-y-2">
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Financement 100% pris en charge">Trouver un financement 100&nbsp;% pris en charge <svg class="w-4 h-4 text-ink/25 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
                 <button class="sim-btn w-full text-left px-3 py-2.5 rounded-xl border border-ink/10 hover:border-orange hover:bg-orange-50/40 transition font-medium text-sm flex items-center justify-between" data-val="Réduire le reste à charge">Réduire au maximum mon reste à charge <svg class="w-4 h-4 text-ink/25 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
@@ -1598,15 +1612,15 @@ tailwind.config = {
             <!-- Étape email -->
             <div class="sim-q hidden" data-q="6">
               <p class="text-xs uppercase tracking-wider text-ink/40 font-bold mb-1">Dernière étape</p>
-              <p class="font-display text-lg font-semibold mb-2 text-navy">Où envoyer votre simulation personnalisée&nbsp;?</p>
+              <p class="font-display text-lg font-semibold mb-2 text-navy">Où envoyer ta simulation personnalisée&nbsp;?</p>
               <p class="text-sm text-ink/50 mb-5">Recevez vos options de financement par email, immédiatement.</p>
               <div class="space-y-3">
                 <div>
-                  <label class="text-xs font-semibold text-ink/60 mb-1 block">Votre prénom</label>
+                  <label class="text-xs font-semibold text-ink/60 mb-1 block">Ton prénom</label>
                   <input type="text" id="sim-firstname" placeholder="Prénom" class="w-full px-4 py-3 rounded-xl border border-ink/15 text-sm font-medium focus:outline-none focus:border-orange transition" style="font-family:'Inter',sans-serif;">
                 </div>
                 <div>
-                  <label class="text-xs font-semibold text-ink/60 mb-1 block">Votre email <span class="text-orange">*</span></label>
+                  <label class="text-xs font-semibold text-ink/60 mb-1 block">Ton email <span class="text-orange">*</span></label>
                   <input type="email" id="sim-email" placeholder="exemple@email.com" class="w-full px-4 py-3 rounded-xl border border-ink/15 text-sm font-medium focus:outline-none focus:border-orange transition" style="font-family:'Inter',sans-serif;">
                   <p id="sim-email-error" class="hidden text-xs text-red-500 mt-1">Veuillez entrer un email valide.</p>
                 </div>
@@ -1628,7 +1642,7 @@ tailwind.config = {
           <!-- Résultats — reste dans la colonne droite -->
           <div id="sim-result" class="hidden">
             <div class="bg-white text-ink rounded-2xl p-5 shadow-xl">
-              <p class="text-xs font-bold uppercase tracking-wider text-orange mb-3">Votre simulation</p>
+              <p class="text-xs font-bold uppercase tracking-wider text-orange mb-3">Ta simulation</p>
               <div id="sim-result-content"></div>
               <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn-solidworks"
                  class="mt-5 inline-flex items-center gap-2 bg-orange text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-orange-700 transition">
@@ -1655,17 +1669,17 @@ tailwind.config = {
   var results = {
     "Salarié(e)": {
       tag: "CPF disponible",
-      text: "En tant que salarié(e), votre CPF est probablement crédité. Vous pouvez financer jusqu'à 100% de la formation avec zéro reste à charge.",
+      text: "En tant que salarié(e), ton CPF est probablement crédité. Tu peux financer jusqu'à 100% de la formation avec zéro reste à charge.",
       options: ["✅ CPF (Compte Personnel de Formation)", "✅ Prise en charge OPCO via employeur", "✅ Plan de développement des compétences"]
     },
     "Demandeur d'emploi": {
       tag: "France Travail éligible",
-      text: "En tant que demandeur d'emploi, France Travail peut prendre en charge l'intégralité de votre formation. Taux de prise en charge : jusqu'à 100%.",
+      text: "En tant que demandeur d'emploi, France Travail peut prendre en charge l'intégralité de ta formation. Taux de prise en charge : jusqu'à 100%.",
       options: ["✅ Financement France Travail (AIF)", "✅ CPF si crédité", "✅ Aide régionale possible"]
     },
     "Travailleur indépendant": {
       tag: "CPF + FIF-PL",
-      text: "En tant qu'indépendant, votre CPF est utilisable. Selon votre activité, le FIF-PL ou le FAF peut compléter le financement.",
+      text: "En tant qu'indépendant, ton CPF est utilisable. Selon ton activité, le FIF-PL ou le FAF peut compléter le financement.",
       options: ["✅ CPF (Compte Personnel de Formation)", "✅ FIF-PL ou AGEFICE selon statut", "✅ Paiement en 4x sans frais via Alma"]
     },
     "Profession libérale": {
@@ -1675,7 +1689,7 @@ tailwind.config = {
     },
     "default": {
       tag: "Options disponibles",
-      text: "Selon votre situation, plusieurs dispositifs peuvent s'appliquer. Notre équipe vous identifie la solution optimale en 20 minutes.",
+      text: "Selon ta situation, plusieurs dispositifs peuvent s'appliquer. Notre équipe t'identifie la solution optimale en 20 minutes.",
       options: ["✅ CPF si disponible", "✅ Paiement en 4x sans frais via Alma", "✅ Devis personnalisé gratuit"]
     }
   };
@@ -1687,7 +1701,7 @@ tailwind.config = {
   function updateProgress(q) {
     var pct = q === 6 ? 95 : Math.round(((q - 1) / totalQ) * 100);
     document.getElementById('sim-progress-bar').style.width = pct + '%';
-    document.getElementById('sim-step-label').textContent = q === 6 ? 'Votre email' : 'Question ' + q + ' sur ' + totalQ;
+    document.getElementById('sim-step-label').textContent = q === 6 ? 'Ton email' : 'Question ' + q + ' sur ' + totalQ;
     document.getElementById('sim-pct-label').textContent = pct + '%';
   }
 
@@ -1809,28 +1823,28 @@ tailwind.config = {
           <span data-cms="faq1_q">Combien coûte vraiment la formation ?</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq1_a">Notre formation Solidworks complète est à 1 650€. Avec votre CPF, votre reste à charge tombe à partir de 150€ (montant minimum réglementaire). Pour les salariés financés par leur OPCO ou les demandeurs d'emploi via France Travail, la prise en charge peut couvrir l'intégralité du montant. Notre conseiller pédagogique vous présente la solution la plus adaptée pendant l'appel gratuit.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq1_a">Notre formation Solidworks complète est à 1 650€. Avec ton CPF, ton reste à charge tombe à partir de 150€ (montant minimum réglementaire). Pour les salariés financés par leur OPCO ou les demandeurs d'emploi via France Travail, la prise en charge peut couvrir l'intégralité du montant. Notre conseiller pédagogique te présente la solution la plus adaptée pendant l'appel gratuit.</div>
       </details>
       <details class="group bg-white rounded-2xl border border-ink/5 shadow-card">
         <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none font-semibold">
           <span data-cms="faq2_q">Combien de temps faut-il y consacrer chaque semaine ?</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq2_a">Comptez 8 à 12h par semaine en moyenne, totalement flexibles. Vous pouvez avancer le soir, le week-end, à votre rythme. Vos sessions visios avec le formateur sont calées selon vos disponibilités.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq2_a">Comptez 8 à 12h par semaine en moyenne, totalement flexibles. Tu peux avancer le soir, le week-end, à ton rythme. Tes sessions visios avec ton formateur sont calées selon tes disponibilités.</div>
       </details>
       <details class="group bg-white rounded-2xl border border-ink/5 shadow-card">
         <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none font-semibold">
           <span data-cms="faq3_q">Quels prérequis ? Je suis vraiment débutant.</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq3_a">Aucun prérequis. Le programme est calibré sur votre niveau de départ après un échange avec votre formateur. Plus de 40% de nos apprenants démarrent sans aucune base en CAO.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq3_a">Aucun prérequis. Le programme est calibré sur ton niveau de départ après un échange avec ton formateur. Plus de 40% de nos apprenants démarrent sans aucune base en CAO.</div>
       </details>
       <details class="group bg-white rounded-2xl border border-ink/5 shadow-card">
         <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none font-semibold">
           <span data-cms="faq4_q">La formation est 100% en ligne ?</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq4_a">Oui. Plateforme e-learning accessible 24/7 + sessions en visio individuelles avec votre formateur. Vous gagnez le temps de transport et accédez aux meilleurs experts français, où qu'ils habitent.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq4_a">Oui. Plateforme e-learning accessible 24/7 + sessions en visio individuelles avec ton formateur. Vous gagnez le temps de transport et accédez aux meilleurs experts français, où qu'ils habitent.</div>
       </details>
       <details class="group bg-white rounded-2xl border border-ink/5 shadow-card">
         <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none font-semibold">
@@ -1844,7 +1858,7 @@ tailwind.config = {
           <span data-cms="faq6_q">Quel matériel dois-je avoir ?</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq6_a">Un ordinateur capable de faire tourner Solidworks (notre conseiller vérifie votre config gratuitement). La licence Solidworks vous est offerte pendant toute la durée de la formation.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq6_a">Un ordinateur capable de faire tourner Solidworks (notre conseiller vérifie ta config gratuitement). La licence SolidWorks t'est offerte pendant toute la durée de la formation.</div>
       </details>
     </div>
   </div>
@@ -1866,7 +1880,7 @@ tailwind.config = {
           Et si dans 6 semaines,<br>
           vous étiez opérationnel<br>sur SolidWorks ?
         </h2>
-        <p class="mt-5 text-base text-cream/70 max-w-xl" data-cms="cta_sub2">Choisissez directement un créneau ci-dessous pour échanger 20 minutes avec votre conseiller pédagogique.</p>
+        <p class="mt-5 text-base text-cream/70 max-w-xl" data-cms="cta_sub2">Choisissez directement un créneau ci-dessous pour échanger 20 minutes avec ton conseiller pédagogique.</p>
 
         <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs text-cream/60">
           <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Gratuit & sans engagement</span>
