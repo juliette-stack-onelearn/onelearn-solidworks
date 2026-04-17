@@ -354,7 +354,7 @@ function maybeAutoSeed() {
       if (!html) { renderDash(); return; }
       var page = {
         id: 'p' + Date.now(), name: 'SolidWorks — Formation',
-        slug: 'onelearn-solidworks-final', status: 'live', liveSlug: 'onelearn-solidworks-final',
+        slug: 'solidworks', status: 'live', liveSlug: 'solidworks',
         created: new Date().toISOString(), modified: new Date().toISOString(),
         html: html, fields: extractFields(html), images: extractImages(html)
       };
@@ -546,7 +546,8 @@ function extractFields(html) {
 
   // Recruteurs marquee — images (data-rec-img attributes)
   for (var ri = 1; ri <= 8; ri++) {
-    var rim = html.match(new RegExp('data-rec-img="' + ri + '"[^>]*src="([^"]+)"'));
+    var tagM = html.match(new RegExp('<img[^>]*data-rec-img="' + ri + '"[^>]*>'));
+    var rim  = tagM ? tagM[0].match(/\bsrc="([^"]*)"/) : null;
     f['rec_img_'+ri] = rim ? rim[1] : '';
   }
 
@@ -822,9 +823,13 @@ function buildHtmlForExport(page, cb) {
   for (var ri = 1; ri <= 8; ri++) {
     var recImg = f['rec_img_'+ri];
     if (recImg) {
-      var recRe = new RegExp('(data-rec-img="' + ri + '"[^>]*src=")[^"]*(")', 'g');
-      var safeImg = recImg.replace(/\$/g, '$$$$');
-      out = out.replace(recRe, '$1' + safeImg + '$2');
+      var _safeImg = recImg;
+      out = out.replace(
+        new RegExp('<img[^>]*data-rec-img="' + ri + '"[^>]*>', 'g'),
+        function(tag) {
+          return tag.replace(/\bsrc="[^"]*"/, 'src="' + _safeImg.replace(/\$/g, '$$$$') + '"');
+        }
+      );
     }
   }
 
