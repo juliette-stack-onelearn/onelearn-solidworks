@@ -345,9 +345,23 @@ function saveToken() {
   }).catch(function() { toast('❌ Erreur réseau'); });
 }
 
+// ── Migration slug ─────────────────────────────
+function migrateSlug(pages, cb) {
+  var toMigrate = pages.filter(function(p) {
+    return p.slug === 'onelearn-solidworks-final' || p.liveSlug === 'onelearn-solidworks-final';
+  });
+  if (toMigrate.length === 0) { cb(); return; }
+  var done = 0;
+  toMigrate.forEach(function(p) {
+    p.slug = 'solidworks'; p.liveSlug = 'solidworks';
+    dbPut(p, function() { if (++done === toMigrate.length) { toast('✅ Slug mis à jour'); cb(); } });
+  });
+}
+
 // ── Auto-seed ──────────────────────────────────
 function maybeAutoSeed() {
   dbAll(function(pages) {
+    migrateSlug(pages, function() {});
     if (pages.length > 0) { renderDash(); return; }
     toast('Chargement de la page de base...');
     GH.getFilePublic(GH.seedFile, function(err, html) {
