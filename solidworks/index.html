@@ -1973,11 +1973,143 @@ tailwind.config = {
 </script>
 
 
-<!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
+
+<script id="_ed_script">
+(function(){
+  if(!location.search.includes('edit'))return;
+  var REPO='juliette-stack-onelearn/onelearn-solidworks';
+  var FILE='solidworks/index.html';
+
+  /* ── Styles ── */
+  var s=document.createElement('style');
+  s.id='_ed_style';
+  s.textContent=[
+    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
+    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
+    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
+    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
+    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
+    '._ed-btn:hover{background:#CD5025;}',
+    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
+    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
+    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
+    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
+    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
+    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
+    'animation:_ed-fadein .2s ease;}',
+    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
+    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
+    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;',
+    'border-radius:3px;}'
+  ].join('');
+  document.head.appendChild(s);
+
+  /* ── Toast ── */
+  function toast(msg){
+    var t=document.createElement('div');
+    t.className='_ed-toast';t.textContent=msg;
+    document.body.appendChild(t);
+    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';
+    setTimeout(function(){t.remove();},300);},3000);
+  }
+
+  /* ── Make editable ── */
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
+  document.querySelectorAll(SEL).forEach(function(el){
+    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
+    el.contentEditable='true';
+    el.spellcheck=false;
+  });
+
+  /* ── Images remplaçables ── */
+  document.querySelectorAll('img[data-cms],img.rec-logo,img.hero-img').forEach(function(img){
+    img.style.cursor='pointer';
+    img.title='Cliquer pour remplacer l\'image';
+    img.addEventListener('click',function(e){
+      if(e.target.closest('[contenteditable]'))return;
+      var inp=document.createElement('input');
+      inp.type='file';inp.accept='image/*';
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        var r=new FileReader();
+        r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
+        r.readAsDataURL(file);
+      };
+      inp.click();
+    },{capture:true});
+  });
+
+  /* ── Sauvegarde GitHub ── */
+  function save(){
+    var token=localStorage.getItem('_ol_token');
+    if(!token){
+      token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');
+      if(!token)return;
+      localStorage.setItem('_ol_token',token);
+    }
+    saveBtn.disabled=true;saveBtn.textContent='Enregistrement…';
+
+    /* Clone propre sans UI d'édition */
+    var clone=document.documentElement.cloneNode(true);
+    ['_ed_bar','_ed_style','_ed_script'].forEach(function(id){
+      var el=clone.querySelector('#'+id);if(el)el.remove();
+    });
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');
+    });
+    clone.querySelectorAll('img').forEach(function(img){
+      img.style.cursor='';img.removeAttribute('title');
+    });
+
+    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
+    var encoded=btoa(unescape(encodeURIComponent(raw)));
+
+    fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+      headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}
+    })
+    .then(function(r){return r.json();})
+    .then(function(d){
+      return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+        method:'PUT',
+        headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json',
+                  'Accept':'application/vnd.github+json'},
+        body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+      });
+    })
+    .then(function(r){
+      if(r.ok){toast('✅ Enregistré ! Mise à jour dans ~1 min.');}
+      else{toast('❌ Erreur — vérifiez votre token');localStorage.removeItem('_ol_token');}
+      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+    })
+    .catch(function(){
+      toast('❌ Erreur réseau');
+      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+    });
+  }
+
+  /* ── Toolbar ── */
+  var bar=document.createElement('div');
+  bar.id='_ed_bar';bar.className='_ed-bar';
+  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
+  var saveBtn=document.createElement('button');
+  saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';
+  saveBtn.addEventListener('click',save);
+  var resetBtn=document.createElement('button');
+  resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';
+  resetBtn.addEventListener('click',function(){
+    localStorage.removeItem('_ol_token');toast('Token effacé');
+  });
+  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
+  document.body.appendChild(bar);
+
+  toast('✏️ Mode édition actif — cliquez sur un texte ou une image pour modifier');
+})();
+</script>
 
 
 
-<!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
+
+
 
 
 </body></html>
