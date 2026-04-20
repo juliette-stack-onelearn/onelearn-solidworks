@@ -365,16 +365,31 @@ function maybeAutoSeed() {
   dbAll(function(pages) {
     migrateSlug(pages, function() {});
     if (pages.length > 0) { renderDash(); return; }
-    toast('Chargement de la page de base...');
-    GH.getFilePublic(GH.seedFile, function(err, html) {
-      if (!html) { renderDash(); return; }
-      var page = {
-        id: 'p' + Date.now(), name: 'SolidWorks — Formation',
-        slug: 'solidworks', status: 'live', liveSlug: 'solidworks',
-        created: new Date().toISOString(), modified: new Date().toISOString(),
-        html: html, fields: extractFields(html), images: extractImages(html)
-      };
-      dbPut(page, function() { toast('✅ Page importée automatiquement'); renderDash(); });
+    // Import toutes les pages connues depuis GitHub
+    var seedPages = [
+      { file: 'solidworks.html',        name: 'SolidWorks — Formation', slug: 'solidworks' },
+      { file: 'onelearn-bim-final.html', name: 'BIM — Formation',        slug: 'onelearn-bim-final' }
+    ];
+    var done = 0, imported = 0;
+    toast('Récupération des pages depuis GitHub...');
+    seedPages.forEach(function(sp) {
+      GH.getFilePublic(sp.file, function(err, html) {
+        done++;
+        if (html) {
+          imported++;
+          var page = {
+            id: 'p' + Date.now() + Math.random().toString(36).slice(2),
+            name: sp.name, slug: sp.slug, status: 'live', liveSlug: sp.slug,
+            created: new Date().toISOString(), modified: new Date().toISOString(),
+            html: html, fields: extractFields(html), images: extractImages(html)
+          };
+          dbPut(page);
+        }
+        if (done === seedPages.length) {
+          toast('✅ ' + imported + ' page(s) importée(s) depuis GitHub');
+          renderDash();
+        }
+      });
     });
   });
 }
