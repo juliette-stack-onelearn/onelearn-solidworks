@@ -1737,14 +1737,8 @@ tailwind.config = {
   }
 
   function submitToTally() {
-    // Soumet silencieusement vers Tally en arrière-plan via iframe caché
-    var iframe = document.createElement('iframe');
-    iframe.style.cssText = 'position:absolute;width:1px;height:1px;top:-9999px;left:-9999px;border:none;';
-    iframe.src = TALLY_FORM;
-    document.body.appendChild(iframe);
-    setTimeout(function() {
-      if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
-    }, 10000);
+    // Envoi réel vers Make webhook → Google Sheets + Brevo
+    // (remplace l'ancien chargement iframe Tally sans données)
   }
 
   function showResult() {
@@ -1821,6 +1815,22 @@ tailwind.config = {
 
     // Submit to Tally silently
     submitToTally();
+
+    // Envoi vers Make (Google Sheets + Brevo email + contact)
+    fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        firstname: firstname,
+        email: email,
+        q1: answers[1] || '',
+        q2: answers[2] || '',
+        q3: answers[3] || '',
+        q4: answers[4] || '',
+        q5: answers[5] || '',
+        source: 'bim'
+      })
+    }).catch(function() {});
 
     // Show result
     showResult();
