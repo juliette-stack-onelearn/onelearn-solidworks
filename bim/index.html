@@ -1819,8 +1819,7 @@ tailwind.config = {
     // Envoi vers Make (Google Sheets + Brevo email + contact)
     fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums', {
       method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type': 'text/plain'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         firstname: firstname,
         email: email,
