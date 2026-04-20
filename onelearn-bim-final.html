@@ -2001,6 +2001,7 @@ tailwind.config = {
 })();
 </script>
 
+
 <!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
 <script id="_ed-script">
 (function(){
@@ -2015,73 +2016,96 @@ tailwind.config = {
     '#_edbar button{padding:6px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px;transition:.2s;}',
     '#_eddl{background:#EF7738;color:#fff;}#_eddl:hover{background:#CD5025;}',
     '#_edpub{background:#545AC0;color:#fff;}#_edpub:hover{background:#43489A;}',
-    '[data-cms]:not(img){outline:2px dashed transparent;border-radius:3px;min-height:1em;cursor:text;}',
-    '[data-cms]:not(img):focus,[data-cms]:not(img):hover{outline:2px dashed #545AC0;background:rgba(84,90,192,.06);}',
-    '[data-rec-img]:hover,img[data-cms]:hover{outline:3px solid #EF7738;cursor:pointer;opacity:.85;border-radius:4px;}'
+    '._ed-text{outline:2px dashed transparent;border-radius:3px;cursor:text;}',
+    '._ed-text:hover,._ed-text:focus{outline:2px dashed #545AC0 !important;background:rgba(84,90,192,.06) !important;}',
+    '._ed-img{cursor:pointer !important;transition:outline .15s;}',
+    '._ed-img:hover{outline:3px solid #EF7738 !important;border-radius:4px;opacity:.9;}'
   ].join('');
   document.head.appendChild(s);
 
-  // ── Text editing ────────────────────────────────────────────────────────
-  document.querySelectorAll('[data-cms]').forEach(function(el){
-    if (el.tagName==='IMG') return;
-    el.contentEditable='true'; el.spellcheck=false;
+  // ── Text elements to make editable ─────────────────────────────────────
+  // All visible text containers — headings, paragraphs, list items, spans/divs with direct text, links text
+  var TEXT_SEL = 'h1,h2,h3,h4,h5,h6,p,li,td,th,blockquote,label,[data-cms]:not(img)';
+  document.querySelectorAll(TEXT_SEL).forEach(function(el){
+    // Skip elements inside <script>, <style>, <svg>, <noscript>
+    var tag = el.closest('script,style,svg,noscript,select');
+    if (tag) return;
+    // Skip if it only contains other block elements (no direct text)
+    var hasText = Array.from(el.childNodes).some(function(n){
+      return n.nodeType === 3 && n.textContent.trim().length > 0;
+    });
+    var isInline = ['H1','H2','H3','H4','H5','H6','P','LI','TD','TH','BLOCKQUOTE','LABEL'].indexOf(el.tagName) >= 0;
+    if (!hasText && !isInline && !el.hasAttribute('data-cms')) return;
+    el.contentEditable = 'true';
+    el.spellcheck = false;
+    el.classList.add('_ed-text');
   });
 
-  // ── Image editing ───────────────────────────────────────────────────────
-  function imgEdit(el){
-    el.addEventListener('click',function(e){
-      e.preventDefault(); e.stopPropagation();
-      var inp=document.createElement('input');
-      inp.type='file'; inp.accept='image/*,image/svg+xml';
-      inp.onchange=function(){
-        var r=new FileReader();
-        r.onload=function(ev){ el.src=ev.target.result; };
+  // ── Image elements ──────────────────────────────────────────────────────
+  document.querySelectorAll('img').forEach(function(el){
+    // Skip tiny icons (< 48px natural or inline style height < 24)
+    var h = el.naturalHeight || parseInt(el.style.height) || parseInt(el.getAttribute('height')) || 999;
+    var src = el.src || '';
+    // Skip inline SVG icons and very small images
+    if (h < 24 && !el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) return;
+    el.classList.add('_ed-img');
+    el.addEventListener('click', function(e){
+      // Don't trigger if inside a link (unless it's an image slot)
+      if (!el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) {
+        var parentA = el.closest('a');
+        if (parentA) { e.preventDefault(); }
+      }
+      var inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*,image/svg+xml';
+      inp.onchange = function(){
+        var r = new FileReader();
+        r.onload = function(ev){ el.src = ev.target.result; };
         r.readAsDataURL(inp.files[0]);
       };
       inp.click();
     });
-  }
-  document.querySelectorAll('[data-rec-img]').forEach(imgEdit);
-  document.querySelectorAll('img[data-cms]').forEach(imgEdit);
+  });
 
   // ── Toolbar ─────────────────────────────────────────────────────────────
-  var bar=document.createElement('div'); bar.id='_edbar';
-  bar.innerHTML='<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
+  var bar = document.createElement('div'); bar.id='_edbar';
+  bar.innerHTML = '<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
   document.body.appendChild(bar);
 
   // ── Serialize clean HTML ────────────────────────────────────────────────
   function cleanHtml(){
-    var c=document.documentElement.cloneNode(true);
+    var c = document.documentElement.cloneNode(true);
     c.querySelectorAll('[contenteditable]').forEach(function(el){
       el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck');
     });
-    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
-      var el=c.querySelector('#'+id); if(el) el.remove();
+    c.querySelectorAll('._ed-text,._ed-img').forEach(function(el){
+      el.classList.remove('_ed-text','_ed-img');
+      if (!el.className) el.removeAttribute('class');
     });
-    return '<!DOCTYPE html>\n'+c.outerHTML;
+    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
+      var el = c.querySelector('#'+id); if(el) el.remove();
+    });
+    return '<!DOCTYPE html>\n' + c.outerHTML;
   }
 
   // ── Download ────────────────────────────────────────────────────────────
-  document.getElementById('_eddl').addEventListener('click',function(){
-    var html=cleanHtml();
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
-    a.download=location.pathname.split('/').pop().replace('?edit','')||'page.html';
+  document.getElementById('_eddl').addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([cleanHtml()],{type:'text/html'}));
+    a.download = location.pathname.split('/').pop().split('?')[0] || 'page.html';
     a.click();
   });
 
   // ── Publish to GitHub ───────────────────────────────────────────────────
-  document.getElementById('_edpub').addEventListener('click',function(){
-    var token=localStorage.getItem('gh_token')||prompt('GitHub Personal Access Token :');
-    if(!token) return;
-    localStorage.setItem('gh_token',token);
-    var filename=location.pathname.replace(/^\/|\/$/g,'').split('/').pop()||'index.html';
-    var btn=document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
+  document.getElementById('_edpub').addEventListener('click', function(){
+    var token = localStorage.getItem('gh_token') || prompt('GitHub Personal Access Token :');
+    if (!token) return;
+    localStorage.setItem('gh_token', token);
+    var filename = location.pathname.replace(/^\/|\/$/g,'').split('/').pop() || 'index.html';
+    var btn = document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
     fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
       headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
     }).then(function(r){return r.json();}).then(function(d){
-      var html=cleanHtml();
-      var enc=btoa(unescape(encodeURIComponent(html)));
+      var enc = btoa(unescape(encodeURIComponent(cleanHtml())));
       return fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
         method:'PUT',
         headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/vnd.github+json'},
