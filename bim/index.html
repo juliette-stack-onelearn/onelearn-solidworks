@@ -1991,6 +1991,110 @@ tailwind.config = {
 
 
 <!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
+<script id="_ed-script">
+(function(){
+  if (!location.search.includes('edit')) return;
+  var GH = { owner:'juliette-stack-onelearn', repo:'onelearn-solidworks', branch:'main' };
+
+  var s = document.createElement('style'); s.id='_ed-css';
+  s.textContent = [
+    '#_edbar{position:fixed;bottom:20px;right:20px;z-index:99999;display:flex;align-items:center;gap:8px;background:#22244D;padding:10px 16px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-family:Inter,system-ui,sans-serif;font-size:13px;}',
+    '#_edbar span{color:#fff;font-weight:600;margin-right:4px;}',
+    '#_edbar button{padding:6px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px;transition:.2s;}',
+    '#_eddl{background:#EF7738;color:#fff;}#_eddl:hover{background:#CD5025;}',
+    '#_edpub{background:#545AC0;color:#fff;}#_edpub:hover{background:#43489A;}',
+    '._ed-text{outline:2px dashed transparent;border-radius:3px;cursor:text;}',
+    '._ed-text:hover,._ed-text:focus{outline:2px dashed #545AC0 !important;background:rgba(84,90,192,.06) !important;}',
+    '._ed-img{cursor:pointer !important;transition:outline .15s;}',
+    '._ed-img:hover{outline:3px solid #EF7738 !important;border-radius:4px;opacity:.9;}'
+  ].join('');
+  document.head.appendChild(s);
+
+  var TEXT_SEL = 'h1,h2,h3,h4,h5,h6,p,li,td,th,blockquote,label,[data-cms]:not(img)';
+  document.querySelectorAll(TEXT_SEL).forEach(function(el){
+    var tag = el.closest('script,style,svg,noscript,select');
+    if (tag) return;
+    var hasText = Array.from(el.childNodes).some(function(n){
+      return n.nodeType === 3 && n.textContent.trim().length > 0;
+    });
+    var isInline = ['H1','H2','H3','H4','H5','H6','P','LI','TD','TH','BLOCKQUOTE','LABEL'].indexOf(el.tagName) >= 0;
+    if (!hasText && !isInline && !el.hasAttribute('data-cms')) return;
+    el.contentEditable = 'true';
+    el.spellcheck = false;
+    el.classList.add('_ed-text');
+  });
+
+  document.querySelectorAll('img').forEach(function(el){
+    var h = el.naturalHeight || parseInt(el.style.height) || parseInt(el.getAttribute('height')) || 999;
+    if (h < 24 && !el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) return;
+    el.classList.add('_ed-img');
+    el.addEventListener('click', function(e){
+      if (!el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) {
+        var parentA = el.closest('a');
+        if (parentA) { e.preventDefault(); }
+      }
+      var inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*,image/svg+xml';
+      inp.onchange = function(){
+        var r = new FileReader();
+        r.onload = function(ev){ el.src = ev.target.result; };
+        r.readAsDataURL(inp.files[0]);
+      };
+      inp.click();
+    });
+  });
+
+  var bar = document.createElement('div'); bar.id='_edbar';
+  bar.innerHTML = '<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
+  document.body.appendChild(bar);
+
+  function cleanHtml(){
+    var c = document.documentElement.cloneNode(true);
+    c.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck');
+    });
+    c.querySelectorAll('._ed-text,._ed-img').forEach(function(el){
+      el.classList.remove('_ed-text','_ed-img');
+      if (!el.className) el.removeAttribute('class');
+    });
+    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
+      var el = c.querySelector('#'+id); if(el) el.remove();
+    });
+    return '<!DOCTYPE html>\n' + c.outerHTML;
+  }
+
+  document.getElementById('_eddl').addEventListener('click', function(){
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([cleanHtml()],{type:'text/html'}));
+    a.download = 'index.html';
+    a.click();
+  });
+
+  document.getElementById('_edpub').addEventListener('click', function(){
+    var token = localStorage.getItem('gh_token') || prompt('GitHub Personal Access Token :');
+    if (!token) return;
+    localStorage.setItem('gh_token', token);
+    // Calcule le bon chemin : /solidworks/ -> solidworks/index.html
+    var rawPath = location.pathname.replace(/^\/|\/$/g,'');
+    var filename = rawPath.endsWith('.html') ? rawPath : (rawPath ? rawPath + '/index.html' : 'index.html');
+    var btn = document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
+    fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
+      headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
+    }).then(function(r){return r.json();}).then(function(d){
+      var enc = btoa(unescape(encodeURIComponent(cleanHtml())));
+      return fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
+        method:'PUT',
+        headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/vnd.github+json'},
+        body:JSON.stringify({message:'update: '+filename,content:enc,sha:d.sha,branch:GH.branch})
+      });
+    }).then(function(r){return r.json();}).then(function(d){
+      btn.textContent='↑ Publier'; btn.disabled=false;
+      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename);
+      else alert('Erreur : '+(d.message||JSON.stringify(d)));
+    }).catch(function(e){ btn.textContent='↑ Publier'; btn.disabled=false; alert('Erreur : '+e.message); });
+  });
+})();
+</script>
 
 
 
