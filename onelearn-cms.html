@@ -259,8 +259,9 @@ textarea{resize:vertical;min-height:56px;line-height:1.5}
 var db = null;
 function openDB(cb) {
   if (db) { cb(db); return; }
-  var r = indexedDB.open('onelearn-cms', 1);
+  var r = indexedDB.open('onelearn-cms', 2);
   r.onupgradeneeded = function(e) {
+    try { e.target.result.deleteObjectStore('pages'); } catch(x) {}
     e.target.result.createObjectStore('pages', { keyPath: 'id' });
   };
   r.onsuccess = function(e) { db = e.target.result; cb(db); };
