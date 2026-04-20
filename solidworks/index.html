@@ -54,6 +54,11 @@ tailwind.config = {
   @media (max-width: 640px) {
     .iclosed-widget { min-height: 720px; }
   }
+  @keyframes hero-badge-float {
+    0%,100%{transform:translateY(0) rotate(-1.5deg);box-shadow:0 8px 32px rgba(34,36,77,.22);}
+    50%{transform:translateY(-10px) rotate(1.5deg);box-shadow:0 20px 44px rgba(34,36,77,.30);}
+  }
+  .hero-badge{animation:hero-badge-float 3.5s ease-in-out infinite;will-change:transform;}
 </style>
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
   <script async="" src="https://tally.so/widgets/embed.js"></script>
@@ -197,15 +202,9 @@ tailwind.config = {
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
         <div class="absolute inset-0 grain opacity-15"></div>
         <!-- Badge logiciel flottant -->
-        <div class="absolute top-5 right-5 z-20 flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3" style="box-shadow:0 8px 32px rgba(34,36,77,0.22);">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style="background:linear-gradient(135deg,#005387 0%,#0079BE 100%);">
-            <span style="color:#fff;font-family:Arial,sans-serif;font-weight:900;font-size:13px;letter-spacing:-0.03em;">SW</span>
-          </div>
-          <div>
-            <p style="font-family:'Satoshi','Inter',sans-serif;font-size:12px;font-weight:800;color:#282C37;line-height:1.1;margin:0 0 3px 0;">SolidWorks 2024</p>
-            <p style="font-family:'Inter',sans-serif;font-size:10px;color:#9DA2B3;margin:0;">Licence offerte</p>
-          </div>
-        </div>
+         <div class="hero-badge absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-sm rounded-2xl p-2.5" style="box-shadow:0 8px 32px rgba(34,36,77,0.22);">
+           <img data-cms="hero_software_logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDkwIDQ0Ij4KICA8cmVjdCB3aWR0aD0iOTAiIGhlaWdodD0iNDQiIHJ4PSI4IiBmaWxsPSIjMDA1Mzg3Ii8+CiAgPHRleHQgeD0iNDUiIHk9IjI5IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSItMSI+U1c8L3RleHQ+Cjwvc3ZnPg==" alt="Logo logiciel" style="height:44px;width:auto;display:block;border-radius:6px;">
+         </div>
 
         <!-- Caption -->
         <div class="absolute bottom-6 left-6 right-6 text-cream z-10">
@@ -1975,218 +1974,10 @@ tailwind.config = {
 
 
 <!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
-<script id="_ed-script">
-(function(){
-  if (!location.search.includes('edit')) return;
-  var GH = { owner:'juliette-stack-onelearn', repo:'onelearn-solidworks', branch:'main' };
-
-  var s = document.createElement('style'); s.id='_ed-css';
-  s.textContent = [
-    '#_edbar{position:fixed;bottom:20px;right:20px;z-index:99999;display:flex;align-items:center;gap:8px;background:#22244D;padding:10px 16px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-family:Inter,system-ui,sans-serif;font-size:13px;}',
-    '#_edbar span{color:#fff;font-weight:600;margin-right:4px;}',
-    '#_edbar button{padding:6px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px;transition:.2s;}',
-    '#_eddl{background:#EF7738;color:#fff;}#_eddl:hover{background:#CD5025;}',
-    '#_edpub{background:#545AC0;color:#fff;}#_edpub:hover{background:#43489A;}',
-    '._ed-text{outline:2px dashed transparent;border-radius:3px;cursor:text;}',
-    '._ed-text:hover,._ed-text:focus{outline:2px dashed #545AC0 !important;background:rgba(84,90,192,.06) !important;}',
-    '._ed-img{cursor:pointer !important;transition:outline .15s;}',
-    '._ed-img:hover{outline:3px solid #EF7738 !important;border-radius:4px;opacity:.9;}'
-  ].join('');
-  document.head.appendChild(s);
-
-  var TEXT_SEL = 'h1,h2,h3,h4,h5,h6,p,li,td,th,blockquote,label,[data-cms]:not(img)';
-  document.querySelectorAll(TEXT_SEL).forEach(function(el){
-    var tag = el.closest('script,style,svg,noscript,select');
-    if (tag) return;
-    var hasText = Array.from(el.childNodes).some(function(n){
-      return n.nodeType === 3 && n.textContent.trim().length > 0;
-    });
-    var isInline = ['H1','H2','H3','H4','H5','H6','P','LI','TD','TH','BLOCKQUOTE','LABEL'].indexOf(el.tagName) >= 0;
-    if (!hasText && !isInline && !el.hasAttribute('data-cms')) return;
-    el.contentEditable = 'true';
-    el.spellcheck = false;
-    el.classList.add('_ed-text');
-  });
-
-  document.querySelectorAll('img').forEach(function(el){
-    var h = el.naturalHeight || parseInt(el.style.height) || parseInt(el.getAttribute('height')) || 999;
-    if (h < 24 && !el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) return;
-    el.classList.add('_ed-img');
-    el.addEventListener('click', function(e){
-      if (!el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) {
-        var parentA = el.closest('a');
-        if (parentA) { e.preventDefault(); }
-      }
-      var inp = document.createElement('input');
-      inp.type = 'file'; inp.accept = 'image/*,image/svg+xml';
-      inp.onchange = function(){
-        var r = new FileReader();
-        r.onload = function(ev){ el.src = ev.target.result; };
-        r.readAsDataURL(inp.files[0]);
-      };
-      inp.click();
-    });
-  });
-
-  var bar = document.createElement('div'); bar.id='_edbar';
-  bar.innerHTML = '<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
-  document.body.appendChild(bar);
-
-  function cleanHtml(){
-    var c = document.documentElement.cloneNode(true);
-    c.querySelectorAll('[contenteditable]').forEach(function(el){
-      el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck');
-    });
-    c.querySelectorAll('._ed-text,._ed-img').forEach(function(el){
-      el.classList.remove('_ed-text','_ed-img');
-      if (!el.className) el.removeAttribute('class');
-    });
-    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
-      var el = c.querySelector('#'+id); if(el) el.remove();
-    });
-    return '<!DOCTYPE html>\n' + c.outerHTML;
-  }
-
-  document.getElementById('_eddl').addEventListener('click', function(){
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([cleanHtml()],{type:'text/html'}));
-    a.download = 'index.html';
-    a.click();
-  });
-
-  document.getElementById('_edpub').addEventListener('click', function(){
-    var token = localStorage.getItem('gh_token') || prompt('GitHub Personal Access Token :');
-    if (!token) return;
-    localStorage.setItem('gh_token', token);
-    // Calcule le bon chemin : /solidworks/ -> solidworks/index.html
-    var rawPath = location.pathname.replace(/^\/|\/$/g,'');
-    var filename = rawPath.endsWith('.html') ? rawPath : (rawPath ? rawPath + '/index.html' : 'index.html');
-    var btn = document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
-    fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
-      headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
-    }).then(function(r){return r.json();}).then(function(d){
-      var enc = btoa(unescape(encodeURIComponent(cleanHtml())));
-      return fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
-        method:'PUT',
-        headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/vnd.github+json'},
-        body:JSON.stringify({message:'update: '+filename,content:enc,sha:d.sha,branch:GH.branch})
-      });
-    }).then(function(r){return r.json();}).then(function(d){
-      btn.textContent='↑ Publier'; btn.disabled=false;
-      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename);
-      else alert('Erreur : '+(d.message||JSON.stringify(d)));
-    }).catch(function(e){ btn.textContent='↑ Publier'; btn.disabled=false; alert('Erreur : '+e.message); });
-  });
-})();
-</script>
 
 
 
 <!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
-<script id="_ed-script">
-(function(){
-  if (!location.search.includes('edit')) return;
-  var GH = { owner:'juliette-stack-onelearn', repo:'onelearn-solidworks', branch:'main' };
-
-  var s = document.createElement('style'); s.id='_ed-css';
-  s.textContent = [
-    '#_edbar{position:fixed;bottom:20px;right:20px;z-index:99999;display:flex;align-items:center;gap:8px;background:#22244D;padding:10px 16px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-family:Inter,system-ui,sans-serif;font-size:13px;}',
-    '#_edbar span{color:#fff;font-weight:600;margin-right:4px;}',
-    '#_edbar button{padding:6px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px;transition:.2s;}',
-    '#_eddl{background:#EF7738;color:#fff;}#_eddl:hover{background:#CD5025;}',
-    '#_edpub{background:#545AC0;color:#fff;}#_edpub:hover{background:#43489A;}',
-    '._ed-text{outline:2px dashed transparent;border-radius:3px;cursor:text;}',
-    '._ed-text:hover,._ed-text:focus{outline:2px dashed #545AC0 !important;background:rgba(84,90,192,.06) !important;}',
-    '._ed-img{cursor:pointer !important;transition:outline .15s;}',
-    '._ed-img:hover{outline:3px solid #EF7738 !important;border-radius:4px;opacity:.9;}'
-  ].join('');
-  document.head.appendChild(s);
-
-  var TEXT_SEL = 'h1,h2,h3,h4,h5,h6,p,li,td,th,blockquote,label,[data-cms]:not(img)';
-  document.querySelectorAll(TEXT_SEL).forEach(function(el){
-    var tag = el.closest('script,style,svg,noscript,select');
-    if (tag) return;
-    var hasText = Array.from(el.childNodes).some(function(n){
-      return n.nodeType === 3 && n.textContent.trim().length > 0;
-    });
-    var isInline = ['H1','H2','H3','H4','H5','H6','P','LI','TD','TH','BLOCKQUOTE','LABEL'].indexOf(el.tagName) >= 0;
-    if (!hasText && !isInline && !el.hasAttribute('data-cms')) return;
-    el.contentEditable = 'true';
-    el.spellcheck = false;
-    el.classList.add('_ed-text');
-  });
-
-  document.querySelectorAll('img').forEach(function(el){
-    var h = el.naturalHeight || parseInt(el.style.height) || parseInt(el.getAttribute('height')) || 999;
-    if (h < 24 && !el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) return;
-    el.classList.add('_ed-img');
-    el.addEventListener('click', function(e){
-      if (!el.hasAttribute('data-rec-img') && !el.hasAttribute('data-cms')) {
-        var parentA = el.closest('a');
-        if (parentA) { e.preventDefault(); }
-      }
-      var inp = document.createElement('input');
-      inp.type = 'file'; inp.accept = 'image/*,image/svg+xml';
-      inp.onchange = function(){
-        var r = new FileReader();
-        r.onload = function(ev){ el.src = ev.target.result; };
-        r.readAsDataURL(inp.files[0]);
-      };
-      inp.click();
-    });
-  });
-
-  var bar = document.createElement('div'); bar.id='_edbar';
-  bar.innerHTML = '<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
-  document.body.appendChild(bar);
-
-  function cleanHtml(){
-    var c = document.documentElement.cloneNode(true);
-    c.querySelectorAll('[contenteditable]').forEach(function(el){
-      el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck');
-    });
-    c.querySelectorAll('._ed-text,._ed-img').forEach(function(el){
-      el.classList.remove('_ed-text','_ed-img');
-      if (!el.className) el.removeAttribute('class');
-    });
-    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
-      var el = c.querySelector('#'+id); if(el) el.remove();
-    });
-    return '<!DOCTYPE html>\n' + c.outerHTML;
-  }
-
-  document.getElementById('_eddl').addEventListener('click', function(){
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([cleanHtml()],{type:'text/html'}));
-    a.download = 'index.html';
-    a.click();
-  });
-
-  document.getElementById('_edpub').addEventListener('click', function(){
-    var token = localStorage.getItem('gh_token') || prompt('GitHub Personal Access Token :');
-    if (!token) return;
-    localStorage.setItem('gh_token', token);
-    // Calcule le bon chemin : /solidworks/ -> solidworks/index.html
-    var rawPath = location.pathname.replace(/^\/|\/$/g,'');
-    var filename = rawPath.endsWith('.html') ? rawPath : (rawPath ? rawPath + '/index.html' : 'index.html');
-    var btn = document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
-    fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
-      headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
-    }).then(function(r){return r.json();}).then(function(d){
-      var enc = btoa(unescape(encodeURIComponent(cleanHtml())));
-      return fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
-        method:'PUT',
-        headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/vnd.github+json'},
-        body:JSON.stringify({message:'update: '+filename,content:enc,sha:d.sha,branch:GH.branch})
-      });
-    }).then(function(r){return r.json();}).then(function(d){
-      btn.textContent='↑ Publier'; btn.disabled=false;
-      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename);
-      else alert('Erreur : '+(d.message||JSON.stringify(d)));
-    }).catch(function(e){ btn.textContent='↑ Publier'; btn.disabled=false; alert('Erreur : '+e.message); });
-  });
-})();
-</script>
 
 
 </body></html>
