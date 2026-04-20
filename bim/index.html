@@ -2112,7 +2112,7 @@ tailwind.config = {
       });
     }).then(function(r){return r.json();}).then(function(d){
       btn.textContent='↑ Publier'; btn.disabled=false;
-      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename);
+      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename.replace('/index.html',''));
       else alert('Erreur : '+(d.message||JSON.stringify(d)));
     }).catch(function(e){ btn.textContent='↑ Publier'; btn.disabled=false; alert('Erreur : '+e.message); });
   });
