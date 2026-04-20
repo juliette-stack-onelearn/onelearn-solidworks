@@ -43,10 +43,10 @@ tailwind.config = {
   body { font-family: 'Inter', 'Manrope', sans-serif; background: #ffffff; color:#282C37; overflow-x: hidden; }
   .font-display { font-family: 'Satoshi', 'Inter', sans-serif; font-weight: 700; }
   .grain { /* removed: grain texture not in One Learn brand */ }
-  .marquee { animation: scroll 30s linear infinite; }
+  .marquee { will-change: transform; }
   .rec-logo { filter: grayscale(1); opacity: 0.45; transition: filter 0.3s, opacity 0.3s; }
   .rec-logo:hover { filter: none; opacity: 1; }
-  @keyframes scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  @keyframes marquee-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(var(--marquee-offset,-50%))} }
   details[open] summary .chev { transform: rotate(180deg); }
   .chev { transition: transform .25s ease; }
   /* .glow effect removed: gradient borders not in One Learn brand */
@@ -1968,6 +1968,21 @@ tailwind.config = {
     tbCta.style.display = entries[0].isIntersecting ? 'none' : 'inline-flex';
   }, { threshold: 0 });
   observer.observe(heroCta);
+})();
+</script>
+
+<script>
+(function(){
+  var m = document.querySelector('.marquee');
+  if(!m) return;
+  // Each half = first child width
+  function initMarquee(){
+    var half = m.children[0] ? m.children[0].offsetWidth : m.scrollWidth / 2;
+    m.style.setProperty('--marquee-offset', '-' + half + 'px');
+    m.style.animation = 'marquee-scroll 30s linear infinite';
+  }
+  if(document.readyState === 'complete') initMarquee();
+  else window.addEventListener('load', initMarquee);
 })();
 </script>
 </body>
