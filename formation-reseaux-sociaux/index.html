@@ -963,20 +963,9 @@ tailwind.config = {
   <div class="absolute inset-0 grain opacity-30"></div>
   <div class="relative max-w-6xl mx-auto px-4">
 
-    <!-- Hero stat block -->
-    <div class="flex justify-center mb-10">
-      <div class="rounded-3xl px-10 py-7 text-center shadow-xl" style="background:linear-gradient(135deg,#22244D 0%,#545AC0 100%);">
-        <div class="text-white/60 text-xs font-semibold uppercase tracking-widest mb-1">Gain d'engagement moyen</div>
-        <div class="flex items-center justify-center gap-1">
-          <span class="font-display font-extrabold text-white" style="font-size:3.5rem;line-height:1;" id="hero-counter">+0%</span>
-        </div>
-        <div class="text-white/50 text-xs mt-1">constaté chez nos apprenants après 4 semaines</div>
-      </div>
-    </div>
-
     <div class="text-center mb-12">
       <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Résultats mesurés</p>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">Augmentez l'engagement de vos posts de <span id="counter-40-el" class="text-orange">+40%</span></h2>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">Augmentez l'engagement de vos posts de <span id="counter-40-el" style="background:linear-gradient(90deg,#545AC0,#EF7738);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">+40%</span></h2>
       <p class="mt-4 text-base text-ink/60 max-w-xl mx-auto">La différence entre un post ignoré et un post qui convertit, c'est la méthode. On vous l'enseigne.</p>
     </div>
 
@@ -2327,7 +2316,6 @@ tailwind.config = {
     (function(){
       var section = document.getElementById('avant-apres');
       if (!section) return;
-      var heroCounter = document.getElementById('hero-counter');
       var inlineCounter = document.getElementById('counter-40-el');
       var started = false;
 
@@ -2347,7 +2335,6 @@ tailwind.config = {
           var elapsed = ts - start;
           var progress = Math.min(elapsed / duration, 1);
           var val = Math.round(easeOut(progress) * target);
-          if (heroCounter) heroCounter.textContent = '+' + val + '%';
           if (inlineCounter) inlineCounter.textContent = '+' + val + '%';
           if (progress < 1) requestAnimationFrame(step);
         }
