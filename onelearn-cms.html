@@ -372,23 +372,19 @@ function maybeAutoSeed() {
     ];
     var done = 0, imported = 0;
     toast('Récupération des pages depuis GitHub...');
+    var pending = seedPages.length;
     seedPages.forEach(function(sp) {
       GH.getFilePublic(sp.file, function(err, html) {
-        done++;
-        if (html) {
-          imported++;
-          var page = {
-            id: 'p' + Date.now() + Math.random().toString(36).slice(2),
-            name: sp.name, slug: sp.slug, status: 'live', liveSlug: sp.slug,
-            created: new Date().toISOString(), modified: new Date().toISOString(),
-            html: html, fields: extractFields(html), images: extractImages(html)
-          };
-          dbPut(page);
-        }
-        if (done === seedPages.length) {
-          toast('✅ ' + imported + ' page(s) importée(s) depuis GitHub');
-          renderDash();
-        }
+        if (!html) { if (--pending === 0) { toast('✅ Import terminé'); renderDash(); } return; }
+        var page = {
+          id: 'p' + Date.now() + Math.random().toString(36).slice(2),
+          name: sp.name, slug: sp.slug, status: 'live', liveSlug: sp.slug,
+          created: new Date().toISOString(), modified: new Date().toISOString(),
+          html: html, fields: extractFields(html), images: extractImages(html)
+        };
+        dbPut(page, function() {
+          if (--pending === 0) { toast('✅ Pages restaurées depuis GitHub'); renderDash(); }
+        });
       });
     });
   });
