@@ -2000,5 +2000,100 @@ tailwind.config = {
   else window.addEventListener('load', initMarquee);
 })();
 </script>
+
+<!-- ═══ ÉDITEUR INLINE ═══ Ouvrir avec ?edit dans l'URL ═══ -->
+<script id="_ed-script">
+(function(){
+  if (!location.search.includes('edit')) return;
+  var GH = { owner:'juliette-stack-onelearn', repo:'onelearn-solidworks', branch:'main' };
+
+  // ── Styles ─────────────────────────────────────────────────────────────
+  var s = document.createElement('style'); s.id='_ed-css';
+  s.textContent = [
+    '#_edbar{position:fixed;bottom:20px;right:20px;z-index:99999;display:flex;align-items:center;gap:8px;background:#22244D;padding:10px 16px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.35);font-family:Inter,system-ui,sans-serif;font-size:13px;}',
+    '#_edbar span{color:#fff;font-weight:600;margin-right:4px;}',
+    '#_edbar button{padding:6px 16px;border-radius:8px;border:none;cursor:pointer;font-weight:600;font-size:13px;transition:.2s;}',
+    '#_eddl{background:#EF7738;color:#fff;}#_eddl:hover{background:#CD5025;}',
+    '#_edpub{background:#545AC0;color:#fff;}#_edpub:hover{background:#43489A;}',
+    '[data-cms]:not(img){outline:2px dashed transparent;border-radius:3px;min-height:1em;cursor:text;}',
+    '[data-cms]:not(img):focus,[data-cms]:not(img):hover{outline:2px dashed #545AC0;background:rgba(84,90,192,.06);}',
+    '[data-rec-img]:hover,img[data-cms]:hover{outline:3px solid #EF7738;cursor:pointer;opacity:.85;border-radius:4px;}'
+  ].join('');
+  document.head.appendChild(s);
+
+  // ── Text editing ────────────────────────────────────────────────────────
+  document.querySelectorAll('[data-cms]').forEach(function(el){
+    if (el.tagName==='IMG') return;
+    el.contentEditable='true'; el.spellcheck=false;
+  });
+
+  // ── Image editing ───────────────────────────────────────────────────────
+  function imgEdit(el){
+    el.addEventListener('click',function(e){
+      e.preventDefault(); e.stopPropagation();
+      var inp=document.createElement('input');
+      inp.type='file'; inp.accept='image/*,image/svg+xml';
+      inp.onchange=function(){
+        var r=new FileReader();
+        r.onload=function(ev){ el.src=ev.target.result; };
+        r.readAsDataURL(inp.files[0]);
+      };
+      inp.click();
+    });
+  }
+  document.querySelectorAll('[data-rec-img]').forEach(imgEdit);
+  document.querySelectorAll('img[data-cms]').forEach(imgEdit);
+
+  // ── Toolbar ─────────────────────────────────────────────────────────────
+  var bar=document.createElement('div'); bar.id='_edbar';
+  bar.innerHTML='<span>✏ Mode édition</span><button id="_eddl">⬇ Télécharger</button><button id="_edpub">↑ Publier</button>';
+  document.body.appendChild(bar);
+
+  // ── Serialize clean HTML ────────────────────────────────────────────────
+  function cleanHtml(){
+    var c=document.documentElement.cloneNode(true);
+    c.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck');
+    });
+    ['_edbar','_ed-css','_ed-script'].forEach(function(id){
+      var el=c.querySelector('#'+id); if(el) el.remove();
+    });
+    return '<!DOCTYPE html>\n'+c.outerHTML;
+  }
+
+  // ── Download ────────────────────────────────────────────────────────────
+  document.getElementById('_eddl').addEventListener('click',function(){
+    var html=cleanHtml();
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([html],{type:'text/html'}));
+    a.download=location.pathname.split('/').pop().replace('?edit','')||'page.html';
+    a.click();
+  });
+
+  // ── Publish to GitHub ───────────────────────────────────────────────────
+  document.getElementById('_edpub').addEventListener('click',function(){
+    var token=localStorage.getItem('gh_token')||prompt('GitHub Personal Access Token :');
+    if(!token) return;
+    localStorage.setItem('gh_token',token);
+    var filename=location.pathname.replace(/^\/|\/$/g,'').split('/').pop()||'index.html';
+    var btn=document.getElementById('_edpub'); btn.textContent='…'; btn.disabled=true;
+    fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
+      headers:{Authorization:'Bearer '+token,Accept:'application/vnd.github+json'}
+    }).then(function(r){return r.json();}).then(function(d){
+      var html=cleanHtml();
+      var enc=btoa(unescape(encodeURIComponent(html)));
+      return fetch('https://api.github.com/repos/'+GH.owner+'/'+GH.repo+'/contents/'+filename,{
+        method:'PUT',
+        headers:{Authorization:'Bearer '+token,'Content-Type':'application/json',Accept:'application/vnd.github+json'},
+        body:JSON.stringify({message:'update: '+filename,content:enc,sha:d.sha,branch:GH.branch})
+      });
+    }).then(function(r){return r.json();}).then(function(d){
+      btn.textContent='↑ Publier'; btn.disabled=false;
+      if(d.commit) alert('✅ Publié sur go.one-learn.fr/'+filename);
+      else alert('Erreur : '+(d.message||JSON.stringify(d)));
+    }).catch(function(e){ btn.textContent='↑ Publier'; btn.disabled=false; alert('Erreur : '+e.message); });
+  });
+})();
+</script>
 </body>
 </html>
