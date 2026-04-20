@@ -268,7 +268,7 @@ function openDB(cb) {
 }
 function dbAll(cb)     { openDB(function(d) { d.transaction('pages').objectStore('pages').getAll().onsuccess = function(e) { cb(e.target.result); }; }); }
 function dbGet(id, cb) { openDB(function(d) { d.transaction('pages').objectStore('pages').get(id).onsuccess = function(e) { cb(e.target.result); }; }); }
-function dbPut(p, cb)  { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').put(p).onsuccess = function() { if(cb) cb(); }; }); }
+function dbPut(p, cb)  { openDB(function(d) { var req = d.transaction('pages','readwrite').objectStore('pages').put(p); req.onsuccess = function() { if(cb) cb(); }; req.onerror = function(e) { toast('❌ Erreur sauvegarde : ' + (e.target.error || 'quota dépassé')); if(cb) cb(e.target.error); }; }); }
 function dbDel(id, cb) { openDB(function(d) { d.transaction('pages','readwrite').objectStore('pages').delete(id).onsuccess = function() { if(cb) cb(); }; }); }
 
 // ── GitHub Config & API ────────────────────────
@@ -380,7 +380,7 @@ function maybeAutoSeed() {
           id: 'p' + Date.now() + Math.random().toString(36).slice(2),
           name: sp.name, slug: sp.slug, status: 'live', liveSlug: sp.slug,
           created: new Date().toISOString(), modified: new Date().toISOString(),
-          html: html, fields: extractFields(html), images: extractImages(html)
+          html: html, fields: extractFields(html), images: []
         };
         dbPut(page, function() {
           if (--pending === 0) { toast('✅ Pages restaurées depuis GitHub'); renderDash(); }
@@ -592,9 +592,7 @@ function extractFields(html) {
 }
 
 function extractImages(html) {
-  var imgs = [], re = /src="(data:image\/([^;]+);base64,[^"]{50,})" alt="([^"]*)"/g, m, c = 0;
-  while ((m = re.exec(html)) && c < 10) { imgs.push({ src: m[1], alt: m[3] }); c++; }
-  return imgs;
+  return []; // images déjà embarquées dans page.html, pas besoin de les dupliquer
 }
 
 // ── Editor ─────────────────────────────────────
