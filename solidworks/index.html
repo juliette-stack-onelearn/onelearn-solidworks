@@ -732,21 +732,20 @@ tailwind.config = {
   }, { threshold: 0.3, rootMargin: '0px 0px -15% 0px' });
 
   steps.forEach(function(s) { observer.observe(s); });
-})();
-</script>
-<script>
-(function(){
+
+  // Observer sur l'image certification — déclenche l'animation au scroll
   var certifBloc = document.getElementById('certif-img-bloc');
-  if (!certifBloc) return;
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        setTimeout(fireConfetti, 400);
-        obs.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  obs.observe(certifBloc);
+  if (certifBloc) {
+    var certifObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          setTimeout(fireConfetti, 400);
+          certifObs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    certifObs.observe(certifBloc);
+  }
 })();
 </script>
     <!-- ══ Bloc certification ══ -->
