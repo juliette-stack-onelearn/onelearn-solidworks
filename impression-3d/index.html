@@ -1672,21 +1672,35 @@ tailwind.config = {
     clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
     clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    var encoded=btoa(unescape(encodeURIComponent(raw)));
-    fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}})
-    .then(function(r){return r.json();})
-    .then(function(d){
-      return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
-        method:'PUT',
-        headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
-        body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
+    var reader=new FileReader();
+    reader.onload=function(){
+      var encoded=reader.result.split(',')[1];
+      fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE+'?t='+Date.now(),{
+        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}
+      })
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(!d.sha){toast('\u274C SHA manquant');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';return;}
+        return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+          method:'PUT',
+          headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+          body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+        });
+      })
+      .then(function(r){
+        if(!r)return;
+        if(r.ok){toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');}
+        else{r.json().then(function(e){toast('\u274C Erreur '+r.status+' : '+(e.message||'token invalide'));});localStorage.removeItem('_ol_token');}
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+      })
+      .catch(function(e){
+        toast('\u274C Erreur r\u00E9seau : '+e.message);
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
       });
-    })
-    .then(function(r){
-      if(r.ok){toast('✅ Enregistré !');}else{toast('❌ Erreur — vérifiez votre token');localStorage.removeItem('_ol_token');}
-      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
-    })
-    .catch(function(){toast('❌ Erreur réseau');saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';});
+    };
+    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
+    reader.readAsDataURL(blob);
   }
 
   var bar=document.createElement('div');bar.id='_ed_bar';bar.className='_ed-bar';
