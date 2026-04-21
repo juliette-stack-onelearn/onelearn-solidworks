@@ -2138,9 +2138,10 @@ tailwind.config = {
 
   /* ── Images remplaçables ── */
   document.querySelectorAll('img[data-cms],img.rec-logo,img.hero-img').forEach(function(img){
-    img.style.cursor='pointer';
-    img.title='Cliquer pour remplacer l\'image';
-    img.addEventListener('click',function(e){
+    var container=img.parentElement;
+    container.style.cursor='pointer';
+    container.title='Cliquer pour remplacer l\'image';
+    container.addEventListener('click',function(e){
       if(e.target.closest('[contenteditable]'))return;
       var inp=document.createElement('input');
       inp.type='file';inp.accept='image/*';
@@ -2151,7 +2152,7 @@ tailwind.config = {
         r.readAsDataURL(file);
       };
       inp.click();
-    },{capture:true});
+    });
   });
 
   /* ── Sauvegarde GitHub ── */
