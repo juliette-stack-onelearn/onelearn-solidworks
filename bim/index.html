@@ -2142,8 +2142,34 @@ tailwind.config = {
   /* ── Pause marquee en mode edit ── */
   document.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='paused';});
 
-  /* ── Images remplaçables ── */
-  document.querySelectorAll('img[data-cms],img.rec-logo,img.hero-img').forEach(function(img){
+  /* ── Logos marquee : listener direct sur l'img (partagent le même parent) ── */
+  document.querySelectorAll('img.rec-logo').forEach(function(img){
+    img.style.cursor='pointer';
+    img.title='Cliquer pour remplacer ce logo';
+    img.addEventListener('click',function(e){
+      e.stopPropagation();
+      var recId=img.getAttribute('data-rec-img');
+      var inp=document.createElement('input');
+      inp.type='file';inp.accept='image/*';
+      inp.style.display='none';
+      document.body.appendChild(inp);
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        var r=new FileReader();
+        r.onload=function(ev){
+          if(recId){document.querySelectorAll('img[data-rec-img="'+recId+'"]').forEach(function(c){c.src=ev.target.result;});}
+          else{img.src=ev.target.result;}
+          toast('📷 Logo mis à jour');
+          if(inp.parentNode)inp.parentNode.removeChild(inp);
+        };
+        r.readAsDataURL(file);
+      };
+      inp.click();
+    });
+  });
+
+  /* ── Autres images (hero, cms) : listener sur le container ── */
+  document.querySelectorAll('img[data-cms],img.hero-img').forEach(function(img){
     var container=img.parentElement;
     container.style.cursor='pointer';
     container.title='Cliquer pour remplacer l\'image';
@@ -2154,12 +2180,7 @@ tailwind.config = {
       inp.onchange=function(){
         var file=inp.files[0];if(!file)return;
         var r=new FileReader();
-        r.onload=function(ev){
-          var recId=img.getAttribute('data-rec-img');
-          if(recId){document.querySelectorAll('img[data-rec-img="'+recId+'"]').forEach(function(c){c.src=ev.target.result;});}
-          else{img.src=ev.target.result;}
-          toast('\uD83D\uDCF7 Image mise à jour');
-        };
+        r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
         r.readAsDataURL(file);
       };
       inp.click();
