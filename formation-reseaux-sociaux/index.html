@@ -2291,29 +2291,40 @@ tailwind.config = {
     });
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    var encoded=btoa(unescape(encodeURIComponent(raw)));
-
-    fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
-      headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}
-    })
-    .then(function(r){return r.json();})
-    .then(function(d){
-      return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
-        method:'PUT',
-        headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json',
-                  'Accept':'application/vnd.github+json'},
-        body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+    /* Encodage fiable via FileReader (supporte les gros fichiers) */
+    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
+    var reader=new FileReader();
+    reader.onload=function(){
+      var encoded=reader.result.split(',')[1];
+      /* Récupérer le SHA courant avec cache-busting */
+      fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE+'?t='+Date.now(),{
+        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}
+      })
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(!d.sha){toast('❌ Impossible de récupérer le fichier (SHA manquant)');saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';return;}
+        return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+          method:'PUT',
+          headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+          body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+        });
+      })
+      .then(function(r){
+        if(!r)return;
+        if(r.ok){toast('✅ Enregistré ! Visible dans ~30 sec.');}
+        else{r.json().then(function(e){toast('❌ Erreur '+r.status+' : '+(e.message||'token invalide'));});localStorage.removeItem('_ol_token');}
+        saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+      })
+      .catch(function(e){
+        toast('❌ Erreur réseau : '+e.message);
+        saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
       });
-    })
-    .then(function(r){
-      if(r.ok){toast('✅ Enregistré ! Mise à jour dans ~1 min.');}
-      else{toast('❌ Erreur — vérifiez votre token');localStorage.removeItem('_ol_token');}
+    };
+    reader.onerror=function(){
+      toast('❌ Erreur encodage fichier');
       saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
-    })
-    .catch(function(){
-      toast('❌ Erreur réseau');
-      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
-    });
+    };
+    reader.readAsDataURL(blob);
   }
 
   /* ── Toolbar ── */
