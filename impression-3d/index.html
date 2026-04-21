@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation Impression 3D en ligne – Certifiante & financée CPF | One Learn</title>
+<meta name="description" content="Maîtrisez l'impression 3D FDM et résine en 6 semaines avec un formateur dédié. Modélisation Fusion 360, slicer, matériaux, calibration. Financement CPF 100%. Imprimante incluse.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async=""></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      navy: { DEFAULT:'#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
+      orange: { DEFAULT:'#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
+      cream:'#ffffff', ink:'#282C37'
+    },
+    fontFamily: { display:['"Satoshi"','"Inter"','system-ui','sans-serif'], sans:['"Inter"','system-ui','sans-serif'] },
+    boxShadow: { card:'0 1px 0 rgba(34,36,77,.04),0 8px 24px -12px rgba(34,36,77,.12)', cta:'0 10px 30px -10px rgba(230,106,64,.5)' }
+  }}
+}
+</script>
+<style>
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:#fff;color:#282C37;overflow-x:hidden}
+  .font-display{font-family:'Satoshi','Inter',sans-serif;font-weight:700}
+  .marquee{will-change:transform}
+  .rec-logo{filter:grayscale(1);opacity:.45;transition:filter .3s,opacity .3s}
+  .rec-logo:hover{filter:none;opacity:1}
+  @keyframes marquee-scroll{0%{transform:translateX(0)}100%{transform:translateX(var(--marquee-offset,-50%))}}
+  details[open] summary .chev{transform:rotate(180deg)}
+  .chev{transition:transform .25s ease}
+  .iclosed-widget{min-height:620px}
+  @media(max-width:640px){.iclosed-widget{min-height:720px}}
+  @keyframes hero-badge-float{0%,100%{transform:translateY(0) rotate(-1.5deg);box-shadow:0 8px 32px rgba(34,36,77,.22)}50%{transform:translateY(-10px) rotate(1.5deg);box-shadow:0 20px 44px rgba(34,36,77,.30)}}
+  .hero-badge{animation:hero-badge-float 3.5s ease-in-out infinite;will-change:transform}
+  /* Photo placeholder */
+  .photo-slot{background:linear-gradient(135deg,#EDEDFB 0%,#d8d9f0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:2px dashed #545AC0;border-radius:1rem;transition:.2s}
+  .photo-slot:hover{border-color:#EF7738;background:linear-gradient(135deg,#FEF4F1 0%,#fde0cf 100%)}
+  .photo-slot span{font-size:11px;font-family:Inter,sans-serif;color:#545AC0;font-weight:600}
+  /* Scroll anim */
+  [data-anim]{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+  [data-anim].anim-in{opacity:1;transform:translateY(0)}
+  [data-anim][data-delay="1"]{transition-delay:.10s}
+  [data-anim][data-delay="2"]{transition-delay:.20s}
+  [data-anim][data-delay="3"]{transition-delay:.30s}
+  [data-anim][data-delay="4"]{transition-delay:.40s}
+  [data-anim][data-delay="5"]{transition-delay:.50s}
+  [data-anim][data-delay="6"]{transition-delay:.60s}
+  #hero [data-anim],nav [data-anim]{opacity:1;transform:none;transition:none}
+  /* Timeline */
+  .timeline-dot{width:40px;height:40px;border-radius:50%;background:#EDEDFB;border:2px solid #DDDEF2;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700;font-size:.85rem;color:#545AC0;transition:.3s}
+  .timeline-step.is-active .timeline-dot{background:#545AC0;border-color:#545AC0;color:#fff}
+  .timeline-segment{width:2px;background:#EDEDFB;flex-grow:1;min-height:40px;position:relative;overflow:hidden}
+  .timeline-fill{position:absolute;inset:0;background:#545AC0;transform:scaleY(0);transform-origin:top;transition:transform .5s ease}
+  .timeline-step.is-active .timeline-segment .timeline-fill{transform:scaleY(1)}
+</style>
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
+<script async src="https://tally.so/widgets/embed.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3JNLSYWG7S"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  var _lp_id='impression-3d';
+  gtag('config','G-3JNLSYWG7S',{page_title:document.title,lp_id:_lp_id});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href*="iclosed"]');
+    if(a){var section=a.closest('section')||a.closest('nav')||document.body;var sid=section.id||section.className.split(' ')[0]||'unknown';gtag('event','cta_click',{lp_id:_lp_id,section:sid,cta_text:a.innerText.trim().substring(0,50)});}
+  });
+</script>
+</head>
+<body class="antialiased">
+
+<!-- ============ TOP BAR ============ -->
+<div class="bg-ink text-cream text-sm sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-2 min-w-0">
+      <span class="inline-flex items-center gap-1.5 bg-orange/15 text-orange-600 px-2.5 py-1 rounded-full font-semibold text-xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-orange animate-pulse"></span>OFFRE −10%
+      </span>
+      <span class="hidden sm:inline truncate" data-cms="promo_text">Offre de lancement Impression 3D · jusqu'au 30/06/2026 · cumulable avec votre CPF</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a id="tb-cta" href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="hidden sm:inline-flex items-center gap-2 bg-orange text-white px-4 py-1.5 rounded-full font-semibold text-xs whitespace-nowrap hover:bg-orange-700 transition" style="display:inline-flex">
+        Réserver mon appel gratuit
+        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <a href="tel:+33189703426" class="flex items-center gap-2 hover:text-orange transition font-semibold whitespace-nowrap">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21L7.5 10.5a11 11 0 006 6l1.11-1.73a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2A18 18 0 013 5z"/></svg>
+        01 89 70 34 26
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ NAV ============ -->
+<header class="sticky top-0 z-40 backdrop-blur-md bg-cream/85 border-b border-ink/5">
+  <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center" aria-label="One Learn">
+      <svg class="h-7 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.01 227.95"><g>
+        <path fill="#545ac0" d="M367.99,31.19c-46.04,0-78.21,34.1-78.21,82.9s32.07,82.66,77.99,82.66,78.66-34.1,78.66-82.9-32.25-82.66-78.45-82.66ZM368.23,166.63c-28.16,0-44.98-19.73-44.98-52.77s17.25-52.53,44.98-52.53,44.74,20.13,44.74,52.53-17.16,52.77-44.74,52.77Z"/>
+        <path fill="#545ac0" d="M531.32,83.89c-13.75,0-25.78,5.3-32.18,14.18l-3.08,4.28-2.86-14.9h-28.09v106.64h29.7v-58.65c0-15.16,9.62-24.96,24.51-24.96,13.07,0,21.84,10.21,21.84,25.4v58.21h29.7v-66.44c0-27.81-14.41-43.76-39.53-43.76Z"/>
+        <path fill="#545ac0" d="M700.6,140.77c0-35.07-20.86-56.86-54.44-56.86s-54.65,23.28-54.65,56.65,22.73,56.41,55.32,56.41c28.04,0,48.8-14,53.74-35.92h-27.04c-3.36,7.97-12.94,12.67-26.04,12.67-16.4,0-25.43-7.7-27.61-23.52l-.33-2.58,81.05-.42v-6.43ZM671.11,131.04h-51.29l.55-2.73c2.85-14.25,11.37-21.16,26.01-21.16s24.73,8.49,24.73,21.61v2.27Z"/>
+        <rect fill="#ef7738" x="722.82" y="34.07" width="31.46" height="160.02"/>
+        <path fill="#ef7738" d="M884.26,140.77c0-35.07-20.86-56.86-54.44-56.86s-54.65,23.28-54.65,56.65,22.77,56.41,55.32,56.41c28.04,0,48.8-14,53.74-35.92h-27.04c-3.36,7.97-12.94,12.67-26.04,12.67-16.4,0-25.43-7.7-27.61-23.52l-.33-2.58,81.06-.42v-6.43ZM854.77,131.04h-51.29l.55-2.73c2.85-14.25,11.37-21.16,26.01-21.16s24.74,8.49,24.74,21.61v2.27Z"/>
+        <path fill="#ef7738" d="M953.8,83.9c-29.52,0-48.95,14.46-50.17,37.01h24.01c1.12-9.91,9.88-15.55,24.37-15.55,13.46,0,21.19,6.91,21.19,18.95v3.88l-33.25,2.61c-25.16,1.91-39.04,13.58-39.04,32.89,0,20.52,13.79,33.28,35.98,33.28,15.76,0,28.8-5.88,33.37-15.16l2.7-4.55,3.03,16.82h26.01v-62.65c0-30.65-17.13-47.53-48.2-47.53ZM973.41,154.77c0,13.22-9.4,21.4-24.52,21.4-11.67,0-17.61-4.73-17.61-14.07,0-10,8.91-12.85,22.31-14.03l19.82-1.79v8.49Z"/>
+        <path fill="#ef7738" d="M1053.6,102.75l-3.42,7.98-2.49-23.05h-27.93v106.42h29.7v-45.98c0-21.87,11.31-32.96,33.63-32.96h8.62v-28.15c-3.6-.74-7.24-1.11-10.84-1.11-12.93,0-22.61,5.99-27.27,16.86Z"/>
+        <path fill="#ef7738" d="M1177.48,83.89c-13.75,0-25.78,5.3-32.18,14.18l-3.08,4.28-2.86-14.9h-28.09v106.64h29.7v-58.65c0-15.16,9.62-24.96,24.51-24.96,13.07,0,21.84,10.21,21.84,25.4v58.21h29.7v-66.44c0-27.81-14.41-43.76-39.53-43.76Z"/>
+        <path fill="#545ac0" d="M173.96,0H53.99C24.19,0,0,24.16,0,53.99v119.98c0,29.83,24.19,53.99,53.99,53.99h119.98c29.83,0,54.02-24.16,54.02-53.99V53.99c0-29.83-24.19-53.99-54.02-53.99ZM172.2,150.38c0,22.04-17.85,39.86-39.86,39.86h-36.71c-22.01,0-39.86-17.82-39.86-39.86v-64.14h116.43v64.14Z"/>
+        <path fill="#ef7738" d="M193.04,81.44l-72.92-42.1c-3.79-2.19-8.46-2.19-12.25,0l-72.92,42.1c-2.97,1.72-2.97,6,0,7.7l28.62,16.54.03.02,43.04,24.84c4.55,2.63,10.16,2.63,14.71,0l43.05-24.84.03-.02,28.62-16.54c2.97-1.7,2.97-5.98,0-7.7"/>
+      </g></svg>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
+      <a href="#creations" class="hover:text-navy">Créations</a>
+      <a href="#programme" class="hover:text-navy">Programme</a>
+      <a href="#financement" class="hover:text-navy">Financement</a>
+      <a href="#faq" class="hover:text-navy">FAQ</a>
+    </nav>
+    <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="inline-flex items-center gap-2 bg-orange text-white px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
+      Réserver mon appel
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-orange/10 blur-3xl"></div>
+  <div class="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-navy/10 blur-3xl"></div>
+  <div class="relative max-w-7xl mx-auto px-4 pt-8 pb-10 lg:pt-10 lg:pb-12 grid lg:grid-cols-12 gap-8 items-center">
+    <div class="lg:col-span-7">
+      <div class="inline-flex items-center gap-2 bg-white border border-ink/10 px-3 py-1.5 rounded-full text-xs font-semibold text-ink/70 shadow-sm mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        Sessions ouvertes en mai · 8 places restantes
+      </div>
+      <h1 class="font-display text-[1.9rem] sm:text-[2.4rem] lg:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">
+        Maîtrisez l'impression 3D<br>et concevez vos pièces<br>
+        <span class="relative inline-block">
+          <span class="relative z-10">de A à Z</span>
+          <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 50 0, 100 6 T 198 5" stroke="#EF7738" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+        </span>
+        en 6 semaines.
+      </h1>
+      <p class="mt-4 text-base text-ink/70 max-w-xl leading-relaxed">
+        Formation 100% en ligne avec un formateur dédié. Modélisation Fusion 360, slicer, matériaux, calibration. <strong class="text-ink">Finançable à 100% via votre CPF.</strong> Imprimante fournie pendant la formation.
+      </p>
+      <ul class="mt-4 space-y-2">
+        <li class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <span class="text-sm text-ink/80">Imprimante 3D fournie pendant toute la formation</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <span class="text-sm text-ink/80">Formateur dédié, 2 séances live par semaine</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <span class="text-sm text-ink/80">Certification reconnue, organisme Qualiopi</span>
+        </li>
+      </ul>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a id="hero-cta" href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="group inline-flex items-center justify-center gap-2 bg-orange text-white px-6 py-4 rounded-full font-semibold shadow-cta hover:bg-orange-700 transition">
+          Je vérifie mon éligibilité CPF
+          <svg class="w-4 h-4 group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#programme" class="inline-flex items-center gap-2 border border-ink/20 px-6 py-4 rounded-full font-semibold text-sm hover:border-navy hover:text-navy transition">
+          Voir le programme
+        </a>
+      </div>
+      <div class="mt-5 flex items-center gap-3">
+        <div class="flex -space-x-2">
+          <div class="w-8 h-8 rounded-full bg-navy/20 border-2 border-white"></div>
+          <div class="w-8 h-8 rounded-full bg-orange/20 border-2 border-white"></div>
+          <div class="w-8 h-8 rounded-full bg-navy/40 border-2 border-white"></div>
+        </div>
+        <p class="text-xs text-ink/60"><strong class="text-ink">740+ apprenants</strong> formés depuis 2022</p>
+      </div>
+    </div>
+    <!-- HERO IMAGE -->
+    <div class="lg:col-span-5 order-first lg:order-last">
+      <div class="relative">
+        <div class="photo-slot hero-img w-full rounded-3xl overflow-hidden" style="aspect-ratio:4/5; min-height:320px;" data-cms="hero_img">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><rect x="8" y="24" width="48" height="32" rx="4" fill="#545AC0" opacity=".2"/><rect x="16" y="16" width="32" height="40" rx="3" fill="#545AC0" opacity=".4"/><path d="M24 36 L32 28 L40 36" stroke="#545AC0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="32" cy="46" r="3" fill="#EF7738"/></svg>
+          <span>Photo hero — apprenant devant son imprimante 3D</span>
+        </div>
+        <!-- floating badge -->
+        <div class="hero-badge absolute -bottom-4 -left-4 bg-white rounded-2xl p-3 shadow-card border border-ink/5 z-10 hidden sm:block">
+          <p class="text-[10px] text-ink/50 uppercase tracking-wider font-semibold">Imprimante incluse</p>
+          <p class="font-display text-lg text-navy font-bold leading-none mt-0.5">Prêt à l'emploi</p>
+          <p class="text-[10px] text-ink/50 mt-0.5">dès le 1er cours</p>
+        </div>
+        <!-- CPF badge -->
+        <div class="hero-badge absolute -top-4 -right-4 bg-navy-900 text-cream rounded-2xl px-4 py-2.5 shadow-card z-10 hidden sm:block" style="background:#22244D">
+          <p class="text-[10px] opacity-60 uppercase tracking-wider">Finançable</p>
+          <p class="font-bold text-sm text-orange">100% CPF</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAR ============ -->
+<section id="stats-bar" class="bg-navy text-cream py-10 relative overflow-hidden" style="background:#22244D">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div data-anim>
+      <p class="font-display text-4xl md:text-5xl font-bold text-orange">740+</p>
+      <p class="text-sm text-cream/70 mt-1">apprenants formés</p>
+    </div>
+    <div data-anim data-delay="1">
+      <p class="font-display text-4xl md:text-5xl font-bold text-orange">96%</p>
+      <p class="text-sm text-cream/70 mt-1">de satisfaction</p>
+    </div>
+    <div data-anim data-delay="2">
+      <p class="font-display text-4xl md:text-5xl font-bold text-orange">6</p>
+      <p class="text-sm text-cream/70 mt-1">semaines de formation</p>
+    </div>
+    <div data-anim data-delay="3">
+      <p class="font-display text-4xl md:text-5xl font-bold text-orange">100%</p>
+      <p class="text-sm text-cream/70 mt-1">finançable CPF</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE CREATIONS ============ -->
+<section id="creations" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Ce que vous allez créer</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">Des pièces qui servent vraiment.</h2>
+      <p class="mt-4 text-base text-ink/60 max-w-2xl mx-auto">Pas des cubes de calibration. Nos apprenants impriment des objets qu'ils utilisent au quotidien — pièces de remplacement, prototypes, accessoires sur-mesure.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <!-- Card 1 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim>
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#EDEDFB,#c8caee)" data-cms="creation_1">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="3" fill="#545AC0" opacity=".3"/><rect x="12" y="16" width="24" height="16" rx="2" fill="#545AC0" opacity=".5"/><circle cx="16" cy="20" r="2" fill="#EF7738"/></svg>
+          <span>Boîtier électronique sur-mesure (PLA)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Boîtier sur-mesure</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold bg-navy/10 text-navy px-2 py-0.5 rounded-full">PLA · Standard</span>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim data-delay="1">
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#FEF4F1,#fdd5b8)" data-cms="creation_2">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="14" fill="#EF7738" opacity=".2" stroke="#EF7738" stroke-width="1.5"/><path d="M16 24 L20 18 L28 30 L32 24" stroke="#EF7738" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          <span>Pièce mécanique de remplacement (PETG)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Pièce de remplacement</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold bg-orange/10 text-orange px-2 py-0.5 rounded-full">PETG · Résistant</span>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim data-delay="2">
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#e8f5e9,#c8e6c9)" data-cms="creation_3">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="10" y="20" width="28" height="18" rx="4" fill="#4CAF50" opacity=".3"/><path d="M18 20 L24 10 L30 20" fill="#4CAF50" opacity=".5" stroke="#4CAF50" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          <span>Prototype produit industriel (ABS)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Prototype industriel</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold bg-ink/10 text-ink px-2 py-0.5 rounded-full">ABS · Pro</span>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim data-delay="1">
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#f3e5f5,#e1bee7)" data-cms="creation_4">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><ellipse cx="24" cy="30" rx="10" ry="4" fill="#9C27B0" opacity=".2"/><path d="M20 30 L20 16 Q24 10 28 16 L28 30" fill="#9C27B0" opacity=".4" stroke="#9C27B0" stroke-width="1.5"/></svg>
+          <span>Figurine ou objet d'art en résine (Résine)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Figurine et objets d'art</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:#f3e5f5;color:#7b1fa2">Résine · Haute précision</span>
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim data-delay="2">
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#fff8e1,#ffecb3)" data-cms="creation_5">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M12 36 L24 14 L36 36 Z" fill="#FFC107" opacity=".3" stroke="#FFC107" stroke-width="1.5" stroke-linejoin="round"/><line x1="24" y1="22" x2="24" y2="30" stroke="#FFC107" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="33" r="1.5" fill="#FFC107"/></svg>
+          <span>Accessoire vélo ou sport (TPU flexible)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Accessoire souple sur-mesure</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:#fff8e1;color:#f57f17">TPU · Flexible</span>
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="group relative rounded-2xl overflow-hidden shadow-card bg-navy/5" data-anim data-delay="3">
+        <div class="photo-slot hero-img w-full" style="aspect-ratio:4/3; border-radius:0; border:none; background:linear-gradient(135deg,#e3f2fd,#bbdefb)" data-cms="creation_6">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="10" y="18" width="28" height="20" rx="3" fill="#1E88E5" opacity=".2"/><rect x="14" y="22" width="8" height="8" rx="1" fill="#1E88E5" opacity=".5"/><rect x="26" y="22" width="8" height="8" rx="1" fill="#1E88E5" opacity=".5"/></svg>
+          <span>Pièce d'architecture ou maquette (PLA)</span>
+        </div>
+        <div class="p-3">
+          <p class="font-semibold text-sm text-ink">Maquette architecturale</p>
+          <span class="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:#e3f2fd;color:#1565c0">PLA · Précision fine</span>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-ink/40 mt-6">Photos d'apprenants One Learn. Résultats obtenus après 6 semaines de formation.</p>
+  </div>
+</section>
+
+<!-- ============ PROBLÈME ============ -->
+<section class="py-16" style="background:#22244D">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="font-display text-3xl md:text-4xl font-semibold text-cream leading-tight">Vous vous reconnaissez dans l'un de ces scénarios ?</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10" data-anim>
+        <span class="text-2xl">🍝</span>
+        <p class="mt-2 text-cream font-semibold">Vous lancez une impression de 8h, vous revenez et trouvez un plat de spaghettis sur le plateau.</p>
+        <p class="mt-1 text-cream/50 text-sm">Le plateau se soulève, la première couche ne colle pas, la pièce se décolle à mi-chemin.</p>
+      </div>
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10" data-anim data-delay="1">
+        <span class="text-2xl">🔒</span>
+        <p class="mt-2 text-cream font-semibold">Vous dépendez des fichiers STL trouvés sur Thingiverse — vous ne savez pas les modifier.</p>
+        <p class="mt-1 text-cream/50 text-sm">La pièce est trop grande de 2mm, mais vous ne pouvez pas la redessiner vous-même.</p>
+      </div>
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10" data-anim data-delay="2">
+        <span class="text-2xl">🎛️</span>
+        <p class="mt-2 text-cream font-semibold">Vos réglages slicer viennent d'un tuto YouTube de 2019. Vous ne comprenez pas pourquoi ça marche (ou pas).</p>
+        <p class="mt-1 text-cream/50 text-sm">Température, vitesse, remplissage : vous copiez-collez sans savoir quoi changer.</p>
+      </div>
+      <div class="bg-white/8 rounded-2xl p-5 border border-white/10" data-anim data-delay="3">
+        <span class="text-2xl">🕸️</span>
+        <p class="mt-2 text-cream font-semibold">L'imprimante est là depuis 6 mois. Vous avez imprimé quelques cubes de test, c'est tout.</p>
+        <p class="mt-1 text-cream/50 text-sm">Faute de méthode et de projets concrets, vous n'exploitez pas 10% de son potentiel.</p>
+      </div>
+    </div>
+    <p class="text-center mt-8 text-cream/60 text-sm">La formation One Learn vous donne la méthode pour ne plus jamais subir ces situations.</p>
+  </div>
+</section>
+
+<!-- ============ POUR QUI ============ -->
+<section id="pour-qui" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="photo-slot hero-img w-full rounded-3xl" style="aspect-ratio:4/5; min-height:280px;" data-cms="pour_qui_img">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="20" r="10" fill="#545AC0" opacity=".3"/><path d="M12 52 Q12 36 32 36 Q52 36 52 52" fill="#545AC0" opacity=".2"/></svg>
+          <span>Photo apprenant au travail avec imprimante 3D</span>
+        </div>
+      </div>
+      <div>
+        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Pour qui</p>
+        <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight mb-6">Cette formation est faite pour vous si...</h2>
+        <div class="space-y-3">
+          <div class="flex items-start gap-4 p-4 rounded-2xl border border-ink/8 bg-navy/3" data-anim>
+            <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0 text-lg">🔧</div>
+            <div>
+              <p class="font-semibold text-sm">Vous avez (ou voulez acheter) une imprimante 3D</p>
+              <p class="text-xs text-ink/50 mt-0.5">Débutant complet ou utilisateur frustré, on part de zéro ensemble.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 rounded-2xl border border-ink/8 bg-navy/3" data-anim data-delay="1">
+            <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0 text-lg">🏭</div>
+            <div>
+              <p class="font-semibold text-sm">Vous travaillez dans l'industrie, la maintenance ou le bureau d'études</p>
+              <p class="text-xs text-ink/50 mt-0.5">Prototypage rapide, pièces de remplacement, outillage interne.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 rounded-2xl border border-ink/8 bg-navy/3" data-anim data-delay="2">
+            <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0 text-lg">🎨</div>
+            <div>
+              <p class="font-semibold text-sm">Vous êtes designer, artiste ou créateur</p>
+              <p class="text-xs text-ink/50 mt-0.5">Figurines, bijoux, accessoires — concrétisez vos modèles numériques.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4 p-4 rounded-2xl border border-ink/8 bg-navy/3" data-anim data-delay="3">
+            <div class="w-10 h-10 rounded-xl bg-navy/10 flex items-center justify-center shrink-0 text-lg">💡</div>
+            <div>
+              <p class="font-semibold text-sm">Vous voulez lancer un service d'impression 3D ou rejoindre un FabLab</p>
+              <p class="text-xs text-ink/50 mt-0.5">Vous avez besoin d'une base solide pour être crédible et efficace.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMME ============ -->
+<section id="programme" class="py-20 bg-cream relative">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Programme</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">6 semaines pour passer<br>de zéro à autonome.</h2>
+      <p class="mt-4 text-base text-ink/60 max-w-xl mx-auto">Chaque semaine, 2 séances live avec votre formateur + des exercices pratiques sur votre imprimante.</p>
+    </div>
+    <div id="timeline-container" class="relative max-w-3xl mx-auto">
+      <div class="timeline-step relative flex gap-8 lg:gap-12 is-active" data-step="0">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-segment flex-1 w-0.5"><div class="timeline-fill"></div></div>
+        </div>
+        <div class="pb-10 flex-1 pt-1">
+          <details open>
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <div>
+                <p class="text-xs text-ink/40 uppercase tracking-wider font-semibold mb-1">Semaines 1 et 2</p>
+                <h3 class="font-display text-xl font-semibold">Modélisez vos pièces sur Fusion 360</h3>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="mt-3 text-sm text-ink/70 leading-relaxed space-y-2">
+              <p>Vous partez d'une feuille blanche et finissez avec une pièce paramétrique prête à imprimer. Esquisses, volumes, contraintes dimensionnelles, tolérances d'impression — chaque concept est appliqué sur un projet concret dès le premier cours.</p>
+              <div class="grid grid-cols-2 gap-2 mt-3">
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Esquisse 2D</strong><br>Cotes, contraintes, symétrie</div>
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Volumes 3D</strong><br>Extrusion, révolution, filetage</div>
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Assemblages</strong><br>Pièces multi-composants</div>
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Export impression</strong><br>STL, 3MF, tolérances</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="timeline-step relative flex gap-8 lg:gap-12 is-active" data-step="1">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-segment flex-1 w-0.5"><div class="timeline-fill"></div></div>
+        </div>
+        <div class="pb-10 flex-1 pt-1">
+          <details>
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <div>
+                <p class="text-xs text-ink/40 uppercase tracking-wider font-semibold mb-1">Semaine 3</p>
+                <h3 class="font-display text-xl font-semibold">Maîtrisez votre slicer</h3>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="mt-3 text-sm text-ink/70 leading-relaxed space-y-2">
+              <p>Cura, PrusaSlicer — vous comprenez chaque réglage et son impact réel. Hauteur de couche, remplissage, supports, vitesse d'impression : fini le copier-coller aveugle. Vous choisissez en connaissance de cause.</p>
+              <div class="grid grid-cols-2 gap-2 mt-3">
+                <div class="bg-orange/5 rounded-xl p-3 text-xs"><strong>Hauteur de couche</strong><br>Qualité vs vitesse</div>
+                <div class="bg-orange/5 rounded-xl p-3 text-xs"><strong>Supports & radeaux</strong><br>Quand et comment</div>
+                <div class="bg-orange/5 rounded-xl p-3 text-xs"><strong>Remplissage</strong><br>Densité et motifs</div>
+                <div class="bg-orange/5 rounded-xl p-3 text-xs"><strong>Profils matériaux</strong><br>PLA, PETG, ABS, résine</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="timeline-step relative flex gap-8 lg:gap-12 is-active" data-step="2">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-segment flex-1 w-0.5"><div class="timeline-fill"></div></div>
+        </div>
+        <div class="pb-10 flex-1 pt-1">
+          <details>
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <div>
+                <p class="text-xs text-ink/40 uppercase tracking-wider font-semibold mb-1">Semaine 4</p>
+                <h3 class="font-display text-xl font-semibold">Les matériaux et leurs usages</h3>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="mt-3 text-sm text-ink/70 leading-relaxed space-y-2">
+              <p>PLA pour débuter, PETG pour la résistance, ABS pour le professionnel, résine pour la précision millimétrique, TPU pour la souplesse. Vous saurez choisir le bon matériau pour chaque projet — et commander les bons filaments.</p>
+              <div class="grid grid-cols-2 gap-2 mt-3">
+                <div class="bg-emerald-50 rounded-xl p-3 text-xs"><strong>PLA</strong><br>Facile, précis, biodégradable</div>
+                <div class="bg-blue-50 rounded-xl p-3 text-xs"><strong>PETG</strong><br>Résistant, alimentaire</div>
+                <div class="bg-gray-100 rounded-xl p-3 text-xs"><strong>ABS / ASA</strong><br>Rigide, résistant UV</div>
+                <div class="bg-purple-50 rounded-xl p-3 text-xs"><strong>Résine</strong><br>Détails 0.05mm</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="timeline-step relative flex gap-8 lg:gap-12 is-active" data-step="3">
+        <div class="flex flex-col items-center">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-segment flex-1 w-0.5"><div class="timeline-fill"></div></div>
+        </div>
+        <div class="pb-10 flex-1 pt-1">
+          <details>
+            <summary class="flex items-center justify-between cursor-pointer list-none">
+              <div>
+                <p class="text-xs text-ink/40 uppercase tracking-wider font-semibold mb-1">Semaines 5 et 6</p>
+                <h3 class="font-display text-xl font-semibold">Calibration, dépannage et projet final</h3>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="mt-3 text-sm text-ink/70 leading-relaxed space-y-2">
+              <p>Calibration du plateau, réglage du flux d'extrusion, remplacement de la buse. Vous diagnostiquez et résolvez vous-même les problèmes courants. En semaine 6 : vous concevez et imprimez votre projet final de A à Z.</p>
+              <div class="grid grid-cols-2 gap-2 mt-3">
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Calibration plateau</strong><br>Mesh bed leveling</div>
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Maintenance buse</strong><br>Remplacement, nettoyage</div>
+                <div class="bg-navy/5 rounded-xl p-3 text-xs"><strong>Diagnostic pannes</strong><br>Sous-extrusion, stringing</div>
+                <div class="bg-orange/10 rounded-xl p-3 text-xs"><strong>Projet certifiant</strong><br>Pièce utile à imprimer</div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+    <div id="confetti-container" style="display:none;position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9999;"></div>
+  </div>
+</section>
+
+<!-- ============ MATÉRIAUX ============ -->
+<section id="materiaux" class="py-20" style="background:#22244D">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Matériaux</p>
+      <h2 class="font-display text-4xl font-semibold text-cream leading-tight">Vous travaillerez avec 5 matériaux différents.</h2>
+      <p class="mt-4 text-base text-cream/60 max-w-xl mx-auto">Chaque matériau a ses propriétés, ses réglages et ses cas d'usage. Vous apprendrez à choisir le bon pour chaque projet.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- PLA -->
+      <div class="bg-white rounded-2xl p-5 shadow-card" data-anim>
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#e8f5e9">
+            <span class="font-bold text-sm" style="color:#2e7d32">PLA</span>
+          </div>
+          <span class="text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full border border-emerald-100">Niveau débutant</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-1">Polylactique (PLA)</h3>
+        <p class="text-xs text-ink/60 mb-3">Le matériau de référence pour débuter. Biodégradable, facile à régler, idéal pour 80% des projets.</p>
+        <div class="photo-slot hero-img w-full rounded-xl mb-3" style="aspect-ratio:16/7; border-radius:.75rem; border-width:1.5px;" data-cms="mat_pla">
+          <span style="font-size:10px">Photo créations en PLA</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Boîtiers</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Prototypes</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Déco</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Maquettes</span>
+        </div>
+      </div>
+      <!-- PETG -->
+      <div class="bg-white rounded-2xl p-5 shadow-card" data-anim data-delay="1">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#e3f2fd">
+            <span class="font-bold text-sm" style="color:#1565c0">PETG</span>
+          </div>
+          <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full border" style="background:#e3f2fd;color:#1565c0;border-color:#bbdefb">Intermédiaire</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-1">PETG</h3>
+        <p class="text-xs text-ink/60 mb-3">Résistant à la chaleur (80°C) et aux chocs. Compatible alimentaire. Le choix des pièces mécaniques légères.</p>
+        <div class="photo-slot hero-img w-full rounded-xl mb-3" style="aspect-ratio:16/7; border-radius:.75rem; border-width:1.5px;" data-cms="mat_petg">
+          <span style="font-size:10px">Photo créations en PETG</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Pièces mécaniques</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Usage alimentaire</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Extérieur</span>
+        </div>
+      </div>
+      <!-- ABS -->
+      <div class="bg-white rounded-2xl p-5 shadow-card" data-anim data-delay="2">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-gray-100">
+            <span class="font-bold text-sm text-gray-700">ABS</span>
+          </div>
+          <span class="text-[10px] font-semibold bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full border border-gray-200">Avancé</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-1">ABS / ASA</h3>
+        <p class="text-xs text-ink/60 mb-3">Rigide, résistant aux UV et aux températures élevées. Le matériau des professionnels de l'industrie.</p>
+        <div class="photo-slot hero-img w-full rounded-xl mb-3" style="aspect-ratio:16/7; border-radius:.75rem; border-width:1.5px;" data-cms="mat_abs">
+          <span style="font-size:10px">Photo créations en ABS/ASA</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Industrie auto</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Outillage</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Pièces techniques</span>
+        </div>
+      </div>
+      <!-- Résine -->
+      <div class="bg-white rounded-2xl p-5 shadow-card" data-anim data-delay="1">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#f3e5f5">
+            <span class="font-bold text-sm" style="color:#6a1b9a">RES</span>
+          </div>
+          <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full border" style="background:#f3e5f5;color:#6a1b9a;border-color:#e1bee7">Haute précision</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-1">Résine photopolymère</h3>
+        <p class="text-xs text-ink/60 mb-3">Précision jusqu'à 0,05mm. Pour les figurines, bijoux, dentaire et tout objet nécessitant un rendu lisse et détaillé.</p>
+        <div class="photo-slot hero-img w-full rounded-xl mb-3" style="aspect-ratio:16/7; border-radius:.75rem; border-width:1.5px;" data-cms="mat_resine">
+          <span style="font-size:10px">Photo créations en résine</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Bijoux</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Figurines</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Médical</span>
+        </div>
+      </div>
+      <!-- TPU -->
+      <div class="bg-white rounded-2xl p-5 shadow-card" data-anim data-delay="2">
+        <div class="flex items-center justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#fff8e1">
+            <span class="font-bold text-sm" style="color:#e65100">TPU</span>
+          </div>
+          <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full border" style="background:#fff8e1;color:#e65100;border-color:#ffecb3">Flexible</span>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-1">TPU (flexible)</h3>
+        <p class="text-xs text-ink/60 mb-3">Élastique, résistant aux chocs, parfait pour les pièces qui doivent se déformer sans casser.</p>
+        <div class="photo-slot hero-img w-full rounded-xl mb-3" style="aspect-ratio:16/7; border-radius:.75rem; border-width:1.5px;" data-cms="mat_tpu">
+          <span style="font-size:10px">Photo créations en TPU</span>
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Coques téléphone</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Joints</span>
+          <span class="text-[10px] bg-ink/5 px-2 py-0.5 rounded-full">Semelles</span>
+        </div>
+      </div>
+      <!-- +Bonus -->
+      <div class="rounded-2xl p-5 border-2 border-dashed border-white/20 flex flex-col items-center justify-center text-center" data-anim data-delay="3">
+        <p class="text-4xl mb-2">+</p>
+        <p class="font-semibold text-cream">Fibres de carbone, cuivre, bois...</p>
+        <p class="text-cream/50 text-sm mt-1">Les filaments composites sont abordés en bonus selon votre projet personnel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METIERS ============ -->
+<section id="metiers" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Débouchés</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight">Ce que vous pouvez faire après.</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 shadow-card" data-anim>
+        <div class="photo-slot hero-img w-20 h-20 rounded-xl shrink-0" style="min-height:0; border-radius:.75rem;" data-cms="metier_1">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="8" width="20" height="14" rx="2" fill="#545AC0" opacity=".3"/></svg>
+          <span style="font-size:8px">Photo</span>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-base">Technicien fabrication additive</h3>
+          <p class="text-xs text-ink/60 mt-1">Vous gérez un parc d'imprimantes dans un atelier ou un bureau d'études. Salaire moyen : 32 000 à 42 000 €/an.</p>
+          <span class="inline-block mt-2 text-[10px] font-semibold bg-navy/8 text-navy px-2 py-0.5 rounded-full">Industrie · Aéronautique · Santé</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 shadow-card" data-anim data-delay="1">
+        <div class="photo-slot hero-img w-20 h-20 rounded-xl shrink-0" style="min-height:0; border-radius:.75rem;" data-cms="metier_2">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="8" fill="#EF7738" opacity=".3"/></svg>
+          <span style="font-size:8px">Photo</span>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-base">Prototypiste / Designer produit</h3>
+          <p class="text-xs text-ink/60 mt-1">Vous matérialisez vos concepts avant de les envoyer en production. Un avantage compétitif immédiat dans tous les studios.</p>
+          <span class="inline-block mt-2 text-[10px] font-semibold bg-orange/10 text-orange px-2 py-0.5 rounded-full">Design · Architecture · R&D</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 shadow-card" data-anim data-delay="2">
+        <div class="photo-slot hero-img w-20 h-20 rounded-xl shrink-0" style="min-height:0; border-radius:.75rem;" data-cms="metier_3">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22 L14 6 L22 22 Z" fill="#4CAF50" opacity=".3"/></svg>
+          <span style="font-size:8px">Photo</span>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-base">Artisan imprimeur 3D (freelance)</h3>
+          <p class="text-xs text-ink/60 mt-1">Vous proposez un service d'impression à des particuliers, architectes, bijoutiers... depuis chez vous ou un FabLab.</p>
+          <span class="inline-block mt-2 text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full">Freelance · FabLab · Artisanat</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-4 p-5 rounded-2xl border border-ink/8 shadow-card" data-anim data-delay="3">
+        <div class="photo-slot hero-img w-20 h-20 rounded-xl shrink-0" style="min-height:0; border-radius:.75rem;" data-cms="metier_4">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="6" y="6" width="16" height="16" rx="3" fill="#9C27B0" opacity=".3"/></svg>
+          <span style="font-size:8px">Photo</span>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-base">Maker professionnel / Éducateur</h3>
+          <p class="text-xs text-ink/60 mt-1">Vous animez des ateliers impression 3D dans des écoles, tiers-lieux ou entreprises. L'impression 3D entre dans tous les cursus.</p>
+          <span class="inline-block mt-2 text-[10px] font-semibold px-2 py-0.5 rounded-full" style="background:#f3e5f5;color:#7b1fa2">Éducation · Formation · Tiers-lieux</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ POURQUOI ONE LEARN ============ -->
+<section id="pourquoi" class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Nos différences</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight">Pourquoi One Learn et pas un tuto YouTube ?</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="rounded-3xl bg-navy p-6 text-cream shadow-card" style="background:#22244D" data-anim>
+        <div class="w-10 h-10 rounded-xl bg-orange/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Un formateur, pas un algorithme</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">2 séances live par semaine avec un expert qui voit votre pièce, votre imprimante, votre erreur — et vous explique pourquoi, pas juste quoi.</p>
+      </div>
+      <div class="rounded-3xl bg-navy p-6 text-cream shadow-card" style="background:#22244D" data-anim data-delay="1">
+        <div class="w-10 h-10 rounded-xl bg-orange/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 10V7"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">L'imprimante est fournie</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Pas besoin d'investir avant de savoir si ça vous convient. On vous prête une imprimante pendant toute la formation. Aucun concurrent ne fait ça.</p>
+      </div>
+      <div class="rounded-3xl bg-navy p-6 text-cream shadow-card" style="background:#22244D" data-anim data-delay="2">
+        <div class="w-10 h-10 rounded-xl bg-orange/20 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-2">Certification reconnue</h3>
+        <p class="text-cream/70 text-sm leading-relaxed">Formation Qualiopi, certificat valable sur le marché du travail. Votre employeur, votre banque, votre OPCO — tout le monde reconnaît One Learn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMATEURS ============ -->
+<section id="formateurs" class="py-24 text-cream relative overflow-hidden" style="background:linear-gradient(135deg,#22244D 0%,#2D3070 50%,#22244D 100%)">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Formateurs</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight">Vos formateurs impression 3D.</h2>
+      <p class="mt-4 text-cream/60 text-base max-w-xl mx-auto">Des praticiens avec des années d'expérience en fabrication additive industrielle et personnelle.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div class="rounded-3xl bg-white/8 p-6 border border-white/10" data-anim>
+        <div class="photo-slot hero-img w-full rounded-2xl mb-4" style="aspect-ratio:1/1; max-height:200px; border-color:rgba(255,255,255,.2);" data-cms="formateur_1">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="10" fill="white" opacity=".3"/><path d="M8 42 Q8 30 24 30 Q40 30 40 42" fill="white" opacity=".15"/></svg>
+          <span style="color:rgba(255,255,255,.5)">Photo formateur 1</span>
+        </div>
+        <p class="font-display font-semibold text-xl" data-cms="f1_name">Marc</p>
+        <p class="text-orange text-sm mt-0.5" data-cms="f1_role">Formateur FDM & Fusion 360</p>
+        <p class="text-cream/60 text-xs mt-2 leading-relaxed" data-cms="f1_bio">12 ans en bureau d'études industriel, spécialiste Fusion 360 et impression FDM. Il a formé plus de 300 apprenants sur Fusion 360 et accompagne des PME industrielles dans leur transition vers la fabrication additive.</p>
+      </div>
+      <div class="rounded-3xl bg-white/8 p-6 border border-white/10" data-anim data-delay="1">
+        <div class="photo-slot hero-img w-full rounded-2xl mb-4" style="aspect-ratio:1/1; max-height:200px; border-color:rgba(255,255,255,.2);" data-cms="formateur_2">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="18" r="10" fill="white" opacity=".3"/><path d="M8 42 Q8 30 24 30 Q40 30 40 42" fill="white" opacity=".15"/></svg>
+          <span style="color:rgba(255,255,255,.5)">Photo formateur 2</span>
+        </div>
+        <p class="font-display font-semibold text-xl" data-cms="f2_name">Sophie</p>
+        <p class="text-orange text-sm mt-0.5" data-cms="f2_role">Formatrice résine & design</p>
+        <p class="text-cream/60 text-xs mt-2 leading-relaxed" data-cms="f2_bio">Designer produit et responsable d'un FabLab pendant 5 ans, spécialiste résine photopolymère, bijoux imprimés et prototypage créatif. Elle accompagne des artistes, bijoutiers et designers dans leurs projets.</p>
+      </div>
+    </div>
+    <!-- Galerie photos formateurs -->
+    <div class="mt-8 grid grid-cols-4 gap-3 max-w-3xl mx-auto">
+      <div class="photo-slot hero-img rounded-2xl" style="aspect-ratio:1/1; min-height:0; border-color:rgba(255,255,255,.2);" data-cms="formateur_galerie_1"><span style="font-size:8px;color:rgba(255,255,255,.4)">Photo</span></div>
+      <div class="photo-slot hero-img rounded-2xl" style="aspect-ratio:1/1; min-height:0; border-color:rgba(255,255,255,.2);" data-cms="formateur_galerie_2"><span style="font-size:8px;color:rgba(255,255,255,.4)">Photo</span></div>
+      <div class="photo-slot hero-img rounded-2xl" style="aspect-ratio:1/1; min-height:0; border-color:rgba(255,255,255,.2);" data-cms="formateur_galerie_3"><span style="font-size:8px;color:rgba(255,255,255,.4)">Photo</span></div>
+      <div class="photo-slot hero-img rounded-2xl" style="aspect-ratio:1/1; min-height:0; border-color:rgba(255,255,255,.2);" data-cms="formateur_galerie_4"><span style="font-size:8px;color:rgba(255,255,255,.4)">Photo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEMOIGNAGES ============ -->
+<section id="avis" class="py-20 bg-cream">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Témoignages</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight">Ils l'ont fait avant vous.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-2xl p-6 shadow-card border border-ink/5" data-anim>
+        <div class="flex items-center gap-1 mb-3">
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-ink/80 leading-relaxed italic">"J'avais une Bambu Lab X1 depuis 3 mois sans vraiment m'en servir. En semaine 4, j'avais déjà imprimé un boîtier sur-mesure pour mon projet électronique. Marc explique exactement pourquoi les réglages fonctionnent — pas juste comment."</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="photo-slot hero-img w-10 h-10 rounded-full shrink-0" style="min-height:0; border-radius:50%; border-width:1.5px;" data-cms="avis_1_avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" fill="#545AC0" opacity=".4"/><path d="M2 18Q2 12 10 12Q18 12 18 18" fill="#545AC0" opacity=".2"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-sm" data-cms="avis_1_name">Thomas R.</p>
+            <p class="text-xs text-ink/40" data-cms="avis_1_role">Ingénieur électronique, Lyon</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-card border border-ink/5" data-anim data-delay="1">
+        <div class="flex items-center gap-1 mb-3">
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-ink/80 leading-relaxed italic">"Je voulais fabriquer des bijoux en résine depuis longtemps mais j'avais peur de me lancer. Sophie m'a guidée pas à pas — les réglages de l'imprimante résine, le post-traitement, tout. Je vends mes premières pièces sur Etsy depuis 2 mois."</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="photo-slot hero-img w-10 h-10 rounded-full shrink-0" style="min-height:0; border-radius:50%; border-width:1.5px;" data-cms="avis_2_avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" fill="#545AC0" opacity=".4"/><path d="M2 18Q2 12 10 12Q18 12 18 18" fill="#545AC0" opacity=".2"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-sm" data-cms="avis_2_name">Camille D.</p>
+            <p class="text-xs text-ink/40" data-cms="avis_2_role">Designer bijoux, Bordeaux</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-card border border-ink/5" data-anim data-delay="2">
+        <div class="flex items-center gap-1 mb-3">
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <svg class="w-4 h-4 text-orange fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        </div>
+        <p class="text-sm text-ink/80 leading-relaxed italic">"Technicien maintenance en industrie, j'avais besoin de prototyper rapidement des pièces de remplacement. La formation m'a donné les bases Fusion 360 + impression PETG dont j'avais besoin. Mon chef m'a demandé de former le reste de l'équipe."</p>
+        <div class="flex items-center gap-3 mt-4">
+          <div class="photo-slot hero-img w-10 h-10 rounded-full shrink-0" style="min-height:0; border-radius:50%; border-width:1.5px;" data-cms="avis_3_avatar">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" fill="#545AC0" opacity=".4"/><path d="M2 18Q2 12 10 12Q18 12 18 18" fill="#545AC0" opacity=".2"/></svg>
+          </div>
+          <div>
+            <p class="font-semibold text-sm" data-cms="avis_3_name">Pierre M.</p>
+            <p class="text-xs text-ink/40" data-cms="avis_3_role">Technicien maintenance, Nantes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Trustpilot widget -->
+    <div class="mt-8 max-w-xl mx-auto">
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="140px" data-style-width="100%" data-stars="3,4,5" data-review-languages="fr"></div>
+    </div>
+  </div>
+</section>
+<!-- ============ FINANCEMENT ============ -->
+<section id="financement" class="py-20 bg-cream relative">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Financement</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight">Dans la plupart des cas,<br>vous ne payez rien.</h2>
+      <p class="mt-4 text-base text-ink/60 max-w-xl mx-auto">Votre CPF couvre la totalité de la formation. Si votre solde est insuffisant, d'autres dispositifs complètent.</p>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6 items-start">
+      <div class="lg:col-span-2 bg-white rounded-3xl p-6 lg:p-10 shadow-card border border-ink/5">
+        <div class="grid md:grid-cols-3 gap-4 mb-8">
+          <div class="text-center p-4 rounded-2xl bg-navy/5">
+            <p class="font-display text-3xl font-bold text-navy">1 390€</p>
+            <p class="text-xs text-ink/50 mt-1">Prix de la formation</p>
+          </div>
+          <div class="text-center p-4 rounded-2xl bg-orange/8">
+            <p class="font-display text-3xl font-bold text-orange">−10%</p>
+            <p class="text-xs text-ink/50 mt-1">Offre de lancement</p>
+          </div>
+          <div class="text-center p-4 rounded-2xl bg-emerald-50">
+            <p class="font-display text-3xl font-bold text-emerald-600">0€</p>
+            <p class="text-xs text-ink/50 mt-1">Reste à charge CPF</p>
+          </div>
+        </div>
+        <h3 class="font-display font-semibold text-lg mb-4">Comment utiliser votre CPF en 3 étapes</h3>
+        <div class="space-y-3">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-navy text-cream grid place-items-center shrink-0 text-sm font-bold">1</div>
+            <div><p class="font-semibold text-sm">Vérifiez votre solde CPF</p><p class="text-xs text-ink/50 mt-0.5">Sur mon-compte-formation.gouv.fr — prend 30 secondes.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-navy text-cream grid place-items-center shrink-0 text-sm font-bold">2</div>
+            <div><p class="font-semibold text-sm">Trouvez la formation One Learn et déposez votre demande</p><p class="text-xs text-ink/50 mt-0.5">Notre équipe vous accompagne si besoin — gratuit, sans engagement.</p></div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-full bg-navy text-cream grid place-items-center shrink-0 text-sm font-bold">3</div>
+            <div><p class="font-semibold text-sm">Délai légal 11 jours, puis votre formation commence</p><p class="text-xs text-ink/50 mt-0.5">Vous recevez votre accès plateforme et les détails des séances live.</p></div>
+          </div>
+        </div>
+        <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="mt-6 inline-flex items-center gap-2 bg-orange text-white px-6 py-3.5 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
+          Je vérifie mon éligibilité maintenant
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+      <div class="space-y-4">
+        <div class="bg-white rounded-2xl p-5 shadow-card border border-ink/5">
+          <p class="font-semibold text-sm mb-3">Autres financements acceptés</p>
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-xs text-ink/70"><span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>France Travail (AIF)</div>
+            <div class="flex items-center gap-2 text-xs text-ink/70"><span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>OPCO (salariés)</div>
+            <div class="flex items-center gap-2 text-xs text-ink/70"><span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>Alma — 4x sans frais</div>
+            <div class="flex items-center gap-2 text-xs text-ink/70"><span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>Paiement comptant</div>
+          </div>
+        </div>
+        <div class="bg-navy-900 rounded-2xl p-5 text-cream" style="background:#22244D">
+          <div class="flex items-center gap-2 mb-2">
+            <svg class="w-5 h-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <p class="font-semibold text-sm">Garantie satisfaction</p>
+          </div>
+          <p class="text-cream/60 text-xs leading-relaxed">Si après les 2 premières séances la formation ne vous convient pas, vous êtes remboursé intégralement. Aucune question posée.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 shadow-card border border-ink/5">
+          <p class="font-semibold text-sm mb-2">Logos organismes de financement</p>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="photo-slot hero-img rounded-xl" style="aspect-ratio:2/1; min-height:0;" data-cms="logo_cpf"><span style="font-size:8px">Logo CPF</span></div>
+            <div class="photo-slot hero-img rounded-xl" style="aspect-ratio:2/1; min-height:0;" data-cms="logo_ft"><span style="font-size:8px">Logo France Travail</span></div>
+            <div class="photo-slot hero-img rounded-xl" style="aspect-ratio:2/1; min-height:0;" data-cms="logo_opco"><span style="font-size:8px">Logo OPCO</span></div>
+            <div class="photo-slot hero-img rounded-xl" style="aspect-ratio:2/1; min-height:0;" data-cms="logo_alma"><span style="font-size:8px">Logo Alma</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMULATEUR ============ -->
+<section id="eligibilite" class="py-14" style="background:linear-gradient(135deg,#22244D 0%,#3d4099 50%,#22244D 100%)">
+  <div class="max-w-lg mx-auto px-4">
+    <div class="text-center mb-6">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-2">Test rapide</p>
+      <h2 class="font-display text-3xl font-semibold text-cream">Êtes-vous éligible ?</h2>
+      <p class="text-cream/60 text-sm mt-2">5 questions · 2 minutes · résultat immédiat</p>
+    </div>
+    <div class="relative">
+      <div class="flex items-center justify-between text-xs text-cream/50 mb-1">
+        <span id="sim-step-label">Question 1 sur 5</span>
+        <span id="sim-pct-label">0%</span>
+      </div>
+      <div class="w-full h-1.5 bg-white/10 rounded-full mb-4"><div id="sim-progress-bar" class="h-1.5 rounded-full transition-all duration-500" style="background:#EF7738;width:0%"></div></div>
+      <div id="sim-card" class="bg-white text-ink rounded-2xl p-5 shadow-xl">
+        <div class="sim-q" data-q="1">
+          <p class="font-semibold mb-3">Quelle est votre situation professionnelle ?</p>
+          <div class="space-y-2">
+            <button onclick="simNext(1,'Salarié(e)')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Salarié(e)</button>
+            <button onclick="simNext(1,'Demandeur d\'emploi')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Demandeur d'emploi</button>
+            <button onclick="simNext(1,'Travailleur indépendant')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Travailleur indépendant</button>
+            <button onclick="simNext(1,'Profession libérale')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Profession libérale</button>
+          </div>
+        </div>
+        <div class="sim-q hidden" data-q="2">
+          <p class="font-semibold mb-3">Quel est votre objectif principal ?</p>
+          <div class="space-y-2">
+            <button onclick="simNext(2,'Reconversion / nouveau métier')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Reconversion / nouveau métier</button>
+            <button onclick="simNext(2,'Montée en compétences dans mon poste actuel')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Montée en compétences dans mon poste</button>
+            <button onclick="simNext(2,'Lancer un projet personnel / entrepreneurial')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Lancer un projet personnel / entrepreneurial</button>
+            <button onclick="simNext(2,'Curiosité / loisir enrichissant')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Curiosité / loisir enrichissant</button>
+          </div>
+        </div>
+        <div class="sim-q hidden" data-q="3">
+          <p class="font-semibold mb-3">Avez-vous déjà une imprimante 3D ?</p>
+          <div class="space-y-2">
+            <button onclick="simNext(3,'Oui, FDM (dépôt de filament)')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Oui, FDM (dépôt de filament)</button>
+            <button onclick="simNext(3,'Oui, résine (SLA/MSLA)')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Oui, résine (SLA/MSLA)</button>
+            <button onclick="simNext(3,'Non, pas encore')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Non, pas encore</button>
+            <button onclick="simNext(3,'J\'ai accès à une imprimante au travail / FabLab')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">J'ai accès à une imprimante au travail</button>
+          </div>
+        </div>
+        <div class="sim-q hidden" data-q="4">
+          <p class="font-semibold mb-3">Comment évaluez-vous votre niveau actuel ?</p>
+          <div class="space-y-2">
+            <button onclick="simNext(4,'Débutant complet')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Débutant complet — je n'ai jamais imprimé</button>
+            <button onclick="simNext(4,'Quelques impressions mais frustré(e)')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Quelques impressions mais frustré(e)</button>
+            <button onclick="simNext(4,'Intermédiaire — je veux progresser')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Intermédiaire — je veux progresser</button>
+          </div>
+        </div>
+        <div class="sim-q hidden" data-q="5">
+          <p class="font-semibold mb-3">Dans quel délai souhaitez-vous commencer ?</p>
+          <div class="space-y-2">
+            <button onclick="simNext(5,'Le plus vite possible')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Le plus vite possible</button>
+            <button onclick="simNext(5,'Dans le mois')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Dans le mois</button>
+            <button onclick="simNext(5,'Dans 2 à 3 mois')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Dans 2 à 3 mois</button>
+            <button onclick="simNext(5,'Je me renseigne pour l\'instant')" class="w-full text-left px-4 py-2.5 rounded-xl border border-ink/10 text-sm hover:border-orange hover:bg-orange/5 transition">Je me renseigne pour l'instant</button>
+          </div>
+        </div>
+        <div class="sim-q hidden" data-q="6">
+          <p class="font-semibold mb-1">Votre résultat est prêt !</p>
+          <p class="text-xs text-ink/50 mb-3">Entrez votre email pour recevoir votre plan de financement personnalisé.</p>
+          <input type="text" id="sim-firstname" placeholder="Prénom" class="w-full px-4 py-3 rounded-xl border border-ink/15 text-sm font-medium focus:outline-none focus:border-orange transition mb-2" style="font-family:'Inter',sans-serif;">
+          <input type="email" id="sim-email" placeholder="exemple@email.com" class="w-full px-4 py-3 rounded-xl border border-ink/15 text-sm font-medium focus:outline-none focus:border-orange transition" style="font-family:'Inter',sans-serif;">
+          <p id="sim-email-error" class="hidden text-xs text-red-500 mt-1">Veuillez entrer un email valide.</p>
+          <button onclick="simSubmitEmail()" class="w-full py-3.5 rounded-xl font-semibold text-sm text-white transition mt-3" style="background:#E66A40;font-family:'Inter',sans-serif;">Recevoir mon résultat gratuitement</button>
+        </div>
+        <button id="sim-back" onclick="simBack()" class="hidden mt-4 w-full flex items-center justify-center gap-1.5 py-2 rounded-xl border border-ink/10 text-xs font-semibold text-ink/50 hover:text-ink hover:border-ink/25 transition">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg> Question précédente
+        </button>
+      </div>
+      <div id="sim-result" class="hidden">
+        <div class="bg-white text-ink rounded-2xl p-6 shadow-xl text-center">
+          <div class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div id="sim-result-content"></div>
+          <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="mt-4 inline-flex items-center gap-2 bg-orange text-white px-6 py-3.5 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
+            Je réserve mon appel conseiller
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-20 bg-cream relative">
+  <div class="max-w-3xl mx-auto px-4">
+    <div class="text-center mb-10">
+      <h2 class="font-display text-4xl font-semibold leading-tight">Questions fréquentes</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="bg-white rounded-2xl border border-ink/8 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none font-semibold text-sm">
+          Est-ce que je dois acheter une imprimante pour suivre la formation ?
+          <svg class="chev w-4 h-4 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-4 text-sm text-ink/70 leading-relaxed">Non. One Learn vous prête une imprimante FDM pendant toute la durée de la formation. Vous la recevez avant le premier cours et la retournez à la fin. Si vous avez déjà la vôtre, vous pouvez bien sûr l'utiliser.</div>
+      </details>
+      <details class="bg-white rounded-2xl border border-ink/8 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none font-semibold text-sm">
+          Faut-il des compétences techniques ou en dessin pour commencer ?
+          <svg class="chev w-4 h-4 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-4 text-sm text-ink/70 leading-relaxed">Aucune. Nous partons de zéro — pas de prérequis en CAO, en mécanique ou en informatique. La majorité de nos apprenants n'avaient jamais touché à un logiciel de modélisation 3D avant.</div>
+      </details>
+      <details class="bg-white rounded-2xl border border-ink/8 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none font-semibold text-sm">
+          La formation couvre-t-elle à la fois FDM et résine ?
+          <svg class="chev w-4 h-4 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-4 text-sm text-ink/70 leading-relaxed">Oui. Le socle (semaines 1-4) est commun aux deux technologies. En semaine 4, vous travaillez les matériaux dont la résine photopolymère. Si votre projet est majoritairement résine (bijoux, médical...), votre formateur adapte les exercices pratiques.</div>
+      </details>
+      <details class="bg-white rounded-2xl border border-ink/8 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none font-semibold text-sm">
+          Comment se déroulent les séances live ?
+          <svg class="chev w-4 h-4 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-4 text-sm text-ink/70 leading-relaxed">2 séances de 1h30 par semaine en visioconférence, en petit groupe (max 6 apprenants). Votre formateur voit votre écran, vos pièces, vos erreurs — et corrige en direct. Entre les séances, vous avez accès aux replays et à un forum d'entraide.</div>
+      </details>
+      <details class="bg-white rounded-2xl border border-ink/8 shadow-sm overflow-hidden">
+        <summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none font-semibold text-sm">
+          Que se passe-t-il si mon solde CPF est insuffisant ?
+          <svg class="chev w-4 h-4 text-ink/40 shrink-0 ml-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <div class="px-5 pb-4 text-sm text-ink/70 leading-relaxed">Notre conseiller vous identifie un dispositif complémentaire : OPCO si vous êtes salarié, France Travail si vous êtes en reconversion, ou paiement en 4x sans frais via Alma. La plupart des apprenants finissent à 0€ de reste à charge.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section id="rdv" class="py-24 text-cream relative overflow-hidden" style="background:#22244D">
+  <div class="absolute -top-32 -right-20 w-[500px] h-[500px] rounded-full opacity-10 blur-3xl" style="background:#545AC0"></div>
+  <div class="relative max-w-5xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Prêt à vous lancer ?</p>
+      <h2 class="font-display text-4xl font-semibold leading-tight mb-4">Un appel de 20 minutes, gratuit, sans engagement.</h2>
+      <p class="text-cream/70 text-base leading-relaxed mb-6">Notre conseiller pédagogique vérifie avec vous votre éligibilité CPF, répond à vos questions et vous propose le planning qui correspond à votre agenda.</p>
+      <div class="flex items-center gap-4">
+        <div class="flex -space-x-3">
+          <div class="photo-slot hero-img w-10 h-10 rounded-full border-2 border-navy-900 shrink-0" style="min-height:0; border-radius:50%; border-color:#22244D;" data-cms="cta_apprenant_1">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" fill="white" opacity=".4"/><path d="M2 14Q2 10 8 10Q14 10 14 14" fill="white" opacity=".2"/></svg>
+          </div>
+          <div class="photo-slot hero-img w-10 h-10 rounded-full border-2 border-navy-900 shrink-0" style="min-height:0; border-radius:50%; border-color:#22244D;" data-cms="cta_apprenant_2">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" fill="white" opacity=".4"/><path d="M2 14Q2 10 8 10Q14 10 14 14" fill="white" opacity=".2"/></svg>
+          </div>
+          <div class="photo-slot hero-img w-10 h-10 rounded-full border-2 border-navy-900 shrink-0" style="min-height:0; border-radius:50%; border-color:#22244D;" data-cms="cta_apprenant_3">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" fill="white" opacity=".4"/><path d="M2 14Q2 10 8 10Q14 10 14 14" fill="white" opacity=".2"/></svg>
+          </div>
+        </div>
+        <p class="text-sm text-cream/70"><strong class="text-cream">740 apprenants</strong> ont déjà franchi le pas.</p>
+      </div>
+      <div class="mt-6 flex items-center gap-3">
+        <div class="w-14 h-14 rounded-full overflow-hidden relative shrink-0">
+          <div class="photo-slot hero-img w-full h-full rounded-full" style="min-height:0; border-radius:50%; border-width:2px; border-color:rgba(255,255,255,.2);" data-cms="cta_advisor_photo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="5" fill="white" opacity=".3"/><path d="M3 22Q3 16 12 16Q21 16 21 22" fill="white" opacity=".15"/></svg>
+          </div>
+          <div style="position:absolute;bottom:1px;right:1px;width:14px;height:14px;background:#22C55E;border-radius:50%;border:2px solid #22244D;"></div>
+        </div>
+        <div>
+          <p class="font-semibold text-sm" data-cms="cta_advisor_name">Damien</p>
+          <p class="text-cream/60 text-xs" data-cms="cta_advisor_role">Conseiller pédagogique</p>
+          <div style="margin-top:4px;background:rgba(255,255,255,.08);border-radius:20px;padding:3px 10px;display:inline-flex;align-items:center;gap:5px;">
+            <span style="width:5px;height:5px;border-radius:50%;background:#22C55E;flex-shrink:0;"></span>
+            <span style="font-size:10px;color:rgba(255,255,255,.6);">Disponible maintenant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 bg-white rounded-3xl p-2 sm:p-4 shadow-2xl">
+      <div class="iclosed-widget" data-url="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" title="Discuter avec un conseiller One Learn Impression 3D" style="width:100%;height:490px;"></div>
+    </div>
+    <p class="col-span-full text-center text-sm text-cream/40">Vous préférez par téléphone ? <a href="tel:+33189703426" class="text-orange hover:underline font-semibold">01 89 70 34 26</a></p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-navy-900 text-cream/70 py-14" style="background:#22244D">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <svg class="h-8 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.01 227.95"><g>
+        <path fill="#ffffff" d="M367.99,31.19c-46.04,0-78.21,34.1-78.21,82.9s32.07,82.66,77.99,82.66,78.66-34.1,78.66-82.9-32.25-82.66-78.45-82.66ZM368.23,166.63c-28.16,0-44.98-19.73-44.98-52.77s17.25-52.53,44.98-52.53,44.74,20.13,44.74,52.53-17.16,52.77-44.74,52.77Z"/>
+        <path fill="#ffffff" d="M531.32,83.89c-13.75,0-25.78,5.3-32.18,14.18l-3.08,4.28-2.86-14.9h-28.09v106.64h29.7v-58.65c0-15.16,9.62-24.96,24.51-24.96,13.07,0,21.84,10.21,21.84,25.4v58.21h29.7v-66.44c0-27.81-14.41-43.76-39.53-43.76Z"/>
+        <path fill="#ffffff" d="M700.6,140.77c0-35.07-20.86-56.86-54.44-56.86s-54.65,23.28-54.65,56.65,22.73,56.41,55.32,56.41c28.04,0,48.8-14,53.74-35.92h-27.04c-3.36,7.97-12.94,12.67-26.04,12.67-16.4,0-25.43-7.7-27.61-23.52l-.33-2.58,81.05-.42v-6.43ZM671.11,131.04h-51.29l.55-2.73c2.85-14.25,11.37-21.16,26.01-21.16s24.73,8.49,24.73,21.61v2.27Z"/>
+        <rect fill="#EF7738" x="722.82" y="34.07" width="31.46" height="160.02"/>
+        <path fill="#EF7738" d="M884.26,140.77c0-35.07-20.86-56.86-54.44-56.86s-54.65,23.28-54.65,56.65,22.77,56.41,55.32,56.41c28.04,0,48.8-14,53.74-35.92h-27.04c-3.36,7.97-12.94,12.67-26.04,12.67-16.4,0-25.43-7.7-27.61-23.52l-.33-2.58,81.06-.42v-6.43ZM854.77,131.04h-51.29l.55-2.73c2.85-14.25,11.37-21.16,26.01-21.16s24.74,8.49,24.74,21.61v2.27Z"/>
+        <path fill="#EF7738" d="M953.8,83.9c-29.52,0-48.95,14.46-50.17,37.01h24.01c1.12-9.91,9.88-15.55,24.37-15.55,13.46,0,21.19,6.91,21.19,18.95v3.88l-33.25,2.61c-25.16,1.91-39.04,13.58-39.04,32.89,0,20.52,13.79,33.28,35.98,33.28,15.76,0,28.8-5.88,33.37-15.16l2.7-4.55,3.03,16.82h26.01v-62.65c0-30.65-17.13-47.53-48.2-47.53ZM973.41,154.77c0,13.22-9.4,21.4-24.52,21.4-11.67,0-17.61-4.73-17.61-14.07,0-10,8.91-12.85,22.31-14.03l19.82-1.79v8.49Z"/>
+        <path fill="#EF7738" d="M1053.6,102.75l-3.42,7.98-2.49-23.05h-27.93v106.42h29.7v-45.98c0-21.87,11.31-32.96,33.63-32.96h8.62v-28.15c-3.6-.74-7.24-1.11-10.84-1.11-12.93,0-22.61,5.99-27.27,16.86Z"/>
+        <path fill="#EF7738" d="M1177.48,83.89c-13.75,0-25.78,5.3-32.18,14.18l-3.08,4.28-2.86-14.9h-28.09v106.64h29.7v-58.65c0-15.16,9.62-24.96,24.51-24.96,13.07,0,21.84,10.21,21.84,25.4v58.21h29.7v-66.44c0-27.81-14.41-43.76-39.53-43.76Z"/>
+        <path fill="#ffffff" d="M173.96,0H53.99C24.19,0,0,24.16,0,53.99v119.98c0,29.83,24.19,53.99,53.99,53.99h119.98c29.83,0,54.02-24.16,54.02-53.99V53.99c0-29.83-24.19-53.99-54.02-53.99ZM172.2,150.38c0,22.04-17.85,39.86-39.86,39.86h-36.71c-22.01,0-39.86-17.82-39.86-39.86v-64.14h116.43v64.14Z"/>
+        <path fill="#EF7738" d="M193.04,81.44l-72.92-42.1c-3.79-2.19-8.46-2.19-12.25,0l-72.92,42.1c-2.97,1.72-2.97,6,0,7.7l28.62,16.54.03.02,43.04,24.84c4.55,2.63,10.16,2.63,14.71,0l43.05-24.84.03-.02,28.62-16.54c2.97-1.7,2.97-5.98,0-7.7"/>
+      </g></svg>
+      <p class="mt-4 text-sm max-w-md leading-relaxed">Organisme de formation certifié Qualiopi, spécialiste de la fabrication additive et des compétences numériques professionnelles depuis 2022.</p>
+      <div class="mt-5 flex gap-3">
+        <span class="inline-block bg-white/10 px-3 py-1.5 rounded-full text-xs">Qualiopi</span>
+        <span class="inline-block bg-white/10 px-3 py-1.5 rounded-full text-xs">France Compétences</span>
+        <span class="inline-block bg-white/10 px-3 py-1.5 rounded-full text-xs">CPF</span>
+      </div>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-cream font-semibold mb-4">À propos</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-orange">Politique de confidentialité</a></li>
+        <li><a href="#" class="hover:text-orange">Mentions légales</a></li>
+        <li><a href="#" class="hover:text-orange">Conditions générales</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-xs uppercase tracking-wider text-cream font-semibold mb-4">Contact</p>
+      <p class="text-sm">ONE LEARN SAS</p>
+      <p class="text-sm">9 rue des Colonnes, 75002 Paris</p>
+      <a href="tel:+33189703426" class="block mt-2 text-sm hover:text-orange">01 89 70 34 26</a>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 mt-10 pt-6 border-t border-white/10 text-xs text-center">© 2026 one-learn.fr — Tous droits réservés</div>
+</footer>
+
+<!-- ============ MOBILE STICKY CTA ============ -->
+<div class="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+  <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="flex items-center justify-center gap-2 bg-orange text-white px-6 py-4 rounded-full font-semibold shadow-cta">
+    Réserver mon appel gratuit
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+  </a>
+</div>
+<script>
+(function() {
+  var heroCta = document.getElementById('hero-cta');
+  var tbCta = document.getElementById('tb-cta');
+  if (!heroCta || !tbCta) return;
+  var observer = new IntersectionObserver(function(entries) {
+    tbCta.style.display = entries[0].isIntersecting ? 'none' : 'inline-flex';
+  }, { threshold: 0 });
+  observer.observe(heroCta);
+})();
+</script>
+
+<script>
+// Timeline scroll-driven
+(function(){
+  var steps = document.querySelectorAll('.timeline-step');
+  function fireConfetti(){
+    var cc = document.getElementById('confetti-container');
+    if(!cc) return;
+    cc.style.display = 'block';
+    var colors = ['#545AC0','#EF7738','#ffffff','#E66A40','#EDEDFB'];
+    for(var i=0;i<100;i++){
+      (function(){
+        var el=document.createElement('div');
+        var sz=Math.random()*8+5;
+        el.style.cssText='position:absolute;width:'+sz+'px;height:'+sz+'px;border-radius:'+(Math.random()>0.5?'50%':'2px')+';background:'+colors[Math.floor(Math.random()*colors.length)]+';left:'+(Math.random()*100)+'%;top:-20px;opacity:'+(Math.random()*0.8+0.2)+';';
+        cc.appendChild(el);
+        var dur=Math.random()*2+1.5;
+        var delay=Math.random()*1.5;
+        el.animate([{transform:'translateY(0) rotate(0deg)',opacity:1},{transform:'translateY('+(window.innerHeight+40)+'px) rotate('+(Math.random()*720-360)+'deg)',opacity:0}],{duration:dur*1000,delay:delay*1000,easing:'cubic-bezier(.2,.8,.4,1)',fill:'forwards'});
+        setTimeout(function(){el.remove();},( dur+delay+0.5)*1000);
+      })();
+    }
+    setTimeout(function(){cc.style.display='none';},5000);
+  }
+  window._fireConfetti = fireConfetti;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var stepIdx = parseInt(entry.target.getAttribute('data-step'));
+        entry.target.classList.add('is-active');
+        if(stepIdx > 0){
+          var prev = document.querySelector('.timeline-step[data-step="'+(stepIdx-1)+'"]');
+          if(prev) prev.classList.add('is-active');
+        }
+        if(stepIdx === 3){ setTimeout(fireConfetti,800); }
+        var det = entry.target.querySelector('details');
+        if(det){ det.open = true; }
+        document.querySelectorAll('.timeline-step').forEach(function(s,i){
+          if(i !== stepIdx){ var d=s.querySelector('details'); if(d) d.open=false; }
+        });
+      }
+    });
+  },{threshold:0.3,rootMargin:'0px 0px -10% 0px'});
+  steps.forEach(function(s){ observer.observe(s); });
+})();
+</script>
+
+<script>
+// Simulateur éligibilité
+(function(){
+  var totalQ = 5;
+  var currentQ = 1;
+  var answers = {};
+
+  var results = {
+    "Salarié(e)":{ tag:"CPF + OPCO", text:"Bonne nouvelle : en tant que salarié(e), vous cumulez votre CPF avec la prise en charge possible de votre OPCO. Dans la majorité des cas, la formation est intégralement financée.", options:["✅ CPF (Compte Personnel de Formation)","✅ OPCO de votre branche professionnelle","✅ Paiement en 4x sans frais via Alma"]},
+    "Demandeur d'emploi":{ tag:"France Travail (AIF)", text:"En tant que demandeur d'emploi, vous pouvez bénéficier de l'Aide Individuelle à la Formation (AIF) via France Travail, en complément ou remplacement du CPF.", options:["✅ Financement France Travail (AIF)","✅ CPF si crédité","✅ Aide régionale possible"]},
+    "Travailleur indépendant":{ tag:"CPF + FIF-PL", text:"En tant qu'indépendant, votre CPF est utilisable. Selon votre activité, le FIF-PL ou le FAF peut compléter le financement.", options:["✅ CPF (Compte Personnel de Formation)","✅ FIF-PL ou AGEFICE selon statut","✅ Paiement en 4x sans frais via Alma"]},
+    "Profession libérale":{ tag:"FIF-PL disponible", text:"Les professions libérales peuvent bénéficier du FIF-PL en complément du CPF pour couvrir tout ou partie de la formation.", options:["✅ CPF utilisable","✅ FIF-PL (Fonds interprofessionnel)","✅ Paiement fractionné disponible"]},
+    "default":{ tag:"Options disponibles", text:"Selon votre situation, plusieurs dispositifs peuvent s'appliquer. Notre équipe vous identifie la solution optimale en 20 minutes.", options:["✅ CPF si disponible","✅ Paiement en 4x sans frais via Alma","✅ Devis personnalisé gratuit"]}
+  };
+
+  function updateProgress(q){
+    var pct=q===6?95:Math.round(((q-1)/totalQ)*100);
+    document.getElementById('sim-progress-bar').style.width=pct+'%';
+    document.getElementById('sim-step-label').textContent=q===6?'Votre email':'Question '+q+' sur '+totalQ;
+    document.getElementById('sim-pct-label').textContent=pct+'%';
+  }
+
+  function showQ(n){
+    document.querySelectorAll('.sim-q').forEach(function(el){el.classList.add('hidden');});
+    var target=document.querySelector('.sim-q[data-q="'+n+'"]');
+    if(target) target.classList.remove('hidden');
+    document.getElementById('sim-back').classList.toggle('hidden',n<=1);
+    updateProgress(n);
+    currentQ=n;
+  }
+
+  window.simNext = function(q, val){
+    answers[q]=val;
+    showQ(q+1);
+  };
+
+  window.simBack = function(){
+    if(currentQ>1) showQ(currentQ-1);
+  };
+
+  window.simSubmitEmail = function(){
+    var firstname=document.getElementById('sim-firstname').value.trim();
+    var email=document.getElementById('sim-email').value.trim();
+    var errEl=document.getElementById('sim-email-error');
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      errEl.classList.remove('hidden'); return;
+    }
+    errEl.classList.add('hidden');
+    document.getElementById('sim-card').style.display='none';
+    var res=results[answers[1]]||results['default'];
+    var optHTML=res.options.map(function(o){return '<li class="text-xs text-ink/70 flex items-start gap-1.5"><span>'+o+'</span></li>';}).join('');
+    document.getElementById('sim-result-content').innerHTML='<p class="font-display text-lg font-semibold mb-1">'+res.tag+'</p><p class="text-sm text-ink/70 mb-3">'+res.text+'</p><ul class="space-y-1 mb-3 text-left">'+optHTML+'</ul>';
+    document.getElementById('sim-result').classList.remove('hidden');
+    // Envoi Make webhook
+    fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({firstname:firstname,email:email,q1:answers[1]||'',q2:answers[2]||'',q3:answers[3]||'',q4:answers[4]||'',q5:answers[5]||'',source:'impression-3d'})
+    }).catch(function(){});
+  };
+})();
+</script>
+
+<script id="_scroll_anim_js">
+(function(){
+  var selectors=[
+    '#stats-bar > div > div',
+    '#pour-qui .rounded-2xl',
+    '#programme .timeline-step',
+    '#metiers .rounded-2xl',
+    '#pourquoi .rounded-3xl',
+    '#formateurs .rounded-3xl',
+    '.shadow-card',
+    '#faq details',
+    'section > div > div.text-center',
+    '.grid .rounded-2xl',
+    '[data-anim]'
+  ];
+  var seen=new Set();
+  selectors.forEach(function(sel){
+    try{
+      document.querySelectorAll(sel).forEach(function(el){
+        if(seen.has(el))return;
+        if(el.closest('#hero,nav,#_ed_bar,footer,.marquee'))return;
+        seen.add(el);
+        if(!el.hasAttribute('data-anim')) el.setAttribute('data-anim','');
+      });
+    }catch(e){}
+  });
+  document.querySelectorAll('.grid,[data-anim]').forEach(function(grid){
+    var children=Array.from(grid.children).filter(function(c){return c.hasAttribute('data-anim');});
+    children.forEach(function(c,i){if(i>0&&i<=6)c.setAttribute('data-delay',String(i));});
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('anim-in');io.unobserve(e.target);}
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('[data-anim]').forEach(function(el){io.observe(el);});
+})();
+</script>
+
+<script id="_ed_script">
+(function(){
+  if(!location.search.includes('edit'))return;
+  var REPO='juliette-stack-onelearn/onelearn-solidworks';
+  var FILE='impression-3d/index.html';
+  var s=document.createElement('style');
+  s.id='_ed_style';
+  s.textContent=[
+    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
+    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
+    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
+    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
+    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
+    '._ed-btn:hover{background:#CD5025;}',
+    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
+    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
+    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
+    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
+    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
+    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
+    'animation:_ed-fadein .2s ease;}',
+    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
+    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
+    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;border-radius:3px;}',
+    '.photo-slot:hover{border-color:#EF7738!important;}'
+  ].join('');
+  document.head.appendChild(s);
+
+  function toast(msg){
+    var t=document.createElement('div');t.className='_ed-toast';t.textContent=msg;
+    document.body.appendChild(t);
+    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';setTimeout(function(){t.remove();},300);},3000);
+  }
+
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
+  document.querySelectorAll(SEL).forEach(function(el){
+    if(el.closest('script,style,#_ed_bar,#_ed_script,.photo-slot'))return;
+    if(el.querySelector(SEL))return;
+    el.contentEditable='true';el.spellcheck=false;
+  });
+
+  /* ── Photo slots cliquables ── */
+  document.querySelectorAll('.photo-slot.hero-img, .photo-slot[data-cms]').forEach(function(slot){
+    slot.style.cursor='pointer';
+    slot.title='Cliquer pour insérer une photo';
+    slot.addEventListener('click',function(e){
+      if(e.target.closest('[contenteditable]'))return;
+      var inp=document.createElement('input');
+      inp.type='file';inp.accept='image/*';
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        var r=new FileReader();
+        r.onload=function(ev){
+          // Remplacer le contenu du slot par une vraie image
+          slot.innerHTML='';
+          slot.style.background='none';
+          slot.style.border='none';
+          slot.style.cursor='default';
+          slot.classList.remove('photo-slot');
+          var img=document.createElement('img');
+          img.src=ev.target.result;
+          img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;';
+          slot.appendChild(img);
+          toast('📷 Photo insérée');
+        };
+        r.readAsDataURL(file);
+      };
+      inp.click();
+    });
+  });
+
+  function save(){
+    var token=localStorage.getItem('_ol_token');
+    if(!token){token=prompt('Token GitHub (ghp_...) :');if(!token)return;localStorage.setItem('_ol_token',token);}
+    saveBtn.disabled=true;saveBtn.textContent='Enregistrement…';
+    var clone=document.documentElement.cloneNode(true);
+    ['_ed_bar','_ed_style','_ed_script'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
+    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
+    var encoded=btoa(unescape(encodeURIComponent(raw)));
+    fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+        method:'PUT',
+        headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+        body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+      });
+    })
+    .then(function(r){
+      if(r.ok){toast('✅ Enregistré !');}else{toast('❌ Erreur — vérifiez votre token');localStorage.removeItem('_ol_token');}
+      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+    })
+    .catch(function(){toast('❌ Erreur réseau');saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';});
+  }
+
+  var bar=document.createElement('div');bar.id='_ed_bar';bar.className='_ed-bar';
+  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
+  var saveBtn=document.createElement('button');saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';saveBtn.addEventListener('click',save);
+  var resetBtn=document.createElement('button');resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';resetBtn.addEventListener('click',function(){localStorage.removeItem('_ol_token');toast('Token effacé');});
+  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
+  document.body.appendChild(bar);
+  toast('✏️ Mode édition — cliquez sur un texte ou une photo pour modifier');
+})();
+</script>
+</body>
+</html>
