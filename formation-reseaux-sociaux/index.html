@@ -2373,6 +2373,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     reader.readAsDataURL(blob);
   }
 
+
+      function _compressImg(file, cb){
+        var MAX=900, Q=0.78;
+        var r=new FileReader();
+        r.onload=function(e){
+          var img=new Image();
+          img.onload=function(){
+            var w=img.width,h=img.height;
+            if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+            if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
+            var c=document.createElement('canvas');c.width=w;c.height=h;
+            c.getContext('2d').drawImage(img,0,0,w,h);
+            cb(c.toDataURL('image/jpeg',Q));
+          };
+          img.src=e.target.result;
+        };
+        r.readAsDataURL(file);
+      }
+
   /* ── Toolbar ── */
   var bar=document.createElement('div');
   bar.id='_ed_bar';bar.className='_ed-bar';
