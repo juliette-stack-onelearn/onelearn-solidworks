@@ -2274,7 +2274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function save(){
     var token=localStorage.getItem('_ol_token');
     if(!token){token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
-    saveBtn.disabled=true;saveBtn.textContent='Enregistrement…';
+    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
 
     var clone=document.documentElement.cloneNode(true);
     ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
@@ -2285,53 +2285,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
+    console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
+    toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
+
     var reader=new FileReader();
     reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
     reader.onload=function(){
       var encoded=reader.result.split(',')[1];
+      console.log('[save] base64 length:',encoded.length);
       var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
       var base='https://api.github.com/repos/'+REPO;
-      /* Étape 1 — créer le blob */
+
+      function fail(step,r){
+        console.error('[save] fail at step:',step,r);
+        var msg=r&&r.message?r.message:(typeof r==='string'?r:'erreur inconnue');
+        toast('\u274C \u00C9tape '+step+' : '+msg);
+        if(step==='blob'||step==='ref')localStorage.removeItem('_ol_token');
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+      }
+
+      /* 1. Créer le blob */
+      console.log('[save] step 1: create blob');
       fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
-      .then(function(r){return r.json();})
-      .then(function(blob){
-        /* Étape 2 — récupérer le SHA du commit HEAD */
+      .then(function(r){
+        console.log('[save] blob status:',r.status);
+        return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});
+      })
+      .then(function(res){
+        if(!res.ok)return fail('blob ('+res.status+')',res.data);
+        var blobSha=res.data.sha;
+        console.log('[save] blob sha:',blobSha);
+
+        /* 2. Récupérer HEAD */
         return fetch(base+'/git/refs/heads/main',{headers:h})
-        .then(function(r){return r.json();})
-        .then(function(ref){
-          var commitSha=ref.object.sha;
-          /* Étape 3 — récupérer le tree SHA du commit */
+        .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+        .then(function(res){
+          if(!res.ok)return fail('ref',res.data);
+          var commitSha=res.data.object.sha;
+          console.log('[save] head commit:',commitSha);
+
+          /* 3. Tree du commit */
           return fetch(base+'/git/commits/'+commitSha,{headers:h})
           .then(function(r){return r.json();})
           .then(function(commit){
-            /* Étape 4 — créer un nouveau tree */
+            console.log('[save] tree sha:',commit.tree.sha);
+
+            /* 4. Nouveau tree */
             return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
               base_tree:commit.tree.sha,
-              tree:[{path:FILE,mode:'100644',type:'blob',sha:blob.sha}]
+              tree:[{path:FILE,mode:'100644',type:'blob',sha:blobSha}]
             })})
-            .then(function(r){return r.json();})
-            .then(function(tree){
-              /* Étape 5 — créer le commit */
+            .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+            .then(function(res){
+              if(!res.ok)return fail('tree',res.data);
+              console.log('[save] new tree:',res.data.sha);
+
+              /* 5. Commit */
               return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
-                message:'update: inline edit',tree:tree.sha,parents:[commitSha]
+                message:'update: inline edit',tree:res.data.sha,parents:[commitSha]
               })})
-              .then(function(r){return r.json();})
-              .then(function(newCommit){
-                /* Étape 6 — avancer la branche */
+              .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+              .then(function(res){
+                if(!res.ok)return fail('commit',res.data);
+                console.log('[save] new commit:',res.data.sha);
+
+                /* 6. Avancer la branche */
                 return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
-                  body:JSON.stringify({sha:newCommit.sha})});
+                  body:JSON.stringify({sha:res.data.sha,force:false})})
+                .then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});})
+                .then(function(res){
+                  if(!res.ok)return fail('push ('+res.status+')',res.data);
+                  console.log('[save] \u2705 done!');
+                  toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');
+                  saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+                });
               });
             });
           });
         });
       })
-      .then(function(r){
-        if(r&&r.ok){toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');}
-        else if(r){r.json().then(function(e){toast('\u274C Erreur '+r.status+' : '+(e.message||JSON.stringify(e)));});localStorage.removeItem('_ol_token');}
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      })
       .catch(function(e){
-        toast('\u274C Erreur : '+e.message);
+        console.error('[save] catch:',e);
+        toast('\u274C R\u00E9seau : '+e.message);
         saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
       });
     };
