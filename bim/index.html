@@ -67,7 +67,10 @@ tailwind.config = {
     50%{transform:translateY(-10px) rotate(1.5deg);box-shadow:0 20px 44px rgba(34,36,77,.30);}
   }
   .hero-badge{animation:hero-badge-float 3.5s ease-in-out infinite;will-change:transform;}
-</style>
+
+      .photo-slot{background:linear-gradient(135deg,#EDEDFB 0%,#d8d9f0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:2px dashed #545AC0;border-radius:1rem;transition:.2s;min-height:80px;}
+      .photo-slot:hover{border-color:#EF7738;background:linear-gradient(135deg,#FEF4F1 0%,#fde0cf 100%);}
+      </style>
   <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
   <script async="" src="https://tally.so/widgets/embed.js"></script>
   <!-- Google Analytics 4 — One Learn Landing Pages -->
@@ -2227,7 +2230,7 @@ a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o|
   }
 
   /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms]:not(.photo-slot),td,th';
   document.querySelectorAll(SEL).forEach(function(el){
     if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
     el.contentEditable='true';
