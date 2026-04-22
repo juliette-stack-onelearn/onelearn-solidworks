@@ -2193,7 +2193,7 @@ tailwind.config = {
   }
 
   /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],span.rounded-full,div[data-cms],td,th';
   document.querySelectorAll(SEL).forEach(function(el){
     if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
     el.contentEditable='true';
