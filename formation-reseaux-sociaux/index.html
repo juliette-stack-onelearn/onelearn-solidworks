@@ -2273,67 +2273,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ── Sauvegarde GitHub ── */
   function save(){
     var token=localStorage.getItem('_ol_token');
-    if(!token){
-      token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');
-      if(!token)return;
-      localStorage.setItem('_ol_token',token);
-    }
+    if(!token){token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
     saveBtn.disabled=true;saveBtn.textContent='Enregistrement…';
 
-    /* Clone propre sans UI d'édition */
     var clone=document.documentElement.cloneNode(true);
-    /* Supprimer seulement la barre UI — garder _ed_script pour les futures éditions */
-    ['_ed_bar','_ed_style'].forEach(function(id){
-      var el=clone.querySelector('#'+id);if(el)el.remove();
-    });
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){
-      el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');
-    });
-    clone.querySelectorAll('img').forEach(function(img){
-      img.style.cursor='';img.removeAttribute('title');
-    });
-    /* Remettre le marquee en marche dans le fichier sauvegardé */
-    clone.querySelectorAll('.marquee').forEach(function(m){
-      m.style.animationPlayState='';
-    });
-    /* Nettoyer les cursors ajoutés aux containers */
-    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){
-      el.style.cursor='';
-    });
+    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
+    clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
+    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
+    clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    /* Encodage fiable via FileReader (supporte les gros fichiers) */
     var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
     var reader=new FileReader();
+    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
     reader.onload=function(){
       var encoded=reader.result.split(',')[1];
-      /* Récupérer le SHA courant avec cache-busting */
-      fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE+'?t='+Date.now(),{
-        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}
-      })
+      var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
+      var base='https://api.github.com/repos/'+REPO;
+      /* Étape 1 — créer le blob */
+      fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
       .then(function(r){return r.json();})
-      .then(function(d){
-        if(!d.sha){toast('❌ Impossible de récupérer le fichier (SHA manquant)');saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';return;}
-        return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
-          method:'PUT',
-          headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
-          body:JSON.stringify({message:'update: inline edit',content:encoded,sha:d.sha,branch:'main'})
+      .then(function(blob){
+        /* Étape 2 — récupérer le SHA du commit HEAD */
+        return fetch(base+'/git/refs/heads/main',{headers:h})
+        .then(function(r){return r.json();})
+        .then(function(ref){
+          var commitSha=ref.object.sha;
+          /* Étape 3 — récupérer le tree SHA du commit */
+          return fetch(base+'/git/commits/'+commitSha,{headers:h})
+          .then(function(r){return r.json();})
+          .then(function(commit){
+            /* Étape 4 — créer un nouveau tree */
+            return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
+              base_tree:commit.tree.sha,
+              tree:[{path:FILE,mode:'100644',type:'blob',sha:blob.sha}]
+            })})
+            .then(function(r){return r.json();})
+            .then(function(tree){
+              /* Étape 5 — créer le commit */
+              return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
+                message:'update: inline edit',tree:tree.sha,parents:[commitSha]
+              })})
+              .then(function(r){return r.json();})
+              .then(function(newCommit){
+                /* Étape 6 — avancer la branche */
+                return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
+                  body:JSON.stringify({sha:newCommit.sha})});
+              });
+            });
+          });
         });
       })
       .then(function(r){
-        if(!r)return;
-        if(r.ok){toast('✅ Enregistré ! Visible dans ~30 sec.');}
-        else{r.json().then(function(e){toast('❌ Erreur '+r.status+' : '+(e.message||'token invalide'));});localStorage.removeItem('_ol_token');}
-        saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+        if(r&&r.ok){toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');}
+        else if(r){r.json().then(function(e){toast('\u274C Erreur '+r.status+' : '+(e.message||JSON.stringify(e)));});localStorage.removeItem('_ol_token');}
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
       })
       .catch(function(e){
-        toast('❌ Erreur réseau : '+e.message);
-        saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
+        toast('\u274C Erreur : '+e.message);
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
       });
-    };
-    reader.onerror=function(){
-      toast('❌ Erreur encodage fichier');
-      saveBtn.disabled=false;saveBtn.textContent='💾 Sauvegarder';
     };
     reader.readAsDataURL(blob);
   }
