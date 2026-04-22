@@ -2298,7 +2298,7 @@ tailwind.config = {
       var encoded=reader.result.split(',')[1];
       /* Récupérer le SHA courant avec cache-busting */
       fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE+'?t='+Date.now(),{
-        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}
+        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'}
       })
       .then(function(r){return r.json();})
       .then(function(d){
