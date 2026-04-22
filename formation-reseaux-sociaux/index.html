@@ -2184,7 +2184,7 @@ tailwind.config = {
   }
 
   /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],span.rounded-full,div[data-cms],td,th';
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],span.rounded-full,div[data-cms]:not(.photo-slot),td,th';
   document.querySelectorAll(SEL).forEach(function(el){
     if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
     el.contentEditable='true';
@@ -2245,7 +2245,6 @@ tailwind.config = {
     slot.title='Cliquer pour insérer une photo';
     slot.addEventListener('click',function(e){
       e.stopPropagation();
-      if(e.target.closest('[contenteditable]'))return;
       var inp=document.createElement('input');
       inp.type='file';inp.accept='image/*';
       inp.style.display='none';
