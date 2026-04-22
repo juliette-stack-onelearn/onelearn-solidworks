@@ -439,206 +439,236 @@ tailwind.config = {
   <div class="relative max-w-7xl mx-auto px-4">
 
     <div class="max-w-3xl mb-14">
-      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Le programme</p>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">6 semaines pour passer de zéro à coordinateur BIM opérationnel.</h2>
-      <p class="mt-5 text-lg text-ink/60 leading-relaxed">Un parcours structuré en 8 modules progressifs, avec des travaux dirigés et des quiz à chaque étape.</p>
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3" data-cms="prog_label">Le programme</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">
+        6 semaines pour passer de zéro à coordinateur BIM opérationnel.</h2>
+      <p class="mt-5 text-lg text-ink/60 leading-relaxed">
+        Un parcours structuré en 4 phases progressives, avec des travaux dirigés et des quiz à chaque étape.
+      </p>
     </div>
 
-    <div class="flex flex-col gap-3">
-      
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden" open>
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">01</span>
-            <h3 class="font-display text-base font-semibold text-ink">Introduction au BIM et aux Environnements Collaboratifs</h3>
+    <div id="timeline-container" class="relative">
+
+      <!-- STEP 01 -->
+      <div class="timeline-step relative flex gap-8 lg:gap-12 is-active" data-step="0">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">01</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaines 1–2</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Fondations BIM</p>
           </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Comprendre les fondements du BIM et son importance</li><li class="text-sm text-ink/70 leading-relaxed">Connaître les niveaux de maturité BIM et la norme ISO 19650</li><li class="text-sm text-ink/70 leading-relaxed">Identifier les rôles et responsabilités dans un projet BIM</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li><li class="text-sm text-ink/70 leading-relaxed">Quiz auto-évaluation fin de chapitre</li>
-            </ul>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
           </div>
         </div>
-      </details>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden" open>
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">01</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Fondations BIM &amp; Interopérabilité</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaines 1-2</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Vous découvrez les principes fondamentaux du BIM (ISO 19650, niveaux de maturité, rôles) et maîtrisez les formats d'échange IFC, BCF et DWG pour travailler en environnement collaboratif.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pt-2 border-t border-ink/5">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 01 — Introduction au BIM</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Comprendre les fondements du BIM et son importance</li>
+                    <li>Connaître les niveaux de maturité BIM et la norme ISO 19650</li>
+                    <li>Identifier les rôles et responsabilités dans un projet BIM</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 02 — Interopérabilité (IFC, BCF, DWG)</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Comprendre le format IFC et son rôle dans l'interopérabilité</li>
+                    <li>Gérer les échanges entre ArchiCAD, Revit et autres logiciels BIM</li>
+                    <li>Exploiter les fichiers BCF pour le suivi des modifications</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-5 flex gap-2 flex-wrap">
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Vidéos e-learning</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Travaux dirigés</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Quiz auto-évaluation</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
 
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">02</span>
-            <h3 class="font-display text-base font-semibold text-ink">Interopérabilité et Formats d'Échange (IFC, BCF, DWG)</h3>
+      <!-- STEP 02 -->
+      <div class="timeline-step relative flex gap-8 lg:gap-12" data-step="1">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-ink/20 bg-white text-ink/40 flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">02</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaines 3–4</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Logiciels & Maquette</p>
           </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Comprendre le format IFC et son rôle dans l'interopérabilité</li><li class="text-sm text-ink/70 leading-relaxed">Gérer les échanges entre ArchiCAD, Revit et d'autres logiciels BIM</li><li class="text-sm text-ink/70 leading-relaxed">Exploiter les fichiers BCF pour le suivi des modifications</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li><li class="text-sm text-ink/70 leading-relaxed">Quiz auto-évaluation fin de chapitre</li>
-            </ul>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
           </div>
         </div>
-      </details>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">02</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Logiciels BIM &amp; Organisation de la maquette 3D</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaines 3-4</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Vous prenez en main les outils de modélisation BIM et apprenez à structurer une maquette 3D conforme aux standards de l'industrie.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pt-2 border-t border-ink/5">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 03 — Maîtriser les logiciels BIM</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Utiliser les outils de modélisation pour créer des éléments architecturaux et structuraux</li>
+                    <li>Manipuler les fonctionnalités avancées pour des détails complexes</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 04 — Structurer la maquette en 3D</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Organiser la maquette selon les exigences légales et standards industrie</li>
+                    <li>Gérer l'interopérabilité et la compatibilité des éléments du projet</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-5 flex gap-2 flex-wrap">
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Vidéos e-learning</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Travaux dirigés</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
 
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">03</span>
-            <h3 class="font-display text-base font-semibold text-ink">Maîtriser l'utilisation des logiciels BIM</h3>
+      <!-- STEP 03 -->
+      <div class="timeline-step relative flex gap-8 lg:gap-12" data-step="2">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-ink/20 bg-white text-ink/40 flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">03</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 5</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Données & Collaboration</p>
           </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Acquérir des compétences pratiques dans l'utilisation des outils de modélisation pour créer des éléments architecturaux et structuraux</li><li class="text-sm text-ink/70 leading-relaxed">Apprendre à manipuler les fonctionnalités avancées du logiciel pour réaliser des détails complexes et des formes spécifiques</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li>
-            </ul>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
           </div>
         </div>
-      </details>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">03</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Gestion des données &amp; Collaboration BIM</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 5</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Vous extrayez et exploitez les données de la maquette, puis apprenez à collaborer efficacement en environnement BIM avec les technologies Cloud.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pt-2 border-t border-ink/5">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 05 — Gestion & Extraction de données BIM</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Extraire les quantités et métrés d'un projet BIM</li>
+                    <li>Générer des nomenclatures et bases de données BIM</li>
+                    <li>Utiliser les propriétés et paramètres des objets BIM</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 06 — Communication & Collaboration</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Analyser les processus de communication en environnement BIM</li>
+                    <li>Exploiter les technologies Cloud pour une collaboration fluide</li>
+                    <li>Développer des compétences en gestion des conflits</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-5 flex gap-2 flex-wrap">
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Vidéos e-learning</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Travaux dirigés</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Quiz auto-évaluation</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
 
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">04</span>
-            <h3 class="font-display text-base font-semibold text-ink">Structurer et organiser la maquette en 3D</h3>
-          </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Organiser la maquette en 3D en suivant les exigences légales et les standards de l'industrie</li><li class="text-sm text-ink/70 leading-relaxed">Acquérir des compétences pour gérer efficacement les différents éléments du projet dans la maquette, en veillant à leur interopérabilité et leur compatibilité</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li>
-            </ul>
+      <!-- STEP 04 — Certification -->
+      <div class="timeline-step relative flex gap-8 lg:gap-12" data-step="3">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-ink/20 bg-white text-ink/40 flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">04</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 6</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Certification</p>
           </div>
         </div>
-      </details>
-
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">05</span>
-            <h3 class="font-display text-base font-semibold text-ink">Gestion des Données et Extraction d'Informations BIM</h3>
-          </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Extraire les quantités et métrés d'un projet BIM</li><li class="text-sm text-ink/70 leading-relaxed">Générer des nomenclatures et bases de données BIM</li><li class="text-sm text-ink/70 leading-relaxed">Utiliser les propriétés et paramètres des objets BIM</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li><li class="text-sm text-ink/70 leading-relaxed">Quiz auto-évaluation fin de chapitre</li>
-            </ul>
-          </div>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">04</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Coordination BIM, Exportation &amp; Certification</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 6</span>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-orange/10 text-orange px-2 py-1 rounded-full">Certifiant</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Vous coordonnez un projet multi-disciplinaire, détectez les conflits, exportez vos données et présentez votre maquette complète en jury de certification.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pt-2 border-t border-ink/5">
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 07 — Coordination & Détection des Conflits</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Identifier et résoudre les conflits entre les disciplines</li>
+                    <li>Utiliser des outils pour la détection des clashs</li>
+                    <li>Assurer un suivi via le BCF</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Module 08 — Exportation & Partage des données</p>
+                  <ul class="space-y-2 text-sm text-ink/70 list-disc list-inside marker:text-orange">
+                    <li>Paramétrer l'exportation des modèles BIM</li>
+                    <li>Assurer la compatibilité avec d'autres logiciels</li>
+                    <li>Gérer la transmission et la collaboration en ligne</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mt-5 flex gap-2 flex-wrap">
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Vidéos e-learning</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Travaux dirigés</span>
+                <span class="text-xs bg-lavender text-navy px-3 py-1 rounded-full font-medium">Quiz auto-évaluation</span>
+              </div>
+            </div>
+          </details>
         </div>
-      </details>
+      </div>
 
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">06</span>
-            <h3 class="font-display text-base font-semibold text-ink">Savoir communiquer et collaborer en BIM</h3>
-          </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Analyser les processus de communication utilisés dans un environnement BIM</li><li class="text-sm text-ink/70 leading-relaxed">Examiner comment les technologies Cloud favorisent une collaboration plus fluide</li><li class="text-sm text-ink/70 leading-relaxed">Développer des compétences en communication et en gestion des conflits</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">07</span>
-            <h3 class="font-display text-base font-semibold text-ink">Coordination BIM et Détection des Conflits</h3>
-          </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Identifier et résoudre les conflits entre les disciplines</li><li class="text-sm text-ink/70 leading-relaxed">Utiliser des outils pour la détection des clashs</li><li class="text-sm text-ink/70 leading-relaxed">Assurer un suivi et une communication fluide avec le BCF</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li><li class="text-sm text-ink/70 leading-relaxed">Quiz auto-évaluation fin de chapitre</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden">
-        <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none select-none">
-          <div class="flex items-center gap-4">
-            <span class="font-display text-2xl font-bold text-orange shrink-0">08</span>
-            <h3 class="font-display text-base font-semibold text-ink">Exportation et Partage des Données BIM</h3>
-          </div>
-          <svg class="w-5 h-5 text-ink/30 shrink-0 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </summary>
-        <div class="px-6 pb-6 grid md:grid-cols-2 gap-6 border-t border-ink/5 pt-5">
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Objectifs</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Paramétrer l'exportation des modèles BIM</li><li class="text-sm text-ink/70 leading-relaxed">Assurer la compatibilité avec d'autres logiciels</li><li class="text-sm text-ink/70 leading-relaxed">Gérer la transmission des fichiers et la collaboration en ligne</li>
-            </ul>
-          </div>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Activités pédagogiques</p>
-            <ul class="space-y-2 list-disc list-inside marker:text-orange">
-              <li class="text-sm text-ink/70 leading-relaxed">Vidéos e-learning</li><li class="text-sm text-ink/70 leading-relaxed">Travaux dirigés</li><li class="text-sm text-ink/70 leading-relaxed">Quiz auto-évaluation fin de chapitre</li>
-            </ul>
-          </div>
-        </div>
-      </details>
-    </div>
-
+    </div><!-- /#timeline-container -->
   </div>
 </section>
 
