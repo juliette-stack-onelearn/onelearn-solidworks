@@ -329,8 +329,9 @@ tailwind.config = {
     .personas-flex { display:flex; gap:20px; height:480px; }
     .personas-flex > .persona-card { flex:0.7 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
     .personas-flex > .persona-card.is-default-open { flex:2.5 1 0; }
-    .personas-flex:hover > .persona-card { flex:0.7 1 0; }
-    .personas-flex:hover > .persona-card:hover { flex:2.5 1 0; }
+    .personas-flex:hover > .persona-card,
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex:0.7 1 0 !important; }
+    .personas-flex:hover > .persona-card:hover { flex:2.5 1 0 !important; }
   }
 </style>
 
@@ -834,48 +835,48 @@ tailwind.config = {
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Un formateur dédié, pas une plateforme froide</h3>
         <p class="text-sm text-ink/60 leading-relaxed">+15h en visio individuelle avec un pro qui exerce le métier. Vous prenez rendez-vous directement dans son agenda quand vous voulez.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Un parcours calibré sur vos objectifs</h3>
         <p class="text-sm text-ink/60 leading-relaxed">Pas un cours générique : le contenu est adapté à votre projet (freelance, entreprise, reconversion) après un échange initial avec votre formateur.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Une certification reconnue, garantie</h3>
         <p class="text-sm text-ink/60 leading-relaxed">Inscrite à France Compétences. 96% de réussite. Et si vous n'obtenez pas votre certification, nous vous remboursons intégralement.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5m-18 0v8l9 5 9-5V8m-18 0l9 5m9-5l-9 5"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Un projet concret à chaque formation</h3>
         <p class="text-sm text-ink/60 leading-relaxed">Pas de théorie hors-sol : vous produisez de vrais livrables (visuels, site, vidéo, identité) que vous ajoutez à votre portfolio.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Un accompagnement financement complet</h3>
         <p class="text-sm text-ink/60 leading-relaxed">Notre équipe monte votre dossier CPF, OPCO ou France Travail à votre place. 85% de nos apprenants bénéficient d'une prise en charge majoritaire.</p>
       </div>
 
-      <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card">
-        <div class="w-12 h-12 rounded-2xl bg-orange-50 grid place-items-center text-orange mb-5">
+      <div class="group bg-gradient-to-br from-white to-[#FBF8F5] rounded-3xl p-7 border border-orange/10 shadow-[0_10px_30px_-12px_rgba(34,36,77,.12)] hover:border-orange/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_-12px_rgba(239,119,56,.25)] transition-all duration-300">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange/15 to-orange/5 grid place-items-center text-orange mb-5 shadow-sm group-hover:scale-110 group-hover:from-orange/25 transition-transform">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2">Une communauté de +2 800 apprenants</h3>
@@ -1802,14 +1803,16 @@ tailwind.config = {
 </div>
 <script>
 (function(){
-  const navCta = document.querySelector('header a[href*="iclosed"]');
+  // Le CTA dans la nav est sticky (always visible) donc inobservable.
+  // On observe le CTA "Découvrir les formations" du hero : quand il sort de l'écran, on affiche le sticky.
+  const heroCta = document.querySelector('a[href="#catalogue"]');
   const sticky = document.getElementById('sticky-cta-banner');
-  if(!navCta || !sticky) return;
+  if(!heroCta || !sticky) return;
   const obs = new IntersectionObserver(([e]) => {
     if(e.isIntersecting) sticky.classList.add('translate-y-full');
     else sticky.classList.remove('translate-y-full');
-  }, {threshold: 0});
-  obs.observe(navCta);
+  }, {threshold: 0, rootMargin: '-80px 0px 0px 0px'});
+  obs.observe(heroCta);
 })();
 </script>
 
