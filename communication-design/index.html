@@ -58,7 +58,7 @@ tailwind.config = {
 
 <!-- ============ TOP BAR PROMO ============ -->
 <div class="bg-ink text-cream text-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
     <div class="flex items-center gap-2 min-w-0">
       <span class="inline-flex items-center gap-1.5 bg-orange/15 text-orange-600 px-2.5 py-1 rounded-full font-semibold text-xs">
         <span class="w-1.5 h-1.5 rounded-full bg-orange animate-pulse"></span>
@@ -66,12 +66,38 @@ tailwind.config = {
       </span>
       <span class="hidden sm:inline truncate">jusqu'au 31/05/2026 · cumulable avec votre CPF</span>
     </div>
-    <a href="tel:+33189703426" class="flex items-center gap-2 hover:text-orange transition font-semibold whitespace-nowrap">
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21L7.5 10.5a11 11 0 006 6l1.11-1.73a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2A18 18 0 013 5z"></path></svg>
-      01 89 70 34 26
-    </a>
+    <div class="flex items-center gap-3 lg:gap-5">
+      <a id="topbar-cta" href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="hidden lg:inline-flex items-center gap-2 bg-orange hover:bg-orange-700 text-white px-4 py-2 rounded-full font-semibold text-xs whitespace-nowrap shadow-cta transition opacity-0 -translate-y-1 pointer-events-none" style="transition: opacity .35s ease, transform .35s ease, background .15s ease;">
+        Réserver mon appel
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <a href="tel:+33189703426" class="flex items-center gap-2 hover:text-orange transition font-semibold whitespace-nowrap">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21L7.5 10.5a11 11 0 006 6l1.11-1.73a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2A18 18 0 013 5z"/></svg>
+        01 89 70 34 26
+      </a>
+    </div>
   </div>
 </div>
+<script>
+(function(){
+  // Show "Réserver mon appel" in top bar when hero CTA "Découvrir les formations" leaves viewport
+  const topCta = document.getElementById('topbar-cta');
+  const heroCta = document.querySelector('a[href="#catalogue"]');
+  if(!topCta || !heroCta) return;
+  const obs = new IntersectionObserver(([e]) => {
+    if(e.isIntersecting){
+      topCta.style.opacity = '0';
+      topCta.style.transform = 'translateY(-4px)';
+      topCta.style.pointerEvents = 'none';
+    } else {
+      topCta.style.opacity = '1';
+      topCta.style.transform = 'translateY(0)';
+      topCta.style.pointerEvents = 'auto';
+    }
+  }, {threshold: 0, rootMargin: '-80px 0px 0px 0px'});
+  obs.observe(heroCta);
+})();
+</script>
 
 <!-- ============ NAV ============ -->
 <header class="sticky top-0 z-40 backdrop-blur-md bg-cream/85 border-b border-ink/5">
@@ -105,12 +131,16 @@ tailwind.config = {
 <style>
   .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
   .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail, .persona-card.is-default-open .persona-detail { max-height:220px; opacity:1; }
+  /* When hovering another persona, the default-open one must look IDENTICAL to other compact cards */
+  .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height:0 !important; opacity:0 !important; }
   /* Title responsive : smaller when card is narrow, bigger when expanded */
   .persona-card .persona-title { font-size: 1.05rem; line-height: 1.15; transition: font-size .4s ease; }
   .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.6rem; line-height: 1.1; }
+  .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1.05rem !important; }
   @media (min-width: 1024px) {
     .persona-card .persona-title { font-size: 1rem; }
     .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.75rem; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1rem !important; }
   }
   .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
   .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
@@ -1781,39 +1811,4 @@ tailwind.config = {
 
 
 <input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
-<!-- ============ STICKY CTA BANNER (apparaît au scroll après le CTA nav) ============ -->
-<div id="sticky-cta-banner" class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-ink/10 shadow-[0_-8px_30px_rgba(34,36,77,.12)] translate-y-full transition-transform duration-300 ease-out">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-    <div class="hidden sm:flex items-center gap-3">
-      <div class="flex -space-x-2">
-        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#22244D,#545AC0);"><img src="assets/avatars/avatar-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
-        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/avatars/avatar-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
-        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/avatars/avatar-3.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
-      </div>
-      <div>
-        <p class="font-semibold text-ink text-sm leading-tight">Prêt(e) à vous lancer ?</p>
-        <p class="text-xs text-ink/55">Appel offert de 20 min · sans engagement</p>
-      </div>
-    </div>
-    <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="ml-auto inline-flex items-center gap-2 bg-orange text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
-      Réserver mon appel
-      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-    </a>
-  </div>
-</div>
-<script>
-(function(){
-  // Le CTA dans la nav est sticky (always visible) donc inobservable.
-  // On observe le CTA "Découvrir les formations" du hero : quand il sort de l'écran, on affiche le sticky.
-  const heroCta = document.querySelector('a[href="#catalogue"]');
-  const sticky = document.getElementById('sticky-cta-banner');
-  if(!heroCta || !sticky) return;
-  const obs = new IntersectionObserver(([e]) => {
-    if(e.isIntersecting) sticky.classList.add('translate-y-full');
-    else sticky.classList.remove('translate-y-full');
-  }, {threshold: 0, rootMargin: '-80px 0px 0px 0px'});
-  obs.observe(heroCta);
-})();
-</script>
-
 </body></html>
