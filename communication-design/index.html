@@ -118,11 +118,32 @@ tailwind.config = {
   <div class="absolute inset-0 pointer-events-none opacity-[0.4]" style="background-image:radial-gradient(circle, #22244D22 1px, transparent 1px); background-size: 28px 28px;"></div>
   <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-orange/15 blur-3xl"></div>
   <div class="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-navy/15 blur-3xl"></div>
-  <!-- Floating decorative shapes -->
-  <div class="absolute top-[18%] left-[6%] w-3 h-3 rounded-full bg-orange hidden lg:block animate-pulse"></div>
-  <div class="absolute top-[14%] right-[8%] w-2.5 h-2.5 rounded-full bg-navy hidden lg:block"></div>
-  <div class="absolute bottom-[22%] right-[5%] w-2 h-2 rounded-full bg-orange hidden lg:block"></div>
-  <div class="absolute bottom-[30%] left-[4%] w-4 h-4 rounded-full border-2 border-orange/50 hidden lg:block"></div>
+  <!-- Floating confetti -->
+  <style>
+    @keyframes floatA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(6px,-14px)} }
+    @keyframes floatB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-8px,12px)} }
+    @keyframes floatC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-4px,-18px) rotate(8deg)} }
+    @keyframes floatD { 0%,100%{transform:translate(0,0)} 50%{transform:translate(10px,8px) rotate(-6deg)} }
+    @keyframes floatE { 0%,100%{transform:translate(0,0)} 33%{transform:translate(8px,-10px)} 66%{transform:translate(-6px,6px)} }
+    .conf { position:absolute; border-radius:9999px; will-change:transform; }
+  </style>
+  <div class="hidden lg:block pointer-events-none absolute inset-0">
+    <span class="conf bg-orange" style="top:14%; left:5%; width:14px; height:14px; animation:floatA 6s ease-in-out infinite;"></span>
+    <span class="conf bg-navy" style="top:9%; left:18%; width:10px; height:10px; animation:floatB 7s ease-in-out infinite .4s;"></span>
+    <span class="conf border-2 border-orange/60" style="top:22%; left:2%; width:22px; height:22px; animation:floatC 8s ease-in-out infinite .8s;"></span>
+    <span class="conf bg-orange/70" style="top:42%; left:7%; width:8px; height:8px; animation:floatE 5.5s ease-in-out infinite .2s;"></span>
+    <span class="conf bg-navy/80" style="bottom:18%; left:4%; width:12px; height:12px; animation:floatA 7.5s ease-in-out infinite 1s;"></span>
+    <span class="conf border-2 border-navy/40" style="bottom:32%; left:12%; width:18px; height:18px; animation:floatD 9s ease-in-out infinite .5s;"></span>
+    <span class="conf bg-orange" style="top:11%; right:6%; width:12px; height:12px; animation:floatB 6.5s ease-in-out infinite .3s;"></span>
+    <span class="conf bg-navy" style="top:26%; right:3%; width:9px; height:9px; animation:floatA 5s ease-in-out infinite .7s;"></span>
+    <span class="conf border-2 border-orange/60" style="top:38%; right:10%; width:24px; height:24px; animation:floatC 8.5s ease-in-out infinite 1.1s;"></span>
+    <span class="conf bg-orange/60" style="bottom:14%; right:8%; width:10px; height:10px; animation:floatE 6s ease-in-out infinite .9s;"></span>
+    <span class="conf bg-navy/90" style="bottom:30%; right:4%; width:14px; height:14px; animation:floatD 7s ease-in-out infinite .2s;"></span>
+    <span class="conf bg-orange" style="bottom:44%; right:14%; width:7px; height:7px; animation:floatB 5.5s ease-in-out infinite 1.3s;"></span>
+    <!-- ✦ étoiles micro -->
+    <span class="conf bg-orange/40" style="top:50%; left:20%; width:5px; height:5px; animation:floatA 4s ease-in-out infinite;"></span>
+    <span class="conf bg-navy/50" style="top:60%; right:18%; width:5px; height:5px; animation:floatB 4.5s ease-in-out infinite .6s;"></span>
+  </div>
 
   <div class="relative max-w-5xl mx-auto px-4 pt-8 pb-12 lg:pt-12 lg:pb-16 text-center">
 
@@ -236,7 +257,14 @@ tailwind.config = {
       <span class="text-ink/30 hidden sm:inline">|</span>
       <span class="font-semibold text-ink">Certifié Qualiopi</span>
       <span class="text-ink/30 hidden sm:inline">|</span>
-      <span class="font-semibold text-ink">+2 800 apprenants formés</span>
+      <span class="inline-flex items-center gap-2.5 font-semibold text-ink">
+        <span class="flex -space-x-2">
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#22244D,#545AC0);"><img src="assets/avatars/avatar-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/avatars/avatar-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/avatars/avatar-3.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
+        </span>
+        +2 800 apprenants formés
+      </span>
     </div>
 
   </div>
@@ -291,7 +319,18 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ============ POUR QUI / PERSONAS (Qonto-style) ============ -->
+<!-- ============ POUR QUI / PERSONAS (Qonto-style + flex hover-expand) ============ -->
+<style>
+  .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
+  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
+  @media (min-width: 1024px) {
+    .personas-flex { display:flex; gap:20px; height:480px; }
+    .personas-flex > .persona-card { flex:1 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
+    .personas-flex:hover > .persona-card { flex:0.7 1 0; }
+    .personas-flex:hover > .persona-card:hover { flex:2.5 1 0; }
+  }
+</style>
+
 <section class="py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-12">
@@ -301,44 +340,50 @@ tailwind.config = {
       </h2>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 lg:auto-rows-[480px]">
-
-      <!-- Persona 1 — étroit -->
-      <div class="persona-card group lg:col-span-3 relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
-        
+    <div class="personas-flex grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-0">
+      <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
+        <img src="assets/personas/reconversion.jpg" alt="En reconversion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
-          <p class="font-display text-2xl font-semibold leading-tight">En reconversion</p>
+          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">En reconversion</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous voulez changer de métier et entrer dans la création visuelle. On vous accompagne du démarrage zéro jusqu'à votre premier client ou poste.</p>
           </div>
         </div>
       </div>
 
-      <!-- Persona 2 — large central -->
-      <div class="persona-card group lg:col-span-6 relative aspect-[16/10] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%);">
-        
+      <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%);">
+        <img src="assets/personas/freelance.jpg" alt="Indépendant·e / Freelance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-7 lg:p-9 text-cream">
-          <p class="font-display text-2xl lg:text-3xl font-semibold leading-tight">Indépendant·e / Freelance</p>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Indépendant·e / Freelance</p>
           <div class="persona-detail">
-            <p class="text-base text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
+            <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
           </div>
         </div>
       </div>
 
-      <!-- Persona 3 — étroit -->
-      <div class="persona-card group lg:col-span-3 relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%);">
-        
+      <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%);">
+        <img src="assets/personas/salarie.jpg" alt="Salarié·e en évolution" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
-          <p class="font-display text-2xl font-semibold leading-tight">Salarié·e en évolution</p>
+          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Salarié·e en évolution</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Votre poste évolue vers la com ou le digital. Montez en compétences avec votre CPF, sans quitter votre emploi.</p>
           </div>
         </div>
       </div>
 
+      <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#0d9d6a 0%,#10b981 100%);">
+        <img src="assets/personas/demandeur.jpg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Demandeur·se d'emploi</p>
+          <div class="persona-detail">
+            <p class="text-sm text-cream/85 leading-relaxed mt-3">Financez votre formation à 100% via France Travail et décrochez un nouveau poste dans la com ou le design en quelques mois.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <p class="text-center text-sm text-ink/55 mt-10">
