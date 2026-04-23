@@ -105,6 +105,13 @@ tailwind.config = {
 <style>
   .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
   .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail, .persona-card.is-default-open .persona-detail { max-height:220px; opacity:1; }
+  /* Title responsive : smaller when card is narrow, bigger when expanded */
+  .persona-card .persona-title { font-size: 1.05rem; line-height: 1.15; transition: font-size .4s ease; }
+  .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.6rem; line-height: 1.1; }
+  @media (min-width: 1024px) {
+    .persona-card .persona-title { font-size: 1rem; }
+    .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.75rem; }
+  }
   .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
   .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
 </style>
@@ -254,9 +261,9 @@ tailwind.config = {
       <span class="text-ink/30 hidden sm:inline">|</span>
       <span class="inline-flex items-center gap-2.5 font-semibold text-ink">
         <span class="flex -space-x-2">
-          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#22244D,#545AC0);"><img src="assets/avatars/avatar-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;" style="opacity: 0;"></span>
-          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/avatars/avatar-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;" style="opacity: 0;"></span>
-          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/hf_20260415_075122_8986c9f0-a369-418e-baf9-672a60c2c5ad.png" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;" style="opacity: 0;"></span>
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#22244D,#545AC0);"><img src="assets/avatars/avatar-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/avatars/avatar-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
+          <span class="w-7 h-7 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/hf_20260415_075122_8986c9f0-a369-418e-baf9-672a60c2c5ad.png" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0;"></span>
         </span>
         +2 800 apprenants formés
       </span>
@@ -320,7 +327,8 @@ tailwind.config = {
   .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
   @media (min-width: 1024px) {
     .personas-flex { display:flex; gap:20px; height:480px; }
-    .personas-flex > .persona-card { flex:1 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
+    .personas-flex > .persona-card { flex:0.7 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
+    .personas-flex > .persona-card.is-default-open { flex:2.5 1 0; }
     .personas-flex:hover > .persona-card { flex:0.7 1 0; }
     .personas-flex:hover > .persona-card:hover { flex:2.5 1 0; }
   }
@@ -337,10 +345,10 @@ tailwind.config = {
 
     <div class="personas-flex grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-0">
       <div class="persona-card is-default-open group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
-        <img src="assets/personas/reconversion.jpg" alt="En reconversion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
+        <img src="assets/personas/reconversion.jpg" alt="En reconversion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
-          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">En reconversion</p>
+          <p class="persona-title font-display font-semibold">En reconversion</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous voulez changer de métier et entrer dans la création visuelle. On vous accompagne du démarrage zéro jusqu'à votre premier client ou poste.</p>
           </div>
@@ -348,10 +356,10 @@ tailwind.config = {
       </div>
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%);">
-        <img src="assets/personas/freelance.jpg" alt="Indépendant·e / Freelance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
+        <img src="assets/personas/freelance.jpg" alt="Indépendant·e / Freelance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
-          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Indépendant·e / Freelance</p>
+          <p class="persona-title font-display font-semibold">Indépendant·e / Freelance</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
           </div>
@@ -359,10 +367,10 @@ tailwind.config = {
       </div>
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%);">
-        <img src="assets/personas/salarie.jpg" alt="Salarié·e en évolution" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
+        <img src="assets/personas/salarie.jpg" alt="Salarié·e en évolution" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
-          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Salarié·e en évolution</p>
+          <p class="persona-title font-display font-semibold">Salarié·e en évolution</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Votre poste évolue vers la com ou le digital. Montez en compétences avec votre CPF, sans quitter votre emploi.</p>
           </div>
@@ -370,10 +378,10 @@ tailwind.config = {
       </div>
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#0d9d6a 0%,#10b981 100%);">
-        <img src="assets/personas/demandeur.jpg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
+        <img src="assets/personas/demandeur.jpg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
-          <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Demandeur·se d'emploi</p>
+          <p class="persona-title font-display font-semibold">Demandeur·se d'emploi</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Financez votre formation à 100% via France Travail et décrochez un nouveau poste dans la com ou le design en quelques mois.</p>
           </div>
@@ -1627,6 +1635,8 @@ tailwind.config = {
 
         const blobUrl = URL.createObjectURL(file);
         const oldSrc = img.src;
+        const oldOpacity = img.style.opacity;
+        img.style.opacity = '';
         img.src = blobUrl;
         img.setAttribute('data-pending-src', relPath);
 
@@ -1714,6 +1724,13 @@ tailwind.config = {
       clone.querySelectorAll('img[data-pending-src]').forEach(el => {
         el.setAttribute('src', el.getAttribute('data-pending-src'));
         el.removeAttribute('data-pending-src');
+      });
+      // Strip stale inline opacity:0 set by previous onerror handlers
+      clone.querySelectorAll('img').forEach(el => {
+        if (el.style.opacity === '0' || el.style.opacity === '0.25') {
+          el.style.removeProperty('opacity');
+          if (!el.getAttribute('style')?.trim()) el.removeAttribute('style');
+        }
       });
       clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
       clone.querySelectorAll('.__ol_editable').forEach(el => el.classList.remove('__ol_editable'));
