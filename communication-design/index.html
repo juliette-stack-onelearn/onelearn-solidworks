@@ -92,12 +92,7 @@ tailwind.config = {
         </g>
       </svg>
     </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">
-      <a href="#catalogue" class="hover:text-navy">Formations</a>
-      <a href="#financement" class="hover:text-navy">Financement</a>
-      <a href="#avis" class="hover:text-navy">Avis</a>
-      <a href="#faq" class="hover:text-navy">FAQ</a>
-    </nav>
+
     <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="inline-flex items-center gap-2 bg-orange text-white px-4 py-2.5 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
       Réserver mon appel
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -109,7 +104,7 @@ tailwind.config = {
 <!-- ============ HERO V2 (vitrine outils) ============ -->
 <style>
   .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
-  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
+  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail, .persona-card.is-default-open .persona-detail { max-height:220px; opacity:1; }
   .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
   .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
 </style>
@@ -149,8 +144,8 @@ tailwind.config = {
   <div class="relative max-w-5xl mx-auto px-4 pt-8 pb-12 lg:pt-12 lg:pb-16 text-center">
 
     <div class="inline-flex items-center gap-2 bg-white border border-ink/10 px-3 py-1.5 rounded-full text-xs font-semibold text-ink/70 shadow-sm mb-5">
-      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-      Sessions ouvertes en mai · 18 places restantes
+      <span class="w-2 h-2 rounded-full bg-orange"></span>
+      Sessions ouvertes en mai · 6 places restantes
     </div>
 
     <h1 class="font-display text-[2rem] sm:text-[2.6rem] lg:text-[3rem] leading-[1.05] tracking-tight font-semibold text-ink max-w-3xl mx-auto">
@@ -179,7 +174,6 @@ tailwind.config = {
           <div class="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-orange flex items-center justify-center shadow-lg">
             <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
           </div>
-          <span class="absolute -top-3 right-4 bg-navy-900 text-cream text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg">10 outils pros</span>
           <div class="grid grid-cols-5 gap-2.5 sm:gap-3">
         <div class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Photoshop">
           <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/adobe_photoshop_cc_icon.svg.png" alt="Photoshop" class="w-full h-full object-contain" onerror="this.style.display='none'" style=""></div>
@@ -342,10 +336,10 @@ tailwind.config = {
     </div>
 
     <div class="personas-flex grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-0">
-      <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
+      <div class="persona-card is-default-open group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
         <img src="assets/personas/reconversion.jpg" alt="En reconversion" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
           <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">En reconversion</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous voulez changer de métier et entrer dans la création visuelle. On vous accompagne du démarrage zéro jusqu'à votre premier client ou poste.</p>
@@ -355,8 +349,8 @@ tailwind.config = {
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%);">
         <img src="assets/personas/freelance.jpg" alt="Indépendant·e / Freelance" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
           <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Indépendant·e / Freelance</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
@@ -366,8 +360,8 @@ tailwind.config = {
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%);">
         <img src="assets/personas/salarie.jpg" alt="Salarié·e en évolution" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
           <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Salarié·e en évolution</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Votre poste évolue vers la com ou le digital. Montez en compétences avec votre CPF, sans quitter votre emploi.</p>
@@ -377,8 +371,8 @@ tailwind.config = {
 
       <div class="persona-card group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#0d9d6a 0%,#10b981 100%);">
         <img src="assets/personas/demandeur.jpg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="opacity: 0;">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream pointer-events-none">
           <p class="font-display text-xl lg:text-2xl font-semibold leading-tight">Demandeur·se d'emploi</p>
           <div class="persona-detail">
             <p class="text-sm text-cream/85 leading-relaxed mt-3">Financez votre formation à 100% via France Travail et décrochez un nouveau poste dans la com ou le design en quelques mois.</p>
@@ -933,7 +927,19 @@ tailwind.config = {
       </div>
     </div>
 
-    <p class="text-xs uppercase tracking-[0.2em] text-cream/40 font-semibold text-center mt-10">+ 13 autres formateurs experts dans nos équipes</p>
+    <div class="mt-12 flex flex-col items-center gap-4">
+      <div class="flex -space-x-3">
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 overflow-hidden shadow-lg" style="border-width:3px;background:linear-gradient(135deg,#43489A,#545AC0);"><img src="assets/formateurs/formateur-1.jpg" alt="Formateur 1" class="w-full h-full object-cover" onerror="this.style.opacity=0"></div>
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 overflow-hidden shadow-lg" style="border-width:3px;background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/formateurs/formateur-2.jpg" alt="Formateur 2" class="w-full h-full object-cover" onerror="this.style.opacity=0"></div>
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 overflow-hidden shadow-lg" style="border-width:3px;background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/formateurs/formateur-3.jpg" alt="Formateur 3" class="w-full h-full object-cover" onerror="this.style.opacity=0"></div>
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 overflow-hidden shadow-lg" style="border-width:3px;background:linear-gradient(135deg,#22244D,#43489A);"><img src="assets/formateurs/formateur-4.jpg" alt="Formateur 4" class="w-full h-full object-cover" onerror="this.style.opacity=0"></div>
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 overflow-hidden shadow-lg" style="border-width:3px;background:linear-gradient(135deg,#545AC0,#43489A);"><img src="assets/formateurs/formateur-5.jpg" alt="Formateur 5" class="w-full h-full object-cover" onerror="this.style.opacity=0"></div>
+        <div class="w-14 h-14 rounded-full border-3 border-navy-900 bg-orange flex items-center justify-center shadow-lg" style="border-width:3px;">
+          <span class="font-display text-cream text-sm font-bold">+8</span>
+        </div>
+      </div>
+      <p class="text-xs uppercase tracking-[0.2em] text-cream/55 font-semibold text-center">+ 13 autres formateurs experts dans nos équipes</p>
+    </div>
   </div>
 </section>
 
@@ -1756,4 +1762,38 @@ tailwind.config = {
 
 
 
-<input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"></body></html>
+<input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
+<!-- ============ STICKY CTA BANNER (apparaît au scroll après le CTA nav) ============ -->
+<div id="sticky-cta-banner" class="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-ink/10 shadow-[0_-8px_30px_rgba(34,36,77,.12)] translate-y-full transition-transform duration-300 ease-out">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+    <div class="hidden sm:flex items-center gap-3">
+      <div class="flex -space-x-2">
+        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#22244D,#545AC0);"><img src="assets/avatars/avatar-1.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
+        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#EF7738,#CD5025);"><img src="assets/avatars/avatar-2.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
+        <span class="w-8 h-8 rounded-full border-2 border-white overflow-hidden shadow-sm" style="background:linear-gradient(135deg,#10b981,#0d9d6a);"><img src="assets/avatars/avatar-3.jpg" alt="" class="w-full h-full object-cover" onerror="this.style.opacity=0"></span>
+      </div>
+      <div>
+        <p class="font-semibold text-ink text-sm leading-tight">Prêt(e) à vous lancer ?</p>
+        <p class="text-xs text-ink/55">Appel offert de 20 min · sans engagement</p>
+      </div>
+    </div>
+    <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-one-learn" class="ml-auto inline-flex items-center gap-2 bg-orange text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-cta">
+      Réserver mon appel
+      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+    </a>
+  </div>
+</div>
+<script>
+(function(){
+  const navCta = document.querySelector('header a[href*="iclosed"]');
+  const sticky = document.getElementById('sticky-cta-banner');
+  if(!navCta || !sticky) return;
+  const obs = new IntersectionObserver(([e]) => {
+    if(e.isIntersecting) sticky.classList.add('translate-y-full');
+    else sticky.classList.remove('translate-y-full');
+  }, {threshold: 0});
+  obs.observe(navCta);
+})();
+</script>
+
+</body></html>
