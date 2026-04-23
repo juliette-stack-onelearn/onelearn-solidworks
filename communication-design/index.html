@@ -105,106 +105,119 @@ tailwind.config = {
 </header>
 
 <!-- ============ HERO ============ -->
+<!-- ============ HERO V2 (vitrine outils) ============ -->
+<style>
+  .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
+  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
+  .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
+</style>
+
 <section class="relative overflow-hidden">
   <div class="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-orange/10 blur-3xl"></div>
   <div class="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-navy/10 blur-3xl"></div>
 
-  <div class="relative max-w-7xl mx-auto px-4 pt-8 pb-10 lg:pt-10 lg:pb-12 grid lg:grid-cols-12 gap-8 items-center">
-    <!-- LEFT -->
-    <div class="lg:col-span-7">
-      <div class="inline-flex items-center gap-2 bg-white border border-ink/10 px-3 py-1.5 rounded-full text-xs font-semibold text-ink/70 shadow-sm mb-4">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        Sessions ouvertes en mai · 18 places restantes
+  <div class="relative max-w-5xl mx-auto px-4 pt-8 pb-12 lg:pt-12 lg:pb-16 text-center">
+
+    <div class="inline-flex items-center gap-2 bg-white border border-ink/10 px-3 py-1.5 rounded-full text-xs font-semibold text-ink/70 shadow-sm mb-5">
+      <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+      Sessions ouvertes en mai · 18 places restantes
+    </div>
+
+    <h1 class="font-display text-[2rem] sm:text-[2.6rem] lg:text-[3rem] leading-[1.05] tracking-tight font-semibold text-ink max-w-3xl mx-auto">
+      Créez les visuels qui font <span class="relative inline-block">
+        <span class="relative z-10">vendre</span>
+        <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 50 0, 100 6 T 198 5" stroke="#EF7738" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
+      </span>.
+    </h1>
+
+    <p class="mt-5 text-base lg:text-lg text-ink/65 max-w-2xl mx-auto leading-relaxed">
+      <strong class="text-ink">10 formations certifiantes</strong> 100% en ligne, formateur dédié, <strong class="text-ink">finançables à 100% par votre CPF</strong>.
+    </p>
+
+    <!-- ============ VITRINE OUTILS ============ -->
+    <div class="mt-10 lg:mt-12">
+      <p class="text-xs uppercase tracking-[0.2em] text-ink/45 font-semibold mb-5">Les outils que vous allez maîtriser</p>
+
+      <div class="grid grid-cols-5 gap-2.5 sm:gap-3 max-w-4xl mx-auto">
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Photoshop">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/photoshop.svg" alt="Photoshop" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Photoshop</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Illustrator">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/illustrator.svg" alt="Illustrator" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Illustrator</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="InDesign">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/indesign.svg" alt="InDesign" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">InDesign</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Canva">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/canva.svg" alt="Canva" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Canva</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Figma">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/figma.svg" alt="Figma" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Figma</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Webflow">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/webflow.svg" alt="Webflow" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Webflow</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Première Pro">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/premiere-pro.svg" alt="Première Pro" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Première Pro</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="After Effects">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/after-effects.svg" alt="After Effects" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">After Effects</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Adobe IA">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/adobe-ia.svg" alt="Adobe IA" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Adobe IA</span>
+        </a>
+        <a href="#catalogue" class="tool-tile bg-white border border-ink/8 rounded-2xl p-3 flex flex-col items-center gap-2 shadow-sm" title="Réseaux sociaux">
+          <div class="w-12 h-12 flex items-center justify-center"><img src="assets/logos/reseaux-sociaux.svg" alt="Réseaux sociaux" class="w-full h-full object-contain" onerror="this.style.display='none'"></div>
+          <span class="text-[11px] font-semibold text-ink leading-tight text-center">Réseaux sociaux</span>
+        </a>
       </div>
 
-      <h1 class="font-display text-[1.9rem] sm:text-[2.4rem] lg:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">
-        Créez les visuels<br>
-        qui font <span class="relative inline-block">
-          <span class="relative z-10">vendre</span>
-          <svg class="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8 Q 50 0, 100 6 T 198 5" stroke="#EF7738" stroke-width="4" fill="none" stroke-linecap="round"/></svg>
-        </span>.
-      </h1>
-
-      <p class="mt-4 text-base text-ink/70 max-w-xl leading-relaxed">
-        <strong class="text-ink">10 formations certifiantes</strong> pour maîtriser Canva, le Pack Adobe, Figma, Webflow, Première Pro, After Effects et la création avec l'IA. 100% en ligne, avec un formateur dédié, <strong class="text-ink">finançables à 100%</strong> par votre CPF.
-      </p>
-
-      <!-- USPs -->
-      <ul class="mt-4 space-y-2">
-        <li class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          </div>
-          <span><strong>9 formations indépendantes</strong> ou combinables en parcours complet selon votre projet</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          </div>
-          <span><strong>Formateur dédié</strong> et +15h de visio individuelle, à la carte dans son agenda</span>
-        </li>
-        <li class="flex items-start gap-3">
-          <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-          </div>
-          <span><strong>Certification reconnue</strong> inscrite à France Compétences, ou remboursée</span>
-        </li>
-      </ul>
-
       <!-- CTAs -->
-      <div class="mt-5 flex flex-col sm:flex-row gap-3">
-        <a href="#catalogue" class="group inline-flex items-center justify-center gap-2 bg-orange text-white px-6 py-4 rounded-full font-semibold shadow-cta hover:bg-orange-700 transition">
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a href="#catalogue" class="group inline-flex items-center justify-center gap-2 bg-orange text-white px-8 py-4 rounded-full font-semibold shadow-cta hover:bg-orange-700 transition">
           Découvrir les formations
           <svg class="w-4 h-4 group-hover:translate-y-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
-        <a href="#eligibilite" class="inline-flex items-center justify-center gap-2 bg-white border border-ink/15 px-6 py-4 rounded-full font-semibold hover:border-navy hover:text-navy transition">
+        <a href="#eligibilite" class="inline-flex items-center justify-center gap-2 text-ink font-semibold underline decoration-2 underline-offset-4 decoration-ink/20 hover:decoration-orange hover:text-orange transition">
           Tester mon éligibilité CPF
         </a>
       </div>
-      <p class="mt-3 text-xs text-ink/50 flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <p class="mt-3 text-xs text-ink/50 flex items-center justify-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         Appel de 20 min · sans engagement · réponse sous 24h ouvrées
       </p>
-      <!-- Badges -->
-      <div class="mt-5 flex items-center gap-4 flex-wrap">
-        <div class="flex items-center gap-2 border border-ink/10 rounded-full px-3 py-1.5 bg-white shadow-sm">
-          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-          <span class="text-xs font-semibold text-ink">Certifié Qualiopi</span>
-        </div>
-        <div class="flex items-center gap-2 border border-ink/10 rounded-full px-3 py-1.5 bg-white shadow-sm">
-          <svg class="w-4 h-4 text-navy shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
-          <span class="text-xs font-semibold text-ink">Éligible CPF &amp; OPCO</span>
-        </div>
-      </div>
     </div>
 
-    <!-- RIGHT visual -->
-    <div class="lg:col-span-5 relative">
-      <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-700 to-ink aspect-[1/1] shadow-2xl">
-        <img src="assets/img_001.png"
-             alt="Apprenante One Learn en visio sur un projet de communication visuelle"
-             class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
-        <div class="absolute bottom-6 left-6 right-6 text-cream z-10">
-          <p class="font-display text-xl sm:text-2xl leading-tight">Apprenez en visio, à votre rythme</p>
-          <p class="text-sm text-cream/75 mt-1.5">Avec votre formateur et la communauté One Learn.</p>
+    <!-- Trust strip -->
+    <div class="mt-10 flex items-center justify-center gap-x-6 gap-y-3 flex-wrap text-xs">
+      <div class="flex items-center gap-1.5">
+        <div class="flex gap-0.5 text-emerald-500">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
+        <span class="font-semibold text-ink">4.9/5 Trustpilot</span>
+        <span class="text-ink/40">·</span>
+        <span class="text-ink/55">+340 avis</span>
       </div>
-      <!-- Trustpilot sous l'image -->
-      <div class="mt-3 flex items-center gap-3 bg-white border border-ink/5 rounded-2xl px-4 py-3 shadow-card">
-        <div class="flex gap-0.5 text-emerald-500 shrink-0">
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-        <div>
-          <p class="text-sm font-bold text-ink leading-none">4.9/5 sur Trustpilot</p>
-          <p class="text-xs text-ink/50 mt-0.5">+340 avis vérifiés · certifié Qualiopi depuis 2022</p>
-        </div>
-      </div>
+      <span class="text-ink/30 hidden sm:inline">|</span>
+      <span class="font-semibold text-ink">Certifié Qualiopi</span>
+      <span class="text-ink/30 hidden sm:inline">|</span>
+      <span class="font-semibold text-ink">+2 800 apprenants formés</span>
     </div>
+
   </div>
 </section>
 
@@ -257,75 +270,60 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ============ POUR QUI ============ -->
+<!-- ============ POUR QUI / PERSONAS (Qonto-style) ============ -->
 <section class="py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Pour qui</p>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight max-w-2xl mx-auto">
+        Une formation pensée pour vous,<br class="hidden sm:inline"> peu importe votre profil.
+      </h2>
+    </div>
 
-      <div class="relative order-2 lg:order-1">
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl" style="min-height:520px;">
-          <img src="assets/img_001.png" alt="Apprenante One Learn sur un projet de design visuel" class="absolute inset-0 w-full h-full object-cover object-center">
-          <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
-        </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 lg:auto-rows-[480px]">
 
-        <div class="absolute -bottom-4 -right-2 lg:-right-6 bg-white rounded-2xl shadow-card p-5 max-w-[280px] border border-ink/5">
-          <div class="flex gap-0.5 text-orange mb-2">
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <p class="text-sm text-ink leading-snug">"En 3 mois j'ai appris à créer tous mes visuels pour mes clients. Je facture aujourd'hui 2 500€ par mois en freelance."</p>
-          <div class="mt-3 flex items-center gap-2">
-            <img src="assets/img_001.png" alt="Léa" class="w-7 h-7 rounded-full object-cover shrink-0 object-top">
-            <div>
-              <p class="text-xs font-semibold text-ink">Léa</p>
-              <p class="text-[10px] text-ink/50">Community manager freelance · ancienne apprenante</p>
-            </div>
+      <!-- Persona 1 — étroit -->
+      <div class="persona-card group lg:col-span-3 relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#22244D 0%,#43489A 100%);">
+        <img src="assets/personas/reconversion.jpg" alt="En reconversion" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+          <p class="font-display text-2xl font-semibold leading-tight">En reconversion</p>
+          <div class="persona-detail">
+            <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous voulez changer de métier et entrer dans la création visuelle. On vous accompagne du démarrage zéro jusqu'à votre premier client ou poste.</p>
           </div>
         </div>
       </div>
 
-      <div class="order-1 lg:order-2">
-        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Cette formation est faite pour vous si...</p>
-        <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight mb-10">
-          Vous voulez créer vos propres visuels, sans dépendre de personne.
-        </h2>
+      <!-- Persona 2 — large central -->
+      <div class="persona-card group lg:col-span-6 relative aspect-[16/10] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%);">
+        <img src="assets/personas/freelance.jpg" alt="Indépendant ou freelance" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-7 lg:p-9 text-cream">
+          <p class="font-display text-2xl lg:text-3xl font-semibold leading-tight">Indépendant·e / Freelance</p>
+          <div class="persona-detail">
+            <p class="text-base text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
+          </div>
+        </div>
+      </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div class="group bg-white rounded-2xl p-6 border border-ink/5 hover:border-orange/30 hover:-translate-y-1 transition shadow-card">
-            <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
-            </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Vous démarrez de zéro</h3>
-            <p class="text-xs text-ink/60 leading-relaxed">Aucune base nécessaire. Vous apprenez depuis les fondamentaux du design, étape par étape.</p>
-          </div>
-          <div class="group bg-white rounded-2xl p-6 border border-ink/5 hover:border-orange/30 hover:-translate-y-1 transition shadow-card">
-            <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Indépendant ou entrepreneur</h3>
-            <p class="text-xs text-ink/60 leading-relaxed">Créez vos propres visuels, site, contenus réseaux. Cessez de payer une agence pour chaque création.</p>
-          </div>
-          <div class="group bg-white rounded-2xl p-6 border border-ink/5 hover:border-orange/30 hover:-translate-y-1 transition shadow-card">
-            <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-            </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Salarié en montée en compétences</h3>
-            <p class="text-xs text-ink/60 leading-relaxed">Ajoutez des cordes essentielles à votre arc : design, montage vidéo, réseaux sociaux, création web.</p>
-          </div>
-          <div class="group bg-white rounded-2xl p-6 border border-ink/5 hover:border-orange/30 hover:-translate-y-1 transition shadow-card">
-            <div class="w-10 h-10 rounded-xl bg-orange-50 grid place-items-center text-orange mb-4">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <h3 class="font-display text-base font-semibold mb-1.5">Vous êtes en reconversion</h3>
-            <p class="text-xs text-ink/60 leading-relaxed">Visez un poste de graphiste, community manager, webdesigner ou lancez-vous en freelance.</p>
+      <!-- Persona 3 — étroit -->
+      <div class="persona-card group lg:col-span-3 relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%);">
+        <img src="assets/personas/salarie.jpg" alt="Salarié en évolution" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 text-cream">
+          <p class="font-display text-2xl font-semibold leading-tight">Salarié·e en évolution</p>
+          <div class="persona-detail">
+            <p class="text-sm text-cream/85 leading-relaxed mt-3">Votre poste évolue vers la com ou le digital. Montez en compétences avec votre CPF, sans quitter votre emploi.</p>
           </div>
         </div>
       </div>
 
     </div>
+
+    <p class="text-center text-sm text-ink/55 mt-10">
+      Vous ne savez pas dans quelle case vous reconnaître ?
+      <a href="#rdv" class="text-orange font-semibold underline underline-offset-2 hover:text-orange-700">On en discute en 20 min →</a>
+    </p>
   </div>
 </section>
 
