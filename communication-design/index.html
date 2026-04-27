@@ -1787,27 +1787,48 @@ tailwind.config = {
       const html = '<!DOCTYPE html>\n' + clone.outerHTML;
       const content = btoa(unescape(encodeURIComponent(html)));
 
-      const getResp = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`, {
-        headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json' }
-      });
-      if (!getResp.ok) {
-        if (getResp.status === 401) { localStorage.removeItem(PAT_KEY); throw new Error('Token invalide. Réessayez.'); }
-        throw new Error('GET ' + getResp.status);
-      }
-      const fileData = await getResp.json();
-
-      const putResp = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+      // Helper: GET current file SHA (with cache-buster pour éviter 304)
+      const fetchSha = async () => {
+        const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}&_t=${Date.now()}`, {
+          headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json', 'Cache-Control': 'no-cache' }
+        });
+        if (!r.ok) {
+          if (r.status === 401) { localStorage.removeItem(PAT_KEY); throw new Error('Token invalide. Réessayez.'); }
+          throw new Error('GET ' + r.status);
+        }
+        return (await r.json()).sha;
+      };
+      // Helper: PUT new content with given SHA
+      const putContent = (sha) => fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
         method: 'PUT',
         headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: 'edit: update via inline editor',
-          content,
-          sha: fileData.sha,
-          branch: BRANCH
-        })
+        body: JSON.stringify({ message: 'edit: update via inline editor', content, sha, branch: BRANCH })
       });
+
+      let sha = await fetchSha();
+      let putResp = await putContent(sha);
+
+      // Auto-retry once on SHA conflict (409 ou 422 avec "does not match")
+      if (!putResp.ok) {
+        const errClone = await putResp.clone().json().catch(() => ({}));
+        const isShaConflict = putResp.status === 409 || (errClone.message || '').includes('does not match');
+        if (isShaConflict) {
+          // Re-fetch fresh SHA and retry once
+          sha = await fetchSha();
+          putResp = await putContent(sha);
+        }
+      }
+
       if (!putResp.ok) {
         const err = await putResp.json().catch(() => ({}));
+        const isShaConflict = putResp.status === 409 || (err.message || '').includes('does not match');
+        if (isShaConflict) {
+          if (confirm('⚠️ La page a été modifiée côté serveur (par un autre push ou par vous depuis un autre onglet).\n\nCliquez OK pour recharger la dernière version. Vos modifs en cours seront perdues, mais vous pourrez les ré-appliquer immédiatement.')) {
+            location.reload();
+            return;
+          }
+          throw new Error('Conflit de version. Rechargez la page (Cmd+R) pour récupérer la dernière version.');
+        }
         throw new Error(err.message || 'PUT ' + putResp.status);
       }
 
