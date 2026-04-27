@@ -1686,7 +1686,12 @@ tailwind.config = {
           const base64 = reader.result.split(',')[1];
           try {
             await ghUpload(ghPath, base64, `edit: upload ${safeName}`);
-            showToast('Image uploadée ✓ — cliquez "Sauvegarder" pour valider la page', 5000, '#10b981');
+            showToast('Image uploadée ✓ — sauvegarde de la page en cours…', 3000, '#10b981');
+            // Auto-save: déclenche le bouton Sauvegarder pour committer le HTML qui référence la nouvelle image
+            setTimeout(() => {
+              const saveBtn = document.getElementById('__ol_save');
+              if (saveBtn && !saveBtn.disabled) saveBtn.click();
+            }, 600);
           } catch (err) {
             img.src = oldSrc;
             img.removeAttribute('data-pending-src');
