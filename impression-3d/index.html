@@ -406,11 +406,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <style>
   .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
-  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail, .persona-card.is-default-open .persona-detail { max-height:200px; opacity:1; }
+  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
   @media (min-width: 1024px) {
     .personas-flex { display:flex !important; gap:20px; height:480px; }
     .personas-flex > .persona-card { flex:0.7 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
     .personas-flex > .persona-card.is-default-open { flex:2.5 1 0; }
+    .persona-card.is-default-open .persona-detail { max-height:200px; opacity:1; }
     .personas-flex:hover > .persona-card,
     .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex:0.7 1 0 !important; }
     .personas-flex:hover > .persona-card:hover { flex:2.5 1 0 !important; }
@@ -2125,7 +2126,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   /* ── Make editable ── */
   var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
   document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
+    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL)||el.classList.contains('photo-slot'))return;
     el.contentEditable='true';
     el.spellcheck=false;
   });
@@ -2144,6 +2145,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var r=new FileReader();
         r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
         r.readAsDataURL(file);
+      };
+      inp.click();
+    });
+  });
+
+  /* ── Photo slots ── */
+  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
+    slot.style.cursor='pointer';
+    slot.style.zIndex='5';
+    slot.title='Cliquer pour ajouter une photo';
+    slot.addEventListener('click',function(e){
+      e.stopPropagation();
+      var inp=document.createElement('input');
+      inp.type='file';inp.accept='image/*';
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        _compressImg(file,function(dataUrl){
+          slot.innerHTML='';
+          var img=document.createElement('img');
+          img.src=dataUrl;
+          img.className='w-full h-full object-cover';
+          img.style.borderRadius='1.5rem';
+          slot.appendChild(img);
+          toast('📷 Photo ajoutée');
+        });
       };
       inp.click();
     });
