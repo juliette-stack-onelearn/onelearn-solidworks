@@ -1787,7 +1787,7 @@ tailwind.config = {
       // Helper: GET current file SHA (with cache-buster pour éviter 304)
       const fetchSha = async () => {
         const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}&_t=${Date.now()}`, {
-          headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json', 'Cache-Control': 'no-cache' }
+          headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json' }
         });
         if (!r.ok) {
           if (r.status === 401) { localStorage.removeItem(PAT_KEY); throw new Error('Token invalide. Réessayez.'); }
