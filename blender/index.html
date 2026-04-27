@@ -418,6 +418,154 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </style>
 
+<!-- ============ PARCOURS ============ -->
+<section class="py-20 bg-[#EDEDFB] overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4">
+
+    <div class="text-center mb-12">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Vos parcours</p>
+      <h2 class="text-3xl md:text-4xl font-bold leading-tight max-w-2xl mx-auto" style="font-family:'Satoshi',sans-serif">
+        4 spécialisations pour maîtriser Blender
+      </h2>
+      <p class="mt-4 text-ink/60 text-lg max-w-xl mx-auto">Choisissez le parcours qui correspond à votre projet. Chaque formation est indépendante et finançable CPF.</p>
+    </div>
+
+    <!-- Onglets -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" role="tablist" id="parcours-tabs">
+      <button role="tab" aria-selected="true"  data-tab="anim"   class="parcours-tab active-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Animation 3D</button>
+      <button role="tab" aria-selected="false" data-tab="model"  class="parcours-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Modélisation 3D</button>
+      <button role="tab" aria-selected="false" data-tab="bijoux" class="parcours-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Bijoux 3D</button>
+      <button role="tab" aria-selected="false" data-tab="imp3d"  class="parcours-tab px-5 py-2.5 rounded-full text-sm font-semibold transition-all">Impression 3D</button>
+    </div>
+
+    <!-- Panneaux -->
+    <div id="parcours-panels">
+
+      <!-- Animation 3D -->
+      <div class="parcours-panel" data-panel="anim">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-sm grid lg:grid-cols-2 gap-0">
+          <div class="p-10 lg:p-14 flex flex-col justify-center">
+            <p class="text-orange text-xs font-semibold uppercase tracking-wider mb-4">Animation 3D</p>
+            <h3 class="text-2xl md:text-3xl font-bold leading-snug mb-5" style="font-family:'Satoshi',sans-serif">
+              Donnez vie à vos créations et racontez des histoires en 3D
+            </h3>
+            <p class="text-ink/60 leading-relaxed mb-6">Maîtrisez les fondamentaux de l'animation dans Blender : rigging, keyframes, timeline et rendu Cycles. Créez vos propres séquences animées, du personnage au film court.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Rigging et squelette de personnage</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Animation par keyframes et courbes</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Rendu Cycles & EEVEE professionnel</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Export vidéo et portfolio prêt à partager</li>
+            </ul>
+            <a href="#booking" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white text-sm transition-all self-start" style="background:#E66A40" onmouseover="this.style.background='#CD5025'" onmouseout="this.style.background='#E66A40'">
+              Je découvre ce parcours →
+            </a>
+          </div>
+          <div class="relative min-h-[320px] lg:min-h-0 photo-slot" data-cms="parcours_anim" style="background:linear-gradient(135deg,#22244D 0%,#545AC0 100%)">
+            <span class="slot-label absolute inset-0 flex items-center justify-center text-white/30 text-sm font-medium">Photo animation 3D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modélisation 3D -->
+      <div class="parcours-panel hidden" data-panel="model">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-sm grid lg:grid-cols-2 gap-0">
+          <div class="p-10 lg:p-14 flex flex-col justify-center">
+            <p class="text-orange text-xs font-semibold uppercase tracking-wider mb-4">Modélisation 3D</p>
+            <h3 class="text-2xl md:text-3xl font-bold leading-snug mb-5" style="font-family:'Satoshi',sans-serif">
+              Modélisez n'importe quel objet, personnage ou environnement
+            </h3>
+            <p class="text-ink/60 leading-relaxed mb-6">De la modélisation polygonale à la sculpture numérique, apprenez à construire des assets 3D réalistes pour le jeu vidéo, la visualisation architecturale ou la production visuelle.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Modélisation polygonale et booleans</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Sculpture numérique avec Sculpt Mode</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Textures, matériaux et UV Unwrapping</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Export vers Unity, Unreal Engine ou Sketchfab</li>
+            </ul>
+            <a href="#booking" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white text-sm transition-all self-start" style="background:#E66A40" onmouseover="this.style.background='#CD5025'" onmouseout="this.style.background='#E66A40'">
+              Je découvre ce parcours →
+            </a>
+          </div>
+          <div class="relative min-h-[320px] lg:min-h-0 photo-slot" data-cms="parcours_model" style="background:linear-gradient(135deg,#43489A 0%,#545AC0 100%)">
+            <span class="slot-label absolute inset-0 flex items-center justify-center text-white/30 text-sm font-medium">Photo modélisation 3D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bijoux 3D -->
+      <div class="parcours-panel hidden" data-panel="bijoux">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-sm grid lg:grid-cols-2 gap-0">
+          <div class="p-10 lg:p-14 flex flex-col justify-center">
+            <p class="text-orange text-xs font-semibold uppercase tracking-wider mb-4">Bijoux 3D</p>
+            <h3 class="text-2xl md:text-3xl font-bold leading-snug mb-5" style="font-family:'Satoshi',sans-serif">
+              Concevez vos bijoux sur mesure et préparez-les pour la production
+            </h3>
+            <p class="text-ink/60 leading-relaxed mb-6">Spécialement conçu pour les bijoutiers, joailliers et créateurs indépendants. Apprenez à modéliser en 3D pour exporter vers l'impression résine ou l'usinage CNC.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Modélisation de bagues, pendentifs, bracelets</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Tolérances et épaisseurs pour la production</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Rendu photo-réaliste pour catalogue</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Export STL pour impression résine ou CNC</li>
+            </ul>
+            <a href="#booking" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white text-sm transition-all self-start" style="background:#E66A40" onmouseover="this.style.background='#CD5025'" onmouseout="this.style.background='#E66A40'">
+              Je découvre ce parcours →
+            </a>
+          </div>
+          <div class="relative min-h-[320px] lg:min-h-0 photo-slot" data-cms="parcours_bijoux" style="background:linear-gradient(135deg,#EF7738 0%,#CD5025 100%)">
+            <span class="slot-label absolute inset-0 flex items-center justify-center text-white/30 text-sm font-medium">Photo bijoux 3D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Impression 3D -->
+      <div class="parcours-panel hidden" data-panel="imp3d">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-sm grid lg:grid-cols-2 gap-0">
+          <div class="p-10 lg:p-14 flex flex-col justify-center">
+            <p class="text-orange text-xs font-semibold uppercase tracking-wider mb-4">Impression 3D</p>
+            <h3 class="text-2xl md:text-3xl font-bold leading-snug mb-5" style="font-family:'Satoshi',sans-serif">
+              Concevez vos propres pièces et préparez-les pour l'impression
+            </h3>
+            <p class="text-ink/60 leading-relaxed mb-6">Apprenez à modéliser dans Blender des pièces fonctionnelles ou décoratives, puis à les préparer pour l'impression FDM ou résine avec les bons paramètres de slicer.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Modélisation orientée impression (épaisseurs, ponts)</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Export STL / OBJ et préparation slicer</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Matériaux PLA, résine et paramètres d'impression</li>
+              <li class="flex items-start gap-3 text-sm text-ink/70"><span class="text-orange font-bold mt-0.5">→</span> Post-traitement et finitions professionnelles</li>
+            </ul>
+            <a href="#booking" class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-white text-sm transition-all self-start" style="background:#E66A40" onmouseover="this.style.background='#CD5025'" onmouseout="this.style.background='#E66A40'">
+              Je découvre ce parcours →
+            </a>
+          </div>
+          <div class="relative min-h-[320px] lg:min-h-0 photo-slot" data-cms="parcours_imp3d" style="background:linear-gradient(135deg,#282C37 0%,#43489A 100%)">
+            <span class="slot-label absolute inset-0 flex items-center justify-center text-white/30 text-sm font-medium">Photo impression 3D</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /parcours-panels -->
+  </div>
+</section>
+
+<style>
+  .parcours-tab { color:#282C37; background:white; border:1.5px solid #e5e7eb; }
+  .parcours-tab:hover { border-color:#545AC0; color:#545AC0; }
+  .parcours-tab.active-tab { background:#22244D; color:white; border-color:#22244D; }
+</style>
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.parcours-tab');
+  var panels = document.querySelectorAll('.parcours-panel');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = tab.dataset.tab;
+      tabs.forEach(function(t){ t.classList.remove('active-tab'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active-tab'); tab.setAttribute('aria-selected','true');
+      panels.forEach(function(p){ p.classList.add('hidden'); });
+      document.querySelector('.parcours-panel[data-panel="'+target+'"]').classList.remove('hidden');
+    });
+  });
+})();
+</script>
+
 <!-- ============ PROGRAMME ============ -->
 <section id="programme" class="py-20 bg-cream relative">
   <div class="relative max-w-7xl mx-auto px-4">
