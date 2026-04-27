@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
+<!-- End Google Tag Manager -->
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Formation Blender — Modélisation, Animation &amp; Bijoux 3D | One Learn</title>
+<meta name="description" content="Maîtrisez Blender en 6 semaines : modélisation 3D, animation, bijoux et impression. Formation certifiante, finançable CPF à 100%. Qualiopi."/>
+<link rel="icon" href="https://cdn.prod.website-files.com/646488437ff4a57776de2aeb/681b81aeec7d10bd6dcb8882_Asset%203.svg"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+  navy:{DEFAULT:'#545AC0',900:'#22244D',700:'#43489A'},
+  orange:{DEFAULT:'#EF7738',600:'#E66A40',700:'#CD5025'},
+  ink:'#282C37',cream:'#ffffff',lavender:'#EDEDFB'
+},fontFamily:{satoshi:['Satoshi','sans-serif'],inter:['Inter','sans-serif']}}}};
+</script>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<style>
+*{box-sizing:border-box}
+body{font-family:'Inter',sans-serif;color:#282C37;margin:0}
+h1,h2,h3,h4{font-family:'Satoshi',sans-serif}
+.photo-slot{background:linear-gradient(135deg,#EDEDFB 0%,#d8d9f0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;border:2px dashed #545AC0;border-radius:1rem;transition:.2s;position:relative}
+.photo-slot:hover{border-color:#EF7738;background:linear-gradient(135deg,#FEF4F1 0%,#fde0cf 100%)}
+.photo-slot .slot-icon{width:36px;height:36px;opacity:.4}
+.photo-slot .slot-label{font-size:11px;color:#545AC0;font-weight:600;text-align:center;padding:0 8px}
+.marquee-wrap{overflow:hidden;white-space:nowrap}
+.marquee{display:inline-block;animation:scroll 30s linear infinite}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.timeline-step{opacity:.4;transition:.4s}
+.timeline-step.is-active{opacity:1}
+.timeline-dot{width:16px;height:16px;border-radius:50%;background:#545AC0;flex-shrink:0;transition:.3s;margin-top:4px}
+.timeline-step.is-active .timeline-dot{background:#EF7738;box-shadow:0 0 0 4px rgba(239,119,56,.2)}
+.timeline-line{width:2px;background:#e0e1f5;flex-grow:1;min-height:60px}
+.timeline-step.is-active .timeline-line{background:#EF7738}
+details>summary{list-style:none;cursor:pointer}
+details>summary::-webkit-details-marker{display:none}
+.faq-icon{transition:.2s}
+[data-anim]{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+[data-anim].anim-in{opacity:1;transform:none}
+.confetti-particle{position:fixed;top:-10px;border-radius:2px;animation:fall linear forwards;z-index:9999;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body class="bg-white">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- TOP BAR -->
+<div class="sticky top-0 z-50 bg-ink text-white text-sm py-2 px-4 flex items-center justify-between">
+  <div class="flex items-center gap-3 flex-wrap">
+    <span class="bg-orange-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">OFFRE -10%</span>
+    <span class="hidden sm:inline">Offre de lancement Blender · jusqu'au 30/06/2026 · cumulable avec votre CPF</span>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="#booking" class="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-4 py-1.5 rounded-full text-sm transition">Réserver mon appel gratuit →</a>
+    <a href="tel:0189703426" class="hidden md:flex items-center gap-1 text-white/80 text-sm">&#128222; 01 89 70 34 26</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="sticky top-[40px] z-40 bg-navy-900 shadow-md">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="https://one-learn.fr">
+      <svg width="130" height="32" viewBox="0 0 130 32" fill="none">
+        <text x="0" y="24" font-family="Satoshi,sans-serif" font-size="22" font-weight="800" fill="#545AC0">One</text>
+        <text x="48" y="24" font-family="Satoshi,sans-serif" font-size="22" font-weight="800" fill="#EF7738">learn</text>
+      </svg>
+    </a>
+    <div class="hidden md:flex items-center gap-6 text-white/80 text-sm font-medium">
+      <a href="#programme" class="hover:text-white transition">Programme</a>
+      <a href="#metiers" class="hover:text-white transition">Débouchés</a>
+      <a href="#formateurs" class="hover:text-white transition">Formateurs</a>
+      <a href="#financement" class="hover:text-white transition">Financement</a>
+    </div>
+    <a href="#booking" class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-5 py-2 rounded-full text-sm transition">Réserver mon appel gratuit →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="bg-white pt-12 pb-0 md:pt-16">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-12 gap-8 items-start">
+    <div class="lg:col-span-7 pb-12">
+      <div class="inline-flex items-center gap-2 bg-gray-100 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+        Sessions ouvertes en juin &middot; <strong>5 places restantes</strong>
+        <span class="bg-navy/10 text-navy font-bold text-xs px-2 py-0.5 rounded-full ml-1">FORMATION BLENDER</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-ink leading-tight mb-4" style="font-family:'Satoshi',sans-serif">
+        Maîtrisez Blender en 6 semaines &mdash;<br/>
+        <span style="color:#545AC0">modélisation, animation</span> ou <span style="color:#EF7738">bijoux 3D</span>
+      </h1>
+      <p class="text-lg text-gray-600 mb-6 max-w-xl">Blender est le logiciel 3D le plus puissant du marché, et il est gratuit. Ce qui coûte, c'est savoir l'utiliser. Nos formateurs vous guident du premier clic jusqu'au projet certifiant.</p>
+      <div class="flex flex-wrap gap-3 mb-8">
+        <div class="flex items-center gap-2 bg-lavender rounded-lg px-3 py-2 text-sm font-semibold text-navy">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#545AC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#545AC0" stroke-width="2"/></svg>
+          Finançable CPF à 100%
+        </div>
+        <div class="flex items-center gap-2 bg-lavender rounded-lg px-3 py-2 text-sm font-semibold text-navy">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#545AC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#545AC0" stroke-width="2"/></svg>
+          Certifié Qualiopi
+        </div>
+        <div class="flex items-center gap-2 bg-lavender rounded-lg px-3 py-2 text-sm font-semibold text-navy">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4" stroke="#545AC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="#545AC0" stroke-width="2"/></svg>
+          Accompagnement one-to-one
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 mb-8">
+        <a href="#booking" class="bg-orange-600 hover:bg-orange-700 text-white font-bold px-8 py-4 rounded-full text-base transition text-center">Je vérifie mon éligibilité CPF →</a>
+        <a href="#programme" class="border border-navy-900 text-navy-900 font-semibold px-6 py-4 rounded-full text-base hover:bg-lavender transition text-center">Voir le programme</a>
+      </div>
+      <div class="flex flex-wrap gap-6 text-sm text-gray-500">
+        <div><span class="text-2xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">+400</span><br/>apprenants formés</div>
+        <div><span class="text-2xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">97%</span><br/>de réussite certif.</div>
+        <div><span class="text-2xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">4.9&#9733;</span><br/>satisfaction</div>
+      </div>
+    </div>
+    <div class="lg:col-span-5 flex flex-col gap-4">
+      <div class="photo-slot hero-img w-full" data-cms="hero_img" style="height:380px;border-radius:1.5rem">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#545AC0"/></svg>
+        <span class="slot-label">Photo apprenant sur Blender</span>
+      </div>
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="24px" data-style-width="100%" data-theme="light">
+        <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section class="bg-navy-900 py-8 mt-8">
+  <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+    <div><div class="text-3xl font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">+400</div><div class="text-sm text-white/60 mt-1">apprenants formés</div></div>
+    <div><div class="text-3xl font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">97%</div><div class="text-sm text-white/60 mt-1">de réussite certification</div></div>
+    <div><div class="text-3xl font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">4.9/5</div><div class="text-sm text-white/60 mt-1">satisfaction apprenants</div></div>
+    <div><div class="text-3xl font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">12</div><div class="text-sm text-white/60 mt-1">formateurs experts</div></div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="py-10 border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-4">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">Nos apprenants travaillent aujourd'hui chez</p>
+    <div class="marquee-wrap">
+      <div class="marquee flex items-center gap-16 text-gray-400 font-semibold text-sm">
+        <span>Ubisoft</span><span>Renault Design</span><span>LVMH</span><span>Cartier</span><span>Adidas</span><span>Canal+</span><span>France TV</span><span>Van Cleef</span>
+        <span>Ubisoft</span><span>Renault Design</span><span>LVMH</span><span>Cartier</span><span>Adidas</span><span>Canal+</span><span>France TV</span><span>Van Cleef</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section class="py-20 bg-white" id="pour-qui">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="photo-slot" data-cms="pour_qui_img" style="height:480px;border-radius:1.5rem">
+      <svg class="slot-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#545AC0"/></svg>
+      <span class="slot-label">Photo apprenant Blender</span>
+    </div>
+    <div>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">POUR QUI</p>
+      <h2 class="text-4xl font-extrabold text-ink mb-8" style="font-family:'Satoshi',sans-serif">Cette formation est faite pour vous si&hellip;</h2>
+      <div class="flex flex-col gap-4">
+        <div class="bg-gray-50 rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-lavender flex items-center justify-center flex-shrink-0 text-xl">&#127912;</div>
+          <div><p class="font-bold text-ink">Vous voulez créer des visuels 3D ou des animations</p><p class="text-sm text-gray-500 mt-1">Motion design, rendu produit, scènes 3D — partez de zéro avec un pro.</p></div>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-lavender flex items-center justify-center flex-shrink-0 text-xl">&#128142;</div>
+          <div><p class="font-bold text-ink">Vous êtes bijoutier, artisan ou designer de bijoux</p><p class="text-sm text-gray-500 mt-1">Concevez vos pièces en 3D, exportez pour l'impression ou la fonte.</p></div>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-lavender flex items-center justify-center flex-shrink-0 text-xl">&#128424;</div>
+          <div><p class="font-bold text-ink">Vous avez une imprimante 3D et voulez modéliser vos propres objets</p><p class="text-sm text-gray-500 mt-1">Ne dépendez plus des fichiers STL téléchargés — créez les vôtres.</p></div>
+        </div>
+        <div class="bg-gray-50 rounded-2xl p-5 flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-lavender flex items-center justify-center flex-shrink-0 text-xl">&#127918;</div>
+          <div><p class="font-bold text-ink">Vous êtes en reconversion vers la 3D, le jeu vidéo ou l'architecture</p><p class="text-sm text-gray-500 mt-1">Blender est le premier outil demandé par les studios indépendants.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATIONS -->
+<section class="py-20 bg-lavender" id="creations">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12" data-anim>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">CE QUE VOUS ALLEZ CRÉER</p>
+      <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Des projets concrets dès la semaine 2</h2>
+      <p class="text-gray-500 mt-3 max-w-xl mx-auto">À la fin de la formation, votre portfolio contient des créations réelles — pas des exercices.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="photo-slot" data-cms="creation_1" style="height:220px;border-radius:1rem"><span class="slot-label">Rendu 3D d'un objet</span></div>
+      <div class="photo-slot" data-cms="creation_2" style="height:220px;border-radius:1rem"><span class="slot-label">Bijou 3D modélisé</span></div>
+      <div class="photo-slot" data-cms="creation_3" style="height:220px;border-radius:1rem"><span class="slot-label">Animation 3D</span></div>
+      <div class="photo-slot" data-cms="creation_4" style="height:220px;border-radius:1rem"><span class="slot-label">Modèle pour impression 3D</span></div>
+      <div class="photo-slot" data-cms="creation_5" style="height:220px;border-radius:1rem"><span class="slot-label">Scène / environnement 3D</span></div>
+      <div class="photo-slot" data-cms="creation_6" style="height:220px;border-radius:1rem"><span class="slot-label">Projet certifiant final</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section class="py-20 bg-white" id="programme">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-14" data-anim>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">PROGRAMME</p>
+      <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">6 semaines pour passer de zéro<br/>à opérationnel sur Blender</h2>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-16 items-start">
+      <div class="flex flex-col gap-0">
+
+        <div class="timeline-step is-active flex gap-4" data-step="0">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="flex-1 pb-10">
+            <div class="text-xs font-bold text-orange uppercase tracking-widest mb-1">Semaines 1 &mdash; 2</div>
+            <details open>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="text-xl font-bold text-ink" style="font-family:'Satoshi',sans-serif">Prise en main de Blender</h3>
+                <span class="faq-icon text-navy text-xl font-bold ml-2">+</span>
+              </summary>
+              <div class="mt-3 text-gray-600 text-sm leading-relaxed">
+                <p class="mb-2">Vous apprivoisez l'interface, les raccourcis essentiels et les outils de modélisation de base. À la fin de ces deux semaines, vous créez votre premier objet 3D texturé et éclairé.</p>
+                <ul class="space-y-1 mt-3">
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Navigation 3D, viewport et gizmos</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Mesh editing — extrude, loop cut, bevel</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Matériaux PBR et éclairage studio</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Premier rendu EEVEE</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="timeline-step flex gap-4" data-step="1">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="flex-1 pb-10">
+            <div class="text-xs font-bold text-orange uppercase tracking-widest mb-1">Semaines 3 &mdash; 4</div>
+            <details>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="text-xl font-bold text-ink" style="font-family:'Satoshi',sans-serif">Modélisation avancée &amp; spécialisation</h3>
+                <span class="faq-icon text-navy text-xl font-bold ml-2">+</span>
+              </summary>
+              <div class="mt-3 text-gray-600 text-sm leading-relaxed">
+                <p class="mb-2">Selon votre objectif (bijoux, impression, animation ou rendu), vous approfondissez la modélisation organique ou hard-surface et maîtrisez les modifiers et le sculpting.</p>
+                <ul class="space-y-1 mt-3">
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Subdivision surface &amp; sculpting</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Modélisation bijoux — courbes &amp; solides</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Préparation fichiers STL pour impression</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Rigging &amp; armatures (parcours animation)</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="timeline-step flex gap-4" data-step="2">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div class="flex-1 pb-10">
+            <div class="text-xs font-bold text-orange uppercase tracking-widest mb-1">Semaine 5</div>
+            <details>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="text-xl font-bold text-ink" style="font-family:'Satoshi',sans-serif">Rendu, animation &amp; portfolio</h3>
+                <span class="faq-icon text-navy text-xl font-bold ml-2">+</span>
+              </summary>
+              <div class="mt-3 text-gray-600 text-sm leading-relaxed">
+                <p class="mb-2">Vous produisez des visuels professionnels avec Cycles, créez vos premières animations et commencez à construire votre portfolio avec des projets concrets.</p>
+                <ul class="space-y-1 mt-3">
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Rendu Cycles — paramètres professionnels</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Animation de base — timeline, keyframes</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Compositing &amp; post-production dans Blender</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Export pour client, Sketchfab, réseaux sociaux</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="timeline-step flex gap-4" data-step="3">
+          <div class="flex flex-col items-center"><div class="timeline-dot"></div></div>
+          <div class="flex-1 pb-4">
+            <div class="text-xs font-bold text-orange uppercase tracking-widest mb-1">Semaine 6</div>
+            <details>
+              <summary class="flex items-center justify-between cursor-pointer">
+                <h3 class="text-xl font-bold text-ink" style="font-family:'Satoshi',sans-serif">Projet certifiant &amp; jury professionnel</h3>
+                <span class="faq-icon text-navy text-xl font-bold ml-2">+</span>
+              </summary>
+              <div class="mt-3 text-gray-600 text-sm leading-relaxed">
+                <p class="mb-2">Vous réalisez un projet complet dans votre domaine de spécialisation, présenté devant un jury de professionnels. La certification RS France Compétences est délivrée à l'issue.</p>
+                <ul class="space-y-1 mt-3">
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Projet libre dans votre spécialisation</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Révisions + coaching pré-jury</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Passage devant le jury professionnel</li>
+                  <li class="flex gap-2"><span class="text-orange font-bold">→</span>Certification RS France Compétences obtenue</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+
+      </div>
+      <div class="sticky top-28">
+        <div class="bg-navy-900 rounded-2xl p-8 text-white text-center">
+          <div class="w-20 h-20 bg-white/10 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#EF7738" stroke-width="2"/><path d="M13 20l5 5 9-9" stroke="#EF7738" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="text-2xl font-extrabold mb-2" style="font-family:'Satoshi',sans-serif">Certification RS</h3>
+          <p class="text-white/70 text-sm mb-6">France Compétences — reconnue par les employeurs et les studios 3D.</p>
+          <div class="flex flex-col gap-3 text-left text-sm mb-6">
+            <div class="flex gap-3 items-center"><span class="text-orange font-bold">&#10003;</span>Éligible CPF — sans avance de frais</div>
+            <div class="flex gap-3 items-center"><span class="text-orange font-bold">&#10003;</span>Jury professionnel indépendant</div>
+            <div class="flex gap-3 items-center"><span class="text-orange font-bold">&#10003;</span>97% de taux de réussite</div>
+          </div>
+          <a href="#booking" class="block bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-full text-sm transition">Je réserve ma place →</a>
+        </div>
+        <div id="confetti-container"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METIERS -->
+<section class="py-20 bg-lavender" id="metiers">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-start">
+    <div>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">DÉBOUCHÉS</p>
+      <h2 class="text-4xl font-extrabold text-ink mb-4" style="font-family:'Satoshi',sans-serif">Ce que vous pouvez faire après.</h2>
+      <p class="text-gray-500 mb-8">Blender est entré dans l'industrie du jeu vidéo, la joaillerie, l'architecture et la fabrication additive. Les profils formés manquent partout.</p>
+      <div class="flex flex-col gap-4">
+        <div class="bg-white rounded-2xl p-5 flex items-center gap-5 shadow-sm">
+          <div class="photo-slot" data-cms="metier_1" style="width:72px;height:72px;border-radius:.75rem;flex-shrink:0"><span class="slot-label" style="font-size:9px">Photo</span></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap"><span class="font-bold text-ink">Modélisateur 3D freelance</span><span class="bg-orange/10 text-orange font-bold text-xs px-2 py-0.5 rounded-full">FREELANCE</span></div>
+            <p class="text-sm text-gray-500">Visualisation produit, rendu architecture, illustrations 3D</p>
+          </div>
+          <div class="text-right flex-shrink-0"><div class="text-xs text-gray-400 uppercase">TJM moyen</div><div class="text-lg font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">350-600&#8364;</div></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 flex items-center gap-5 shadow-sm">
+          <div class="photo-slot" data-cms="metier_2" style="width:72px;height:72px;border-radius:.75rem;flex-shrink:0"><span class="slot-label" style="font-size:9px">Photo</span></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap"><span class="font-bold text-ink">Designer joaillier CAD</span><span class="bg-green-100 text-green-700 font-bold text-xs px-2 py-0.5 rounded-full">CDI</span></div>
+            <p class="text-sm text-gray-500">Maisons de joaillerie, ateliers, e-commerce bijoux</p>
+          </div>
+          <div class="text-right flex-shrink-0"><div class="text-xs text-gray-400 uppercase">Salaire annuel</div><div class="text-lg font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">32-48 K&#8364;</div></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 flex items-center gap-5 shadow-sm">
+          <div class="photo-slot" data-cms="metier_3" style="width:72px;height:72px;border-radius:.75rem;flex-shrink:0"><span class="slot-label" style="font-size:9px">Photo</span></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap"><span class="font-bold text-ink">Animateur 3D / Motion designer</span><span class="bg-green-100 text-green-700 font-bold text-xs px-2 py-0.5 rounded-full">CDI</span></div>
+            <p class="text-sm text-gray-500">Studios, agences de com, chaînes TV, jeu indépendant</p>
+          </div>
+          <div class="text-right flex-shrink-0"><div class="text-xs text-gray-400 uppercase">Salaire annuel</div><div class="text-lg font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">30-45 K&#8364;</div></div>
+        </div>
+        <div class="bg-white rounded-2xl p-5 flex items-center gap-5 shadow-sm">
+          <div class="photo-slot" data-cms="metier_4" style="width:72px;height:72px;border-radius:.75rem;flex-shrink:0"><span class="slot-label" style="font-size:9px">Photo</span></div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2 mb-1 flex-wrap"><span class="font-bold text-ink">Technicien fabrication additive</span><span class="bg-green-100 text-green-700 font-bold text-xs px-2 py-0.5 rounded-full">CDI</span></div>
+            <p class="text-sm text-gray-500">Industrie, santé, prototypage, FabLabs</p>
+          </div>
+          <div class="text-right flex-shrink-0"><div class="text-xs text-gray-400 uppercase">Salaire annuel</div><div class="text-lg font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">28-40 K&#8364;</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sticky top-28 flex flex-col gap-6">
+      <div class="photo-slot" data-cms="metier_hero" style="height:380px;border-radius:1.5rem">
+        <svg class="slot-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#545AC0"/></svg>
+        <span class="slot-label">Photo apprenant sur projet Blender professionnel</span>
+      </div>
+      <div class="bg-navy-900 rounded-2xl p-6 text-white">
+        <p class="font-bold mb-2">Blender + IA générative = profil le plus recherché en 2025</p>
+        <p class="text-white/60 text-sm">Les studios et agences recrutent des profils capables de combiner modélisation 3D et outils IA pour accélérer la production visuelle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI -->
+<section class="py-20 bg-white" id="pourquoi">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12" data-anim>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">POURQUOI ONE LEARN</p>
+      <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Pourquoi One Learn et pas<br/>un tuto YouTube ?</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-lavender rounded-2xl p-8" data-anim>
+        <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#545AC0" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-bold text-xl text-ink mb-3" style="font-family:'Satoshi',sans-serif">Un parcours structuré, pas des tutoriels épars</h3>
+        <p class="text-gray-500 text-sm">YouTube c'est 10 000 vidéos sans fil directeur. Ici, chaque semaine est pensée pour progresser vers votre objectif spécifique.</p>
+      </div>
+      <div class="bg-lavender rounded-2xl p-8" data-anim>
+        <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#545AC0" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="#545AC0" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="#545AC0" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-bold text-xl text-ink mb-3" style="font-family:'Satoshi',sans-serif">Un formateur dédié, disponible pour vous</h3>
+        <p class="text-gray-500 text-sm">Pas de forum, pas de chatbot. Un expert Blender qui répond à vos questions en moins de 24h et vous fait des retours sur vos projets.</p>
+      </div>
+      <div class="bg-lavender rounded-2xl p-8" data-anim>
+        <div class="w-12 h-12 bg-navy/10 rounded-xl flex items-center justify-center mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#545AC0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" stroke="#545AC0" stroke-width="2"/></svg>
+        </div>
+        <h3 class="font-bold text-xl text-ink mb-3" style="font-family:'Satoshi',sans-serif">Une certification qui vaut quelque chose</h3>
+        <p class="text-gray-500 text-sm">La certification RS France Compétences est reconnue par les employeurs et les DRH. Elle prouve votre niveau — et finance votre formation via le CPF.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATEURS -->
+<section class="py-20 bg-navy-900" id="formateurs">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12" data-anim>
+      <p class="text-orange-400 font-bold text-xs uppercase tracking-widest mb-3">VOS FORMATEURS</p>
+      <h2 class="text-4xl font-extrabold text-white" style="font-family:'Satoshi',sans-serif">Des pros qui ont vraiment exercé le métier.</h2>
+      <p class="text-white/50 mt-3">Nos formateurs Blender ont tous travaillé en studio, atelier ou agence avant de former.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <div class="bg-white rounded-2xl overflow-hidden">
+        <div class="photo-slot" data-cms="formateur_1" style="height:280px;border-radius:0">
+          <svg class="slot-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#545AC0"/></svg>
+          <span class="slot-label">Photo formateur</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-ink mb-1" style="font-family:'Satoshi',sans-serif">Marc D.</h3>
+          <p class="text-orange-600 font-semibold text-sm mb-3">Artiste 3D &amp; Animateur — 10 ans de studio</p>
+          <p class="text-gray-500 text-sm mb-4">Ex-modélisateur chez un studio d'animation parisien, Marc a travaillé sur des projets pour Canal+, TF1 et des productions indépendantes primées. Il enseigne la modélisation et l'animation Blender.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Modélisation organique</span>
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Animation</span>
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Rendu Cycles</span>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl overflow-hidden">
+        <div class="photo-slot" data-cms="formateur_2" style="height:280px;border-radius:0">
+          <svg class="slot-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#545AC0"/></svg>
+          <span class="slot-label">Photo formatrice</span>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-ink mb-1" style="font-family:'Satoshi',sans-serif">Sophie L.</h3>
+          <p class="text-orange-600 font-semibold text-sm mb-3">Designer Joaillier CAD &amp; Spécialiste Impression 3D</p>
+          <p class="text-gray-500 text-sm mb-4">Sophie a conçu des bijoux pour des maisons parisiennes pendant 8 ans avant de se spécialiser dans la formation CAD joaillerie avec Blender. Elle maîtrise aussi la préparation de fichiers pour imprimantes résine et FDM.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Design bijoux</span>
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Impression 3D</span>
+            <span class="bg-lavender text-navy text-xs font-semibold px-3 py-1 rounded-full">Hard surface</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-4 gap-4">
+      <div class="photo-slot" data-cms="formateur_galerie_1" style="height:120px;border-radius:1rem"><span class="slot-label" style="font-size:10px">Formateur 3</span></div>
+      <div class="photo-slot" data-cms="formateur_galerie_2" style="height:120px;border-radius:1rem"><span class="slot-label" style="font-size:10px">Formateur 4</span></div>
+      <div class="photo-slot" data-cms="formateur_galerie_3" style="height:120px;border-radius:1rem"><span class="slot-label" style="font-size:10px">Formateur 5</span></div>
+      <div class="photo-slot" data-cms="formateur_galerie_4" style="height:120px;border-radius:1rem"><span class="slot-label" style="font-size:10px">Formateur 6</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section class="py-20 bg-white" id="temoignages">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12" data-anim>
+      <div>
+        <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">ILS L'ONT FAIT</p>
+        <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Des résultats concrets,<br/>en quelques semaines.</h2>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="5419b6ffb0d04a076446a9af" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="24px" data-style-width="250px" data-theme="light">
+          <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+        </div>
+      </div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+      <div class="border border-gray-100 rounded-2xl p-6 shadow-sm">
+        <div class="text-orange text-lg mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-700 text-sm mb-6">"Je suis bijoutière indépendante. En 6 semaines j'ai appris à modéliser mes propres créations sur Blender et à les envoyer directement à l'imprimante résine. J'économise des dizaines d'heures de travail manuel chaque mois."</p>
+        <div class="flex items-center gap-3">
+          <div class="photo-slot" data-cms="avis_1" style="width:44px;height:44px;border-radius:50%;flex-shrink:0"><span style="font-size:8px;color:#545AC0">Photo</span></div>
+          <div><div class="font-bold text-sm text-ink">Camille B.</div><div class="text-xs text-gray-400">Bijoutière indépendante</div></div>
+        </div>
+      </div>
+      <div class="border border-gray-100 rounded-2xl p-6 shadow-sm">
+        <div class="text-orange text-lg mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-700 text-sm mb-6">"J'étais graphiste 2D depuis 10 ans. J'avais peur de Blender — l'interface m'avait toujours rebuté. En 3 semaines avec Marc, j'avais créé mes premiers rendus produit. Aujourd'hui c'est 40% de mon chiffre d'affaires."</p>
+        <div class="flex items-center gap-3">
+          <div class="photo-slot" data-cms="avis_2" style="width:44px;height:44px;border-radius:50%;flex-shrink:0"><span style="font-size:8px;color:#545AC0">Photo</span></div>
+          <div><div class="font-bold text-sm text-ink">Thomas R.</div><div class="text-xs text-gray-400">Directeur artistique freelance</div></div>
+        </div>
+      </div>
+      <div class="border border-gray-100 rounded-2xl p-6 shadow-sm">
+        <div class="text-orange text-lg mb-4">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="text-gray-700 text-sm mb-6">"Technicien en maintenance industrielle, j'avais besoin de créer des pièces sur mesure. La formation m'a permis de modéliser et d'imprimer directement sur notre imprimante de l'atelier. Le CPF a tout pris en charge."</p>
+        <div class="flex items-center gap-3">
+          <div class="photo-slot" data-cms="avis_3" style="width:44px;height:44px;border-radius:50%;flex-shrink:0"><span style="font-size:8px;color:#545AC0">Photo</span></div>
+          <div><div class="font-bold text-sm text-ink">Pierre M.</div><div class="text-xs text-gray-400">Technicien maintenance</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="140px" data-style-width="100%" data-theme="light">
+      <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCEMENT -->
+<section class="py-20 bg-lavender" id="financement">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-12" data-anim>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">TARIFS &amp; FINANCEMENT</p>
+      <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Dans la plupart des cas,<br/>vous ne payez rien.</h2>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 bg-white rounded-2xl p-8 shadow-sm">
+        <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+          <div>
+            <h3 class="text-2xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Formation Blender — 6 semaines</h3>
+            <p class="text-gray-500 text-sm mt-1">Parcours complet avec certification RS France Compétences</p>
+          </div>
+          <div class="text-right">
+            <div class="text-3xl font-extrabold text-orange" style="font-family:'Satoshi',sans-serif">1 490&#8364;</div>
+            <div class="text-xs text-gray-400">CPF : souvent 0&#8364; de reste à charge</div>
+          </div>
+        </div>
+        <div class="border-t border-gray-100 pt-6">
+          <h4 class="font-bold text-ink mb-4">Comment financer en 3 étapes</h4>
+          <div class="flex flex-col gap-4">
+            <div class="flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">1</div>
+              <div><p class="font-semibold text-ink">Vérifiez votre solde CPF</p><p class="text-sm text-gray-500">Sur mon-compte-formation.gouv.fr — 30 secondes suffisent.</p></div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">2</div>
+              <div><p class="font-semibold text-ink">Déposez votre demande de formation</p><p class="text-sm text-gray-500">On vous guide pas à pas. Délai légal de 11 jours, puis c'est parti.</p></div>
+            </div>
+            <div class="flex gap-4 items-start">
+              <div class="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center flex-shrink-0 text-sm font-bold">3</div>
+              <div><p class="font-semibold text-ink">Commencez votre formation</p><p class="text-sm text-gray-500">Votre formateur dédié vous contacte dans les 48h pour organiser le planning.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div class="bg-white rounded-2xl p-6 shadow-sm">
+          <h4 class="font-bold text-ink mb-4">Organismes de financement</h4>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="photo-slot" data-cms="logo_cpf" style="height:60px;border-radius:.75rem"><span class="slot-label" style="font-size:10px">Logo CPF</span></div>
+            <div class="photo-slot" data-cms="logo_ft" style="height:60px;border-radius:.75rem"><span class="slot-label" style="font-size:10px">France Travail</span></div>
+            <div class="photo-slot" data-cms="logo_opco" style="height:60px;border-radius:.75rem"><span class="slot-label" style="font-size:10px">Logo OPCO</span></div>
+            <div class="photo-slot" data-cms="logo_alma" style="height:60px;border-radius:.75rem"><span class="slot-label" style="font-size:10px">Logo Alma</span></div>
+          </div>
+        </div>
+        <div class="bg-navy-900 text-white rounded-2xl p-6">
+          <div class="text-3xl mb-2 text-orange font-bold">&#10003;</div>
+          <h4 class="font-bold mb-2">Garantie satisfaction</h4>
+          <p class="text-white/60 text-sm">Si à la fin de la semaine 2 vous n'êtes pas satisfait, on vous rembourse intégralement. Sans questions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATEUR -->
+<section class="py-20 bg-gradient-to-br from-navy-900 to-navy" id="simulateur">
+  <div class="max-w-2xl mx-auto px-4 text-center text-white">
+    <p class="text-orange-400 font-bold text-xs uppercase tracking-widest mb-3">TEST D'ÉLIGIBILITÉ</p>
+    <h2 class="text-4xl font-extrabold mb-4" style="font-family:'Satoshi',sans-serif">Êtes-vous éligible ?</h2>
+    <p class="text-white/60 mb-8">En 30 secondes, découvrez si vous pouvez financer cette formation avec votre CPF.</p>
+    <form id="sim-form" class="bg-white/10 backdrop-blur rounded-2xl p-6 text-left flex flex-col gap-4">
+      <div>
+        <label class="block text-white/80 text-sm font-semibold mb-1">Votre prénom</label>
+        <input type="text" id="sim-prenom" placeholder="ex : Marie" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none"/>
+      </div>
+      <div>
+        <label class="block text-white/80 text-sm font-semibold mb-1">Votre téléphone</label>
+        <input type="tel" id="sim-tel" placeholder="06 12 34 56 78" required class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none"/>
+      </div>
+      <div>
+        <label class="block text-white/80 text-sm font-semibold mb-1">Votre situation actuelle</label>
+        <select id="sim-situation" class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white focus:outline-none">
+          <option value="salarie">Salarié(e)</option>
+          <option value="independant">Indépendant / freelance</option>
+          <option value="demandeur">Demandeur d'emploi</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-full text-base transition w-full">Je vérifie mon éligibilité →</button>
+    </form>
+    <p id="sim-msg" class="mt-4 text-white/70 text-sm hidden"></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="py-20 bg-white" id="faq">
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="text-center mb-12" data-anim>
+      <p class="text-orange-600 font-bold text-xs uppercase tracking-widest mb-3">FAQ</p>
+      <h2 class="text-4xl font-extrabold text-ink" style="font-family:'Satoshi',sans-serif">Vos questions, nos réponses.</h2>
+    </div>
+    <div class="flex flex-col gap-3">
+      <details class="border border-gray-100 rounded-2xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-semibold text-ink cursor-pointer hover:bg-gray-50"><span>Blender est gratuit — pourquoi payer une formation ?</span><span class="faq-icon text-navy text-xl font-bold ml-2 flex-shrink-0">+</span></summary>
+        <div class="px-6 pb-5 text-gray-500 text-sm">Blender est effectivement gratuit à télécharger. Mais maîtriser l'interface et atteindre un niveau professionnel en autonomie demande en moyenne 12 à 18 mois en autodidacte. Notre formation compresse ça en 6 semaines avec un formateur dédié.</div>
+      </details>
+      <details class="border border-gray-100 rounded-2xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-semibold text-ink cursor-pointer hover:bg-gray-50"><span>Faut-il une carte graphique puissante ?</span><span class="faq-icon text-navy text-xl font-bold ml-2 flex-shrink-0">+</span></summary>
+        <div class="px-6 pb-5 text-gray-500 text-sm">Un ordinateur équipé d'une carte graphique correcte (GTX 1060 ou équivalent) suffit pour débuter. Votre formateur vous conseille en début de formation selon votre matériel.</div>
+      </details>
+      <details class="border border-gray-100 rounded-2xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-semibold text-ink cursor-pointer hover:bg-gray-50"><span>La formation est-elle adaptée aux débutants complets ?</span><span class="faq-icon text-navy text-xl font-bold ml-2 flex-shrink-0">+</span></summary>
+        <div class="px-6 pb-5 text-gray-500 text-sm">Oui, absolument. Nous partons de zéro — interface, raccourcis, premiers objets. Le seul prérequis est d'être à l'aise avec un ordinateur.</div>
+      </details>
+      <details class="border border-gray-100 rounded-2xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-semibold text-ink cursor-pointer hover:bg-gray-50"><span>Combien d'heures par semaine dois-je consacrer à la formation ?</span><span class="faq-icon text-navy text-xl font-bold ml-2 flex-shrink-0">+</span></summary>
+        <div class="px-6 pb-5 text-gray-500 text-sm">Comptez entre 8 et 12 heures par semaine — cours vidéo + exercices pratiques + session live avec votre formateur. Le programme est conçu pour les actifs.</div>
+      </details>
+      <details class="border border-gray-100 rounded-2xl overflow-hidden">
+        <summary class="flex items-center justify-between px-6 py-4 font-semibold text-ink cursor-pointer hover:bg-gray-50"><span>Qu'est-ce que la certification RS France Compétences ?</span><span class="faq-icon text-navy text-xl font-bold ml-2 flex-shrink-0">+</span></summary>
+        <div class="px-6 pb-5 text-gray-500 text-sm">La certification RS (Répertoire Spécifique) est enregistrée au niveau national. Elle atteste d'une compétence professionnelle reconnue par les employeurs et rend la formation éligible au CPF.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="py-20 bg-navy-900" id="booking">
+  <div class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+    <div class="text-white">
+      <p class="text-orange-400 font-bold text-xs uppercase tracking-widest mb-3">PROCHAINE ÉTAPE</p>
+      <h2 class="text-4xl font-extrabold mb-4" style="font-family:'Satoshi',sans-serif">Et si dans 6 semaines, vous maîtrisiez Blender comme un pro ?</h2>
+      <p class="text-white/60 mb-6">Réservez un appel gratuit de 20 minutes avec un conseiller One Learn. On vérifie votre éligibilité CPF, on répond à vos questions et on construit votre planning ensemble.</p>
+      <div class="flex items-center gap-4">
+        <div class="photo-slot" data-cms="cta_advisor_photo" style="width:64px;height:64px;border-radius:50%;flex-shrink:0">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#d8d9f0"/></svg>
+        </div>
+        <div>
+          <p class="font-bold text-white">Damien</p>
+          <p class="text-white/50 text-sm">Conseiller pédagogique</p>
+          <span class="inline-flex items-center gap-1 bg-white/10 text-white/80 text-xs px-3 py-1 rounded-full mt-1"><span class="w-2 h-2 rounded-full bg-green-400"></span>Disponible maintenant</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="iclosed-widget" data-url="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-blender" title="Discuter avec un conseiller Blender One Learn" style="width:100%;height:620px"></div>
+      <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-navy-900 border-t border-white/5 py-10">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-white/40 text-sm">
+    <svg width="130" height="32" viewBox="0 0 130 32" fill="none">
+      <text x="0" y="24" font-family="Satoshi,sans-serif" font-size="22" font-weight="800" fill="white">One</text>
+      <text x="48" y="24" font-family="Satoshi,sans-serif" font-size="22" font-weight="800" fill="#EF7738">learn</text>
+    </svg>
+    <div class="flex gap-6">
+      <a href="#" class="hover:text-white transition">Politique de confidentialité</a>
+      <a href="#" class="hover:text-white transition">CGV</a>
+      <a href="#" class="hover:text-white transition">Mentions légales</a>
+    </div>
+    <p>© 2026 One Learn — Organisme certifié Qualiopi</p>
+  </div>
+</footer>
+
+<div id="certif-banner" style="display:none;position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#22244D;color:white;padding:14px 28px;border-radius:16px;z-index:9998;box-shadow:0 8px 32px rgba(0,0,0,.3);text-align:center;max-width:90vw">
+  <div style="font-size:1.1rem;font-weight:800">Certification RS obtenue !</div>
+  <div style="font-size:.85rem;opacity:.7;margin-top:4px">97% de taux de réussite — rejoignez nos apprenants certifiés</div>
+</div>
+
+<script>
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('anim-in');});},{threshold:.15});
+document.querySelectorAll('[data-anim]').forEach(function(el){obs.observe(el);});
+
+var stepObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var idx=+e.target.getAttribute('data-step');
+      document.querySelectorAll('.timeline-step').forEach(function(s,i){
+        s.classList.toggle('is-active',i===idx);
+        var d=s.querySelector('details');if(d)d.open=(i===idx);
+      });
+      if(idx===3)fireConfetti();
+    }
+  });
+},{threshold:.6});
+document.querySelectorAll('.timeline-step').forEach(function(s){stepObs.observe(s);});
+
+function fireConfetti(){
+  var colors=['#545AC0','#EF7738','#E66A40','#ffffff','#22244D'];
+  for(var i=0;i<100;i++){(function(){
+    var el=document.createElement('div');el.className='confetti-particle';
+    el.style.cssText='left:'+Math.random()*100+'vw;width:'+(4+Math.random()*6)+'px;height:'+(8+Math.random()*8)+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(1.5+Math.random()*2)+'s;animation-delay:'+Math.random()+'s;';
+    document.body.appendChild(el);setTimeout(function(){el.remove();},4000);
+  })();}
+  var b=document.getElementById('certif-banner');b.style.display='block';setTimeout(function(){b.style.display='none';},5000);
+}
+
+document.querySelectorAll('details').forEach(function(d){
+  d.addEventListener('toggle',function(){var i=d.querySelector('.faq-icon');if(i)i.textContent=d.open?'x':'+';});
+});
+
+document.getElementById('sim-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var msg=document.getElementById('sim-msg');msg.textContent='Vérification en cours…';msg.classList.remove('hidden');
+  fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({source:'blender',prenom:document.getElementById('sim-prenom').value,telephone:document.getElementById('sim-tel').value,situation:document.getElementById('sim-situation').value})
+  }).then(function(){msg.textContent='Merci ! Un conseiller vous rappelle dans les 24h.';document.getElementById('sim-form').reset();})
+  .catch(function(){msg.textContent='Erreur. Appelez-nous au 01 89 70 34 26.';});
+});
+
+function toast(msg){
+  var t=document.getElementById('_ed_toast');
+  if(!t){t=document.createElement('div');t.id='_ed_toast';t.style.cssText='position:fixed;bottom:80px;right:20px;background:#22244D;color:#fff;padding:10px 18px;border-radius:12px;z-index:99999;font-size:14px;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:opacity .3s';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';clearTimeout(t._to);t._to=setTimeout(function(){t.style.opacity='0';},3000);
+}
+</script>
+
+<script id="_ed_script">
+(function(){
+  if(!location.search.includes('edit'))return;
+  var REPO='juliette-stack-onelearn/onelearn-solidworks';
+  var FILE='blender/index.html';
+
+  var s=document.createElement('style');s.id='_ed_style';
+  s.textContent='._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;box-shadow:0 8px 32px rgba(0,0,0,.25)}._ed-btn{background:#EF7738;color:#fff;border:none;border-radius:8px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600}._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7)}._ed-btn:disabled{opacity:.5;cursor:not-allowed}[contenteditable]{outline:2px dashed #EF773888;outline-offset:2px;border-radius:4px;min-width:1em}';
+  document.head.appendChild(s);
+
+  function _compressImg(file,cb){
+    var MAX=900,Q=0.78;
+    var r=new FileReader();
+    r.onload=function(e){
+      var img=new Image();
+      img.onload=function(){
+        var w=img.width,h=img.height;
+        if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+        if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0,w,h);
+        cb(c.toDataURL('image/jpeg',Q));
+      };
+      img.src=e.target.result;
+    };
+    r.readAsDataURL(file);
+  }
+
+  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
+    slot.style.cursor='pointer';
+    slot.title='Cliquer pour insérer une photo';
+    slot.addEventListener('click',function(e){
+      e.stopPropagation();
+      var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.style.display='none';
+      document.body.appendChild(inp);
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        _compressImg(file,function(dataUrl){
+          var key=slot.getAttribute('data-cms');
+          slot.innerHTML='';slot.style.background='none';slot.style.border='none';slot.style.padding='0';
+          slot.classList.remove('photo-slot');
+          var img=document.createElement('img');img.src=dataUrl;img.setAttribute('data-cms',key);
+          img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;';
+          slot.appendChild(img);toast('\uD83D\uDCF7 Photo insérée');
+        });
+        document.body.removeChild(inp);
+      };
+      inp.click();
+    });
+  });
+
+  document.querySelectorAll('img[data-cms]').forEach(function(img){
+    img.parentElement.style.cursor='pointer';
+    img.parentElement.addEventListener('click',function(e){
+      if(e.target.closest('[contenteditable]'))return;e.stopPropagation();
+      var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.style.display='none';
+      document.body.appendChild(inp);
+      inp.onchange=function(){
+        var file=inp.files[0];if(!file)return;
+        _compressImg(file,function(d){img.src=d;toast('\uD83D\uDCF7 Image mise à jour');});
+        document.body.removeChild(inp);
+      };
+      inp.click();
+    });
+  });
+
+  var SEL='h1,h2,h3,h4,p,li,span,td,th';
+  document.querySelectorAll(SEL).forEach(function(el){
+    if(el.closest('script,style,#_ed_bar,#_ed_script,noscript,.photo-slot,.marquee,.trustpilot-widget'))return;
+    if(el.querySelector(SEL))return;
+    el.contentEditable='true';el.spellcheck=false;
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey)e.preventDefault();});
+  });
+
+  function save(){
+    var token=localStorage.getItem('_ol_token');
+    if(!token){token=prompt('Token GitHub (ghp_...) :');if(!token)return;localStorage.setItem('_ol_token',token);}
+    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
+    var clone=document.documentElement.cloneNode(true);
+    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
+    clone.querySelectorAll('[style*="cursor"]').forEach(function(el){el.style.cursor='';});
+    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
+    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
+    var reader=new FileReader();
+    reader.onload=function(){
+      var encoded=reader.result.split(',')[1];
+      fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE+'?t='+Date.now(),{
+        headers:{'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Cache-Control':'no-cache'}
+      }).then(function(r){return r.json();})
+      .then(function(d){
+        if(!d.sha){toast('\u274C SHA manquant');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';return;}
+        return fetch('https://api.github.com/repos/'+REPO+'/contents/'+FILE,{
+          method:'PUT',
+          headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+          body:JSON.stringify({message:'update: inline edit blender',content:encoded,sha:d.sha,branch:'main'})
+        });
+      }).then(function(r){
+        if(!r)return;
+        if(r.ok){toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');}
+        else{r.json().then(function(e){toast('\u274C Erreur '+r.status+': '+(e.message||'token invalide'));});localStorage.removeItem('_ol_token');}
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+      }).catch(function(e){toast('\u274C Erreur r\u00E9seau: '+e.message);saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';});
+    };
+    reader.readAsDataURL(blob);
+  }
+
+  var bar=document.createElement('div');bar.id='_ed_bar';bar.className='_ed-bar';
+  var lbl=document.createElement('span');lbl.textContent='\u270F\uFE0F Mode \u00E9dition';
+  var saveBtn=document.createElement('button');saveBtn.className='_ed-btn';saveBtn.textContent='\uD83D\uDCBE Sauvegarder';saveBtn.addEventListener('click',save);
+  var resetBtn=document.createElement('button');resetBtn.className='_ed-btn ghost';resetBtn.textContent='\u21BA Token';resetBtn.addEventListener('click',function(){localStorage.removeItem('_ol_token');toast('Token effac\u00E9');});
+  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
+  document.body.appendChild(bar);
+  toast('\u270F\uFE0F Mode \u00E9dition actif');
+})();
+</script>
+
+<script>
+window.axeptioSettings = {
+  clientId: "630de1b500fec812caa2de5e",
+  cookiesVersion: "one learn-fr",
+};
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+</body>
+</html>
