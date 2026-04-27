@@ -150,6 +150,23 @@ tailwind.config = {
   }
   .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
   .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
+  /* Cascade entrée tool-tiles au chargement */
+  @keyframes tool-tile-pop {
+    from { opacity: 0; transform: translateY(14px) scale(.85); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .tool-tile { animation: tool-tile-pop .55s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+  .tool-tile:nth-child(1)  { animation-delay: 200ms; }
+  .tool-tile:nth-child(2)  { animation-delay: 260ms; }
+  .tool-tile:nth-child(3)  { animation-delay: 320ms; }
+  .tool-tile:nth-child(4)  { animation-delay: 380ms; }
+  .tool-tile:nth-child(5)  { animation-delay: 440ms; }
+  .tool-tile:nth-child(6)  { animation-delay: 500ms; }
+  .tool-tile:nth-child(7)  { animation-delay: 560ms; }
+  .tool-tile:nth-child(8)  { animation-delay: 620ms; }
+  .tool-tile:nth-child(9)  { animation-delay: 680ms; }
+  .tool-tile:nth-child(10) { animation-delay: 740ms; }
+  @media (prefers-reduced-motion: reduce) { .tool-tile { animation: none !important; } }
 </style>
 
 <section class="relative overflow-hidden" style="background:radial-gradient(ellipse 1000px 700px at 50% 30%, #FBFAFF 0%, #FFFFFF 55%, #FFF7F2 100%);">
