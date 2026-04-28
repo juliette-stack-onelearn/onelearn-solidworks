@@ -1594,7 +1594,10 @@ tailwind.config = {
   const SELECTORS = 'h1,h2,h3,h4,h5,h6,p,span,a,li,button,label,strong,em,td,th,figcaption,blockquote,small';
   document.querySelectorAll(SELECTORS).forEach(el => {
     if (el.closest('script,style,head,#__ol_editor_bar')) return;
-    if (el.children.length === 0 || (el.children.length === 1 && el.firstElementChild.tagName === 'SVG')) {
+    // Accept: no children, OR all children are SVG/BR (line-breaks shouldn't block editing)
+    const allowed = ['SVG', 'BR'];
+    const allChildrenAllowed = Array.from(el.children).every(c => allowed.includes(c.tagName));
+    if (allChildrenAllowed) {
       el.setAttribute('contenteditable', 'true');
       el.classList.add('__ol_editable');
     }
