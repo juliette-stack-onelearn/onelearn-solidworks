@@ -1883,4 +1883,26 @@ a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o|
   })();
 </script>
 
-<div id="batBeacon489617864547" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon388736872062" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=ac88bf5d-eacb-410e-b739-fcee0408a806&amp;bo=2&amp;sid=787acef0431311f197ae43a3609cfa98&amp;vid=787ac610431311f1b92d39ff37e31751&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20Communication%20%26%20Design%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fcommunication-design%2F%3Fedit&amp;r=&amp;lt=498&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=167786" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"></body></html>
+<div id="batBeacon489617864547" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon388736872062" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=ac88bf5d-eacb-410e-b739-fcee0408a806&amp;bo=2&amp;sid=787acef0431311f197ae43a3609cfa98&amp;vid=787ac610431311f1b92d39ff37e31751&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20Communication%20%26%20Design%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fcommunication-design%2F%3Fedit&amp;r=&amp;lt=498&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=167786" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><script>
+/* Scroll #rdv links directly to the iClosed form (skip section title for faster mobile UX) */
+(function(){
+  function init(){
+    var widget = document.querySelector('#rdv .iclosed-widget') || document.querySelector('.iclosed-widget');
+    if (!widget) return;
+    var topbar = document.querySelector('.bg-ink.sticky');
+    var offset = (topbar ? topbar.offsetHeight : 60) + 12;
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[href="#rdv"], a[href$="#rdv"]');
+      if (!link) return;
+      e.preventDefault();
+      var y = widget.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top: y, behavior: 'smooth'});
+      history.replaceState(null, '', '#rdv');
+    }, true);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+</script>
+</body></html>

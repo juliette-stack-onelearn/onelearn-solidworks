@@ -1871,4 +1871,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
-<input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"></body></html>
+<input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><script>
+/* Scroll #rdv links directly to the iClosed form (skip section title for faster mobile UX) */
+(function(){
+  function init(){
+    var widget = document.querySelector('#rdv .iclosed-widget') || document.querySelector('.iclosed-widget');
+    if (!widget) return;
+    var topbar = document.querySelector('.bg-ink.sticky');
+    var offset = (topbar ? topbar.offsetHeight : 60) + 12;
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[href="#rdv"], a[href$="#rdv"]');
+      if (!link) return;
+      e.preventDefault();
+      var y = widget.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top: y, behavior: 'smooth'});
+      history.replaceState(null, '', '#rdv');
+    }, true);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+</script>
+</body></html>
