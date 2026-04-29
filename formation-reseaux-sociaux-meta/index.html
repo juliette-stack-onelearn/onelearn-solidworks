@@ -1991,13 +1991,127 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     </div>
 
-    <!-- iClosed inline widget -->
-    <div class="mt-10 bg-white rounded-3xl p-2 sm:p-4 shadow-2xl">
-      <!-- iClosed inline widget begin -->
-      <div class="iclosed-widget" data-url="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-r-seaux-sociaux" title="Discuter avec un conseiller réseaux sociaux" style="width: 100%; height: 620px" data-processed="true"><iframe src="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-r-seaux-sociaux?_fbp=fb.1.1773649088197.597618608319132913&amp;edit=undefined&amp;embedType=inline&amp;referrerUrl=https%3A%2F%2Fgo.one-learn.fr%2Fformation-reseaux-sociaux%2F%3Fedit" width="100%" height="100%" frameborder="0" sandbox="allow-scripts allow-downloads allow-same-origin allow-popups allow-forms allow-top-navigation allow-popups-to-escape-sandbox" title="Discuter avec un conseiller réseaux sociaux"></iframe></div>
-      <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async=""></script>
-      <!-- iClosed inline widget end -->
+    <!-- Formulaire lead gen Meta -->
+    <div class="mt-10 bg-white rounded-3xl p-6 sm:p-8 shadow-2xl" id="form-meta">
+      <div id="form-step" >
+        <h3 class="font-display text-xl sm:text-2xl text-navy-900 mb-2">Recevez le programme complet</h3>
+        <p class="text-sm text-ink/60 mb-6">Un conseiller vous rappelle sous 24h pour répondre à vos questions.</p>
+
+        <form id="lead-form" novalidate>
+          <!-- Prénom + Email -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+            <div>
+              <label class="block text-xs font-semibold text-ink/70 mb-1.5 uppercase tracking-wide">Prénom *</label>
+              <input id="lf-firstname" type="text" placeholder="Votre prénom" required
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition"
+                style="font-family:inherit;">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-ink/70 mb-1.5 uppercase tracking-wide">Email *</label>
+              <input id="lf-email" type="email" placeholder="votre@email.com" required
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition"
+                style="font-family:inherit;">
+            </div>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="mb-3">
+            <label class="block text-xs font-semibold text-ink/70 mb-1.5 uppercase tracking-wide">Téléphone *</label>
+            <input id="lf-phone" type="tel" placeholder="06 XX XX XX XX" required
+              class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy/30 focus:border-navy transition"
+              style="font-family:inherit;">
+          </div>
+
+          <!-- Situation professionnelle -->
+          <div class="mb-5">
+            <label class="block text-xs font-semibold text-ink/70 mb-2 uppercase tracking-wide">Vous êtes... *</label>
+            <div class="grid grid-cols-2 gap-2" id="situation-btns">
+              <button type="button" data-val="Salarié(e)" class="sit-btn px-3 py-2.5 rounded-xl border-2 border-gray-200 text-sm font-medium text-ink hover:border-navy transition text-center">Salarié(e)</button>
+              <button type="button" data-val="Demandeur d'emploi" class="sit-btn px-3 py-2.5 rounded-xl border-2 border-gray-200 text-sm font-medium text-ink hover:border-navy transition text-center">Demandeur d'emploi</button>
+              <button type="button" data-val="Étudiant(e)" class="sit-btn px-3 py-2.5 rounded-xl border-2 border-gray-200 text-sm font-medium text-ink hover:border-navy transition text-center">Étudiant(e)</button>
+              <button type="button" data-val="Indépendant(e)" class="sit-btn px-3 py-2.5 rounded-xl border-2 border-gray-200 text-sm font-medium text-ink hover:border-navy transition text-center">Indépendant(e)</button>
+            </div>
+            <input type="hidden" id="lf-situation" value="">
+          </div>
+
+          <!-- Error message -->
+          <p id="lf-error" class="hidden text-xs text-red-500 mb-3">Veuillez remplir tous les champs.</p>
+
+          <!-- Submit -->
+          <button type="submit" id="lf-submit"
+            class="w-full py-4 rounded-2xl font-display text-base text-white font-bold transition-all"
+            style="background:linear-gradient(135deg,#EF7738,#e05a1a); box-shadow:0 10px 30px -10px rgba(230,106,64,.5);">
+            Être rappelé(e) gratuitement →
+          </button>
+
+          <p class="text-center text-xs text-ink/40 mt-3">Sans engagement · Réponse sous 24h · 100% gratuit</p>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="form-success" class="hidden text-center py-6">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#EDEDFB;">
+          <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="#545AC0" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h3 class="font-display text-xl text-navy-900 mb-2">Demande envoyée !</h3>
+        <p class="text-sm text-ink/60 max-w-xs mx-auto">Un conseiller One Learn vous contactera dans les <strong>24h</strong> pour répondre à vos questions et vous accompagner.</p>
+        <div class="mt-5 flex items-center justify-center gap-2 text-xs text-ink/40">
+          <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+          Vos données sont traitées de manière sécurisée
+        </div>
+      </div>
     </div>
+
+    <script>
+    (function(){
+      var sitSelected = '';
+      // Situation buttons
+      document.querySelectorAll('.sit-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          document.querySelectorAll('.sit-btn').forEach(function(b){ b.style.borderColor=''; b.style.background=''; b.style.color=''; });
+          btn.style.borderColor = '#545AC0';
+          btn.style.background = '#EDEDFB';
+          btn.style.color = '#545AC0';
+          sitSelected = btn.getAttribute('data-val');
+          document.getElementById('lf-situation').value = sitSelected;
+        });
+      });
+
+      document.getElementById('lead-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        var fn = document.getElementById('lf-firstname').value.trim();
+        var em = document.getElementById('lf-email').value.trim();
+        var ph = document.getElementById('lf-phone').value.trim();
+        var sit = document.getElementById('lf-situation').value;
+        var err = document.getElementById('lf-error');
+
+        if(!fn || !em || !ph || !sit){
+          err.classList.remove('hidden');
+          return;
+        }
+        err.classList.add('hidden');
+
+        var btn = document.getElementById('lf-submit');
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours...';
+
+        fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            firstname: fn,
+            email: em,
+            phone: ph,
+            q1: sit,
+            source: 'formation-reseaux-sociaux-meta'
+          })
+        }).catch(function(){}).finally(function(){
+          document.getElementById('form-step').classList.add('hidden');
+          document.getElementById('form-success').classList.remove('hidden');
+        });
+      });
+    })();
+    </script>
 
     <p class="mt-6 text-sm text-cream/50">Vous préférez par téléphone ? Appelez-nous au <a href="tel:+33189703426" class="text-orange hover:underline font-semibold">01 89 70 34 26</a></p>
   </div>
