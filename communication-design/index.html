@@ -119,10 +119,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       topCta.style.transform = 'translateY(-4px)';
       topCta.style.pointerEvents = 'none';
     };
-    var obs = new IntersectionObserver(function(entries){
-      entries[0].isIntersecting ? hide() : show();
-    }, {threshold: 0, rootMargin: '-80px 0px 0px 0px'});
-    obs.observe(heroCta);
+    var update = function(){
+      var rect = heroCta.getBoundingClientRect();
+      // Show only when the hero CTA is ABOVE the viewport (scrolled past)
+      // Use a topbar offset of ~60px so the transition feels right under the sticky bar
+      if (rect.bottom < 60) { show(); } else { hide(); }
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
