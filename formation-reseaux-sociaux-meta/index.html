@@ -1822,21 +1822,30 @@ a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o|
 (function(){
   // Marquer les éléments à animer
   var selectors = [
-    // Sections entières (titres + contenu)
+    // Stats bar
     '#stats-bar > div > div',
-    '#pour-qui .rounded-2xl',
+    // Personas cards
+    '.personas-flex > .persona-card',
+    // Programme
     '#programme .timeline-step',
+    // Métiers & grilles
     '#metiers .rounded-2xl',
+    '.grid .rounded-2xl',
+    '.grid .rounded-3xl',
+    // Pourquoi / Formateurs / Avant-après
     '#pourquoi .rounded-3xl',
     '#formateurs .rounded-3xl',
-    '.shadow-card',
-    '#faq details',
     '#avant-apres .rounded-3xl',
-    // Blocs de sections (h2 + paragraphe)
+    // Cards génériques
+    '.shadow-card',
+    // FAQ
+    '#faq details',
+    // Titres et blocs texte de sections
     'section > div > div.text-center',
     'section > div > h2',
-    // Cartes avant/après
-    '.grid .rounded-2xl',
+    'section > .max-w-7xl > div',
+    'section .max-w-3xl',
+    'section .max-w-2xl',
   ];
 
   var seen = new Set();
