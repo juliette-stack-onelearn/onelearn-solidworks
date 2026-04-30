@@ -173,6 +173,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1rem !important; }
   }
   .tool-tile { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  /* MOBILE FIXES */
+  /* On mobile/tablet, always show persona detail (no hover on touch) */
+  @media (max-width: 1023px) {
+    .persona-card .persona-detail { max-height: 320px !important; opacity: 1 !important; }
+    .persona-card .persona-title { font-size: 1.15rem !important; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height: 320px !important; opacity: 1 !important; }
+  }
+  /* Defensive: ensure topbar CTA never shows on mobile */
+  @media (max-width: 1023px) {
+    #topbar-cta { display: none !important; }
+  }
   .tool-tile:hover { transform: translateY(-3px); border-color:rgba(239,119,56,.3); box-shadow:0 12px 28px -10px rgba(34,36,77,.18); }
   /* Cascade entrée tool-tiles au chargement */
   @keyframes tool-tile-pop {
