@@ -1,0 +1,4 @@
+# Preprod - do not index
+User-agent: *
+Disallow: /communication-design-preprod/
+Disallow: /architecture-preprod/
