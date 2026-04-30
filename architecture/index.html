@@ -373,17 +373,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ============ POUR QUI / PERSONAS (Qonto-style + flex hover-expand) ============ -->
+<!-- ============ POUR QUI / PERSONAS (mobile scroll-snap + desktop Qonto hover-expand) ============ -->
 <style>
-  .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
-  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
+  /* MOBILE : carousel horizontal scroll-snap, texte toujours visible */
+  .personas-flex {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 16px 12px;
+    margin: 0 -16px;
+  }
+  .personas-flex::-webkit-scrollbar { display: none; }
+  .personas-flex > .persona-card {
+    flex: 0 0 78%;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  .persona-card .persona-detail { max-height: 240px; opacity: 1; transition: max-height .5s ease, opacity .35s ease; overflow: hidden; }
+
+  /* DESKTOP : Qonto-style hover-expand */
   @media (min-width: 1024px) {
-    .personas-flex { display:flex; gap:20px; height:480px; }
-    .personas-flex > .persona-card { flex:0.7 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
-    .personas-flex > .persona-card.is-default-open { flex:2.5 1 0; }
+    .personas-flex {
+      display: flex; gap: 20px; height: 480px;
+      overflow: visible; padding: 0; margin: 0;
+      scroll-snap-type: none;
+    }
+    .personas-flex > .persona-card {
+      flex: 0.7 1 0; aspect-ratio: auto;
+      transition: flex .55s cubic-bezier(.4,0,.2,1); min-width: 0;
+      scroll-snap-align: none;
+    }
+    .personas-flex > .persona-card.is-default-open { flex: 2.5 1 0; }
     .personas-flex:hover > .persona-card,
-    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex:0.7 1 0 !important; }
-    .personas-flex:hover > .persona-card:hover { flex:2.5 1 0 !important; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex: 0.7 1 0 !important; }
+    .personas-flex:hover > .persona-card:hover { flex: 2.5 1 0 !important; }
+    .persona-card .persona-detail { max-height: 0; opacity: 0; }
+    .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail,
+    .persona-card.is-default-open .persona-detail { max-height: 220px; opacity: 1; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height: 0 !important; opacity: 0 !important; }
   }
 </style>
 
