@@ -397,51 +397,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </h2>
     </div>
 
-    <div class="personas-flex grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-0 reveal">
-      <div class="persona-card is-default-open group relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden cursor-default reveal" style="background: linear-gradient(135deg, rgb(34, 36, 77) 0%, rgb(67, 72, 154) 100%); transition-delay: 0ms;">
-        <img src="assets/capture-decran-2026-04-29-a-12.25.54.png" alt="En reconversion vers l'archi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-cream pointer-events-none">
-          <p class="persona-title font-display font-semibold">En reconversion vers l'archi</p>
-          <div class="persona-detail">
-            <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous voulez changer de métier et entrer dans la création visuelle. On vous accompagne du démarrage zéro jusqu'à votre premier client ou poste.</p>
-          </div>
+    <!-- Personas : scroll-snap horizontal mobile, grid 4 cols desktop -->
+    <div class="personas-scroll flex lg:grid lg:grid-cols-4 gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory lg:snap-none -mx-4 px-4 lg:mx-0 lg:px-0 pb-4 lg:pb-0 reveal" style="scrollbar-width:none;">
+      <div class="persona-card group relative block snap-start shrink-0 w-[82%] sm:w-[55%] lg:w-auto aspect-[3/4] rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#22244D,#43489A);">
+        <img src="assets/capture-decran-2026-04-29-a-12.25.54.png" alt="En reconversion vers l'archi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
+          <p class="font-display text-lg sm:text-xl font-semibold leading-tight">En reconversion vers l'archi</p>
+          <p class="text-sm text-white/85 leading-relaxed mt-2">Vous voulez changer de métier et entrer dans le secteur de l'architecture. On vous accompagne du démarrage zéro jusqu'à votre premier poste de dessinateur ou modeleur BIM.</p>
         </div>
       </div>
 
-      <div class="persona-card group relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden cursor-default reveal" style="background: linear-gradient(135deg, rgb(67, 72, 154) 0%, rgb(84, 90, 192) 100%); transition-delay: 70ms;">
-        <img src="assets/hf_20260303_092842_f94c3f09-129b-48d3-93c2-819d0aa0857e-1.jpeg" alt="Architecte indépendant·e" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-cream pointer-events-none">
-          <p class="persona-title font-display font-semibold">Architecte indépendant·e</p>
-          <div class="persona-detail">
-            <p class="text-sm text-cream/85 leading-relaxed mt-3">Vous gérez votre propre activité et voulez créer vos visuels pro sans dépendre d'un graphiste. Maîtrisez les outils essentiels pour gagner en autonomie et économiser des milliers d'euros sur les prestations externes.</p>
-          </div>
+      <div class="persona-card group relative block snap-start shrink-0 w-[82%] sm:w-[55%] lg:w-auto aspect-[3/4] rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#43489A,#545AC0);">
+        <img src="assets/hf_20260303_092842_f94c3f09-129b-48d3-93c2-819d0aa0857e-1.jpeg" alt="Architecte indépendant·e" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
+          <p class="font-display text-lg sm:text-xl font-semibold leading-tight">Architecte indépendant·e</p>
+          <p class="text-sm text-white/85 leading-relaxed mt-2">Vous gérez vos projets en autonomie et voulez maîtriser le BIM, le rendu 3D et les outils incontournables pour gagner du temps et impressionner vos clients.</p>
         </div>
       </div>
 
-      <div class="persona-card group relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden cursor-default reveal" style="background: linear-gradient(135deg, rgb(239, 119, 56) 0%, rgb(205, 80, 37) 100%); transition-delay: 140ms;">
-        <img src="assets/capture-decran-2026-04-29-a-12.25.21.png" alt="Architecte salarié·e" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-cream pointer-events-none">
-          <p class="persona-title font-display font-semibold">Architecte salarié·e</p>
-          <div class="persona-detail">
-            <p class="text-sm text-cream/85 leading-relaxed mt-3">Votre poste évolue vers la com ou le digital. Montez en compétences avec votre CPF, sans quitter votre emploi.</p>
-          </div>
+      <div class="persona-card group relative block snap-start shrink-0 w-[82%] sm:w-[55%] lg:w-auto aspect-[3/4] rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#EF7738,#CD5025);">
+        <img src="assets/capture-decran-2026-04-29-a-12.25.21.png" alt="Architecte salarié·e" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
+          <p class="font-display text-lg sm:text-xl font-semibold leading-tight">Architecte salarié·e</p>
+          <p class="text-sm text-white/85 leading-relaxed mt-2">Votre cabinet passe au BIM ou veut moderniser ses rendus. Montez en compétences avec votre CPF sans quitter votre poste.</p>
         </div>
       </div>
 
-      <div class="persona-card group relative aspect-[16/10] sm:aspect-[4/5] lg:aspect-auto rounded-3xl overflow-hidden cursor-default reveal" style="background: linear-gradient(135deg, rgb(13, 157, 106) 0%, rgb(16, 185, 129) 100%); transition-delay: 210ms;">
-        <img src="assets/hf_20260311_144547_52c1e6bf-c9a3-4163-8845-87c8d904361a.jpeg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;" style="">
-        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/35 to-transparent pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-cream pointer-events-none">
-          <p class="persona-title font-display font-semibold">Demandeur·se d'emploi</p>
-          <div class="persona-detail">
-            <p class="text-sm text-cream/85 leading-relaxed mt-3">Financez votre formation à 100% via France Travail et décrochez un nouveau poste dans la com ou le design en quelques mois.</p>
-          </div>
+      <div class="persona-card group relative block snap-start shrink-0 w-[82%] sm:w-[55%] lg:w-auto aspect-[3/4] rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#0d9d6a,#10b981);">
+        <img src="assets/hf_20260311_144547_52c1e6bf-c9a3-4163-8845-87c8d904361a.jpeg" alt="Demandeur·se d'emploi" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.style.opacity=0;">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
+          <p class="font-display text-lg sm:text-xl font-semibold leading-tight">Demandeur·se d'emploi</p>
+          <p class="text-sm text-white/85 leading-relaxed mt-2">Financez votre formation à 100% via France Travail et décrochez un poste de dessinateur, projeteur ou modeleur BIM en quelques mois.</p>
         </div>
       </div>
     </div>
+    <style>.personas-scroll::-webkit-scrollbar{display:none;}</style>
 
     <p class="text-center text-sm text-ink/55 mt-10">
       Vous ne savez pas dans quelle case vous reconnaître ?
