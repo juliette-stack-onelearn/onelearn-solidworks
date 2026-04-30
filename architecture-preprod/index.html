@@ -1644,6 +1644,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     #__ol_editor_bar button.__ol_primary { background: #EF7738; border-color: #EF7738; }
     #__ol_editor_bar button.__ol_primary:hover { background: #CD5025; }
     #__ol_editor_bar button:disabled { opacity: .5; cursor: wait; }
+    #__ol_editor_bar.__ol_live { background: #dc2626 !important; box-shadow: 0 12px 40px rgba(220,38,38,.5) !important; }
+    #__ol_editor_bar.__ol_live .__ol_dot { background: #fff !important; animation: __ol_pulse_live 1s infinite !important; }
+    @keyframes __ol_pulse_live { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 14px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
+    #__ol_live_banner { position: fixed; top: 0; left: 0; right: 0; background: #dc2626; color: #fff;
+      text-align: center; font-weight: 600; padding: 10px 16px;
+      font-family: 'Inter',system-ui,sans-serif; font-size: 13px; z-index: 999998;
+      animation: __ol_flash 1.5s ease-in-out infinite; box-shadow: 0 4px 16px rgba(220,38,38,.5); }
+    #__ol_live_banner code { background: rgba(0,0,0,.25); padding: 1px 6px; border-radius: 4px;
+      font-family: 'JetBrains Mono',monospace; font-size: 12px; }
+    @keyframes __ol_flash { 0%,100%{background:#dc2626} 50%{background:#ef4444} }
+    body.__ol_live_mode { padding-top: 38px; }
   `;
   document.head.appendChild(style);
 
@@ -1656,6 +1667,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button id="__ol_forget" title="Oublier le token GitHub">Token</button>
     <button id="__ol_exit">Quitter</button>
   `;
+
+  // LIVE mode detection — red flash warning if NOT on a preprod URL
+  if (!location.pathname.includes('-preprod')) {
+    bar.classList.add('__ol_live');
+    document.body.classList.add('__ol_live_mode');
+    const lb = document.createElement('div');
+    lb.id = '__ol_live_banner';
+    lb.innerHTML = '⚠️ <strong>MODE ÉDITION SUR PAGE LIVE</strong> — modifs visibles immédiatement par les visiteurs · Préférez <code>-preprod/?edit</code>';
+    document.body.appendChild(lb);
+  }
+  
   document.body.appendChild(bar);
 
   document.getElementById('__ol_exit').onclick = () => {
