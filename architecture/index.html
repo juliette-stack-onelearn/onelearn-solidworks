@@ -1650,6 +1650,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
       clone.querySelectorAll('.__ol_editable').forEach(el => el.classList.remove('__ol_editable'));
       clone.querySelectorAll('img').forEach(el => { el.style.cursor = ''; el.removeAttribute('title'); });
+      // Strip is-visible class on .reveal elements (otherwise scroll animations are baked-in and never trigger)
+      clone.querySelectorAll('.reveal.is-visible').forEach(el => el.classList.remove('is-visible'));
       clone.querySelector('#__ol_editor_bar')?.remove();
       clone.querySelector('#__ol_toast')?.remove();
       clone.querySelectorAll('style').forEach(s => { if (s.textContent.includes('__ol_editor_bar')) s.remove(); });
