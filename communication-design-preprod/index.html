@@ -1467,7 +1467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   const PAT_KEY = 'ol_gh_pat';
   const REPO = 'juliette-stack-onelearn/onelearn-solidworks';
-  const FILE_PATH = 'communication-design/index.html';
+  const FILE_PATH = (window.location.pathname.replace(/^\/+|\/+$/g, '') || '') + '/index.html';
   const BRANCH = 'main';
 
   const SELECTORS = 'h1,h2,h3,h4,h5,h6,p,span,a,li,button,label,strong,em,td,th,figcaption,blockquote,small';
