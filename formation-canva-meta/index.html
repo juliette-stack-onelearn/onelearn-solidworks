@@ -2050,6 +2050,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
+    /* ── Strip scripts injectés runtime ── */
+    // 1. Supprimer tous les blocs GTM existants
+    raw=raw.replace(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/g,'');
+    raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
+    raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
+    raw=raw.replace(/<noscript><iframe src=["'][^"']*googletagmanager\.com\/ns\.html[^"']*["'][^>]*><\/iframe><\/noscript>/g,'');
+    // 2. Supprimer les scripts pixels injectés par GTM (FB, TikTok, Pinterest, Clarity, Datadog...)
+    raw=raw.replace(/<script\b[^>]*\bsrc=["'][^"']*(connect\.facebook\.net|fbevents|pinterest\.com\/pinit|analytics\.tiktok\.com|clarity\.ms|browser\.dd-rum|axeptio|snap\.licdn)[^"']*["'][^>]*>[\s\S]*?<\/script>/gi,'');
+    raw=raw.replace(/<script\b[^>]*>([\s\S]*?(fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\.)[\s\S]*?)<\/script>/gi,'');
+    raw=raw.replace(/<noscript>[\s\S]*?(pixel|fbq|pintrk|tfa_)[\s\S]*?<\/noscript>/gi,'');
+    // 3. Réinsérer GTM propre en tête
+    var _GTM_H='<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":\nnew Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=\n"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,"script","dataLayer","GTM-M9FPBBB");<\/script>\n<!-- End Google Tag Manager -->';
+    var _GTM_B='<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"\nheight="0" width="0" style="display:none;visibility:hidden"><\/iframe><\/noscript>\n<!-- End Google Tag Manager (noscript) -->';
+    raw=raw.replace('<head>\n','<head>\n'+_GTM_H+'\n');
+    raw=raw.replace(/(<body[^>]*>)/,'$1\n'+_GTM_B);
     var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
     console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
     toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
