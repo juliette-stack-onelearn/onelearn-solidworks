@@ -2046,6 +2046,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
     clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
     clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
+    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     /* ── Strip scripts injectés runtime ── */
@@ -4270,6 +4271,7 @@ tailwind.config = {
     clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
     clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
     clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
+    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     var blob=new Blob([raw],{type:'text/html;charset=utf-8'});

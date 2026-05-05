@@ -2077,6 +2077,7 @@ a._i=a._i||{};a._i[b]=[];a._i[b]._u=f;a._t=a._t||{};a._t[b]=+new Date;a._o=a._o|
     clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
     clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
     clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
+    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     /* ── Strip scripts injectés runtime ── */
