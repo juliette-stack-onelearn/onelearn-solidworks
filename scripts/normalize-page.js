@@ -67,6 +67,7 @@ const TRACKER_PATTERNS = [
   /fbevents\.js/,
   /fbq\("init"/,
   /ttq\.load\(/,
+  /googleads\.g\.doubleclick\.net\/pagead\/viewthroughconversion/,
 ];
 
 // Whitelist absolue : ne JAMAIS supprimer ces scripts (même si signature suspecte)
@@ -152,6 +153,21 @@ function normalize(html, opts = {}) {
     return match;
   });
 
+  // 4b) Strip <style> blocks Axeptio runtime (_evhv6_1 bundle, axeptio_mount styled-components)
+  html = html.replace(/<style\b[^>]*>(?:(?!<\/style>)[\s\S])*?<\/style>/gi, (match) => {
+    if (/_evhv6_1|axeptio_mount\{[^}]*z-index:2147483647/.test(match)) {
+      stats.axeptioRemoved++;
+      return '';
+    }
+    return match;
+  });
+
+  // 4c) Strip <link> Axeptio fonts injected stylesheet
+  html = html.replace(/<link\b[^>]*href=["'][^"']*fonts\.axept\.io[^"']*["'][^>]*>/gi, () => {
+    stats.axeptioRemoved++;
+    return '';
+  });
+
   // 5) Cleanup : supprimer lignes vides multiples (>2)
   html = html.replace(/\n{3,}/g, '\n\n');
 
@@ -208,6 +224,15 @@ function checkPage(html, filePath) {
 
   const clCount = (html.match(/clarity\.ms\/tag/g) || []).length;
   if (clCount > 0) issues.push(`Clarity inline x${clCount}`);
+
+  const vtcCount = (html.match(/googleads\.g\.doubleclick\.net\/pagead\/viewthroughconversion/g) || []).length;
+  if (vtcCount > 0) issues.push(`GoogleAds viewthrough injected x${vtcCount}`);
+
+  const evhvCount = (html.match(/_evhv6_1/g) || []).length;
+  if (evhvCount > 0) issues.push(`Axeptio runtime CSS bundle x${evhvCount}`);
+
+  const axfontsCount = (html.match(/fonts\.axept\.io/g) || []).length;
+  if (axfontsCount > 0) issues.push(`Axeptio fonts injected x${axfontsCount}`);
 
   return issues;
 }
