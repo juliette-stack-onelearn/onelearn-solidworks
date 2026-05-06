@@ -114,7 +114,14 @@ function isAxeptioScript(scriptBody) {
 
 // ─── NORMALIZATION ───────────────────────────────────────────────────────────
 
-function normalize(html) {
+function isMerciPage(filePath) {
+  // Pages "merci-*" (thank-you post-conversion) : visiteur a déjà accepté les cookies
+  // sur la LP en amont. Pas besoin de re-charger Axeptio.
+  return /(?:^|\/)merci-[^/]+\/index\.html$/.test(filePath);
+}
+
+function normalize(html, opts = {}) {
+  const { injectAxeptio = true } = opts;
   const stats = { trackersRemoved: 0, gtmRemoved: 0, axeptioRemoved: 0, fbNoscriptRemoved: 0 };
 
   // 1) Strip GTM blocks (commentaire-wrapped)
@@ -157,7 +164,10 @@ function normalize(html) {
   html = html.replace(/(<head[^>]*>)/i, `$1\n${GTM_HEAD}\n`);
 
   // Axeptio — juste avant </head> (dans head, après GTM)
-  html = html.replace(/(<\/head>)/i, `${AXEPTIO}\n$1`);
+  // Skip pour les pages merci-* (visiteur a déjà accepté les cookies sur la LP)
+  if (injectAxeptio) {
+    html = html.replace(/(<\/head>)/i, `${AXEPTIO}\n$1`);
+  }
 
   // GTM noscript — juste après <body> ou <body ...>
   if (!/<body[^>]*>/i.test(html)) {
@@ -170,8 +180,9 @@ function normalize(html) {
 
 // ─── CHECK MODE (CI / hook) ──────────────────────────────────────────────────
 
-function checkPage(html) {
+function checkPage(html, filePath) {
   const issues = [];
+  const isMerci = filePath ? isMerciPage(filePath) : false;
 
   const gtmHeadCount = (html.match(/googletagmanager\.com\/gtm\.js/g) || []).length;
   if (gtmHeadCount === 0) issues.push('Pas de GTM head');
@@ -182,8 +193,12 @@ function checkPage(html) {
   if (gtmNsCount > 1) issues.push(`GTM noscript x${gtmNsCount}`);
 
   const axCount = (html.match(/static\.axept\.io\/sdk/g) || []).length;
-  if (axCount === 0) issues.push('Pas d\'Axeptio');
-  if (axCount > 1) issues.push(`Axeptio x${axCount}`);
+  if (isMerci) {
+    if (axCount > 0) issues.push(`Axeptio inutile sur merci-* x${axCount}`);
+  } else {
+    if (axCount === 0) issues.push('Pas d\'Axeptio');
+    if (axCount > 1) issues.push(`Axeptio x${axCount}`);
+  }
 
   const fbCount = (html.match(/connect\.facebook\.net/g) || []).length;
   if (fbCount > 0) issues.push(`FB Pixel inline x${fbCount}`);
@@ -204,7 +219,7 @@ function processFile(file, opts) {
   const sizeBefore = before.length;
 
   if (opts.check) {
-    const issues = checkPage(before);
+    const issues = checkPage(before, file);
     if (issues.length === 0) {
       console.log(`  ✅ ${file}`);
       return { ok: true };
@@ -214,7 +229,7 @@ function processFile(file, opts) {
     }
   }
 
-  const { html, stats } = normalize(before);
+  const { html, stats } = normalize(before, { injectAxeptio: !isMerciPage(file) });
   const sizeAfter = html.length;
   const delta = sizeBefore - sizeAfter;
 
