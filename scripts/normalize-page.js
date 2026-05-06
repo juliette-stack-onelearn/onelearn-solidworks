@@ -168,6 +168,12 @@ function normalize(html, opts = {}) {
     return '';
   });
 
+  // 4d) Clean iClosed widget : retirer iframe statique + data-processed (state stale capturé par ?edit save)
+  html = html.replace(
+    /<div class="iclosed-widget"\s+data-url="([^"]+)"\s+title="([^"]+)"[^>]*?>(?:<iframe[^>]*><\/iframe>)?<\/div>/g,
+    (match, url, title) => `<div class="iclosed-widget" data-url="${url}" title="${title}" style="width: 100%; height: 620px"></div>`
+  );
+
   // 5) Cleanup : supprimer lignes vides multiples (>2)
   html = html.replace(/\n{3,}/g, '\n\n');
 
@@ -233,6 +239,9 @@ function checkPage(html, filePath) {
 
   const axfontsCount = (html.match(/fonts\.axept\.io/g) || []).length;
   if (axfontsCount > 0) issues.push(`Axeptio fonts injected x${axfontsCount}`);
+
+  const iclosedStaleCount = (html.match(/iclosed-widget[^>]*data-processed="true"|iclosed-widget[^>]*>\s*<iframe/g) || []).length;
+  if (iclosedStaleCount > 0) issues.push(`iClosed widget figé en état stale x${iclosedStaleCount} (cause moulinage RDV)`);
 
   return issues;
 }
