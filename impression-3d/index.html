@@ -7,6 +7,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
+
+
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHZpZXdCb3g9IjAgMCA3NiA3NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU3LjM5IDBIMTcuODFDNy45OCAwIDAgNy45NyAwIDE3LjgxVjU3LjM5QzAgNjcuMjMgNy45OCA3NS4yIDE3LjgxIDc1LjJINTcuMzlDNjcuMjMgNzUuMiA3NS4yMSA2Ny4yMyA3NS4yMSA1Ny4zOVYxNy44MUM3NS4yMSA3Ljk3IDY3LjIzIDAgNTcuMzkgMFpNNTYuODEgNDkuNjFDNTYuODEgNTYuODggNTAuOTIgNjIuNzYgNDMuNjYgNjIuNzZIMzEuNTVDMjQuMjkgNjIuNzYgMTguNCA1Ni44OCAxOC40IDQ5LjYxVjI4LjQ1SDU2LjgxVjQ5LjYxWiIgZmlsbD0iIzU0NUFDMCIvPgo8cGF0aCBkPSJNNjMuNjg5OSAyNi44NzA0TDM5LjYyOTkgMTIuOTgwNEMzOC4zNzk5IDEyLjI2MDQgMzYuODM5OSAxMi4yNjA0IDM1LjU4OTkgMTIuOTgwNEwxMS41Mjk5IDI2Ljg3MDRDMTAuNTQ5OSAyNy40NDA0IDEwLjU0OTkgMjguODUwNCAxMS41Mjk5IDI5LjQxMDRMMjAuOTY5OSAzNC44NzA0SDIwLjk3OTlMMzUuMTc5OSA0My4wNzA0QzM2LjY3OTkgNDMuOTQwNCAzOC41Mjk5IDQzLjk0MDQgNDAuMDI5OSA0My4wNzA0TDU0LjIyOTkgMzQuODcwNEg1NC4yMzk5TDYzLjY3OTkgMjkuNDEwNEM2NC42NTk5IDI4Ljg1MDQgNjQuNjU5OSAyNy40NDA0IDYzLjY3OTkgMjYuODcwNCIgZmlsbD0iI0VGNzczOCIvPgo8L3N2Zz4K">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,12 +95,28 @@ tailwind.config = {
   /* Hero et nav jamais animés */
   #hero [data-anim], nav [data-anim] { opacity:1; transform:none; transition:none; }
 </style>
+
+<!-- Axeptio Cookie Consent -->
+<script>
+window.axeptioSettings = {
+  clientId: "630de1b500fec812caa2de5e",
+  cookiesVersion: "one learn-fr",
+};
+
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+<!-- End Axeptio Cookie Consent -->
 </head>
 <body class="antialiased">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 
 <!-- ============ TOP BAR PROMO ============ -->
 <div class="bg-ink text-cream text-sm sticky top-0 z-50">
@@ -244,9 +262,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="font-display text-xl sm:text-2xl leading-tight">Apprends en visio, à ton rythme</p>
           <p class="text-sm text-cream/75 mt-1.5">Avec ton formateur et la communauté One Learn.</p>
         </div>
-
-
-
 
       </div>
       <!-- Trustpilot sous l'image -->
@@ -635,7 +650,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Confettis overlay -->
     <div id="confetti-container" style="display: none; position: fixed; inset: 0px; pointer-events: none; overflow: hidden; z-index: 9999;"></div>
-
 
     <div class="mt-10 text-center">
       <a href="https://app.iclosed.io/e/damien/discuter-avec-un-conseiller-impression-3d" class="inline-flex items-center gap-2 text-navy font-semibold border-b-2 border-navy pb-0.5 hover:gap-3 transition-all">
@@ -1556,7 +1570,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
 
-
         </div>
 
         <!-- Droite : carte question -->
@@ -2025,9 +2038,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
-
-
-
 <script id="_scroll_anim_js">
 (function(){
   // Marquer les éléments à animer
@@ -2240,7 +2250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     /* ── Strip scripts injectés runtime ── */
     // 1. Supprimer tous les blocs GTM existants
-    raw=raw.replace(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/g,'');
+    raw=raw.replace(//g,'');
     raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
     raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
     raw=raw.replace(/<noscript><iframe src=["'][^"']*googletagmanager\.com\/ns\.html[^"']*["'][^>]*><\/iframe><\/noscript>/g,'');
@@ -2249,8 +2259,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     raw=raw.replace(/<script\b[^>]*>([\s\S]*?(fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\.)[\s\S]*?)<\/script>/gi,'');
     raw=raw.replace(/<noscript>[\s\S]*?(pixel|fbq|pintrk|tfa_)[\s\S]*?<\/noscript>/gi,'');
     // 3. Réinsérer GTM propre en tête
-    var _GTM_H='<!-- Google Tag Manager -->\n<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":\nnew Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],\nj=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=\n"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);\n})(window,document,"script","dataLayer","GTM-M9FPBBB");<\/script>\n<!-- End Google Tag Manager -->';
-    var _GTM_B='<!-- Google Tag Manager (noscript) -->\n<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"\nheight="0" width="0" style="display:none;visibility:hidden"><\/iframe><\/noscript>\n<!-- End Google Tag Manager (noscript) -->';
+    var _GTM_H='';
+    var _GTM_B='';
     raw=raw.replace('<head>\n','<head>\n'+_GTM_H+'\n');
     raw=raw.replace(/(<body[^>]*>)/,'$1\n'+_GTM_B);
     var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
@@ -2342,7 +2352,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     reader.readAsDataURL(blob);
   }
 
-
       function _compressImg(file, cb){
         var MAX=900, Q=0.78;
         var r=new FileReader();
@@ -2380,22 +2389,4 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
-
-
-
-
-
-
-<script>
-window.axeptioSettings = {
-  clientId: "630de1b500fec812caa2de5e",
-  cookiesVersion: "one learn-fr",
-};
- 
-(function(d, s) {
-  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
-  e.async = true; e.src = "//static.axept.io/sdk.js";
-  t.parentNode.insertBefore(e, t);
-})(document, "script");
-</script>
 </body></html>

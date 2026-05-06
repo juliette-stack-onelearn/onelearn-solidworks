@@ -1,0 +1,33 @@
+#!/bin/bash
+# Auto-normalize index.html files staged for commit.
+# Garantit qu'aucun doublon GTM / Axeptio / pixel tracker ne se faufile dans un commit.
+
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+NORMALIZER="$REPO_ROOT/scripts/normalize-page.js"
+
+if [ ! -f "$NORMALIZER" ]; then
+  echo "⚠️  scripts/normalize-page.js absent — hook skip"
+  exit 0
+fi
+
+# Récupérer les index.html staged
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR | grep -E "(^|/)index\.html$" || true)
+
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+echo "🧹 Normalizing staged HTML pages…"
+echo "$STAGED" | while read -r f; do
+  node "$NORMALIZER" "$REPO_ROOT/$f" || {
+    echo "❌ Échec normalize sur $f — commit abandonné"
+    exit 1
+  }
+done
+
+# Re-stage les fichiers (au cas où la normalisation les ait modifiés)
+echo "$STAGED" | xargs git add
+
+echo "✅ Pages normalisées et re-stagées"

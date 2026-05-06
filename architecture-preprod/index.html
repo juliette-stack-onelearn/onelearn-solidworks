@@ -8,6 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHZpZXdCb3g9IjAgMCA3NiA3NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU3LjM5IDBIMTcuODFDNy45OCAwIDAgNy45NyAwIDE3LjgxVjU3LjM5QzAgNjcuMjMgNy45OCA3NS4yIDE3LjgxIDc1LjJINTcuMzlDNjcuMjMgNzUuMiA3NS4yMSA2Ny4yMyA3NS4yMSA1Ny4zOVYxNy44MUM3NS4yMSA3Ljk3IDY3LjIzIDAgNTcuMzkgMFpNNTYuODEgNDkuNjFDNTYuODEgNTYuODggNTAuOTIgNjIuNzYgNDMuNjYgNjIuNzZIMzEuNTVDMjQuMjkgNjIuNzYgMTguNCA1Ni44OCAxOC40IDQ5LjYxVjI4LjQ1SDU2LjgxVjQ5LjYxWiIgZmlsbD0iIzU0NUFDMCIvPgo8cGF0aCBkPSJNNjMuNjg5OSAyNi44NzA0TDM5LjYyOTkgMTIuOTgwNEMzOC4zNzk5IDEyLjI2MDQgMzYuODM5OSAxMi4yNjA0IDM1LjU4OTkgMTIuOTgwNEwxMS41Mjk5IDI2Ljg3MDRDMTAuNTQ5OSAyNy40NDA0IDEwLjU0OTkgMjguODUwNCAxMS41Mjk5IDI5LjQxMDRMMjAuOTY5OSAzNC44NzA0SDIwLjk3OTlMMzUuMTc5OSA0My4wNzA0QzM2LjY3OTkgNDMuOTQwNCAzOC41Mjk5IDQzLjk0MDQgNDAuMDI5OSA0My4wNzA0TDU0LjIyOTkgMzQuODcwNEg1NC4yMzk5TDYzLjY3OTkgMjkuNDEwNEM2NC42NTk5IDI4Ljg1MDQgNjQuNjU5OSAyNy40NDA0IDYzLjY3OTkgMjYuODcwNCIgZmlsbD0iI0VGNzczOCIvPgo8L3N2Zz4K">
@@ -42,12 +43,30 @@ tailwind.config = {
 }
 </script>  <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async=""></script>
   <script async="" src="https://tally.so/widgets/embed.js"></script>
+
+<!-- Axeptio Cookie Consent -->
+<script>
+window.axeptioSettings = {
+  clientId: "630de1b500fec812caa2de5e",
+  cookiesVersion: "one learn-fr",
+};
+
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+<!-- End Axeptio Cookie Consent -->
 </head>
 <body class="antialiased">
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><!-- ============ TOP BAR PROMO ============ -->
+<!-- End Google Tag Manager (noscript) -->
+
+
+<!-- ============ TOP BAR PROMO ============ -->
 <div class="bg-ink text-cream text-sm sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
     <div class="flex items-center gap-2 min-w-0">
@@ -1461,305 +1480,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================================ -->
 <!-- INLINE EDITOR — activé via ?edit dans l'URL  -->
 <!-- ============================================ -->
-<script>
-(function() {
-  if (!new URLSearchParams(location.search).has('edit')) return;
-
-  const PAT_KEY = 'ol_gh_pat';
-  const REPO = 'juliette-stack-onelearn/onelearn-solidworks';
-  const FILE_PATH = (window.location.pathname.replace(/^\/+|\/+$/g, '') || '') + '/index.html';
-  const BRANCH = 'main';
-
-  const SELECTORS = 'h1,h2,h3,h4,h5,h6,p,span,a,li,button,label,strong,em,td,th,figcaption,blockquote,small';
-  document.querySelectorAll(SELECTORS).forEach(el => {
-    if (el.closest('script,style,head,#__ol_editor_bar')) return;
-    // Accept: no children, OR all children are SVG/BR (line-breaks shouldn't block editing)
-    const allowed = ['SVG', 'BR'];
-    const allChildrenAllowed = Array.from(el.children).every(c => allowed.includes(c.tagName));
-    if (allChildrenAllowed) {
-      el.setAttribute('contenteditable', 'true');
-      el.classList.add('__ol_editable');
-    }
-  });
-
-  function showToast(msg, duration = 2500, color = '#22244D') {
-    let t = document.getElementById('__ol_toast');
-    if (!t) {
-      t = document.createElement('div');
-      t.id = '__ol_toast';
-      t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);color:white;padding:11px 20px;border-radius:50px;z-index:9999998;font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .3s,transform .3s;pointer-events:none;';
-      document.body.appendChild(t);
-    }
-    t.textContent = msg;
-    t.style.background = color;
-    t.style.opacity = '1';
-    clearTimeout(t._timer);
-    t._timer = setTimeout(() => { t.style.opacity = '0'; }, duration);
-  }
-
-  async function getPAT() {
-    let pat = localStorage.getItem(PAT_KEY);
-    if (!pat) {
-      pat = prompt(
-        'Collez votre GitHub Personal Access Token.\n\n' +
-        '→ Créez-le sur : github.com/settings/personal-access-tokens/new\n' +
-        '→ Repo: juliette-stack-onelearn/onelearn-solidworks\n' +
-        '→ Permission: Contents (Read & Write)\n\n' +
-        'Sera stocké uniquement dans votre navigateur.'
-      );
-      if (!pat) return null;
-      pat = pat.trim();
-      localStorage.setItem(PAT_KEY, pat);
-    }
-    return pat;
-  }
-
-  async function ghUpload(path, base64Content, message) {
-    const pat = await getPAT();
-    if (!pat) throw new Error('Token requis');
-    let sha;
-    const checkResp = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}?ref=${BRANCH}`, {
-      headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json' }
-    });
-    if (checkResp.ok) sha = (await checkResp.json()).sha;
-    else if (checkResp.status === 401) { localStorage.removeItem(PAT_KEY); throw new Error('Token invalide. Réessayez.'); }
-    const body = { message, content: base64Content, branch: BRANCH };
-    if (sha) body.sha = sha;
-    const resp = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
-      method: 'PUT',
-      headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    if (!resp.ok) {
-      const err = await resp.json().catch(() => ({}));
-      throw new Error(err.message || 'Upload failed: ' + resp.status);
-    }
-    return resp.json();
-  }
-
-  document.querySelectorAll('img').forEach(img => {
-    if (img.closest('#__ol_editor_bar')) return;
-    img.style.cursor = 'pointer';
-    img.title = 'Cliquer pour uploader une nouvelle image';
-    img.addEventListener('click', e => {
-      e.preventDefault(); e.stopPropagation();
-      const fileInput = document.createElement('input');
-      fileInput.type = 'file';
-      fileInput.accept = 'image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif';
-      fileInput.style.display = 'none';
-      document.body.appendChild(fileInput);
-      fileInput.onchange = async () => {
-        const file = fileInput.files[0];
-        fileInput.remove();
-        if (!file) return;
-
-        const currentSrc = img.getAttribute('src') || '';
-        const isLogo = currentSrc.includes('/logos/');
-        const folder = isLogo ? FILE_PATH.replace(/index\.html$/, 'assets/logos') : FILE_PATH.replace(/index\.html$/, 'assets');
-        const safeName = file.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9.\-_]/g, '');
-        const ghPath = `${folder}/${safeName}`;
-        const relPath = isLogo ? `assets/logos/${safeName}` : `assets/${safeName}`;
-
-        const blobUrl = URL.createObjectURL(file);
-        const oldSrc = img.src;
-        const oldOpacity = img.style.opacity;
-        img.style.opacity = '';
-        img.src = blobUrl;
-        img.setAttribute('data-pending-src', relPath);
-
-        showToast('Upload en cours…', 60000);
-
-        const reader = new FileReader();
-        reader.onload = async () => {
-          const base64 = reader.result.split(',')[1];
-          try {
-            await ghUpload(ghPath, base64, `edit: upload ${safeName}`);
-            showToast('Image uploadée ✓ — sauvegarde de la page en cours…', 3000, '#10b981');
-            // Auto-save: déclenche le bouton Sauvegarder pour committer le HTML qui référence la nouvelle image
-            setTimeout(() => {
-              const saveBtn = document.getElementById('__ol_save');
-              if (saveBtn && !saveBtn.disabled) saveBtn.click();
-            }, 600);
-          } catch (err) {
-            img.src = oldSrc;
-            img.removeAttribute('data-pending-src');
-            URL.revokeObjectURL(blobUrl);
-            showToast('Erreur : ' + err.message, 6000, '#dc2626');
-          }
-        };
-        reader.onerror = () => {
-          img.src = oldSrc;
-          img.removeAttribute('data-pending-src');
-          URL.revokeObjectURL(blobUrl);
-          showToast('Erreur de lecture du fichier', 4000, '#dc2626');
-        };
-        reader.readAsDataURL(file);
-      };
-      fileInput.click();
-    });
-  });
-
-  const style = document.createElement('style');
-  style.textContent = `
-    .__ol_editable { outline: 1px dashed transparent; transition: outline-color .15s; border-radius: 3px; }
-    .__ol_editable:hover { outline-color: rgba(239,119,56,.5); }
-    .__ol_editable:focus { outline: 2px solid #EF7738 !important; background: rgba(239,119,56,.05); }
-    #__ol_editor_bar { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-      background: #22244D; color: white; padding: 12px 18px; border-radius: 50px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.35); z-index: 999999;
-      font-family: 'Inter',system-ui,sans-serif; font-size: 14px;
-      display: flex; align-items: center; gap: 10px; }
-    #__ol_editor_bar .__ol_dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(16,185,129,.6); animation: __ol_pulse 2s infinite; }
-    @keyframes __ol_pulse { 0%{box-shadow:0 0 0 0 rgba(16,185,129,.6)} 70%{box-shadow:0 0 0 12px rgba(16,185,129,0)} 100%{box-shadow:0 0 0 0 rgba(16,185,129,0)} }
-    #__ol_editor_bar button { background: transparent; color: white; border: 1px solid rgba(255,255,255,.3);
-      padding: 7px 14px; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 13px; transition: all .15s; }
-    #__ol_editor_bar button:hover { background: rgba(255,255,255,.1); }
-    #__ol_editor_bar button.__ol_primary { background: #EF7738; border-color: #EF7738; }
-    #__ol_editor_bar button.__ol_primary:hover { background: #CD5025; }
-    #__ol_editor_bar button:disabled { opacity: .5; cursor: wait; }
-    #__ol_editor_bar.__ol_live { background: #dc2626 !important; box-shadow: 0 12px 40px rgba(220,38,38,.5) !important; }
-    #__ol_editor_bar.__ol_live .__ol_dot { background: #fff !important; animation: __ol_pulse_live 1s infinite !important; }
-    @keyframes __ol_pulse_live { 0%{box-shadow:0 0 0 0 rgba(255,255,255,.7)} 70%{box-shadow:0 0 0 14px rgba(255,255,255,0)} 100%{box-shadow:0 0 0 0 rgba(255,255,255,0)} }
-    #__ol_live_banner { position: fixed; top: 0; left: 0; right: 0; background: #dc2626; color: #fff;
-      text-align: center; font-weight: 600; padding: 10px 16px;
-      font-family: 'Inter',system-ui,sans-serif; font-size: 13px; z-index: 999998;
-      animation: __ol_flash 1.5s ease-in-out infinite; box-shadow: 0 4px 16px rgba(220,38,38,.5); }
-    #__ol_live_banner code { background: rgba(0,0,0,.25); padding: 1px 6px; border-radius: 4px;
-      font-family: 'JetBrains Mono',monospace; font-size: 12px; }
-    @keyframes __ol_flash { 0%,100%{background:#dc2626} 50%{background:#ef4444} }
-    body.__ol_live_mode { padding-top: 38px; }
-  `;
-  document.head.appendChild(style);
-
-  const bar = document.createElement('div');
-  bar.id = '__ol_editor_bar';
-  bar.innerHTML = `
-    <span class="__ol_dot"></span>
-    <span style="margin-right:6px;">Mode édition</span>
-    <button class="__ol_primary" id="__ol_save">Sauvegarder sur GitHub</button>
-    <button id="__ol_forget" title="Oublier le token GitHub">Token</button>
-    <button id="__ol_exit">Quitter</button>
-  `;
-
-  // LIVE mode detection — red flash warning if NOT on a preprod URL
-  if (!location.pathname.includes('-preprod')) {
-    bar.classList.add('__ol_live');
-    document.body.classList.add('__ol_live_mode');
-    const lb = document.createElement('div');
-    lb.id = '__ol_live_banner';
-    lb.innerHTML = '⚠️ <strong>MODE ÉDITION SUR PAGE LIVE</strong> — modifs visibles immédiatement par les visiteurs · Préférez <code>-preprod/?edit</code>';
-    document.body.appendChild(lb);
-  }
-  
-  document.body.appendChild(bar);
-
-  document.getElementById('__ol_exit').onclick = () => {
-    const u = new URL(location.href);
-    u.searchParams.delete('edit');
-    location.href = u.toString();
-  };
-
-  document.getElementById('__ol_forget').onclick = () => {
-    localStorage.removeItem(PAT_KEY);
-    alert('Token GitHub oublié. Il sera redemandé à la prochaine sauvegarde.');
-  };
-
-  document.getElementById('__ol_save').onclick = async () => {
-    const pat = await getPAT();
-    if (!pat) return;
-
-    const btn = document.getElementById('__ol_save');
-    const original = btn.textContent;
-    btn.disabled = true; btn.textContent = 'Sauvegarde…';
-
-    try {
-      const clone = document.documentElement.cloneNode(true);
-      clone.querySelectorAll('img[data-pending-src]').forEach(el => {
-        el.setAttribute('src', el.getAttribute('data-pending-src'));
-        el.removeAttribute('data-pending-src');
-      });
-      // Strip stale inline opacity:0 set by previous onerror handlers
-      clone.querySelectorAll('img').forEach(el => {
-        if (el.style.opacity === '0' || el.style.opacity === '0.25') {
-          el.style.removeProperty('opacity');
-          if (!el.getAttribute('style')?.trim()) el.removeAttribute('style');
-        }
-      });
-      clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-      clone.querySelectorAll('.__ol_editable').forEach(el => el.classList.remove('__ol_editable'));
-      clone.querySelectorAll('img').forEach(el => { el.style.cursor = ''; el.removeAttribute('title'); });
-      // Strip is-visible class on .reveal elements (otherwise scroll animations are baked-in and never trigger)
-      clone.querySelectorAll('.reveal.is-visible').forEach(el => el.classList.remove('is-visible'));
-      // Strip runtime-injected tracking scripts (re-injected on load by inline bootstrap → save would dup them otherwise)
-      ['googletagmanager.com/gtm.js','scripts.clarity.ms','connect.facebook.net','analytics.tiktok.com','static.axept.io'].forEach(host => {
-        clone.querySelectorAll('script[src*="'+host+'"]').forEach(s => s.remove());
-      });
-      clone.querySelectorAll('meta[http-equiv="origin-trial"]').forEach(m => m.remove());
-      // Strip noise empty attributes added by 3rd-party loaders
-      clone.querySelectorAll('script[id=""], script[charset=""]').forEach(el => { el.removeAttribute('id'); el.removeAttribute('charset'); });
-      clone.querySelector('#__ol_editor_bar')?.remove();
-      clone.querySelector('#__ol_toast')?.remove();
-      clone.querySelectorAll('style').forEach(s => { if (s.textContent.includes('__ol_editor_bar')) s.remove(); });
-
-      const html = '<!DOCTYPE html>\n' + clone.outerHTML;
-      const content = btoa(unescape(encodeURIComponent(html)));
-
-      // Helper: GET current file SHA (with cache-buster pour éviter 304)
-      const fetchSha = async () => {
-        const r = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}&_t=${Date.now()}`, {
-          headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json' }
-        });
-        if (!r.ok) {
-          if (r.status === 401) { localStorage.removeItem(PAT_KEY); throw new Error('Token invalide. Réessayez.'); }
-          throw new Error('GET ' + r.status);
-        }
-        return (await r.json()).sha;
-      };
-      // Helper: PUT new content with given SHA
-      const putContent = (sha) => fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-        method: 'PUT',
-        headers: { Authorization: `Bearer ${pat}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: 'edit: update via inline editor', content, sha, branch: BRANCH })
-      });
-
-      let sha = await fetchSha();
-      let putResp = await putContent(sha);
-
-      // Auto-retry once on SHA conflict (409 ou 422 avec "does not match")
-      if (!putResp.ok) {
-        const errClone = await putResp.clone().json().catch(() => ({}));
-        const isShaConflict = putResp.status === 409 || (errClone.message || '').includes('does not match');
-        if (isShaConflict) {
-          // Re-fetch fresh SHA and retry once
-          sha = await fetchSha();
-          putResp = await putContent(sha);
-        }
-      }
-
-      if (!putResp.ok) {
-        const err = await putResp.json().catch(() => ({}));
-        const isShaConflict = putResp.status === 409 || (err.message || '').includes('does not match');
-        if (isShaConflict) {
-          if (confirm('⚠️ La page a été modifiée côté serveur (par un autre push ou par vous depuis un autre onglet).\n\nCliquez OK pour recharger la dernière version. Vos modifs en cours seront perdues, mais vous pourrez les ré-appliquer immédiatement.')) {
-            location.reload();
-            return;
-          }
-          throw new Error('Conflit de version. Rechargez la page (Cmd+R) pour récupérer la dernière version.');
-        }
-        throw new Error(err.message || 'PUT ' + putResp.status);
-      }
-
-      btn.textContent = 'Sauvegardé ! Déploiement ~1 min';
-      btn.style.background = '#10b981'; btn.style.borderColor = '#10b981';
-      setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.borderColor = ''; btn.disabled = false; }, 3500);
-    } catch (e) {
-      alert('Erreur de sauvegarde : ' + e.message);
-      btn.textContent = original; btn.disabled = false;
-    }
-  };
-})();
-</script><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
+<input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
 <input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
 
 <!-- Scroll animations -->

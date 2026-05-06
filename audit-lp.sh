@@ -165,6 +165,20 @@ audit_one() {
   GLOBAL_WARNS=$((GLOBAL_WARNS + warns))
 }
 
+# --- Mode --fix : autofix doublons GTM/Axeptio/trackers via normalize-page.js ---
+if [[ "${1:-}" == "--fix" ]]; then
+  shift
+  if [[ ! -f "$ROOT/scripts/normalize-page.js" ]]; then
+    echo -e "${RED}scripts/normalize-page.js introuvable${NC}"; exit 1
+  fi
+  if [[ $# -eq 0 ]]; then
+    node "$ROOT/scripts/normalize-page.js" --all
+  else
+    for folder in "$@"; do node "$ROOT/scripts/normalize-page.js" "${folder%/}/index.html"; done
+  fi
+  exit $?
+fi
+
 # --- Mode --clean : supprime les assets orphelins du dossier passé ---
 if [[ "${1:-}" == "--clean" ]]; then
   shift
@@ -208,5 +222,7 @@ if (( GLOBAL_FAILS == 0 )); then
   exit 0
 else
   echo -e "${RED}❌ $GLOBAL_FAILS erreur(s) bloquante(s)${NC}, ${YEL}$GLOBAL_WARNS warning(s)${NC}"
+  echo -e "${DIM}    → ./audit-lp.sh --fix              # corrige tous les doublons GTM/Axeptio/trackers${NC}"
+  echo -e "${DIM}    → ./audit-lp.sh --fix <dossier>    # idem sur un dossier précis${NC}"
   exit 1
 fi
