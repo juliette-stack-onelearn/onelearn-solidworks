@@ -2235,7 +2235,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 (function(){
   if(!location.search.includes('edit'))return;
   if(sessionStorage.getItem('_ed_auth')!=='1'){
-    document.addEventListener('DOMContentLoaded',function(){
+    var _showLogin=function(){
       var ov=document.createElement('div');
       ov.style.cssText='position:fixed;inset:0;background:rgba(34,36,77,.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;';
       ov.innerHTML='<div style="background:#fff;border-radius:20px;padding:36px 40px;width:340px;max-width:90vw;box-shadow:0 25px 60px rgba(0,0,0,.5);">'
@@ -2257,11 +2257,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       document.getElementById('_glbtn').addEventListener('click',_try);
       document.getElementById('_glpass').addEventListener('keydown',function(e){if(e.key==='Enter')_try();});
-    });
+    };
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',_showLogin);}
+    else{_showLogin();}
     return;
   }
   var REPO='juliette-stack-onelearn/onelearn-solidworks';
-  var FILE='bim/index.html';
+  /* FILE dérivé du pathname courant pour éviter les écritures sur la mauvaise page */
+  var FILE=(function(){var p=location.pathname.replace(/^\//,'');if(p===''||p.endsWith('/'))p+='index.html';return p;})();
 
   /* ── Styles ── */
   var s=document.createElement('style');
