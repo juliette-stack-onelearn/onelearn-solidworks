@@ -2229,44 +2229,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms]:not(.photo-slot),td,th';
+  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
   document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
+    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL)||el.classList.contains('photo-slot'))return;
     el.contentEditable='true';
     el.spellcheck=false;
   });
 
-  /* ── Pause marquee en mode edit ── */
-  document.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='paused';});
-
-  /* ── Logos marquee : listener direct sur l'img (partagent le même parent) ── */
-  document.querySelectorAll('img.rec-logo').forEach(function(img){
-    img.style.cursor='pointer';
-    img.title='Cliquer pour remplacer ce logo';
-    img.addEventListener('click',function(e){
-      e.stopPropagation();
-      var recId=img.getAttribute('data-rec-img');
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.display='none';
-      document.body.appendChild(inp);
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){
-          if(recId){document.querySelectorAll('img[data-rec-img="'+recId+'"]').forEach(function(c){c.src=ev.target.result;});}
-          else{img.src=ev.target.result;}
-          toast('📷 Logo mis à jour');
-          if(inp.parentNode)inp.parentNode.removeChild(inp);
-        };
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Autres images (hero, cms) : listener sur le container ── */
-  document.querySelectorAll('img[data-cms],img.hero-img').forEach(function(img){
+  /* ── Images remplaçables ── */
+  document.querySelectorAll('img[data-cms],img.rec-logo,img.hero-img').forEach(function(img){
     var container=img.parentElement;
     container.style.cursor='pointer';
     container.title='Cliquer pour remplacer l\'image';
@@ -2274,14 +2245,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if(e.target.closest('[contenteditable]'))return;
       var inp=document.createElement('input');
       inp.type='file';inp.accept='image/*';
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
-        r.readAsDataURL(file);
-      };
+      inp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
+      document.body.appendChild(inp);
+      inp.addEventListener('change',function(){
+        var file=inp.files[0];
+        document.body.removeChild(inp);
+        if(!file)return;
+        _compressImg(file,function(dataUrl){img.src=dataUrl;toast('📷 Image mise à jour');});
+      });
       inp.click();
     });
+  });
+
+  /* ── Photo slots ── */
+  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
+    // Ajoute un bouton caméra visible sur la carte parente
+    var card = slot.closest('.persona-card') || slot.parentElement;
+    if(!card) return;
+    if(card.style.position !== 'absolute') card.style.position = 'relative';
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" clip-rule="evenodd"/></svg>';
+    btn.title = 'Changer la photo';
+    btn.style.cssText = 'position:absolute;top:10px;right:10px;z-index:50;background:rgba(255,255,255,0.9);'
+      + 'border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;'
+      + 'align-items:center;justify-content:center;color:#22244D;box-shadow:0 2px 8px rgba(0,0,0,.25);'
+      + 'transition:background .15s;';
+    btn.onmouseover = function(){ btn.style.background='rgba(255,255,255,1)'; };
+    btn.onmouseout = function(){ btn.style.background='rgba(255,255,255,0.9)'; };
+
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      var inp = document.createElement('input');
+      inp.type = 'file'; inp.accept = 'image/*';
+      inp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+      document.body.appendChild(inp);
+      inp.addEventListener('change', function(){
+        var file = inp.files[0];
+        document.body.removeChild(inp);
+        if(!file) return;
+        _compressImg(file, function(dataUrl){
+          slot.innerHTML = '';
+          var img = document.createElement('img');
+          img.src = dataUrl;
+          img.className = 'w-full h-full object-cover';
+          img.style.borderRadius = '1.5rem';
+          slot.appendChild(img);
+          toast('📷 Photo ajoutée');
+        });
+      });
+      inp.click();
+    });
+
+    card.appendChild(btn);
   });
 
   /* ── Sauvegarde GitHub ── */
@@ -2300,11 +2318,153 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     var raw='<!DOCTYPE html>\n'+clone.outerHTML;
     /* ── Strip scripts injectés runtime ── */
-    // 1. Supprimer tous les blocs GTM existants
+    // 1. GTM
     raw=raw.replace(//g,'');
     raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
     raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
-    raw=raw.replace(/
-<script type="text/javascript" id="" charset="">(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();</script><input type="file" accept="image/*" style="display: none;"><input type="file" accept="image/*" style="display: none;">
+    raw=raw.replace(/<noscript><iframe src=["'][^"']*googletagmanager\.com\/ns\.html[^"']*["'][^>]*><\/iframe><\/noscript>/g,'');
+    // 2. Pixels & trackers injectés (Bing, Google Ads, FB, TikTok, Pinterest, Clarity, Axeptio...)
+    raw=raw.replace(/<script\b[^>]*\bsrc=["'][^"']*(connect\.facebook\.net|fbevents|pinterest\.com\/pinit|analytics\.tiktok\.com|clarity\.ms|browser\.dd-rum|axeptio|snap\.licdn|bat\.bing\.com|googleads\.g\.doubleclick\.net)[^"']*["'][^>]*>[\s\S]*?<\/script>/gi,'');
+    raw=raw.replace(/<script\b[^>]*>([\s\S]*?(fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\.)[\s\S]*?)<\/script>/gi,'');
+    raw=raw.replace(/<noscript>[\s\S]*?(pixel|fbq|pintrk|tfa_)[\s\S]*?<\/noscript>/gi,'');
+    // 3. Axeptio mount divs (injectés dans le DOM live)
+    raw=raw.replace(/<!--googleoff: index--><div class="axeptio_mount[\s\S]*?<!--googleon: index-->/g,'');
+    // 4. iClosed CSS dedup
+    var _icss='<link rel="stylesheet" href="https://app.iclosed.io/assets/widget.css">';
+    var _fi=raw.indexOf(_icss);
+    if(_fi!==-1){raw=raw.slice(0,_fi+_icss.length)+raw.slice(_fi+_icss.length).split(_icss).join('');}
+    // 5. iClosed JS dedup
+    raw=raw.replace(/(<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js"[^>]*>)([\s\S]*?)(?=<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js")/gi,'$1$2<!-- dup_removed -->');
+    raw=raw.replace(/<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js"[^>]*><!-- dup_removed -->/gi,'');
+    // 6. Réinsérer GTM propre
+    var _GTM_H='';
+    var _GTM_B='';
+    raw=raw.replace('<head>\n','<head>\n'+_GTM_H+'\n');
+    raw=raw.replace(/(<body[^>]*>)/,'$1\n'+_GTM_B);
+    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
+    console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
+    toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
+
+    var reader=new FileReader();
+    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
+    reader.onload=function(){
+      var encoded=reader.result.split(',')[1];
+      console.log('[save] base64 length:',encoded.length);
+      var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
+      var base='https://api.github.com/repos/'+REPO;
+
+      function fail(step,r){
+        console.error('[save] fail at step:',step,r);
+        var msg=r&&r.message?r.message:(typeof r==='string'?r:'erreur inconnue');
+        toast('\u274C \u00C9tape '+step+' : '+msg);
+        if(step==='blob'||step==='ref')localStorage.removeItem('_ol_token');
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+      }
+
+      /* 1. Créer le blob */
+      console.log('[save] step 1: create blob');
+      fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
+      .then(function(r){
+        console.log('[save] blob status:',r.status);
+        return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});
+      })
+      .then(function(res){
+        if(!res.ok)return fail('blob ('+res.status+')',res.data);
+        var blobSha=res.data.sha;
+        console.log('[save] blob sha:',blobSha);
+
+        /* 2. Récupérer HEAD */
+        return fetch(base+'/git/refs/heads/main',{headers:h})
+        .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+        .then(function(res){
+          if(!res.ok)return fail('ref',res.data);
+          var commitSha=res.data.object.sha;
+          console.log('[save] head commit:',commitSha);
+
+          /* 3. Tree du commit */
+          return fetch(base+'/git/commits/'+commitSha,{headers:h})
+          .then(function(r){return r.json();})
+          .then(function(commit){
+            console.log('[save] tree sha:',commit.tree.sha);
+
+            /* 4. Nouveau tree */
+            return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
+              base_tree:commit.tree.sha,
+              tree:[{path:FILE,mode:'100644',type:'blob',sha:blobSha}]
+            })})
+            .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+            .then(function(res){
+              if(!res.ok)return fail('tree',res.data);
+              console.log('[save] new tree:',res.data.sha);
+
+              /* 5. Commit */
+              return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
+                message:'update: inline edit',tree:res.data.sha,parents:[commitSha]
+              })})
+              .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
+              .then(function(res){
+                if(!res.ok)return fail('commit',res.data);
+                console.log('[save] new commit:',res.data.sha);
+
+                /* 6. Avancer la branche */
+                return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
+                  body:JSON.stringify({sha:res.data.sha,force:false})})
+                .then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});})
+                .then(function(res){
+                  if(!res.ok)return fail('push ('+res.status+')',res.data);
+                  console.log('[save] \u2705 done!');
+                  toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');
+                  saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+                });
+              });
+            });
+          });
+        });
+      })
+      .catch(function(e){
+        console.error('[save] catch:',e);
+        toast('\u274C R\u00E9seau : '+e.message);
+        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
+      });
+    };
+    reader.readAsDataURL(blob);
+  }
+
+      function _compressImg(file, cb){
+        var MAX=900, Q=0.78;
+        var r=new FileReader();
+        r.onload=function(e){
+          var img=new Image();
+          img.onload=function(){
+            var w=img.width,h=img.height;
+            if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+            if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
+            var c=document.createElement('canvas');c.width=w;c.height=h;
+            c.getContext('2d').drawImage(img,0,0,w,h);
+            cb(c.toDataURL('image/jpeg',Q));
+          };
+          img.src=e.target.result;
+        };
+        r.readAsDataURL(file);
+      }
+
+  /* ── Toolbar ── */
+  var bar=document.createElement('div');
+  bar.id='_ed_bar';bar.className='_ed-bar';
+  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
+  var saveBtn=document.createElement('button');
+  saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';
+  saveBtn.addEventListener('click',save);
+  var resetBtn=document.createElement('button');
+  resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';
+  resetBtn.addEventListener('click',function(){
+    localStorage.removeItem('_ol_token');toast('Token effacé');
+  });
+  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
+  document.body.appendChild(bar);
+
+  toast('✏️ Mode édition actif — cliquez sur un texte ou une image pour modifier');
+})();
+</script><input type="file" accept="image/*" style="display: none;"><input type="file" accept="image/*" style="display: none;">
 
 <script type="text/javascript" id="" charset="">(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();</script></body></html>
