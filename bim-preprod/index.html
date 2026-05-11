@@ -482,11 +482,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="text-center mb-10 anim-in" data-anim="">
       <p class="text-orange font-bold uppercase tracking-[0.2em] text-xs mb-3">Deux formats au choix</p>
       <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight text-ink">Choisissez votre rythme de formation.</h2>
-      <p class="text-ink/65 mt-3 max-w-xl mx-auto text-sm">La différence n'est pas le logiciel — les deux parcours sont 100% en ligne et couvrent Revit. Ce qui change : la <strong>durée</strong>, l'<strong>intensité</strong> et le <strong>diplôme à la clé</strong>.</p>
+      <p class="text-ink/65 mt-3 max-w-xl mx-auto text-sm">Les deux parcours sont 100% en ligne et couvrent les outils BIM. Ce qui change : la <strong>durée</strong>, l'<strong>intensité</strong> et le <strong>diplôme à la clé</strong>.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-5">
       <!-- Format A : court (~6 semaines à distance) -->
-      <div class="relative bg-cream border-2 border-navy/15 rounded-3xl p-7 md:p-8 hover:border-navy hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col anim-in" data-anim="">
+      <div class="relative bg-cream border-2 border-navy/15 rounded-3xl overflow-hidden hover:border-navy hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col anim-in" data-anim="">
+        <!-- Photo slot -->
+        <div class="relative h-48 bg-navy/8 overflow-hidden">
+          <img src="" data-cms="format_court_photo" alt="Formation BIM en ligne" class="w-full h-full object-cover" onerror="this.style.display='none'" onload="this.nextElementSibling&&(this.nextElementSibling.style.display='none')">
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-navy/30 pointer-events-none format-photo-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/></svg>
+            <span class="text-xs mt-1.5 font-medium">Photo à ajouter</span>
+          </div>
+        </div>
+        <div class="p-7 md:p-8 flex flex-col flex-1">
         <div class="flex items-center justify-between mb-4">
           <span class="bg-navy-50 text-navy text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">Format court</span>
           <span class="text-xs text-ink/50 font-semibold">100% à distance</span>
@@ -504,10 +513,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           J'en parle avec un conseiller
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+        </div><!-- /p-7 -->
       </div>
 
       <!-- Format B : long (4 mois bootcamp RNCP) -->
-      <div class="relative bg-gradient-to-br from-navy-900 to-navy-700 text-cream rounded-3xl p-7 md:p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden anim-in" data-anim="" data-delay="1">
+      <div class="relative bg-gradient-to-br from-navy-900 to-navy-700 text-cream rounded-3xl shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden anim-in" data-anim="" data-delay="1">
+        <!-- Photo slot -->
+        <div class="relative h-48 bg-navy-800 overflow-hidden">
+          <img src="" data-cms="format_long_photo" alt="Bootcamp BIM Modeleur" class="w-full h-full object-cover opacity-80" onerror="this.style.display='none'" onload="this.nextElementSibling&&(this.nextElementSibling.style.display='none')">
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-cream/30 pointer-events-none format-photo-placeholder">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="15" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 6V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1"/></svg>
+            <span class="text-xs mt-1.5 font-medium">Photo à ajouter</span>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900/60"></div>
+        </div>
+        <div class="p-7 md:p-8 flex flex-col flex-1 relative">
         <div class="absolute -top-1 -right-1 bg-orange text-white px-4 py-1.5 rounded-bl-2xl font-display font-bold text-xs uppercase tracking-wider">Titre RNCP</div>
         <div class="flex items-center justify-between mb-4 mt-2">
           <span class="bg-orange/20 text-orange-100 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-orange/30">Format long</span>
@@ -527,6 +547,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           Je veux candidater au bootcamp
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+        </div><!-- /p-7 -->
       </div>
     </div>
 
