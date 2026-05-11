@@ -400,27 +400,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ POUR QUI ============ -->
 <style>
-  .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
-  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail, .persona-card.is-default-open .persona-detail { max-height:220px; opacity:1; }
-  .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height:0 !important; opacity:0 !important; }
-  .persona-card .persona-title { font-size: 1.05rem; line-height: 1.15; transition: font-size .4s ease; }
-  .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.6rem; line-height: 1.1; }
-  .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1.05rem !important; }
+  /* MOBILE : carousel horizontal scroll-snap, texte toujours visible */
+  .personas-flex {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+  }
+  .personas-flex::-webkit-scrollbar { display: none; }
+  .personas-flex > .persona-card {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+    min-height: 360px;
+    cursor: pointer;
+    border-radius: 1.5rem;
+  }
+  .persona-card .persona-detail { max-height: 240px; opacity: 1; transition: max-height .5s ease, opacity .35s ease; overflow: hidden; }
+  .persona-card .persona-title { font-size: 1.15rem; line-height: 1.2; }
+
   @media (min-width: 1024px) {
-    .persona-card .persona-title { font-size: 1rem; }
-    .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.75rem; }
+    .personas-flex {
+      display: flex; gap: 16px; height: 480px;
+      overflow: visible; padding-bottom: 0;
+    }
+    .personas-flex > .persona-card {
+      flex: 0.7 1 0; aspect-ratio: auto; min-height: unset;
+      transition: flex .5s cubic-bezier(.4,0,.2,1);
+    }
+    .personas-flex > .persona-card.is-default-open { flex: 2.5 1 0; }
+    .personas-flex:hover > .persona-card,
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex: 0.7 1 0 !important; }
+    .personas-flex:hover > .persona-card:hover { flex: 2.5 1 0 !important; }
+    .persona-card .persona-detail { max-height: 0; opacity: 0; }
+    .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail,
+    .persona-card.is-default-open .persona-detail { max-height: 220px; opacity: 1; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height: 0 !important; opacity: 0 !important; }
+    .persona-card .persona-title { font-size: 1rem; line-height: 1.15; transition: font-size .4s ease; }
+    .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.75rem; line-height: 1.1; }
     .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1rem !important; }
   }
-  @media (max-width: 1023px) {
-    .persona-card .persona-detail { max-height: 320px !important; opacity: 1 !important; }
-    .persona-card .persona-title { font-size: 1.15rem !important; }
-    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height: 320px !important; opacity: 1 !important; }
-  }
-  .personas-flex { display:grid; grid-template-columns:1fr; gap:12px; }
-  @media (min-width:640px) { .personas-flex { grid-template-columns:repeat(2,1fr); } }
-  @media (min-width:1024px) { .personas-flex { grid-template-columns:2fr 1fr 1fr 1fr; } }
-  .persona-card { min-height:380px; cursor:pointer; }
-  @media (min-width:1024px) { .persona-card { min-height:440px; } }
 </style>
 <section class="py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
