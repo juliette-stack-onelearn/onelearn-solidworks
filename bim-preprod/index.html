@@ -70,6 +70,32 @@ tailwind.config = {
   }
   .hero-badge{animation:hero-badge-float 3.5s ease-in-out infinite;will-change:transform;}
 
+  /* Format selector — animations dynamiques */
+  @keyframes pulse-glow {
+    0%,100%{box-shadow:0 0 0 0 rgba(239,119,56,.5);}
+    50%{box-shadow:0 0 0 10px rgba(239,119,56,0);}
+  }
+  #format-selector .anim-in [class*="bg-orange"][class*="rounded-bl-2xl"]{
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+  #format-selector .anim-in p[class*="text-5xl"]{
+    display:inline-block;
+    transform-origin: bottom left;
+  }
+  #format-selector .anim-in p[class*="text-5xl"]{
+    animation: number-pop .8s cubic-bezier(.34,1.56,.64,1) .2s both;
+  }
+  @keyframes number-pop {
+    0%{transform:scale(.5);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+  }
+  #format-selector a:hover svg{transform:translateX(3px);}
+  #format-selector a svg{transition:transform .25s ease;}
+  @media (prefers-reduced-motion: reduce){
+    #format-selector .anim-in [class*="bg-orange"][class*="rounded-bl-2xl"],
+    #format-selector .anim-in p[class*="text-5xl"]{animation:none;}
+  }
+
       .photo-slot{background:linear-gradient(135deg,#EDEDFB 0%,#d8d9f0 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:2px dashed #545AC0;border-radius:1rem;transition:.2s;min-height:80px;}
       .photo-slot:hover{border-color:#EF7738;background:linear-gradient(135deg,#FEF4F1 0%,#fde0cf 100%);}
       </style>
@@ -454,14 +480,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============ FORMAT SELECTOR (TEST PREPROD) ============ -->
 <section id="format-selector" class="py-20 bg-navy-50/40 border-y border-ink/5">
   <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-10">
+    <div class="text-center mb-10 anim-in" data-anim="">
       <p class="text-orange font-bold uppercase tracking-[0.2em] text-xs mb-3">Deux formats au choix</p>
       <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight text-ink">Format court ou format long ?</h2>
       <p class="text-ink/65 mt-3 max-w-xl mx-auto text-sm">La différence n'est pas le logiciel — les deux parcours sont 100% en ligne et couvrent Revit. Ce qui change : la <strong>durée</strong>, l'<strong>intensité</strong> et le <strong>diplôme à la clé</strong>.</p>
     </div>
     <div class="grid md:grid-cols-2 gap-5">
       <!-- Format A : court (~6 semaines à distance) -->
-      <div class="relative bg-cream border-2 border-navy/15 rounded-3xl p-7 md:p-8 hover:border-navy hover:shadow-lg transition flex flex-col">
+      <div class="relative bg-cream border-2 border-navy/15 rounded-3xl p-7 md:p-8 hover:border-navy hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col anim-in" data-anim="">
         <div class="flex items-center justify-between mb-4">
           <span class="bg-navy-50 text-navy text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">Format court</span>
           <span class="text-xs text-ink/50 font-semibold">100% à distance</span>
@@ -471,7 +497,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-sm text-ink/70 mb-5">Vous êtes déjà en poste ou avez besoin de maîtriser le process BIM et la collaboration sur projets numériques ? Vous avancez à votre rythme, accompagné·e par un formateur dédié, avec la certification <strong>RS6877 Collaborer en BIM</strong> à la clé.</p>
         <ul class="space-y-2 text-sm text-ink/75 mb-6">
           <li class="flex gap-2"><span class="text-orange">✓</span><span><strong>~6 semaines</strong> · à votre rythme</span></li>
-          <li class="flex gap-2"><span class="text-orange">✓</span>Process <strong>BIM</strong> &amp; collaboration sur Revit</li>
           <li class="flex gap-2"><span class="text-orange">✓</span>Formateur dédié + classes virtuelles</li>
           <li class="flex gap-2"><span class="text-orange">✓</span>Certification <strong>RS6877 Collaborer en BIM</strong></li>
           <li class="flex gap-2"><span class="text-orange">✓</span>Finançable <strong>CPF à 100%</strong></li>
@@ -483,7 +508,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Format B : long (4 mois bootcamp RNCP) -->
-      <div class="relative bg-gradient-to-br from-navy-900 to-navy-700 text-cream rounded-3xl p-7 md:p-8 shadow-xl flex flex-col overflow-hidden">
+      <div class="relative bg-gradient-to-br from-navy-900 to-navy-700 text-cream rounded-3xl p-7 md:p-8 shadow-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex flex-col overflow-hidden anim-in" data-anim="" data-delay="1">
         <div class="absolute -top-1 -right-1 bg-orange text-white px-4 py-1.5 rounded-bl-2xl font-display font-bold text-xs uppercase tracking-wider">Titre RNCP</div>
         <div class="flex items-center justify-between mb-4 mt-2">
           <span class="bg-orange/20 text-orange-100 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-orange/30">Format long</span>
