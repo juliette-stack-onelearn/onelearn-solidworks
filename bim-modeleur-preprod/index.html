@@ -292,7 +292,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- ============ NAV ============ -->
-<header class="sticky top-0 z-40 backdrop-blur-md bg-cream/85 border-b border-ink/5">
+<header class="md:sticky md:top-0 z-40 backdrop-blur-md bg-cream/85 border-b border-ink/5">
   <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
     <a href="#" class="flex items-center" aria-label="One Learn">
       <svg class="h-7 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217.01 227.95">
@@ -2382,8 +2382,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ MOBILE STICKY CTA ============ -->
 <!-- Fade gradient cream au bas du viewport mobile (anchor le CTA flottant) -->
-<div class="fixed bottom-0 left-0 right-0 h-32 z-40 md:hidden pointer-events-none" style="background:linear-gradient(to top, #FDF6F1 25%, rgba(253,246,241,0.85) 55%, rgba(253,246,241,0.4) 80%, transparent 100%);"></div>
-<div class="fixed bottom-4 left-4 right-4 z-50 md:hidden">
+<div id="mobile-sticky-fade" class="fixed bottom-0 left-0 right-0 h-32 z-40 md:hidden pointer-events-none" style="background:linear-gradient(to top, #FDF6F1 25%, rgba(253,246,241,0.85) 55%, rgba(253,246,241,0.4) 80%, transparent 100%); opacity:0; transition:opacity .35s ease;"></div>
+<div id="mobile-sticky-cta" class="fixed bottom-4 left-4 right-4 z-50 md:hidden" style="opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .35s ease, transform .35s ease;">
   <!-- Halo orange flou derrière le CTA (amplifié) -->
   <div class="absolute inset-0 -z-10 pointer-events-none" style="background:radial-gradient(ellipse at center,rgba(239,119,56,.55) 0%,rgba(239,119,56,.18) 55%,transparent 85%);filter:blur(32px);transform:scale(1.8);"></div>
   <a href="#rdv" class="relative flex items-center justify-center gap-2 bg-orange text-white px-6 py-4 rounded-full font-semibold shadow-cta">
@@ -2393,15 +2393,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-// ── Sticky topbar CTA ──────────────────────────
+// ── Sticky topbar CTA (desktop) + mobile sticky CTA — toggle après que le hero CTA disparaît du viewport ──
 (function() {
   var heroCta = document.getElementById('hero-cta');
   var tbCta = document.getElementById('tb-cta');
-  if (!heroCta || !tbCta) return;
+  var mobileCta = document.getElementById('mobile-sticky-cta');
+  var mobileFade = document.getElementById('mobile-sticky-fade');
+  if (!heroCta) return;
   var observer = new IntersectionObserver(function(entries) {
-    // Ne toggle que sur desktop (sm:+ = 640px+), reste cach\u00e9 sur mobile
-    if (!window.matchMedia('(min-width: 640px)').matches) return;
-    tbCta.style.display = entries[0].isIntersecting ? 'none' : 'inline-flex';
+    var isVisible = entries[0].isIntersecting;
+    var isDesktop = window.matchMedia('(min-width: 640px)').matches;
+    if (isDesktop && tbCta) {
+      tbCta.style.display = isVisible ? 'none' : 'inline-flex';
+    }
+    if (!isDesktop && mobileCta) {
+      if (isVisible) {
+        mobileCta.style.opacity = '0';
+        mobileCta.style.transform = 'translateY(12px)';
+        mobileCta.style.pointerEvents = 'none';
+        if (mobileFade) mobileFade.style.opacity = '0';
+      } else {
+        mobileCta.style.opacity = '1';
+        mobileCta.style.transform = 'translateY(0)';
+        mobileCta.style.pointerEvents = 'auto';
+        if (mobileFade) mobileFade.style.opacity = '1';
+      }
+    }
   }, { threshold: 0 });
   observer.observe(heroCta);
 })();
