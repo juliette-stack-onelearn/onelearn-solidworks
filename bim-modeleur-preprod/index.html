@@ -2354,23 +2354,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script id="_scroll_anim_js">
 (function(){
-  // Marquer les éléments à animer
+  // Marqueur LARGE pour animer la quasi-totalité des blocs visibles au scroll
   var selectors = [
-    // Sections entières (titres + contenu)
-    '#stats-bar > div > div',
-    '#pour-qui .rounded-2xl',
+    // Headers + eyebrows + descriptions de sections
+    'section > div > h2',
+    'section > div > p',
+    'section > div > div.text-center',
+    'section > div > div > h2',
+    'section > div .max-w-2xl.mx-auto',
+    'section p.uppercase.text-orange',
+
+    // Toutes les cards avec rounded-2xl / rounded-3xl
+    'section [class*="rounded-2xl"][class*="bg-white"]',
+    'section [class*="rounded-3xl"][class*="bg-white"]',
+    'section [class*="rounded-2xl"][class*="bg-cream"]',
+    'section [class*="rounded-3xl"][class*="bg-cream"]',
+    'section [class*="rounded-2xl"][class*="border"]',
+    'section [class*="rounded-3xl"][class*="border"]',
+    'section .shadow-card',
+
+    // Spécifique aux sections clés
     '#programme .timeline-step',
     '#metiers .rounded-2xl',
     '#pourquoi .rounded-3xl',
+    '#pourquoi .rounded-2xl',
     '#formateurs .rounded-3xl',
-    '.shadow-card',
+    '#formateurs .rounded-2xl',
     '#faq details',
-    '#avant-apres .rounded-3xl',
-    // Blocs de sections (h2 + paragraphe)
-    'section > div > div.text-center',
-    'section > div > h2',
-    // Cartes avant/après
-    '.grid .rounded-2xl',
+    '#ia-augmente .rounded-3xl',
+    '#hybride [class*="rounded"]',
+    '#logiciels [class*="rounded-2xl"]',
+    '#certifications [class*="rounded"]',
+    '#realisations [class*="rounded"]',
+    '#tarifs [class*="rounded"]',
+    '#financement [class*="rounded"]',
+    '#format-selector [class*="rounded-3xl"]',
+    '#rdv [class*="rounded"]',
+    '#avis [class*="rounded"]',
+    '#temoignages [class*="rounded"]',
+
+    // Enfants directs des grilles (cards, items)
+    'section .grid > div',
+    'section .grid > a',
+
+    // Images dans containers avec rounded
+    'section figure',
+    'section [class*="aspect-"][class*="rounded"]',
+
+    // Bullets / lists items significatifs
+    'section ul.space-y-3 > li',
+    'section ul.space-y-4 > li',
+    'section ul.space-y-5 > li',
   ];
 
   var seen = new Set();
@@ -2378,17 +2412,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     try {
       document.querySelectorAll(sel).forEach(function(el) {
         if (seen.has(el)) return;
-        // Exclure hero, nav, topbar, edit bar
-        if (el.closest('#hero,nav,#tb,#_ed_bar,footer,.marquee')) return;
+        // Exclure hero, nav, topbar, edit bar, footer, marquee, et éléments déjà tagués
+        if (el.closest('#hero,nav,#tb,#_ed_bar,footer,.marquee,#formateurs-slider')) return;
+        if (el.hasAttribute('data-anim')) { seen.add(el); return; }
         seen.add(el);
         el.setAttribute('data-anim', '');
       });
     } catch(e) {}
   });
 
-  // Stagger les enfants de grilles
-  document.querySelectorAll('.grid,[data-anim]').forEach(function(grid) {
-    var children = Array.from(grid.children).filter(function(c){ return c.hasAttribute('data-anim'); });
+  // Stagger automatique des enfants d'une même grille ou liste
+  document.querySelectorAll('.grid, ul.space-y-3, ul.space-y-4, ul.space-y-5').forEach(function(parent) {
+    var children = Array.from(parent.children).filter(function(c){ return c.hasAttribute('data-anim') && !c.hasAttribute('data-delay'); });
     children.forEach(function(c, i) {
       if (i > 0 && i <= 6) c.setAttribute('data-delay', String(i));
     });
