@@ -113,6 +113,27 @@ tailwind.config = {
     section .bg-white.rounded-3xl:hover { transform: none; }
   }
 
+  /* 6. Orbit reveal sur le radar IA — spin rapide qui ralentit puis se fixe */
+  .satellites-orbit {
+    transform-origin: 50% 50%;
+    transform: rotate(-540deg);
+    opacity: 0;
+    transition: transform 2.2s cubic-bezier(.16,1,.3,1), opacity .5s ease-out;
+    pointer-events: none;
+  }
+  .satellites-orbit > * { pointer-events: auto; }
+  .satellites-orbit.orbit-go {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .satellites-orbit {
+      transform: rotate(0deg);
+      opacity: 1;
+      transition: none;
+    }
+  }
+
   /* Bulles logos logiciels flottantes — hero top-left scatter */
   .tool-bubble{
     position:absolute;
@@ -637,8 +658,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </svg>
           </div>
 
-          <!-- 5 satellites — pentagone parfait (rayon 50%, débordent vers l'extérieur).
-               Tailles identiques 60px mobile / 68px desktop. -->
+          <!-- 5 satellites + dots — pentagone parfait (rayon 50%, débordent vers l'extérieur).
+               Tailles identiques 60px mobile / 68px desktop.
+               Le wrapper .satellites-orbit fait spin reveal au scroll (rapide → ralentit → stop). -->
+          <div class="satellites-orbit absolute inset-0">
 
           <!-- 1. Claude (top — 12h) -->
           <div class="absolute w-[60px] h-[60px] md:w-[68px] md:h-[68px] rounded-full bg-white grid place-items-center shadow-xl ring-1 ring-ink/5" style="top:0%;left:50%;transform:translate(-50%,-50%);" title="Claude (Anthropic)">
@@ -670,6 +693,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="absolute top-[24%] right-[20%] w-1 h-1 rounded-full bg-orange/35"></div>
           <div class="absolute bottom-[30%] left-[42%] w-1 h-1 rounded-full bg-orange/45"></div>
           <div class="absolute bottom-[18%] right-[28%] w-1.5 h-1.5 rounded-full bg-orange/30"></div>
+          </div><!-- /.satellites-orbit -->
         </div>
 
       </div>
@@ -2440,6 +2464,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('[data-anim]').forEach(function(el) { io.observe(el); });
+
+  // Orbit reveal pour le radar IA
+  var orbit = document.querySelector('.satellites-orbit');
+  if (orbit && window.IntersectionObserver) {
+    var orbitIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          setTimeout(function(){ orbit.classList.add('orbit-go'); }, 250);
+          orbitIo.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    orbitIo.observe(orbit);
+  } else if (orbit) {
+    orbit.classList.add('orbit-go');
+  }
 })();
 </script>
 
