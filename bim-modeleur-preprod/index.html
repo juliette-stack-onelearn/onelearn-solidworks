@@ -70,130 +70,39 @@ tailwind.config = {
   .hero-badge{animation:hero-badge-float 3.5s ease-in-out infinite;will-change:transform;}
 
   /* ============================================
-     ANIMATIONS GLOBALES — page dynamique
+     ANIMATIONS GLOBALES — sobres et fluides
      ============================================ */
 
-  /* 1. Hover-lift universel sur les cards rounded */
+  /* 1. Hover-lift sur cards (transition simple ease-out, GPU-only) */
   section .bg-white.rounded-2xl,
   section .bg-white.rounded-3xl,
   section .shadow-card {
-    transition: transform .3s cubic-bezier(.34,1.4,.64,1), box-shadow .3s ease, border-color .3s ease;
+    transition: transform .25s ease-out, box-shadow .25s ease-out;
+    will-change: transform;
   }
   section .bg-white.rounded-2xl:hover,
   section .bg-white.rounded-3xl:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 32px rgba(34,36,77,.16);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(34,36,77,.12);
   }
 
-  /* 2. CTAs orange : shimmer brillant au hover */
-  a.bg-orange,
-  button.bg-orange,
-  a[class*="bg-orange"][class*="hover:bg-orange"] {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
+  /* 2. Liens FAQ / details : chevron rotation propre */
+  details > summary svg { transition: transform .3s ease-out; }
+  details[open] > summary svg { transform: rotate(180deg); }
+
+  /* 3. Logos partenaires : hover scale doux */
+  .logos-grid img { transition: transform .25s ease-out; }
+  .logos-grid img:hover { transform: scale(1.06); }
+
+  /* 4. Images dans containers : zoom doux au hover du parent */
+  section [class*="overflow-hidden"][class*="rounded"] > img {
+    transition: transform .5s ease-out;
   }
-  a.bg-orange::before,
-  button.bg-orange::before,
-  a[class*="bg-orange"][class*="hover:bg-orange"]::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 35%, rgba(255,255,255,.35) 50%, transparent 65%);
-    transform: translateX(-130%);
-    transition: transform .7s ease;
-    z-index: 0;
-    pointer-events: none;
-  }
-  a.bg-orange:hover::before,
-  button.bg-orange:hover::before,
-  a[class*="bg-orange"][class*="hover:bg-orange"]:hover::before {
-    transform: translateX(130%);
-  }
-  a.bg-orange > *,
-  button.bg-orange > * {
-    position: relative;
-    z-index: 1;
+  section [class*="overflow-hidden"][class*="rounded"]:hover > img {
+    transform: scale(1.03);
   }
 
-  /* 3. Icons orange-filled : micro-pulse subtil au hover de la card parente */
-  section .bg-white.rounded-2xl:hover .bg-orange.rounded-xl,
-  section .bg-white.rounded-2xl:hover .bg-orange.rounded-lg,
-  section .bg-white.rounded-2xl:hover .bg-orange.rounded-2xl,
-  section .bg-white.rounded-3xl:hover .bg-orange.rounded-xl,
-  section .bg-white.rounded-3xl:hover .bg-orange.rounded-lg {
-    animation: micro-bounce .5s cubic-bezier(.34,1.56,.64,1);
-  }
-  @keyframes micro-bounce {
-    0%, 100% { transform: scale(1) rotate(0); }
-    40% { transform: scale(1.15) rotate(-4deg); }
-    70% { transform: scale(0.95) rotate(2deg); }
-  }
-
-  /* 4. Chips / badges orange : pulse continu très subtil sur les "X ans / X mois / X %" */
-  .text-orange.font-display {
-    transition: text-shadow .3s ease;
-  }
-  section .bg-white.rounded-2xl:hover .text-orange.font-display,
-  section .bg-white.rounded-3xl:hover .text-orange.font-display {
-    text-shadow: 0 0 24px rgba(239,119,56,.45);
-  }
-
-  /* 5. Section eyebrows orange : fade pulse subtil */
-  section p.text-orange.uppercase {
-    animation: eyebrow-glow 4.5s ease-in-out infinite;
-  }
-  @keyframes eyebrow-glow {
-    0%, 100% { opacity: 0.85; }
-    50% { opacity: 1; }
-  }
-
-  /* 6. Section headings : subtle slide-up sur entrée déjà géré par data-anim,
-        on ajoute juste un glow sur le span orange highlight */
-  section h2 .text-orange {
-    background-image: linear-gradient(120deg, currentColor 0%, #FBA774 50%, currentColor 100%);
-    background-size: 200% 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: heading-shimmer 5s ease-in-out infinite;
-  }
-  @keyframes heading-shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
-
-  /* 7. Liens FAQ / details : chevron rotation */
-  details summary {
-    transition: background-color .2s ease;
-  }
-  details[open] > summary svg {
-    transform: rotate(180deg);
-    transition: transform .35s cubic-bezier(.34,1.4,.64,1);
-  }
-  details > summary svg {
-    transition: transform .35s cubic-bezier(.34,1.4,.64,1);
-  }
-
-  /* 8. Logos partenaires (recruteurs / financement) : grayscale-to-color au hover */
-  .logos-grid img, [data-logo] img {
-    transition: filter .3s ease, transform .3s ease, opacity .3s ease;
-  }
-  .logos-grid img:hover, [data-logo] img:hover {
-    transform: scale(1.08);
-    filter: none !important;
-  }
-
-  /* 9. Images & photos : zoom doux au hover du conteneur */
-  section [class*="overflow-hidden"][class*="rounded"] img {
-    transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-  }
-  section [class*="overflow-hidden"][class*="rounded"]:hover > img,
-  section [class*="overflow-hidden"][class*="rounded"]:hover img.absolute {
-    transform: scale(1.04);
-  }
-
-  /* 10. Respect prefers-reduced-motion */
+  /* 5. Respect prefers-reduced-motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -201,9 +110,7 @@ tailwind.config = {
       transition-duration: 0.01ms !important;
     }
     section .bg-white.rounded-2xl:hover,
-    section .bg-white.rounded-3xl:hover {
-      transform: none;
-    }
+    section .bg-white.rounded-3xl:hover { transform: none; }
   }
 
   /* Bulles logos logiciels flottantes — hero top-left scatter */
@@ -1761,78 +1668,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ FORMATEURS ============ -->
 <style>
-  /* Formateurs : animations dynamiques (visibles sans hover) */
+  /* Formateurs : animations sobres alignées avec le reste de la page */
   #formateurs-slider > div {
     position: relative;
-    transition: transform .35s cubic-bezier(.34,1.56,.64,1), box-shadow .35s ease, border-color .25s ease;
+    transition: transform .25s ease-out, box-shadow .25s ease-out, border-color .25s ease-out;
     will-change: transform;
-    animation: trainer-float 6s ease-in-out infinite;
-  }
-  #formateurs-slider > div:nth-child(2) { animation-delay: -0.8s; }
-  #formateurs-slider > div:nth-child(3) { animation-delay: -1.6s; }
-  #formateurs-slider > div:nth-child(4) { animation-delay: -2.4s; }
-  #formateurs-slider > div:nth-child(5) { animation-delay: -3.2s; }
-  #formateurs-slider > div:nth-child(6) { animation-delay: -4.0s; }
-  #formateurs-slider > div:nth-child(7) { animation-delay: -4.8s; }
-  @keyframes trainer-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
   }
   #formateurs-slider > div:hover {
-    animation-play-state: paused;
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 18px 48px rgba(239,119,56,.35), 0 6px 16px rgba(34,36,77,.22);
-    border-color: rgba(239,119,56,.55) !important;
-    z-index: 2;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(239,119,56,.20), 0 4px 12px rgba(34,36,77,.18);
+    border-color: rgba(239,119,56,.40) !important;
   }
-
-  /* Badge "X ans d'exp." : pill orange visible + pulse */
   #formateurs-slider [data-trainer-exp] {
-    display: inline-block !important;
-    padding: 3px 10px !important;
-    border-radius: 999px !important;
-    background: rgba(239,119,56,.18) !important;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(239,119,56,.12);
     color: #C2410C !important;
-    border: 1px solid rgba(239,119,56,.35);
-    animation: trainer-exp-pulse 2.4s ease-in-out infinite;
+    border: 1px solid rgba(239,119,56,.25);
     margin-top: 2px;
-  }
-  @keyframes trainer-exp-pulse {
-    0%, 100% { background: rgba(239,119,56,.15); box-shadow: 0 0 0 0 rgba(239,119,56,.0); }
-    50% { background: rgba(239,119,56,.30); box-shadow: 0 0 0 6px rgba(239,119,56,.0); }
-  }
-
-  /* Shimmer continu sur les portraits */
-  #formateurs-slider > div::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(120deg, transparent 30%, rgba(239,119,56,.20) 50%, transparent 70%);
-    transform: translateX(-120%);
-    transition: transform .8s ease;
-    pointer-events: none;
-    z-index: 1;
-    border-radius: 18px;
-  }
-  #formateurs-slider > div:hover::before { transform: translateX(120%); }
-
-  /* Halo orange continu autour des cards (très subtil) */
-  #formateurs-slider > div::after {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(239,119,56,.0), rgba(239,119,56,.25), rgba(239,119,56,.0));
-    opacity: 0;
-    transition: opacity .4s ease;
-    z-index: -1;
-    filter: blur(8px);
-  }
-  #formateurs-slider > div:hover::after { opacity: 1; }
-
-  @media (prefers-reduced-motion: reduce) {
-    #formateurs-slider > div, #formateurs-slider [data-trainer-exp] { animation: none !important; transition: none !important; }
-    #formateurs-slider > div:hover { transform: none; }
   }
 </style>
 <section class="py-24 text-cream relative overflow-hidden" style="background: linear-gradient(135deg, #22244D 0%, #2D3070 50%, #22244D 100%);">
