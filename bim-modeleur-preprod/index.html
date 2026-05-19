@@ -494,47 +494,74 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ INTENSITÉ BOOTCAMP ============ -->
-<section id="hybride" class="py-14 bg-navy text-cream relative overflow-hidden">
-  <div class="absolute inset-0 grain opacity-25"></div>
-  <div class="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-orange/10 blur-3xl"></div>
-  <div class="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full bg-orange/5 blur-3xl"></div>
+<section id="hybride" class="py-16 relative overflow-hidden bg-white">
+  <style>
+    #hybride .num-gradient {
+      background: linear-gradient(135deg, #EF7738 0%, #D85F22 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    #hybride .num-gradient-dark {
+      background: linear-gradient(135deg, #D85F22 0%, #B14817 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    @keyframes hybride-total-glow {
+      0%,100% { box-shadow: 0 8px 30px rgba(216,95,34,.20), 0 0 0 0 rgba(239,119,56,.30); }
+      50% { box-shadow: 0 12px 40px rgba(216,95,34,.30), 0 0 0 12px rgba(239,119,56,0); }
+    }
+    #hybride .total-card { animation: hybride-total-glow 3s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      #hybride .total-card { animation: none; }
+    }
+  </style>
 
   <div class="relative max-w-7xl mx-auto px-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1.1fr] gap-5 lg:gap-3 items-stretch">
-      <div class="rounded-2xl p-5 lg:p-6 text-center anim-in flex flex-col justify-center backdrop-blur-sm" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.14);" data-anim="">
-        <p class="font-display text-5xl font-semibold text-orange">185H</p>
-        <p class="text-xs text-cream/55 uppercase tracking-wider font-semibold mt-1">heures</p>
-        <p class="font-semibold text-white mt-3">Distanciel</p>
-        <p class="text-sm text-cream/75 mt-2 leading-relaxed">Cours vidéo, exercices et ressources 24h/24, à votre rythme.</p>
+
+      <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="">
+        <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">185h</p>
+        <p class="text-[10px] uppercase tracking-[0.22em] font-medium text-ink/45 mt-4">Distanciel</p>
+        <p class="text-sm text-ink/65 mt-3 leading-relaxed">Cours vidéo, exercices et ressources 24h/24, à votre rythme.</p>
       </div>
-      <div class="hidden lg:flex font-display text-3xl text-cream/40 font-light items-center justify-center select-none" aria-hidden="true">+</div>
-      <div class="rounded-2xl p-5 lg:p-6 text-center anim-in flex flex-col justify-center backdrop-blur-sm" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.14);" data-anim="" data-delay="1">
-        <p class="font-display text-5xl font-semibold text-white">60H</p>
-        <p class="text-xs text-cream/55 uppercase tracking-wider font-semibold mt-1">heures</p>
-        <p class="font-semibold text-white mt-3">Projet et pratique</p>
-        <p class="text-sm text-cream/75 mt-2 leading-relaxed">Cas réels, projets guidés et mises en situation pro.</p>
+
+      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+
+      <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="1">
+        <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">60h</p>
+        <p class="text-[10px] uppercase tracking-[0.22em] font-medium text-ink/45 mt-4">Projet & pratique</p>
+        <p class="text-sm text-ink/65 mt-3 leading-relaxed">Cas réels, projets guidés et mises en situation pro.</p>
       </div>
-      <div class="hidden lg:flex font-display text-3xl text-cream/40 font-light items-center justify-center select-none" aria-hidden="true">+</div>
-      <div class="rounded-2xl p-5 lg:p-6 text-center anim-in flex flex-col justify-center backdrop-blur-sm" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.14);" data-anim="" data-delay="2">
-        <p class="font-display text-5xl font-semibold text-orange">35H</p>
-        <p class="text-xs text-cream/55 uppercase tracking-wider font-semibold mt-1">heures</p>
-        <p class="font-semibold text-white mt-3">Classes virtuelles</p>
-        <p class="text-sm text-cream/75 mt-2 leading-relaxed">Sessions live en groupe (6-8) : corrections, Q&amp;A.</p>
+
+      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+
+      <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="2">
+        <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">35h</p>
+        <p class="text-[10px] uppercase tracking-[0.22em] font-medium text-ink/45 mt-4">Classes virtuelles</p>
+        <p class="text-sm text-ink/65 mt-3 leading-relaxed">Sessions live en groupe (6-8) : corrections, Q&amp;A.</p>
       </div>
-      <div class="hidden lg:flex font-display text-3xl text-cream/40 font-light items-center justify-center select-none" aria-hidden="true">+</div>
-      <div class="rounded-2xl p-5 lg:p-6 text-center anim-in flex flex-col justify-center backdrop-blur-sm" style="background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.14);" data-anim="" data-delay="3">
-        <p class="font-display text-5xl font-semibold text-white">20H</p>
-        <p class="text-xs text-cream/55 uppercase tracking-wider font-semibold mt-1">heures</p>
-        <p class="font-semibold text-white mt-3">Coaching individuel</p>
-        <p class="text-sm text-cream/75 mt-2 leading-relaxed">Accompagnement personnalisé illimité.</p>
+
+      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+
+      <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="3">
+        <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">20h</p>
+        <p class="text-[10px] uppercase tracking-[0.22em] font-medium text-ink/45 mt-4">Coaching individuel</p>
+        <p class="text-sm text-ink/65 mt-3 leading-relaxed">Accompagnement personnalisé illimité.</p>
       </div>
-      <div class="hidden lg:flex font-display text-4xl text-orange font-semibold items-center justify-center select-none" aria-hidden="true">=</div>
-      <div class="rounded-2xl p-5 lg:p-6 text-center bg-orange shadow-cta anim-in flex flex-col justify-center" data-anim="" data-delay="4">
-        <p class="font-display text-5xl md:text-6xl font-bold text-white leading-none">300H</p>
-        <p class="text-[10px] text-white/80 uppercase tracking-wider font-bold mt-2">de formation sur 4 mois</p>
-        <p class="font-semibold text-white mt-3">Bootcamp complet</p>
-        <p class="text-sm text-white/85 mt-2 leading-relaxed">Structuré et accompagné, pas un simple cours en ligne.</p>
+
+      <div class="hidden lg:flex font-display text-3xl font-medium items-center justify-center select-none" style="color:#D85F22;" aria-hidden="true">=</div>
+
+      <!-- Total : card cream/light orange + chiffre en dark orange gradient + glow pulse -->
+      <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center relative overflow-hidden total-card" style="background:linear-gradient(135deg,#FFF4EE 0%,#FFE2D1 100%);border:1.5px solid rgba(216,95,34,.30);" data-anim="" data-delay="4">
+        <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full pointer-events-none" style="background:rgba(216,95,34,.15);filter:blur(40px);"></div>
+        <p class="font-display font-bold leading-none num-gradient-dark relative" style="font-size:clamp(3.25rem,4.75vw,4.25rem);">300h</p>
+        <p class="text-[10px] uppercase tracking-[0.22em] font-bold mt-4 relative" style="color:#D85F22;">Total</p>
+        <p class="text-sm font-semibold mt-3 text-ink relative">Bootcamp complet</p>
+        <p class="text-xs text-ink/65 mt-1.5 leading-relaxed relative">Structuré et accompagné, pas un simple cours en ligne.</p>
       </div>
+
     </div>
   </div>
 </section>
@@ -1915,7 +1942,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <p style="font-size:11px; color:#9DA2B3; margin-bottom:4px;" data-trainer-role="8">Responsable pédagogique</p>
               <p style="font-size:11px; font-weight:700; color:#E66A40;" data-trainer-exp="8">8 ans d'exp.</p>
             </div>
-          </div>
           </div>
           <div style="flex:0 0 calc(25% - 9px); min-width:160px; background:#fff; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 14px rgba(34,36,77,.1); border:1px solid #EDEFF7;">
             <div style="position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: radial-gradient(at 40% 60%, rgb(232, 233, 249) 0%, rgb(244, 244, 251) 60%, rgb(255, 255, 255) 100%);" title="Cliquer pour remplacer l'image">
