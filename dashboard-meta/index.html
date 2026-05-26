@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
+<!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet">
+  <title>One Learn — Dashboard Meta Ads</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    :root {
+      --navy:      #0F1419;
+      --navy-mid:  #1f2937;
+      --orange:    #F97316;
+      --orange-dk: #C2410C;
+      --orange-lt: #FED7AA;
+      --blue-acc:  #60a5fa;
+      --green:     #16a34a;
+      --red:       #dc2626;
+      --white:     #ffffff;
+      --off:       #f7f8fa;
+      --border:    #e4e7ec;
+      --text:      #111827;
+      --muted:     #6b7280;
+      color-scheme: light;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif; background:var(--off); color:var(--text); font-size:13px; line-height:1.5; }
+
+    /* HEADER */
+    .hdr { background:var(--navy); color:#fff; padding:16px 32px; display:flex; align-items:center; justify-content:space-between; }
+    .hdr-l { display:flex; align-items:center; gap:18px; }
+    .logo { font-size:20px; font-weight:800; letter-spacing:3px; text-transform:uppercase; }
+    .logo .accent { color:var(--orange); }
+    .hdiv { width:1px; height:34px; background:rgba(255,255,255,.18); }
+    .hdr-title { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.55); }
+    .live-badge { display:flex; align-items:center; gap:7px; font-size:10px; color:rgba(255,255,255,.6); letter-spacing:.8px; text-transform:uppercase; }
+    .live-dot { width:7px; height:7px; border-radius:50%; background:var(--orange); box-shadow:0 0 0 2px rgba(249,115,22,.3); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+    /* FILTERS */
+    .flt { background:#fff; border-bottom:1px solid var(--border); padding:9px 32px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+    .flabel { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+    .pgrp { display:flex; gap:3px; }
+    .pbtn { padding:5px 12px; border:1px solid var(--border); border-radius:3px; background:#fff; font-size:11px; font-weight:500; cursor:pointer; color:var(--text); font-family:inherit; transition:all .12s; }
+    .pbtn:hover { border-color:var(--navy); color:var(--navy); }
+    .pbtn.active { background:var(--navy); border-color:var(--navy); color:#fff; }
+    .fsep { color:var(--border); }
+    .drange { display:flex; align-items:center; gap:8px; }
+    .dinput { padding:5px 8px; border:1px solid var(--border); border-radius:3px; font-size:11px; font-family:inherit; color:var(--text); }
+    .csel { padding:5px 10px; border:1px solid var(--border); border-radius:3px; font-size:11px; font-family:inherit; color:var(--text); background:#fff; cursor:pointer; }
+
+    /* MAIN */
+    .main { padding:22px 32px 48px; }
+    .slabel { font-size:9px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:13px; display:flex; align-items:center; gap:10px; }
+    .slabel-pill { padding:2px 8px; border-radius:3px; background:var(--orange-lt); color:var(--orange-dk); font-size:8px; letter-spacing:1.5px; }
+    .slabel-pill.na { background:#f2f4f7; color:var(--muted); }
+
+    /* KPI */
+    .krow { display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-bottom:24px; }
+    .kcard { background:#fff; border:1px solid var(--border); border-radius:5px; padding:15px 15px 13px; position:relative; overflow:hidden; }
+    .kcard::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--orange); opacity:0; transition:opacity .2s; }
+    .kcard.hi::before { opacity:1; }
+    .klabel { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .kval { font-size:22px; font-weight:700; color:var(--text); letter-spacing:-.5px; line-height:1; }
+    .kval.gr { color:var(--green); }
+    .kval.or { color:var(--orange-dk); }
+    .kval.rd { color:var(--red); }
+    .ksub { font-size:10px; color:var(--muted); margin-top:5px; display:flex; align-items:center; gap:3px; }
+    .ksub.up { color:var(--green); }
+    .ksub.dn { color:var(--red); }
+
+    /* CHARTS */
+    .cgrid { display:grid; grid-template-columns:3fr 2fr; gap:12px; margin-bottom:12px; }
+    .cgrid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+    .cc { background:#fff; border:1px solid var(--border); border-radius:5px; padding:18px 20px; }
+    .ctitle { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text); margin-bottom:16px; }
+    .cwrap { position:relative; height:240px; }
+
+    /* TABLE */
+    .tcard { background:#fff; border:1px solid var(--border); border-radius:5px; padding:18px 20px; margin-bottom:24px; overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; }
+    thead th { font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); text-align:right; padding:0 9px 10px; border-bottom:1px solid var(--border); white-space:nowrap; }
+    thead th:first-child { text-align:left; }
+    tbody tr { border-bottom:1px solid var(--border); transition:background .1s; }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover:not(.tr) { background:var(--off); }
+    tbody td { padding:10px 9px; text-align:right; white-space:nowrap; font-size:12px; }
+    tbody td:first-child { text-align:left; font-weight:600; font-size:12px; }
+    .tr td { font-weight:700; background:var(--off); border-top:2px solid var(--border); }
+
+    /* PILLS */
+    .rp { display:inline-block; padding:2px 7px; border-radius:3px; font-size:11px; font-weight:700; }
+    .rp-hi { background:#dcfce7; color:#15803d; }
+    .rp-md { background:#fef3c7; color:#a16207; }
+    .rp-lo { background:#fee2e2; color:#b91c1c; }
+    .rp-z  { background:#f2f4f7; color:#8a919e; }
+
+    .cname { display:flex; align-items:center; gap:7px; }
+    .cdot  { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .bcell { display:flex; align-items:center; justify-content:flex-end; gap:7px; }
+    .mbar  { height:3px; border-radius:2px; background:var(--orange); opacity:.5; }
+
+    /* CAMPAIGN CARDS */
+    .camp-grid { display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:24px; }
+    .camp { background:#fff; border:1px solid var(--border); border-radius:5px; overflow:hidden; }
+    .camp-hdr { padding:14px 20px; display:grid; grid-template-columns:2fr repeat(5,1fr) auto; gap:14px; align-items:center; cursor:pointer; transition:background .1s; }
+    .camp-hdr:hover { background:var(--off); }
+    .camp-name { font-weight:700; font-size:13px; display:flex; align-items:center; gap:10px; }
+    .camp-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    .camp-kpi { text-align:right; }
+    .camp-kpi .lab { font-size:8px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px; }
+    .camp-kpi .val { font-size:14px; font-weight:700; }
+    .camp-chev { color:var(--muted); font-size:14px; transition:transform .2s; }
+    .camp.open .camp-chev { transform:rotate(180deg); }
+    .camp-body { display:none; padding:0 20px 18px; border-top:1px solid var(--border); }
+    .camp.open .camp-body { display:block; }
+
+    /* PIPEDRIVE */
+    .pd-section { background:linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius:7px; padding:24px; margin-bottom:24px; color:#fff; }
+    .pd-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
+    .pd-title { font-size:18px; font-weight:700; }
+    .pd-sub { font-size:12px; color:rgba(255,255,255,.5); margin-bottom:16px; }
+    .pd-pill { padding:5px 12px; background:rgba(249,115,22,.18); color:var(--orange); border-radius:5px; font-size:11px; font-weight:600; }
+    .pd-bar { height:3px; background:linear-gradient(to right, var(--red), var(--orange)); border-radius:2px; margin-bottom:18px; }
+    .pd-funnel { background:rgba(255,255,255,.04); border-radius:6px; padding:18px; margin-bottom:16px; }
+    .pd-funnel-title { font-size:13px; font-weight:600; margin-bottom:14px; display:flex; justify-content:space-between; }
+    .funnel-row { display:grid; grid-template-columns:90px 1fr 100px; gap:14px; align-items:center; margin-bottom:10px; }
+    .funnel-lab { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.55); font-weight:700; }
+    .funnel-bar { height:32px; background:rgba(255,255,255,.06); border-radius:5px; position:relative; overflow:hidden; }
+    .funnel-fill { height:100%; display:flex; align-items:center; padding:0 12px; color:#fff; font-weight:700; font-size:13px; border-radius:5px; transition:width .5s ease; }
+    .funnel-side { font-size:11px; color:rgba(255,255,255,.6); text-align:right; }
+    .funnel-side .badge { display:inline-block; padding:2px 8px; background:rgba(22,163,74,.2); color:#4ade80; border-radius:3px; font-weight:700; }
+    .funnel-side .badge.muted { background:rgba(255,255,255,.06); color:rgba(255,255,255,.6); }
+
+    .pd-table { background:rgba(255,255,255,.03); border-radius:6px; padding:16px; overflow-x:auto; }
+    .pd-table table { color:#fff; }
+    .pd-table thead th { color:rgba(255,255,255,.5); border-bottom-color:rgba(255,255,255,.1); }
+    .pd-table tbody tr { border-bottom-color:rgba(255,255,255,.06); }
+    .pd-table tbody tr:hover:not(.tr) { background:rgba(255,255,255,.03); }
+    .pd-table .tr td { background:rgba(255,255,255,.04); border-top-color:rgba(255,255,255,.1); }
+    .pd-na { color:rgba(255,255,255,.25); font-style:italic; }
+
+    /* LOADING */
+    .loading { text-align:center; padding:60px 20px; color:var(--muted); }
+    .spinner { display:inline-block; width:24px; height:24px; border:3px solid var(--border); border-top-color:var(--orange); border-radius:50%; animation:spin 1s linear infinite; margin-right:10px; vertical-align:middle; }
+    @keyframes spin { to{ transform:rotate(360deg); } }
+    .error { background:#fee2e2; color:#b91c1c; padding:14px 18px; border-radius:5px; margin:20px 0; font-size:12px; }
+
+    /* FOOTER */
+    .footer { text-align:center; font-size:10px; color:var(--muted); letter-spacing:1px; padding:14px 32px; border-top:1px solid var(--border); text-transform:uppercase; }
+  </style>
+<!-- Axeptio Cookie Consent -->
+<script>
+window.axeptioSettings = {
+  clientId: "630de1b500fec812caa2de5e",
+  cookiesVersion: "one learn-fr",
+};
+
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+<!-- End Axeptio Cookie Consent -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="logo">ONE <span class="accent">LEARN</span></div>
+    <div class="hdiv"></div>
+    <div class="hdr-title">Dashboard Meta Ads</div>
+  </div>
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    Mis à jour le <span id="upd"></span>
+  </div>
+</div>
+
+<div class="flt">
+  <span class="flabel">Période</span>
+  <div class="pgrp">
+    <button class="pbtn" onclick="go('7d',this)">7 jours</button>
+    <button class="pbtn" onclick="go('30d',this)">30 jours</button>
+    <button class="pbtn" onclick="go('month',this)">Ce mois</button>
+    <button class="pbtn active" onclick="go('all',this)">Depuis le début</button>
+  </div>
+  <span class="fsep">|</span>
+  <div class="drange">
+    <input type="date" id="dfrom" class="dinput">
+    <span style="color:var(--muted);font-size:11px">→</span>
+    <input type="date" id="dto" class="dinput">
+    <button class="pbtn" onclick="applyCustom()">Appliquer</button>
+  </div>
+  <span class="fsep">|</span>
+  <span class="flabel">Campagne</span>
+  <select id="camp-filter" class="csel" onchange="rerender()">
+    <option value="">Toutes</option>
+  </select>
+</div>
+
+<div id="content" class="main">
+  <div class="loading"><span class="spinner"></span> Chargement des données depuis Google Sheets…</div>
+</div>
+
+<div class="footer">One Learn · Dashboard Meta Ads · Source : Google Sheets (live)</div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────
+const SHEET_ID = '1Djqb9kAgEERHhbmtJXEc64rX7D_251diNJXpTXC1sLI';
+const SHEET_TAB = 'Meta Ads';
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TAB)}`;
+
+// Mots-clés pour identifier les campagnes META à inclure
+const META_KEYWORDS = ['communication', 'design', 'architecture', 'impression', '3d', 'autocad', 'blender', 'meta'];
+
+// ─── HYPOTHÈSES ROAS ─────────────────────────────────────────────
+// Basé sur les données historiques Pipedrive (ajuster ici quand on a la donnée réelle)
+const CONV_LEAD_TO_SALE = 0.18;     // Taux de conversion Lead → Vente (18%)
+const AOV_EUR = 2054;                // Panier moyen € HT
+const REV_PER_LEAD = CONV_LEAD_TO_SALE * AOV_EUR;  // ≈ 369.72€ par lead
+
+const PAL = ['#F97316','#0F1419','#60a5fa','#16a34a','#a855f7','#ec4899','#f59e0b','#06b6d4','#84cc16','#ef4444'];
+
+// ─── STATE ───────────────────────────────────────────────────────
+let RAW = [];        // tous les rows parsés
+let DATE_MIN, DATE_MAX;
+
+// ─── HELPERS ─────────────────────────────────────────────────────
+const fnum = n => new Intl.NumberFormat('fr-FR').format(Math.round(n));
+const feur = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const feur2 = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(n);
+const fpct = n => (n*100).toFixed(2)+'%';
+const fdate = d => d.toISOString().split('T')[0];
+
+// Excel/Sheets serial date → JS Date
+function serialToDate(s) {
+  return new Date(Math.round((s - 25569) * 86400) * 1000);
+}
+
+// Parse number with comma decimal (FR format)
+function pnum(v) {
+  if (v === null || v === undefined || v === '') return 0;
+  if (typeof v === 'number') return v;
+  return parseFloat(String(v).replace(/\s/g,'').replace(',','.')) || 0;
+}
+
+// Format month label
+function ymKey(d) { return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
+function ymLabel(k) {
+  const [y,m] = k.split('-');
+  return ['Janv','Fév','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'][+m-1] + ' ' + y;
+}
+
+function rpill(r, type='cpl'){
+  if(r===0||r===null||isNaN(r)) return `<span class="rp rp-z">—</span>`;
+  if (type === 'cpl') {
+    // CPL: lower is better. <30€ great, 30-60 ok, >60 bad
+    const cls = r<=30?'rp-hi':r<=60?'rp-md':'rp-lo';
+    return `<span class="rp ${cls}">${feur(r)}</span>`;
+  }
+  if (type === 'ctr') {
+    const cls = r>=0.015?'rp-hi':r>=0.008?'rp-md':'rp-lo';
+    return `<span class="rp ${cls}">${fpct(r)}</span>`;
+  }
+  return `<span class="rp">${r}</span>`;
+}
+
+// ─── DATA LOADING ────────────────────────────────────────────────
+async function loadData() {
+  try {
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const csv = await res.text();
+    const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+
+    RAW = parsed.data.map(r => {
+      const dateRaw = r['Date'];
+      const dateNum = typeof dateRaw === 'number' ? dateRaw : pnum(dateRaw);
+      const date = dateNum > 1000 ? serialToDate(dateNum) : new Date(dateRaw);
+      return {
+        date,
+        campaign: (r['Campagne'] || r['Campagne '] || '').trim(),
+        adset: (r['Ad Set'] || '').trim(),
+        creative: (r['Publicité'] || '').trim(),
+        impressions: pnum(r['Impressions']),
+        reach: pnum(r['Reach']),
+        clicks: pnum(r['Clics']),
+        spend: pnum(r['Dépenses (€)']),
+        leads: pnum(r['Leads']),
+        platform: (r['Plateforme'] || '').trim()
+      };
+    }).filter(r => r.date && !isNaN(r.date) && r.campaign);
+
+    // Date range
+    const dates = RAW.map(r => r.date.getTime());
+    DATE_MIN = new Date(Math.min(...dates));
+    DATE_MAX = new Date(Math.max(...dates));
+
+    // Populate campaign filter
+    const camps = [...new Set(RAW.map(r => r.campaign))].sort();
+    const sel = document.getElementById('camp-filter');
+    camps.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
+
+    // Init date inputs
+    document.getElementById('dfrom').value = fdate(DATE_MIN);
+    document.getElementById('dto').value = fdate(DATE_MAX);
+
+    // Rebuild content shell
+    renderShell();
+    rerender();
+
+  } catch (e) {
+    document.getElementById('content').innerHTML =
+      `<div class="error"><b>Erreur de chargement.</b><br>${e.message}<br><br>Vérifie que le sheet est partagé en "Anyone with the link" et que l'onglet s'appelle bien "${SHEET_TAB}".</div>`;
+  }
+}
+
+// ─── RENDER SHELL ────────────────────────────────────────────────
+function renderShell() {
+  document.getElementById('content').innerHTML = `
+    <div class="slabel">Vue d'ensemble <span class="slabel-pill">Meta Ads · Live</span> <span class="slabel-pill na" title="Hypothèses tunables dans le code">ROAS estimé · ${(CONV_LEAD_TO_SALE*100).toFixed(0)}% × ${AOV_EUR}€</span></div>
+    <div class="krow">
+      <div class="kcard hi"><div class="klabel">Dépenses</div><div class="kval" id="k-spend">—</div><div class="ksub" id="k-spend-s"></div></div>
+      <div class="kcard hi"><div class="klabel">Revenus est.</div><div class="kval" id="k-rev">—</div><div class="ksub" id="k-rev-s"></div></div>
+      <div class="kcard hi"><div class="klabel">ROAS est.</div><div class="kval" id="k-roas">—</div><div class="ksub" id="k-roas-s"></div></div>
+      <div class="kcard"><div class="klabel">Leads</div><div class="kval" id="k-leads">—</div><div class="ksub" id="k-leads-s"></div></div>
+      <div class="kcard"><div class="klabel">CPL Moyen</div><div class="kval" id="k-cpl">—</div><div class="ksub" id="k-cpl-s"></div></div>
+      <div class="kcard"><div class="klabel">CTR</div><div class="kval" id="k-ctr">—</div><div class="ksub" id="k-ctr-s"></div></div>
+    </div>
+
+    <div class="slabel">Performances</div>
+    <div class="cgrid">
+      <div class="cc"><div class="ctitle">Dépenses & Leads · Mensuel</div><div class="cwrap"><canvas id="cTrend"></canvas></div></div>
+      <div class="cc"><div class="ctitle">CPL par Campagne</div><div class="cwrap"><canvas id="cCpl"></canvas></div></div>
+    </div>
+    <div class="cgrid2">
+      <div class="cc"><div class="ctitle">Répartition des Dépenses · Campagnes</div><div class="cwrap"><canvas id="cSpend"></canvas></div></div>
+      <div class="cc"><div class="ctitle">Leads par Plateforme</div><div class="cwrap"><canvas id="cPlat"></canvas></div></div>
+    </div>
+
+    <div class="slabel">Performances Mensuelles</div>
+    <div class="tcard">
+      <table>
+        <thead><tr>
+          <th>Mois</th><th>Dépenses</th><th>Revenus est.</th><th>ROAS est.</th>
+          <th>Leads</th><th>CPL</th>
+          <th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th>
+        </tr></thead>
+        <tbody id="monthly-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="slabel">Par Campagne · Cliquer pour voir les créatifs</div>
+    <div class="camp-grid" id="camp-grid"></div>
+
+    <div class="slabel">Pipeline Commercial <span class="slabel-pill na">Pipedrive · à connecter</span></div>
+    <div class="pd-section">
+      <div class="pd-hdr">
+        <div>
+          <div class="pd-title">Par mois</div>
+          <div class="pd-sub">Leads créés · Deals gagnés par date de gain</div>
+        </div>
+        <div class="pd-pill">Pipedrive (N/A)</div>
+      </div>
+      <div class="pd-bar"></div>
+
+      <div class="pd-funnel">
+        <div class="pd-funnel-title">
+          <span>Entonnoir de conversion</span>
+          <span style="font-size:11px;color:rgba(255,255,255,.6)">Lead → Gagné : <b style="color:#fff">N/A</b></span>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-lab">Leads</div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:100%;background:linear-gradient(90deg,#60a5fa,#3b82f6)" id="pd-leads-bar">—</div></div>
+          <div class="funnel-side">base</div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-lab">Affaires</div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#fb923c,#f97316)">—</div></div>
+          <div class="funnel-side"><span class="badge muted">N/A</span></div>
+        </div>
+        <div class="funnel-row">
+          <div class="funnel-lab">Gagnés</div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#4ade80,#16a34a)">—</div></div>
+          <div class="funnel-side"><span class="badge muted">N/A</span></div>
+        </div>
+      </div>
+
+      <div class="pd-table">
+        <table>
+          <thead><tr>
+            <th>Mois</th>
+            <th>Leads</th><th>Affaires</th><th>L→A</th>
+            <th>Gagnés</th><th>A→G</th><th>Conv. Totale</th>
+            <th>CA</th><th>Panier</th><th>Coût HT</th>
+            <th>CPL Réel</th><th>CAC Réel</th><th>Bénéfice</th><th>ROI</th>
+          </tr></thead>
+          <tbody id="pd-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+// ─── FILTER + AGGREGATE ──────────────────────────────────────────
+function filterRows(fromStr, toStr, campaign) {
+  const from = new Date(fromStr), to = new Date(toStr);
+  to.setHours(23,59,59,999);
+  return RAW.filter(r => {
+    if (r.date < from || r.date > to) return false;
+    if (campaign && r.campaign !== campaign) return false;
+    return true;
+  });
+}
+
+function aggregate(rows) {
+  const a = { spend:0, leads:0, impressions:0, reach:0, clicks:0 };
+  rows.forEach(r => {
+    a.spend += r.spend; a.leads += r.leads;
+    a.impressions += r.impressions; a.reach += r.reach; a.clicks += r.clicks;
+  });
+  a.cpl = a.leads > 0 ? a.spend / a.leads : null;
+  a.ctr = a.impressions > 0 ? a.clicks / a.impressions : 0;
+  a.cpc = a.clicks > 0 ? a.spend / a.clicks : 0;
+  a.cpm = a.impressions > 0 ? a.spend / a.impressions * 1000 : 0;
+  // ROAS estimé : revenu estimé = leads × (conv × AOV)
+  a.revenue = a.leads * REV_PER_LEAD;
+  a.roas = a.spend > 0 ? a.revenue / a.spend : 0;
+  // Sales estimées
+  a.salesEst = a.leads * CONV_LEAD_TO_SALE;
+  return a;
+}
+
+function rpillRoas(r){
+  if(!r||isNaN(r)) return `<span class="rp rp-z">—</span>`;
+  const cls = r>=2?'rp-hi':r>=1?'rp-md':'rp-lo';
+  return `<span class="rp ${cls}">${r.toFixed(2)}×</span>`;
+}
+
+function groupBy(rows, key) {
+  const map = new Map();
+  rows.forEach(r => {
+    const k = typeof key === 'function' ? key(r) : r[key];
+    if (!map.has(k)) map.set(k, []);
+    map.get(k).push(r);
+  });
+  return map;
+}
+
+// ─── KPI ANIMATION ───────────────────────────────────────────────
+function animKPI(id, newVal, fmt){
+  const el = document.getElementById(id);
+  const prev = parseFloat(el.dataset.raw) || 0;
+  el.dataset.raw = newVal;
+  const dur = 450, t0 = performance.now();
+  function step(now){
+    const p = Math.min((now-t0)/dur,1);
+    const e = 1-Math.pow(1-p,3);
+    const v = prev + (newVal-prev)*e;
+    el.textContent = fmt(v);
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent = fmt(newVal);
+  }
+  requestAnimationFrame(step);
+}
+function setS(id,v,cls){ const el=document.getElementById(id); if(el){ el.textContent=v; el.className='ksub '+(cls||''); } }
+
+// ─── CHARTS ──────────────────────────────────────────────────────
+let CH = {};
+function killCharts(){ Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}}); CH={}; }
+
+// ─── MAIN RENDER ─────────────────────────────────────────────────
+function rerender() {
+  const fromStr = document.getElementById('dfrom').value;
+  const toStr = document.getElementById('dto').value;
+  const campSel = document.getElementById('camp-filter').value;
+
+  const rows = filterRows(fromStr, toStr, campSel);
+  const agg = aggregate(rows);
+
+  // KPIs
+  animKPI('k-spend', agg.spend, v=>feur(v));
+  animKPI('k-rev', agg.revenue, v=>feur(v));
+  animKPI('k-roas', agg.roas, v=>v.toFixed(2)+'×');
+  animKPI('k-leads', agg.leads, v=>fnum(v));
+  animKPI('k-cpl', agg.cpl||0, v=>agg.cpl?feur(v):'—');
+  document.getElementById('k-ctr').textContent = fpct(agg.ctr);
+
+  // KPI sub-labels + classes
+  document.getElementById('k-roas').className = 'kval ' + (agg.roas>=2?'gr':agg.roas>=1?'or':'rd');
+  document.getElementById('k-cpl').className = 'kval ' + (agg.cpl===null?'':(agg.cpl<=30?'gr':agg.cpl<=60?'or':'rd'));
+  setS('k-spend-s', 'CPM : ' + feur2(agg.cpm) + ' · CPC : ' + feur2(agg.cpc), '');
+  setS('k-rev-s', '≈ ' + Math.round(agg.salesEst) + ' ventes estimées', '');
+  setS('k-roas-s', agg.roas>=2?'▲ ROAS > 2×':agg.roas>=1?'Au-dessus du break-even':'▼ Sous le break-even', agg.roas>=2?'up':agg.roas<1?'dn':'');
+  setS('k-leads-s', rows.length + ' rows · ' + new Set(rows.map(r=>r.creative)).size + ' créas · ' + fnum(agg.impressions) + ' impr.', '');
+  setS('k-cpl-s', agg.cpl===null?'Aucun lead':(agg.cpl<=60?'✓ Objectif < 60€':'⚠ Au-dessus de 60€'), agg.cpl<=60?'up':'dn');
+  setS('k-ctr-s', agg.ctr>=0.015?'▲ Au-dessus de 1.5%':'Objectif > 1.5%', agg.ctr>=0.015?'up':'');
+
+  killCharts();
+  renderTrendChart(rows);
+  renderCplChart(rows);
+  renderSpendChart(rows);
+  renderPlatformChart(rows);
+  renderMonthlyTable(rows);
+  renderCampaignCards(rows, fromStr, toStr);
+  renderPipedriveTable(rows);
+}
+
+function renderTrendChart(rows) {
+  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()]
+    .sort((a,b) => a[0].localeCompare(b[0]));
+  const labels = byMonth.map(([k]) => ymLabel(k));
+  const spends = byMonth.map(([,rs]) => rs.reduce((s,r)=>s+r.spend,0));
+  const leads = byMonth.map(([,rs]) => rs.reduce((s,r)=>s+r.leads,0));
+
+  CH.trend = new Chart(document.getElementById('cTrend'), {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        {label:'Dépenses (€)', data:spends, backgroundColor:'rgba(15,20,25,.7)', borderColor:'#0F1419', borderWidth:1, borderRadius:3, yAxisID:'y', order:2},
+        {label:'Leads', data:leads, type:'line', borderColor:'#F97316', backgroundColor:'rgba(249,115,22,.1)', borderWidth:2.5, pointBackgroundColor:'#F97316', pointRadius:5, yAxisID:'y2', order:1, tension:.3, fill:true}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:10,padding:10}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10}}},
+        y:{grid:{color:'#f0f0ec'},ticks:{font:{size:10},callback:v=>'€'+new Intl.NumberFormat('fr').format(v)}},
+        y2:{position:'right',grid:{display:false},ticks:{font:{size:10}},title:{display:true,text:'Leads',font:{size:9}}}
+      }
+    }
+  });
+}
+
+function renderCplChart(rows) {
+  const byCamp = [...groupBy(rows, 'campaign').entries()].map(([c, rs]) => {
+    const a = aggregate(rs);
+    return { campaign:c, cpl: a.cpl||0, spend: a.spend, leads: a.leads };
+  }).filter(c => c.leads > 0).sort((a,b) => a.cpl - b.cpl).slice(0,10);
+
+  CH.cpl = new Chart(document.getElementById('cCpl'), {
+    type:'bar',
+    data:{
+      labels: byCamp.map(c => c.campaign.length>22 ? c.campaign.slice(0,21)+'…' : c.campaign),
+      datasets:[{
+        data: byCamp.map(c => c.cpl),
+        backgroundColor: byCamp.map(c => c.cpl<=30?'#16a34a':c.cpl<=60?'#F97316':'#dc2626'),
+        borderRadius:3
+      }]
+    },
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' CPL : '+feur2(ctx.raw)}}},
+      scales:{
+        x:{grid:{color:'#f0f0ec'},ticks:{font:{size:10},callback:v=>'€'+v}},
+        y:{grid:{display:false},ticks:{font:{size:9}}}
+      }
+    }
+  });
+}
+
+function renderSpendChart(rows) {
+  const byCamp = [...groupBy(rows, 'campaign').entries()]
+    .map(([c, rs]) => ({ c, s: rs.reduce((x,r)=>x+r.spend,0) }))
+    .sort((a,b) => b.s - a.s).slice(0,9);
+
+  CH.spend = new Chart(document.getElementById('cSpend'), {
+    type:'doughnut',
+    data:{
+      labels: byCamp.map(c=>c.c),
+      datasets:[{ data: byCamp.map(c=>Math.round(c.s)), backgroundColor:PAL, borderWidth:3, borderColor:'#fff' }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{position:'right',labels:{font:{size:9},boxWidth:9,padding:6}},
+        tooltip:{callbacks:{label:ctx=>' '+ctx.label+' : '+feur(ctx.raw)}}
+      }
+    }
+  });
+}
+
+function renderPlatformChart(rows) {
+  const byPlat = [...groupBy(rows, 'platform').entries()].map(([p,rs]) => ({
+    plat: p || '(n/a)',
+    leads: rs.reduce((s,r)=>s+r.leads,0),
+    spend: rs.reduce((s,r)=>s+r.spend,0)
+  })).sort((a,b) => b.leads - a.leads);
+
+  CH.plat = new Chart(document.getElementById('cPlat'), {
+    type:'bar',
+    data:{
+      labels: byPlat.map(p => p.plat),
+      datasets:[
+        {label:'Leads', data: byPlat.map(p=>p.leads), backgroundColor:'#F97316', borderRadius:3, yAxisID:'y'},
+        {label:'Dépenses (€)', data: byPlat.map(p=>p.spend), type:'line', borderColor:'#0F1419', backgroundColor:'transparent', borderWidth:2, pointRadius:4, yAxisID:'y2', tension:.3}
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:10},boxWidth:10,padding:8}}},
+      scales:{
+        x:{grid:{display:false},ticks:{font:{size:10}}},
+        y:{grid:{color:'#f0f0ec'},ticks:{font:{size:10}},title:{display:true,text:'Leads',font:{size:9}}},
+        y2:{position:'right',grid:{display:false},ticks:{font:{size:10},callback:v=>'€'+v},title:{display:true,text:'Dépenses',font:{size:9}}}
+      }
+    }
+  });
+}
+
+function renderMonthlyTable(rows) {
+  const tbody = document.getElementById('monthly-tbody');
+  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()].sort((a,b) => a[0].localeCompare(b[0]));
+
+  let html = '';
+  byMonth.forEach(([k, rs]) => {
+    const a = aggregate(rs);
+    html += `<tr>
+      <td>${ymLabel(k)}</td>
+      <td>${feur(a.spend)}</td>
+      <td>${feur(a.revenue)}</td>
+      <td>${rpillRoas(a.roas)}</td>
+      <td>${fnum(a.leads)}</td>
+      <td>${a.cpl?rpill(a.cpl,'cpl'):'—'}</td>
+      <td>${fnum(a.impressions)}</td>
+      <td>${fnum(a.clicks)}</td>
+      <td>${rpill(a.ctr,'ctr')}</td>
+      <td>${feur2(a.cpc)}</td>
+    </tr>`;
+  });
+  const t = aggregate(rows);
+  html += `<tr class="tr">
+    <td>TOTAL</td>
+    <td>${feur(t.spend)}</td>
+    <td>${feur(t.revenue)}</td>
+    <td>${t.roas.toFixed(2)}×</td>
+    <td>${fnum(t.leads)}</td>
+    <td>${t.cpl?feur(t.cpl):'—'}</td>
+    <td>${fnum(t.impressions)}</td>
+    <td>${fnum(t.clicks)}</td>
+    <td>${fpct(t.ctr)}</td>
+    <td>${feur2(t.cpc)}</td>
+  </tr>`;
+  tbody.innerHTML = html;
+}
+
+function renderCampaignCards(rows, fromStr, toStr) {
+  const container = document.getElementById('camp-grid');
+  const byCamp = [...groupBy(rows, 'campaign').entries()]
+    .map(([c, rs]) => ({ name:c, rows:rs, agg:aggregate(rs) }))
+    .sort((a,b) => b.agg.spend - a.agg.spend);
+
+  let html = '';
+  byCamp.forEach((c, i) => {
+    const color = PAL[i % PAL.length];
+    const creatives = [...groupBy(c.rows, 'creative').entries()]
+      .map(([n, rs]) => ({ name:n, agg:aggregate(rs) }))
+      .sort((a,b) => b.agg.spend - a.agg.spend);
+
+    const cplCls = c.agg.cpl===null ? '' : (c.agg.cpl<=30?'gr':c.agg.cpl<=60?'or':'rd');
+
+    const roasCls = c.agg.roas>=2?'gr':c.agg.roas>=1?'or':'rd';
+    html += `<div class="camp">
+      <div class="camp-hdr" onclick="this.parentElement.classList.toggle('open')">
+        <div class="camp-name"><div class="camp-dot" style="background:${color}"></div>${c.name || '(sans nom)'}</div>
+        <div class="camp-kpi"><div class="lab">Dépenses</div><div class="val">${feur(c.agg.spend)}</div></div>
+        <div class="camp-kpi"><div class="lab">Revenus est.</div><div class="val">${feur(c.agg.revenue)}</div></div>
+        <div class="camp-kpi"><div class="lab">ROAS est.</div><div class="val" style="color:${c.agg.roas>=2?'#16a34a':c.agg.roas>=1?'#C2410C':'#dc2626'}">${c.agg.roas.toFixed(2)}×</div></div>
+        <div class="camp-kpi"><div class="lab">Leads</div><div class="val">${fnum(c.agg.leads)}</div></div>
+        <div class="camp-kpi"><div class="lab">CPL</div><div class="val">${c.agg.cpl?feur(c.agg.cpl):'—'}</div></div>
+        <div class="camp-chev">▾</div>
+      </div>
+      <div class="camp-body">
+        <table>
+          <thead><tr>
+            <th>Créatif</th><th>Dépenses</th><th>Revenus est.</th><th>ROAS</th>
+            <th>Leads</th><th>CPL</th>
+            <th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th>
+          </tr></thead>
+          <tbody>
+            ${creatives.map(cr => `<tr>
+              <td><div class="cname"><div class="cdot" style="background:${color}"></div>${cr.name || '(sans nom)'}</div></td>
+              <td>${feur2(cr.agg.spend)}</td>
+              <td>${feur(cr.agg.revenue)}</td>
+              <td>${rpillRoas(cr.agg.roas)}</td>
+              <td>${fnum(cr.agg.leads)}</td>
+              <td>${cr.agg.cpl?rpill(cr.agg.cpl,'cpl'):'—'}</td>
+              <td>${fnum(cr.agg.impressions)}</td>
+              <td>${fnum(cr.agg.clicks)}</td>
+              <td>${rpill(cr.agg.ctr,'ctr')}</td>
+              <td>${feur2(cr.agg.cpc)}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function renderPipedriveTable(rows) {
+  const tbody = document.getElementById('pd-tbody');
+  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+
+  let html = '';
+  byMonth.forEach(([k, rs]) => {
+    const leads = rs.reduce((s,r)=>s+r.leads, 0);
+    html += `<tr>
+      <td>${ymLabel(k)}</td>
+      <td>${fnum(leads)}</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+      <td class="pd-na">N/A</td>
+    </tr>`;
+  });
+  const totalLeads = rows.reduce((s,r)=>s+r.leads,0);
+  html += `<tr class="tr">
+    <td>Total</td>
+    <td>${fnum(totalLeads)}</td>
+    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
+    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
+    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
+    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
+  </tr>`;
+  tbody.innerHTML = html;
+
+  // Funnel bar
+  document.getElementById('pd-leads-bar').textContent = fnum(totalLeads);
+}
+
+// ─── PERIOD SHORTCUTS ────────────────────────────────────────────
+function go(k, btn){
+  document.querySelectorAll('.pgrp .pbtn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const today = DATE_MAX || new Date();
+  let from;
+  if (k==='7d') { from = new Date(today); from.setDate(from.getDate()-7); }
+  else if (k==='30d') { from = new Date(today); from.setDate(from.getDate()-30); }
+  else if (k==='month') { from = new Date(today.getFullYear(), today.getMonth(), 1); }
+  else { from = DATE_MIN || new Date(today.getFullYear(), 0, 1); }
+  document.getElementById('dfrom').value = fdate(from);
+  document.getElementById('dto').value = fdate(today);
+  rerender();
+}
+
+function applyCustom() {
+  document.querySelectorAll('.pgrp .pbtn').forEach(b=>b.classList.remove('active'));
+  rerender();
+}
+
+// ─── INIT ────────────────────────────────────────────────────────
+document.getElementById('upd').textContent = new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+loadData();
+</script>
+</body>
+</html>
