@@ -78,36 +78,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- Preload LCP hero image -->
+<link rel="preload" as="image" href="hero-artist.jpg" fetchpriority="high">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" rel="stylesheet">
-
-<!-- iClosed widget (inline + popup) -->
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { DEFAULT: '#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
-        orange: { DEFAULT: '#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
-        cream: '#ffffff',
-        ink: '#282C37',
-      },
-      fontFamily: {
-        display: ['"Satoshi"', '"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        'card': '0 1px 0 rgba(34,36,77,.04), 0 8px 24px -12px rgba(34,36,77,.12)',
-        'cta': '0 10px 30px -10px rgba(230,106,64,.5)',
-      }
-    }
-  }
-}
-</script>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -331,12 +308,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- RIGHT visual + floating trust -->
     <div class="lg:col-span-5 relative">
       <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-700 to-ink aspect-[1/1] shadow-2xl">
-        <img data-cms="hero_img" class="hero-img w-full h-full object-cover" src="hero-artist.jpg" alt="Artiste 3D travaillant sur un personnage dans Blender">
+        <img data-cms="hero_img" class="hero-img w-full h-full object-cover" src="hero-artist.jpg" alt="Artiste 3D travaillant sur un personnage dans Blender" width="1200" height="802" fetchpriority="high" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
         <div class="absolute inset-0 grain opacity-15"></div>
         <!-- Badge logiciel flottant -->
          <div class="hero-badge absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-sm rounded-2xl anim-in" style="box-shadow: rgba(34, 36, 77, 0.22) 0px 8px 32px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;" data-anim="" title="Cliquer pour remplacer l'image">
-           <img data-cms="hero_software_logo" src="assets/logo-blender.png" alt="Logo Blender" style="width:48px;height:48px;object-fit:contain;border-radius:6px;">
+           <img data-cms="hero_software_logo" src="assets/logo-blender.png" alt="Logo Blender" style="width:48px;height:48px;object-fit:contain;border-radius:6px;" loading="lazy" decoding="async">
          </div>
 
         <!-- Caption -->
@@ -481,7 +458,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="personas-flex">
       <div class="persona-card is-default-open group relative rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#22244D,#43489A);">
-        <div class="absolute inset-0" data-cms="persona_1_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-03.jpg" alt="Freelance créatif travaillant sur un projet 3D" data-cms="persona_1_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;"></div>
+        <div class="absolute inset-0" data-cms="persona_1_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-03.jpg" alt="Freelance créatif travaillant sur un projet 3D" data-cms="persona_1_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;" loading="lazy" decoding="async"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
           <p class="persona-title font-display font-semibold">Vous lancez votre activité créative</p>
@@ -490,7 +467,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="persona-card group relative rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#43489A,#545AC0);">
-        <div class="absolute inset-0" data-cms="persona_2_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-04.jpg" alt="Architecte ou designer visualisant son projet en 3D" data-cms="persona_2_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;"></div>
+        <div class="absolute inset-0" data-cms="persona_2_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-04.jpg" alt="Architecte ou designer visualisant son projet en 3D" data-cms="persona_2_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;" loading="lazy" decoding="async"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
           <p class="persona-title font-display font-semibold">Architecte ou designer</p>
@@ -499,7 +476,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="persona-card group relative rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#EF7738,#CD5025);">
-        <div class="absolute inset-0" data-cms="persona_3_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-05.jpg" alt="Apprenante en reconversion vers les métiers de la 3D" data-cms="persona_3_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;"></div>
+        <div class="absolute inset-0" data-cms="persona_3_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-05.jpg" alt="Apprenante en reconversion vers les métiers de la 3D" data-cms="persona_3_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;" loading="lazy" decoding="async"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
           <p class="persona-title font-display font-semibold">En reconversion 3D</p>
@@ -508,7 +485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="persona-card group relative rounded-3xl overflow-hidden" style="background: linear-gradient(135deg,#0d9d6a,#10b981);">
-        <div class="absolute inset-0" data-cms="persona_4_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-06-82d3e02b37.webp" alt="Créateur travaillant sur un projet 3D personnel" data-cms="persona_4_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;"></div>
+        <div class="absolute inset-0" data-cms="persona_4_img" style="background: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial;" title="Cliquer pour insérer une photo"><img src="assets/extracted-06-82d3e02b37.webp" alt="Créateur travaillant sur un projet 3D personnel" data-cms="persona_4_img" style="width: 100%; height: 100%; object-fit: cover; border-radius: 0.75rem; display: block;" loading="lazy" decoding="async"></div>
         <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 right-0 p-5 sm:p-6 text-white pointer-events-none">
           <p class="persona-title font-display font-semibold">Vous avez un projet personnel</p>
@@ -539,7 +516,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Picto Blender central -->
       <div class="mt-6 flex items-center justify-center gap-3 flex-wrap" aria-label="Outil 3D couvert">
         <div class="inline-flex items-center gap-3 bg-white border border-ink/10 rounded-2xl px-5 py-2.5 shadow-sm">
-          <img src="assets/logo-blender.png" alt="Blender" style="width:32px;height:32px;object-fit:contain;">
+          <img src="assets/logo-blender.png" alt="Blender" style="width:32px;height:32px;object-fit:contain;" loading="lazy" decoding="async">
           <div class="text-left">
             <p class="text-[11px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Logiciel couvert</p>
             <p class="text-sm font-bold text-ink leading-tight">Blender 4 · gratuit &amp; open source</p>
@@ -553,7 +530,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 1 — Modélisation -->
       <div class="v2-card bg-white rounded-3xl overflow-hidden border border-ink/5 shadow-card anim-in" data-anim="">
         <div class="aspect-[16/9] relative overflow-hidden" style="background:#F2EBDD;">
-          <img src="hero-modelisation.jpg" alt="Personnage 3D modélisé dans Blender, vue maillage et rendu" class="v2-illu absolute inset-0 w-full h-full object-cover">
+          <img src="hero-modelisation.jpg" alt="Personnage 3D modélisé dans Blender, vue maillage et rendu" class="v2-illu absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
           <span class="absolute top-4 right-4 bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-ink/70 px-2.5 py-1 rounded-md">Modélisation</span>
         </div>
         <div class="p-7">
@@ -565,7 +542,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 2 — Matériaux & textures -->
       <div class="v2-card bg-white rounded-3xl overflow-hidden border border-ink/5 shadow-card anim-in" data-anim="">
         <div class="aspect-[16/9] relative overflow-hidden" style="background:#F2EBDD;">
-          <img src="hero-texturing.jpg" alt="Sphères de matériaux 3D : métal, bois, tissu, cuir et verre rendus dans Blender" class="v2-illu absolute inset-0 w-full h-full object-cover">
+          <img src="hero-texturing.jpg" alt="Sphères de matériaux 3D : métal, bois, tissu, cuir et verre rendus dans Blender" class="v2-illu absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
           <span class="absolute top-4 right-4 bg-white/95 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-ink/70 px-2.5 py-1 rounded-md shadow-sm">Matériaux &amp; textures</span>
         </div>
         <div class="p-7">
@@ -577,7 +554,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 3 — Animation -->
       <div class="v2-card bg-white rounded-3xl overflow-hidden border border-ink/5 shadow-card anim-in" data-anim="">
         <div class="aspect-[16/9] relative overflow-hidden" style="background:#DCE9F4;">
-          <img src="hero-animation.jpg" alt="Personnage 3D rigé en mouvement dans Blender" class="v2-illu absolute inset-0 w-full h-full object-cover">
+          <img src="hero-animation.jpg" alt="Personnage 3D rigé en mouvement dans Blender" class="v2-illu absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
           <span class="absolute top-4 right-4 bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-ink/70 px-2.5 py-1 rounded-md">Animation 3D</span>
         </div>
         <div class="p-7">
@@ -589,7 +566,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 4 — Rendu photoréaliste -->
       <div class="v2-card bg-white rounded-3xl overflow-hidden border border-ink/5 shadow-card anim-in" data-anim="">
         <div class="aspect-[16/9] relative overflow-hidden" style="background:#E8E3DA;">
-          <img src="hero-rendu.jpg" alt="Scène intérieure photoréaliste rendue sous Blender : fauteuil bois et vase" class="v2-illu absolute inset-0 w-full h-full object-cover">
+          <img src="hero-rendu.jpg" alt="Scène intérieure photoréaliste rendue sous Blender : fauteuil bois et vase" class="v2-illu absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async">
           <span class="absolute top-4 right-4 bg-white/90 backdrop-blur text-[10px] font-bold uppercase tracking-wider text-ink/70 px-2.5 py-1 rounded-md z-10">Rendu photoréaliste</span>
         </div>
         <div class="p-7">
@@ -641,7 +618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="#rdv-form" onclick="event.preventDefault();window.scrollToRdvForm();" class="inline-flex items-center gap-2 self-start px-5 py-3 bg-orange text-white rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-sm">Réserver mon appel <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
             </div>
             <div class="min-h-[280px] md:min-h-[400px] bg-cream">
-              <img src="spe-animation.jpg" alt="Animation 3D dans Blender" class="w-full h-full object-cover">
+              <img src="spe-animation.jpg" alt="Animation 3D dans Blender" class="w-full h-full object-cover" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -661,7 +638,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="#rdv-form" onclick="event.preventDefault();window.scrollToRdvForm();" class="inline-flex items-center gap-2 self-start px-5 py-3 bg-orange text-white rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-sm">Réserver mon appel <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
             </div>
             <div class="min-h-[280px] md:min-h-[400px] bg-cream">
-              <img src="spe-modelisation.jpg" alt="Modélisation 3D dans Blender" class="w-full h-full object-cover">
+              <img src="spe-modelisation.jpg" alt="Modélisation 3D dans Blender" class="w-full h-full object-cover" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -681,7 +658,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="#rdv-form" onclick="event.preventDefault();window.scrollToRdvForm();" class="inline-flex items-center gap-2 self-start px-5 py-3 bg-orange text-white rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-sm">Réserver mon appel <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
             </div>
             <div class="min-h-[280px] md:min-h-[400px] bg-cream">
-              <img src="spe-bijoux.jpg" alt="Bijoux 3D dans Blender" class="w-full h-full object-cover">
+              <img src="spe-bijoux.jpg" alt="Bijoux 3D dans Blender" class="w-full h-full object-cover" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -701,7 +678,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <a href="#rdv-form" onclick="event.preventDefault();window.scrollToRdvForm();" class="inline-flex items-center gap-2 self-start px-5 py-3 bg-orange text-white rounded-full font-semibold text-sm hover:bg-orange-700 transition shadow-sm">Réserver mon appel <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
             </div>
             <div class="min-h-[280px] md:min-h-[400px] bg-cream">
-              <img src="spe-impression.jpg" alt="Impression 3D depuis Blender" class="w-full h-full object-cover">
+              <img src="spe-impression.jpg" alt="Impression 3D depuis Blender" class="w-full h-full object-cover" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -1205,7 +1182,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div style="position:relative;">
       <div id="certif-img-bloc" class="rounded-3xl overflow-hidden relative" style="aspect-ratio:4/3; background:#FCE7D3;"><!-- observer ci-dessous -->
         <!-- Photo de fond (humanisation) -->
-        <img src="assets/certif-photo.jpg" alt="Formateur One Learn certifié, diplôme en main" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#FDF8F3 0%,#FCDFCC 100%)';">
+        <img src="assets/certif-photo.jpg" alt="Formateur One Learn certifié, diplôme en main" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#FDF8F3 0%,#FCDFCC 100%)';" loading="lazy" decoding="async">
 
       </div>
       <style>
@@ -1266,13 +1243,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Logos -->
         <div class="flex items-center gap-3 flex-wrap">
           <div class="bg-white border border-ink/8 rounded-xl px-4 py-2.5">
-            <img src="assets/extracted-07-1d7865cfae.webp" alt="Qualiopi" style="height:24px; width:auto; object-fit:contain; display:block;">
+            <img src="assets/extracted-07-1d7865cfae.webp" alt="Qualiopi" style="height:24px; width:auto; object-fit:contain; display:block;" loading="lazy" decoding="async">
           </div>
           <div class="bg-white border border-ink/8 rounded-xl px-3 py-2.5">
-            <img src="assets/extracted-08-6b550909e2.webp" alt="EdTech France" style="height:28px; width:auto; object-fit:contain; display:block;">
+            <img src="assets/extracted-08-6b550909e2.webp" alt="EdTech France" style="height:28px; width:auto; object-fit:contain; display:block;" loading="lazy" decoding="async">
           </div>
           <div class="bg-white border border-ink/8 rounded-xl px-3 py-2.5">
-            <img src="assets/extracted-09-f33a91c37e.webp" alt="France Relance" style="height:34px; width:auto; object-fit:contain; display:block;">
+            <img src="assets/extracted-09-f33a91c37e.webp" alt="France Relance" style="height:34px; width:auto; object-fit:contain; display:block;" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -1297,7 +1274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 1 : Petit renard cartoon -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition anim-in" data-anim="">
         <div class="h-56 relative overflow-hidden" style="background:#E6E7EB;">
-          <img src="realisation-renard.jpg" alt="Petit renard cartoon 3D modélisé sous Blender par un apprenant" class="w-full h-full object-cover">
+          <img src="realisation-renard.jpg" alt="Petit renard cartoon 3D modélisé sous Blender par un apprenant" class="w-full h-full object-cover" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2.5 py-1 rounded-full">Personnage cartoon</span>
@@ -1316,7 +1293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 2 : Personnage stylisé -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition anim-in" data-anim="" data-delay="1">
         <div class="h-56 relative overflow-hidden" style="background:#E6E7EB;">
-          <img src="realisation-personnage.jpg" alt="Buste de personnage 3D stylisé modélisé sous Blender par un apprenant" class="w-full h-full object-cover">
+          <img src="realisation-personnage.jpg" alt="Buste de personnage 3D stylisé modélisé sous Blender par un apprenant" class="w-full h-full object-cover" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-orange/10 text-orange-700 px-2.5 py-1 rounded-full">Personnage stylisé</span>
@@ -1335,7 +1312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 3 : Bague diamant -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition anim-in" data-anim="" data-delay="2">
         <div class="h-56 relative overflow-hidden" style="background:#E6E7EB;">
-          <img src="realisation-bague.jpg" alt="Bague en or sertie d'un diamant modélisée sous Blender par un apprenant" class="w-full h-full object-cover">
+          <img src="realisation-bague.jpg" alt="Bague en or sertie d'un diamant modélisée sous Blender par un apprenant" class="w-full h-full object-cover" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2.5 py-1 rounded-full">Bijoux</span>
@@ -1381,7 +1358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="lg:col-span-4 flex flex-col items-center gap-4">
         <div class="relative">
           <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(239, 119, 56, 0.5); box-shadow: rgba(239, 119, 56, 0.1) 0px 0px 0px 6px;" title="Cliquer pour remplacer l'image">
-            <img src="assets/extracted-14-ec75ce5f9c.png" alt="Conseiller pédagogique One Learn" data-cms="cta_advisor_photo" style="width:100%; height:100%; object-fit:cover; object-position:center top;">
+            <img src="assets/extracted-14-ec75ce5f9c.png" alt="Conseiller pédagogique One Learn" data-cms="cta_advisor_photo" style="width:100%; height:100%; object-fit:cover; object-position:center top;" loading="lazy" decoding="async">
           </div>
           <div style="position:absolute; bottom:2px; right:2px; width:20px; height:20px; background:#22C55E; border-radius:50%; border:2px solid #22244D;"></div>
         </div>
@@ -1447,7 +1424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Jérémy -->
       <div class="formateur-card bg-white rounded-3xl overflow-hidden shadow-2xl">
         <div class="relative overflow-hidden" style="background:#f0f0fa; aspect-ratio:4/3;">
-          <img src="jeremy.jpg" alt="Jérémy, formateur Blender" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+          <img src="jeremy.jpg" alt="Jérémy, formateur Blender" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink">Jérémy</h3>
@@ -1464,7 +1441,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Richard -->
       <div class="formateur-card bg-white rounded-3xl overflow-hidden shadow-2xl">
         <div class="relative overflow-hidden" style="background:#f0f0fa; aspect-ratio:4/3;">
-          <img src="richard.jpg" alt="Richard, formateur 3D" style="width:100%;height:100%;object-fit:contain;object-position:center center;">
+          <img src="richard.jpg" alt="Richard, formateur 3D" style="width:100%;height:100%;object-fit:contain;object-position:center center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink">Richard</h3>
@@ -1481,7 +1458,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Fabian -->
       <div class="formateur-card bg-white rounded-3xl overflow-hidden shadow-2xl">
         <div class="relative overflow-hidden" style="background:#f0f0fa; aspect-ratio:4/3;">
-          <img src="fabian.jpg" alt="Fabian, formateur 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+          <img src="fabian.jpg" alt="Fabian, formateur 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink">Fabian</h3>
@@ -1504,19 +1481,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Avatars row -->
       <div class="flex items-center justify-center -space-x-3">
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:5;">
-          <img src="trainer-a.png" alt="Formatrice One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          <img src="trainer-a.png" alt="Formatrice One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:4;">
-          <img src="trainer-b.png" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          <img src="trainer-b.png" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:3;">
-          <img src="trainer-c.png" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          <img src="trainer-c.png" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:2;">
-          <img src="trainer-d.png" alt="Formatrice One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          <img src="trainer-d.png" alt="Formatrice One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:1;">
-          <img src="trainer-3.jpg" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+          <img src="trainer-3.jpg" alt="Formateur One Learn" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-orange grid place-items-center border-4 border-navy" style="z-index:6;">
           <span class="text-white font-display font-bold text-lg sm:text-xl">+60</span>
@@ -1562,7 +1539,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"Je n'avais aucune base en 3D. Au bout de quelques semaines, je modélisais mes propres scènes et je sortais des rendus que je n'aurais jamais cru pouvoir faire moi-même. L'accompagnement fait toute la différence."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-26-263cb8a457.png" alt="Didier" class="w-12 h-12 rounded-full object-cover shrink-0">
+          <img src="assets/extracted-26-263cb8a457.png" alt="Didier" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Didier</p>
             <p class="text-xs text-ink/50">Architecte d'intérieur indépendant</p>
@@ -1580,7 +1557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"Formation au top, formateur disponible et pédagogue. Le CPF a tout pris en charge, il ne m'a rien resté à payer. Je recommande à 100%."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-27-f00b2b35e7.png" alt="Jérémie" class="w-12 h-12 rounded-full object-cover shrink-0">
+          <img src="assets/extracted-27-f00b2b35e7.png" alt="Jérémie" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Jérémy</p>
             <p class="text-xs text-ink/50">Reconversion vers la 3D</p>
@@ -1598,7 +1575,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"J'ai apprécié la flexibilité totale. Je travaillais le soir après mon job, à mon rythme, avec des visios calées avec mon formateur. Aujourd'hui je travaille comme freelance 3D en motion design."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-28-c3611cc7dc.png" alt="Lucas" class="w-12 h-12 rounded-full object-cover shrink-0">
+          <img src="assets/extracted-28-c3611cc7dc.png" alt="Lucas" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Mathilde</p>
             <p class="text-xs text-ink/50">Freelance Motion Designer 3D</p>
@@ -1702,7 +1679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- DROITE : Image sticky -->
       <div class="lg:sticky lg:top-24">
         <div class="relative rounded-3xl overflow-hidden shadow-xl" style="aspect-ratio: 4 / 5;" title="Cliquer pour remplacer l'image">
-          <img data-cms="metier_img" class="hero-img w-full h-full object-cover" src="hero-opportunites.jpg" alt="Artiste 3D dans son studio, modélisation sous Blender">
+          <img data-cms="metier_img" class="hero-img w-full h-full object-cover" src="hero-opportunites.jpg" alt="Artiste 3D dans son studio, modélisation sous Blender" loading="lazy" decoding="async">
           <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(34,36,77,.35) 0%, transparent 60%);"></div>
         </div>
       </div>
@@ -1925,7 +1902,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div style="background:#F1F2F8; border-radius:14px; padding:18px 12px; display:flex; flex-direction:column; align-items:center; gap:10px;">
               <div style="background:#ffffff; border-radius:10px; padding:12px 16px; display:flex; align-items:center; justify-content:center; min-height:64px; width:100%;">
-                <img src="assets/extracted-30-b136e7606e.webp" alt="OPCO" style="max-height:40px; width:auto; object-fit:contain; display:block; margin:0 auto;">
+                <img src="assets/extracted-30-b136e7606e.webp" alt="OPCO" style="max-height:40px; width:auto; object-fit:contain; display:block; margin:0 auto;" loading="lazy" decoding="async">
               </div>
               <div style="text-align:center;">
                 <p style="font-size:13px; font-weight:700; color:#22244D; line-height:1.2;">OPCO</p>
