@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
+<!-- End Google Tag Manager -->
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Merci — Votre rendez-vous One Learn est confirmé</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Trustpilot widget script -->
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy:   { DEFAULT:'#545AC0', 900:'#22244D', 700:'#43489A' },
+          orange: { DEFAULT:'#EF7738', 600:'#E66A40', 700:'#CD5025' },
+          ink:    '#282C37',
+          lavender: '#EDEDFB',
+          cloud:  '#EDEFF7',
+          smoke:  '#D3D6E0',
+          space:  '#9DA2B3',
+        },
+        fontFamily: {
+          satoshi: ['Satoshi', 'system-ui', 'sans-serif'],
+          inter: ['Inter', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; color:#282C37; background:#ffffff; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3 { font-family: 'Satoshi', system-ui, sans-serif; font-weight:800; letter-spacing:-0.02em; }
+
+  /* Check animation */
+  .check-circle {
+    animation: pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+  .check-path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: draw 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+  @keyframes pop {
+    0% { transform: scale(0.3); opacity:0; }
+    60% { transform: scale(1.08); opacity:1; }
+    100% { transform: scale(1); opacity:1; }
+  }
+  @keyframes draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Confetti background dots */
+  .sparkle {
+    position:absolute;
+    width:8px; height:8px;
+    border-radius:50%;
+    opacity:0;
+    animation: sparkle 1.2s ease-out forwards;
+  }
+  @keyframes sparkle {
+    0% { opacity:0; transform: translate(0,0) scale(0); }
+    40% { opacity:1; }
+    100% { opacity:0; transform: translate(var(--tx), var(--ty)) scale(1.4); }
+  }
+
+  /* CTA button */
+  .btn-primary {
+    background:#545AC0; color:white; border-radius:50px;
+    padding:16px 32px; font-weight:700; font-size:16px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(84,90,192,0.25);
+  }
+  .btn-primary:hover { background:#43489A; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(84,90,192,0.35); }
+
+  .btn-secondary {
+    background:transparent; color:#22244D; border:1.5px solid #22244D; border-radius:50px;
+    padding:15px 30px; font-weight:600; font-size:15px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition: all 0.2s ease;
+  }
+  .btn-secondary:hover { background:#22244D; color:white; }
+
+  /* Step cards */
+  .step-number {
+    width:44px; height:44px; border-radius:50%;
+    background:#EDEDFB; color:#545AC0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Satoshi', sans-serif; font-weight:800; font-size:18px;
+    flex-shrink:0;
+  }
+  .step-card:hover .step-number {
+    background:#545AC0; color:white;
+    transition: all 0.3s ease;
+  }
+
+  /* Testimonial gradient border */
+  .testimonial-card {
+    background: white;
+    border:1px solid #EDEFF7;
+    transition: all 0.2s ease;
+  }
+  .testimonial-card:hover {
+    border-color:#545AC0;
+    box-shadow: 0 8px 24px rgba(84,90,192,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* Logo gradient bg */
+  .hero-bg {
+    background: radial-gradient(ellipse at top, #EDEDFB 0%, #ffffff 60%);
+  }
+
+  .rdv-card {
+    background: linear-gradient(135deg, #22244D 0%, #2d2f5c 100%);
+    box-shadow: 0 20px 40px rgba(34,36,77,0.15);
+  }
+
+  .stat-pill {
+    background: rgba(84,90,192,0.10);
+    color: #43489A;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    display: inline-block;
+  }
+
+  /* Scroll cue */
+  .scroll-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background: white;
+    border: 1.5px solid #545AC0;
+    border-radius: 50px;
+    color: #545AC0;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(84,90,192,0.08);
+  }
+  .scroll-cue:hover {
+    background: #545AC0;
+    color: white;
+    transform: translateY(-1px);
+  }
+  .scroll-cue svg {
+    animation: bounce-down 1.6s ease-in-out infinite;
+  }
+  .scroll-cue:hover svg { animation-play-state: paused; }
+  @keyframes bounce-down {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+</style>
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<!-- Nav simple -->
+<header style="background:#545AC0;" class="text-white">
+  <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+    <!-- Logo One Learn officiel (forcé en blanc via filter) -->
+    <a href="https://one-learn.fr" class="flex items-center flex-shrink-0">
+      <img src="https://cdn.prod.website-files.com/646488437ff4a57776de2aeb/681b81aeec7d10bd6dcb8882_Asset%203.svg" alt="One Learn" style="height:32px; width:auto; filter: brightness(0) invert(1);">
+    </a>
+
+    <!-- Vrai widget Trustpilot — Micro TrustScore -->
+    <div class="hidden md:block flex-shrink-0" style="min-width:240px;">
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="24px" data-style-width="100%" data-theme="dark">
+        <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
+
+    <a href="https://one-learn.fr" class="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full border border-white/30 hover:border-white hover:bg-white/15 transition flex-shrink-0">
+      <span class="hidden sm:inline">Retour au site</span>
+      <span class="sm:hidden">Site</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+  <!-- Trustpilot mobile -->
+  <div class="md:hidden flex justify-center pb-3">
+    <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="5419b637fa0340045cd0c936" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="20px" data-style-width="100%" data-theme="dark">
+      <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO CONFIRMATION -->
+<section class="hero-bg relative overflow-hidden">
+  <!-- Sparkles décoratifs -->
+  <div id="sparkles" style="position:absolute; top:120px; left:50%; transform:translateX(-50%); pointer-events:none;"></div>
+
+  <div class="max-w-4xl mx-auto px-6 pt-16 pb-12 md:pt-20 md:pb-16 text-center relative">
+
+    <!-- Check animé -->
+    <div class="flex justify-center mb-8">
+      <div class="check-circle" style="width:88px; height:88px; border-radius:50%; background:#545AC0; display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(84,90,192,0.3);">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+          <path class="check-path" d="M5 12L10 17L19 8" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <span class="stat-pill mb-5">✓ Rendez-vous confirmé</span>
+
+    <h1 class="text-4xl md:text-5xl lg:text-6xl text-ink mt-4 mb-5" style="line-height:1.1;">
+      Votre conseillère vous<br>rappelle bientôt.
+    </h1>
+
+    <p class="text-lg md:text-xl text-space max-w-2xl mx-auto mb-10">
+      Merci pour votre demande concernant la formation <span class="font-semibold text-ink">AutoCAD 2D &amp; 3D</span>. Vous allez recevoir une confirmation par email dans les prochaines minutes.
+    </p>
+
+    <a href="#preparation" class="scroll-cue">
+      Préparez votre rendez-vous en 2 étapes
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5V19M12 19L6 13M12 19L18 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<!-- RECAP RDV -->
+<section class="px-6 pb-4">
+  <div class="max-w-3xl mx-auto -mt-4">
+    <div class="rdv-card rounded-3xl p-8 md:p-10 text-white">
+      <div class="flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+
+        <!-- Photo conseillère -->
+        <div class="flex items-center gap-4 md:flex-col md:text-center md:min-w-[120px]">
+          <img src="assets/karla.jpg" alt="Votre conseillère One Learn" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid rgba(255,255,255,0.15); flex-shrink:0;">
+          <div>
+            <p class="font-satoshi font-bold text-lg">Karla</p>
+            <p class="text-sm" style="color:#BCBFCC;">Votre conseillère</p>
+          </div>
+        </div>
+
+        <div class="h-px md:h-20 md:w-px bg-white/10"></div>
+
+        <!-- Infos RDV -->
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest mb-3" style="color:#9DA2B3; letter-spacing:0.15em;">Votre rendez-vous</p>
+          <div class="flex items-start gap-3 mb-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="mt-0.5 flex-shrink-0"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#EF7738" stroke-width="2"/><path d="M8 3V7M16 3V7M3 10H21" stroke="#EF7738" stroke-width="2" stroke-linecap="round"/></svg>
+            <p class="font-satoshi font-bold text-lg md:text-xl" id="rdv-date">Date confirmée par email</p>
+          </div>
+          <div class="flex items-start gap-3 mb-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="mt-0.5 flex-shrink-0"><path d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C11.61 20.92 4 13.31 4 3.92C4 3.37 4.45 2.92 5 2.92H8C8.55 2.92 9 3.37 9 3.92C9 5.28 9.27 6.59 9.77 7.82C9.91 8.16 9.83 8.56 9.57 8.82L7.9 10.49C9.42 13.21 11.71 15.5 14.43 17.02L16.1 15.35C16.36 15.09 16.76 15.01 17.1 15.15C18.33 15.65 19.64 15.92 21 15.92C21.55 15.92 22 16.37 22 16.92Z" stroke="#EF7738" stroke-width="2" stroke-linejoin="round"/></svg>
+            <p class="text-base" style="color:#E5E7EB;">Appel téléphonique · 20 minutes</p>
+          </div>
+
+          <div class="flex items-center gap-2 mt-5 text-sm" style="color:#BCBFCC;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="flex-shrink-0"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3V7M16 3V7M3 10H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span>L'invitation calendrier est jointe à votre email de confirmation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 ÉTAPES -->
+<section id="preparation" class="px-6 py-16 md:py-24 scroll-mt-24">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-sm font-semibold uppercase tracking-widest" style="color:#545AC0; letter-spacing:0.15em;">Avant votre appel</span>
+      <h2 class="text-3xl md:text-4xl text-ink mt-3">2 petites choses pour gagner du temps</h2>
+      <p class="text-space mt-4 max-w-xl mx-auto">Pas d'obligation avant l'appel. Mais si vous avez 10 minutes devant vous, ces 2 étapes permettront à votre conseillère d'avoir votre dossier prêt à être validé dès votre échange.</p>
+    </div>
+
+    <div class="space-y-4">
+
+      <!-- Étape 1 — CPF -->
+      <div class="step-card flex items-start gap-5 p-6 md:p-7 bg-lavender/40 rounded-2xl hover:bg-lavender/60 transition">
+        <div class="step-number">1</div>
+        <div class="flex-1">
+          <h3 class="text-xl mb-2">Jetez un œil à votre compte CPF</h3>
+          <p class="text-space text-base leading-relaxed mb-4">Un rapide passage sur <span class="font-semibold text-ink">moncompteformation.gouv.fr</span> pour vérifier que votre profil est à jour. Ça permettra à votre conseillère de calculer précisément votre solde et votre éligibilité pendant l'échange.</p>
+          <a href="https://www.moncompteformation.gouv.fr/espace-prive/html/#/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold" style="color:#545AC0;">
+            J'accède à mon compte CPF
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Étape 2 — Identité Numérique La Poste -->
+      <div class="step-card flex items-start gap-5 p-6 md:p-7 bg-lavender/40 rounded-2xl hover:bg-lavender/60 transition">
+        <div class="step-number">2</div>
+        <div class="flex-1">
+          <h3 class="text-xl mb-2">Créez votre Identité Numérique La Poste</h3>
+          <p class="text-space text-base leading-relaxed mb-4">Elle vous servira à valider votre inscription sur Mon Compte Formation une fois votre parcours défini. La création prend 5 minutes en ligne, ou vous pouvez vous rendre dans <span class="font-semibold text-ink">n'importe quel bureau de poste</span> où un conseiller vous accompagne. L'avoir déjà en poche fluidifie toute la suite.</p>
+          <a href="https://lidentitenumerique.laposte.fr/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-semibold" style="color:#545AC0;">
+            Je crée mon Identité Numérique
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M17 7H8M17 7V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="px-6 py-16 md:py-24">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="text-center mb-10">
+      <div class="flex items-center justify-center gap-2 mb-3">
+        <div class="flex">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EF7738"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EF7738"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EF7738"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EF7738"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#EF7738"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        </div>
+        <span class="text-sm font-semibold text-ink">4.9/5</span>
+        <span class="text-sm text-space">· 2 400+ avis</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl text-ink">Ils ont franchi le pas avant vous</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <div class="testimonial-card rounded-2xl p-7">
+        <div class="flex items-center gap-4 mb-4">
+          <div style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#545AC0,#43489A); display:flex; align-items:center; justify-content:center; color:white; font-family:Satoshi; font-weight:800; font-size:20px;">M</div>
+          <div>
+            <p class="font-satoshi font-bold text-ink">Mehdi, 35 ans</p>
+            <p class="text-sm text-space">Reconversion vers dessinateur projeteur</p>
+          </div>
+        </div>
+        <p class="text-ink leading-relaxed">« Je venais du second œuvre, je voulais passer côté bureau. En 8 semaines j'étais autonome sur AutoCAD en 2D et 3D, et j'ai validé la certification RS6955. J'ai signé un poste de dessinateur projeteur en CDI le mois suivant. Le CPF a tout changé pour moi. »</p>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-7">
+        <div class="flex items-center gap-4 mb-4">
+          <div style="width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,#EF7738,#CD5025); display:flex; align-items:center; justify-content:center; color:white; font-family:Satoshi; font-weight:800; font-size:20px;">I</div>
+          <div>
+            <p class="font-satoshi font-bold text-ink">Inès, 31 ans</p>
+            <p class="text-sm text-space">Architecte d'intérieur en libéral</p>
+          </div>
+        </div>
+        <p class="text-ink leading-relaxed">« Je dessinais encore mes plans à la main pour mes clients. Aujourd'hui je sors des plans techniques 2D et des perspectives 3D propres en quelques heures. Mes devis ont gagné en crédibilité, mes clients aussi. Vraiment, foncez. »</p>
+      </div>
+
+    </div>
+
+    <!-- Carrousel d'avis Trustpilot officiels -->
+    <div class="mt-10">
+      <div class="trustpilot-widget" data-locale="fr-FR" data-template-id="53aa8912dec7e10d38f59f36" data-businessunit-id="637f2a67e2377cbcf511c873" data-style-height="140px" data-style-width="100%" data-stars="4,5" data-review-languages="fr">
+        <a href="https://fr.trustpilot.com/review/one-learn.fr" target="_blank" rel="noopener">Trustpilot</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BLOC SECURITE / GARANTIE -->
+<section class="px-6 pb-20">
+  <div class="max-w-3xl mx-auto">
+    <div class="rounded-2xl p-8 md:p-10 text-center" style="background:#EDEDFB;">
+      <div class="flex justify-center mb-4">
+        <div style="width:60px; height:60px; border-radius:50%; background:white; display:flex; align-items:center; justify-content:center;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6V12C4 17 7.5 21 12 22C16.5 21 20 17 20 12V6L12 2Z" stroke="#545AC0" stroke-width="2" stroke-linejoin="round"/><path d="M9 12L11 14L15 10" stroke="#EF7738" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <h3 class="text-2xl text-ink mb-3">Aucun engagement avant votre appel</h3>
+      <p class="text-space max-w-xl mx-auto mb-6">L'échange est 100% gratuit et sans engagement. Votre conseillère est là pour répondre à vos questions et vérifier ensemble si la formation correspond à votre projet.</p>
+      <a href="https://one-learn.fr" class="btn-secondary inline-flex">
+        Explorer toutes nos formations
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#22244D;" class="text-white">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+    <a href="https://one-learn.fr" class="flex items-center">
+      <img src="https://cdn.prod.website-files.com/646488437ff4a57776de2aeb/681b81aeec7d10bd6dcb8882_Asset%203.svg" alt="One Learn" style="height:28px; width:auto;">
+    </a>
+    <div class="flex items-center gap-6 text-sm" style="color:#BCBFCC;">
+      <a href="https://one-learn.fr" class="hover:text-white transition">one-learn.fr</a>
+      <a href="mailto:contact@one-learn.fr" class="hover:text-white transition">contact@one-learn.fr</a>
+    </div>
+    <p class="text-xs" style="color:#9DA2B3;">© 2026 One Learn · Organisme certifié Qualiopi</p>
+  </div>
+</footer>
+
+<script>
+  // Sparkles animation au chargement
+  (function() {
+    const container = document.getElementById('sparkles');
+    if (!container) return;
+    const colors = ['#EF7738', '#545AC0', '#F4A261'];
+    for (let i = 0; i < 14; i++) {
+      const s = document.createElement('div');
+      s.className = 'sparkle';
+      const angle = (i / 14) * Math.PI * 2;
+      const dist = 80 + Math.random() * 60;
+      s.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+      s.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+      s.style.background = colors[i % colors.length];
+      s.style.animationDelay = (0.5 + Math.random() * 0.3) + 's';
+      container.appendChild(s);
+    }
+  })();
+
+  // Récupération des paramètres URL pour personnaliser le RDV (optionnel)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const dateParam = params.get('date');
+    const nameParam = params.get('name');
+    if (dateParam) {
+      const el = document.getElementById('rdv-date');
+      if (el) el.textContent = dateParam;
+    }
+  })();
+</script>
+
+</body>
+</html>
