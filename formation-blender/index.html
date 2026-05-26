@@ -251,7 +251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- RIGHT visual + floating trust -->
     <div class="lg:col-span-5 relative">
       <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-700 to-ink aspect-[1/1] shadow-2xl" title="Cliquer pour remplacer l'image">
-        <img data-cms="hero_img" class="hero-img w-full h-full object-cover" src="img/inline/21df0407e9.jpg" alt="Apprenante One Learn en visio avec son formateur sur un projet de modélisation 3D">
+        <img data-cms="hero_img" class="hero-img w-full h-full object-cover" src="hero-artist.jpg" alt="Artiste 3D travaillant sur un personnage dans Blender">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
         <div class="absolute inset-0 grain opacity-15"></div>
         <!-- Badge logiciel flottant -->
@@ -358,7 +358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </h2>
     </div>
 
-    <div class="personas-flex grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-0">
+    <div class="personas-flex">
 
       <div class="persona-card is-default-open group relative aspect-[3/4] lg:aspect-auto rounded-3xl overflow-hidden cursor-default" style="background: linear-gradient(135deg, rgb(34, 36, 77) 0%, rgb(67, 72, 154) 100%); position: relative;">
         <div class="absolute inset-0 photo-slot" data-cms="persona_1" style="border-radius:1.5rem;border:none"><img src="img/inline/69f4224dd7.jpg" class="w-full h-full object-cover" style="border-radius: 1.5rem;"></div>
@@ -414,16 +414,50 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <style>
-  .persona-card .persona-detail { max-height:0; opacity:0; transition: max-height .5s ease, opacity .35s ease; overflow:hidden; }
-  .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail { max-height:200px; opacity:1; }
+  /* MOBILE : carousel horizontal scroll-snap, texte toujours visible */
+  .personas-flex {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 16px 12px;
+    margin: 0 -16px;
+  }
+  .personas-flex::-webkit-scrollbar { display: none; }
+  .personas-flex > .persona-card {
+    flex: 0 0 78%;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+  .persona-card .persona-detail { max-height: 240px; opacity: 1; transition: max-height .5s ease, opacity .35s ease; overflow: hidden; }
+  .persona-card .persona-title { font-size: 1.15rem; line-height: 1.15; transition: font-size .4s ease; }
+
+  /* DESKTOP : Qonto-style hover-expand */
   @media (min-width: 1024px) {
-    .personas-flex { display:flex !important; gap:20px; height:480px; }
-    .personas-flex > .persona-card { flex:0.7 1 0; transition: flex .55s cubic-bezier(.4,0,.2,1); min-width:0; }
-    .personas-flex > .persona-card.is-default-open { flex:2.5 1 0; }
-    .persona-card.is-default-open .persona-detail { max-height:200px; opacity:1; }
+    .personas-flex {
+      display: flex; gap: 20px; height: 480px;
+      overflow: visible; padding: 0; margin: 0;
+      scroll-snap-type: none;
+    }
+    .personas-flex > .persona-card {
+      flex: 0.7 1 0; aspect-ratio: auto;
+      transition: flex .55s cubic-bezier(.4,0,.2,1); min-width: 0;
+      scroll-snap-align: none;
+    }
+    .personas-flex > .persona-card.is-default-open { flex: 2.5 1 0; }
     .personas-flex:hover > .persona-card,
-    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex:0.7 1 0 !important; }
-    .personas-flex:hover > .persona-card:hover { flex:2.5 1 0 !important; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) { flex: 0.7 1 0 !important; }
+    .personas-flex:hover > .persona-card:hover { flex: 2.5 1 0 !important; }
+    .persona-card .persona-detail { max-height: 0; opacity: 0; }
+    .persona-card:hover .persona-detail, .persona-card:focus-within .persona-detail,
+    .persona-card.is-default-open .persona-detail { max-height: 220px; opacity: 1; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-detail { max-height: 0 !important; opacity: 0 !important; }
+    .persona-card .persona-title { font-size: 1rem; }
+    .persona-card:hover .persona-title, .persona-card.is-default-open .persona-title { font-size: 1.75rem; }
+    .personas-flex:hover > .persona-card.is-default-open:not(:hover) .persona-title { font-size: 1rem !important; }
   }
 </style>
 
