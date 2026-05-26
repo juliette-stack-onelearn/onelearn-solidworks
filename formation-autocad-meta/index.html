@@ -1265,12 +1265,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       /* Carrousel formateurs : scrollbar discrète sur mobile uniquement */
       .formateurs-carousel { scrollbar-width: none; -ms-overflow-style: none; scroll-padding: 1rem; }
       .formateurs-carousel::-webkit-scrollbar { display: none; }
-      /* Desktop md+ : reset complet — grid prend la main, on neutralise les classes carousel */
+
+      /* Toutes les cartes en flex column → contenu peut se distribuer verticalement */
+      .formateur-card { display: flex; flex-direction: column; }
+      /* La zone texte prend toute la hauteur restante, badges poussés en bas */
+      .formateur-card .formateur-body { flex: 1 1 auto; display: flex; flex-direction: column; }
+      .formateur-card .formateur-badges { margin-top: auto; padding-top: 1rem; }
+
+      /* Desktop md+ : reset complet — grid prend la main, on neutralise les classes carousel
+         + on force align-self:stretch pour que les 3 cards aient EXACTEMENT la même hauteur */
       @media (min-width: 768px) {
         .formateurs-carousel > .formateur-card {
           width: auto !important;
           flex-shrink: 1 !important;
           min-width: 0;
+          align-self: stretch !important;
+          height: 100%;
         }
       }
     </style>
@@ -1283,11 +1293,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_1" class="hero-img" src="assets/extracted-19-3198f2d717.webp" alt="Édouard S., formateur AutoCAD &amp; architecture One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
-        <div class="p-7">
+        <div class="formateur-body p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f1_name">Édouard S.</h3>
           <p class="text-orange text-sm font-semibold mt-1" data-cms="f1_role">Architecte &amp; expert AutoCAD</p>
           <p class="mt-3 text-ink/60 text-sm leading-relaxed" data-cms="f1_bio">+10 ans en architecture et coordination de projets. Pédagogie centrée sur des cas concrets de bureau d'études.</p>
-          <div class="mt-4 flex gap-2">
+          <div class="formateur-badges flex gap-2 flex-wrap">
             <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">AutoCAD 2D / 3D</span>
             <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">Architecture</span>
           </div>
@@ -1299,11 +1309,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_2" class="hero-img" src="assets/extracted-21-a277246e4c.webp" alt="Richard Lavalle, dessinateur projeteur expert AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
-        <div class="p-7">
+        <div class="formateur-body p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f2_name">Richard Lavalle</h3>
           <p class="text-orange text-sm font-semibold mt-1" data-cms="f2_role">Dessinateur projeteur &amp; expert modélisation 3D</p>
           <p class="mt-3 text-ink/60 text-sm leading-relaxed" data-cms="f2_bio">12 ans en bureau d'études et cabinet d'architecture. A formé +400 pros sur la chaîne AutoCAD 2D, 3D et mise en plan.</p>
-          <div class="mt-4 flex gap-2">
+          <div class="formateur-badges flex gap-2 flex-wrap">
             <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">AutoCAD 3D</span>
             <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">Modélisation</span>
           </div>
@@ -1315,14 +1325,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_3" class="hero-img" src="assets/extracted-17-23811330cc.webp" alt="Stéphanie, référente AutoCAD 2D &amp; mise en page One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
-        <div class="p-7">
+        <div class="formateur-body p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f3_name">Stéphanie</h3>
           <p class="text-orange text-sm font-semibold mt-1" data-cms="f3_role">Référente AutoCAD 2D &amp; mise en page</p>
           <p class="mt-3 text-ink/60 text-sm leading-relaxed" data-cms="f3_bio">9 ans en bureau d'études bâtiment. Spécialiste cotation normée et présentation A3 livrable client.</p>
-          <div class="mt-4 flex gap-2 flex-wrap">
-            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold">AutoCAD 2D</span>
-            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold">Mise en page</span>
-            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold">Cotation normée</span>
+          <div class="formateur-badges flex gap-2 flex-wrap">
+            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">AutoCAD 2D</span>
+            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">Mise en page</span>
+            <span class="text-xs bg-navy/10 text-navy px-3 py-1 rounded-full font-semibold whitespace-nowrap">Cotation normée</span>
           </div>
         </div>
       </div>
