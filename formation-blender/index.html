@@ -349,7 +349,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ POUR QUI ============ -->
-<section class="py-20 overflow-hidden">
+<section id="pour-qui" class="py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
     <div class="text-center mb-12 anim-in" data-anim="">
       <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Pour qui</p>
@@ -462,7 +462,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </style>
 
 <!-- ============ PARCOURS ============ -->
-<section class="py-20 bg-[#EDEDFB] overflow-hidden">
+<section id="parcours" class="py-20 bg-[#EDEDFB] overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
 
     <div class="text-center mb-12 anim-in" data-anim="">
@@ -1137,7 +1137,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ POURQUOI ONE LEARN ============ -->
-<section class="py-20 relative" style="background:linear-gradient(160deg,#F5F5FD 0%,#ffffff 55%,#FDF4F0 100%);">
+<section id="pourquoi" class="py-20 relative" style="background:linear-gradient(160deg,#F5F5FD 0%,#ffffff 55%,#FDF4F0 100%);">
   <div class="absolute inset-0 grain opacity-40"></div>
   <div class="relative max-w-7xl mx-auto px-4">
     <div class="max-w-3xl mb-14">
@@ -1204,7 +1204,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ FORMATEURS ============ -->
-<section class="py-24 text-cream relative overflow-hidden" style="background: linear-gradient(135deg, #22244D 0%, #2D3070 50%, #22244D 100%);">
+<section id="formateurs" class="py-24 text-cream relative overflow-hidden" style="background: linear-gradient(135deg, #22244D 0%, #2D3070 50%, #22244D 100%);">
 
   <!-- Décoration fond One Learn -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
@@ -1882,13 +1882,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var selectors = [
     // Sections entières (titres + contenu)
     '#stats-bar > div > div',
-    '#pour-qui .rounded-2xl',
+    '#pour-qui .persona-card',
+    '#parcours #parcours-tabs > button',
     '#programme .timeline-step',
     '#metiers .rounded-2xl',
     '#pourquoi .rounded-3xl',
     '#formateurs .rounded-3xl',
     '.shadow-card',
     '#faq details',
+    '#avis .rounded-3xl',
+    '#financement .rounded-3xl',
     '#avant-apres .rounded-3xl',
     // Blocs de sections (h2 + paragraphe)
     'section > div > div.text-center',
