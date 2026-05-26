@@ -1613,6 +1613,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
+// ── Smooth scroll vers le formulaire (compense le header sticky) ──────
+window.scrollToRdvForm = function() {
+  var el = document.getElementById('rdv-form') || document.getElementById('rdv');
+  if (!el) return;
+  var hdr = document.querySelector('header.sticky');
+  var off = (hdr ? hdr.offsetHeight : 0) + 12;
+  var y = el.getBoundingClientRect().top + window.scrollY - off;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+};
+
 // ── Sticky CTAs (mobile bottom + desktop topbar) : apparaissent quand le hero CTA disparait ──────
 (function() {
   var heroCta = document.getElementById('hero-cta');
