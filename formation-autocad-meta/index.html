@@ -18,8 +18,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="assets/tailwind.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" rel="stylesheet">
+<!-- Fonts non-bloquantes : preload puis swap async (élimine 620ms de render-blocking) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" rel="stylesheet">
+</noscript>
 
 <!-- iClosed widget (inline + popup) -->
 
@@ -887,7 +892,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             <!-- 2. ChatGPT (right, 2h24) -->
             <div class="absolute w-[60px] h-[60px] md:w-[68px] md:h-[68px] rounded-full overflow-hidden shadow-xl ring-1 ring-ink/5" style="top:34.55%;left:97.55%;transform:translate(-50%,-50%);" title="ChatGPT (OpenAI)">
-              <img src="assets/logo-chatgpt.png" alt="ChatGPT" class="w-full h-full object-cover" loading="lazy">
+              <img src="assets/logo-chatgpt.webp" alt="ChatGPT" class="w-full h-full object-cover" loading="lazy">
             </div>
 
             <!-- 3. AutoCAD (bottom-right, 4h48) -->
@@ -1061,7 +1066,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 1 : Plan 2D maison individuelle -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition" data-anim="">
         <div class="h-44 bg-navy-50 relative overflow-hidden" data-cms="realisation_1_img">
-          <img src="assets/realisation-1-plan-maison.png" alt="Plan AutoCAD 2D coté d'une maison individuelle — suite parentale, chambres, cuisine, garage" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+          <img src="assets/realisation-1-plan-maison.webp" alt="Plan AutoCAD 2D coté d'une maison individuelle — suite parentale, chambres, cuisine, garage" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2.5 py-1 rounded-full">AutoCAD 2D · Semaine 2</span>
@@ -1080,7 +1085,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 2 : Plan d'agencement bureaux -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition" data-anim="" data-delay="1">
         <div class="h-44 bg-orange-50 relative overflow-hidden" data-cms="realisation_2_img">
-          <img src="assets/realisation-2-agencement-bureaux.png" alt="Plan AutoCAD d'agencement de bureaux avec réseaux électriques et symboles d'implantation" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+          <img src="assets/realisation-2-agencement-bureaux.webp" alt="Plan AutoCAD d'agencement de bureaux avec réseaux électriques et symboles d'implantation" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-orange/10 text-orange-700 px-2.5 py-1 rounded-full">AutoCAD 2D · Semaine 4</span>
@@ -1118,7 +1123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 4 : Plan de coffrage / structure -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition" data-anim="">
         <div class="h-44 bg-orange-50 relative overflow-hidden" data-cms="realisation_4_img">
-          <img src="assets/realisation-4-coffrage.png" alt="Plan de coffrage et de structure AutoCAD avec vue en plan, coupes et détails techniques" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+          <img src="assets/realisation-4-coffrage.webp" alt="Plan de coffrage et de structure AutoCAD avec vue en plan, coupes et détails techniques" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-orange/10 text-orange-700 px-2.5 py-1 rounded-full">AutoCAD 2D · Semaine 5</span>
@@ -1137,7 +1142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Card 5 : Mise en page DWG / Cartouche -->
       <div class="bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden hover:shadow-cardHover transition" data-anim="" data-delay="1">
         <div class="h-44 bg-navy-50 relative overflow-hidden" data-cms="realisation_5_img">
-          <img src="assets/realisation-5-dossier-dwg.png" alt="Dossier DWG livrable client — élévation cuisine, plan top-down et annotations matériaux" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
+          <img src="assets/realisation-5-dossier-dwg.webp" alt="Dossier DWG livrable client — élévation cuisine, plan top-down et annotations matériaux" style="width:100%;height:100%;object-fit:cover;" loading="lazy" decoding="async">
         </div>
         <div class="p-6">
           <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2.5 py-1 rounded-full">Mise en page · Semaine 3</span>
@@ -1204,7 +1209,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="lg:col-span-4 flex flex-col items-center gap-4">
         <div class="relative">
           <div style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; border: 3px solid rgba(239, 119, 56, 0.5); box-shadow: rgba(239, 119, 56, 0.1) 0px 0px 0px 6px;" title="Cliquer pour remplacer l'image">
-            <img src="assets/extracted-14-ec75ce5f9c.png" alt="Conseiller pédagogique One Learn" data-cms="cta_advisor_photo" style="width:100%; height:100%; object-fit:cover; object-position:center top;" loading="lazy" decoding="async">
+            <img src="assets/extracted-14-ec75ce5f9c.webp" alt="Conseiller pédagogique One Learn" data-cms="cta_advisor_photo" style="width:100%; height:100%; object-fit:cover; object-position:center top;" loading="lazy" decoding="async">
           </div>
           <div style="position:absolute; bottom:2px; right:2px; width:20px; height:20px; background:#22C55E; border-radius:50%; border:2px solid #22244D;"></div>
         </div>
@@ -1268,7 +1273,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Formateur 1 — Édouard S. -->
       <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
-          <img data-cms="formateur_img_1" class="hero-img" src="assets/extracted-19-3198f2d717.png" alt="Édouard S., formateur AutoCAD &amp; architecture One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
+          <img data-cms="formateur_img_1" class="hero-img" src="assets/extracted-19-3198f2d717.webp" alt="Édouard S., formateur AutoCAD &amp; architecture One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f1_name">Édouard S.</h3>
@@ -1284,7 +1289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Formateur 2 — Richard Lavalle -->
       <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
-          <img data-cms="formateur_img_2" class="hero-img" src="assets/extracted-21-a277246e4c.png" alt="Richard Lavalle, dessinateur projeteur expert AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
+          <img data-cms="formateur_img_2" class="hero-img" src="assets/extracted-21-a277246e4c.webp" alt="Richard Lavalle, dessinateur projeteur expert AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f2_name">Richard Lavalle</h3>
@@ -1300,7 +1305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Formateur 3 — Stéphanie -->
       <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
-          <img data-cms="formateur_img_3" class="hero-img" src="assets/extracted-17-23811330cc.png" alt="Stéphanie, référente AutoCAD 2D &amp; mise en page One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
+          <img data-cms="formateur_img_3" class="hero-img" src="assets/extracted-17-23811330cc.webp" alt="Stéphanie, référente AutoCAD 2D &amp; mise en page One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
         <div class="p-7">
           <h3 class="font-display text-2xl font-semibold text-ink" data-cms="f3_name">Stéphanie</h3>
@@ -1320,19 +1325,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Avatars row -->
       <div class="flex items-center -space-x-3">
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:5;">
-          <img src="assets/extracted-18-6ddd48378c.png" alt="Malko P., formateur AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
+          <img src="assets/extracted-18-6ddd48378c.webp" alt="Malko P., formateur AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:4;">
-          <img src="assets/extracted-20-55ed86e19f.png" alt="Alix, responsable qualité" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
+          <img src="assets/extracted-20-55ed86e19f.webp" alt="Alix, responsable qualité" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:3;">
-          <img src="assets/extracted-22-83ff344af7.png" alt="Antoine, ingénierie produit" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
+          <img src="assets/extracted-22-83ff344af7.webp" alt="Antoine, ingénierie produit" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:2;">
-          <img src="assets/extracted-24-f342bad179.png" alt="Fabian P., dessinateur en bureau d'études" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
+          <img src="assets/extracted-24-f342bad179.webp" alt="Fabian P., dessinateur en bureau d'études" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border-4 border-navy bg-cream relative" style="z-index:1;">
-          <img src="assets/extracted-25-ca2ca2a147.png" alt="Jérémy, coordination BIM &amp; IFC" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
+          <img src="assets/extracted-25-ca2ca2a147.webp" alt="Jérémy, coordination BIM &amp; IFC" style="width:100%;height:100%;object-fit:cover;object-position:center top;" loading="lazy" decoding="async">
         </div>
         <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-orange grid place-items-center border-4 border-navy" style="z-index:6;">
           <span class="text-white font-display font-bold text-base sm:text-lg">+60</span>
@@ -1378,7 +1383,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"Je dessinais à la main depuis 20 ans, je pensais que je n'arriverais jamais à passer sur AutoCAD. En 8 semaines, je livre des plans cotés à mon BE comme un dessinateur pro. L'accompagnement fait toute la différence."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-26-263cb8a457.png" alt="Didier" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
+          <img src="assets/extracted-26-263cb8a457.webp" alt="Didier" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Didier</p>
             <p class="text-xs text-ink/50">Artisan menuisier-agenceur</p>
@@ -1396,7 +1401,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"Formation au top, formateur disponible et pédagogue. Le CPF a tout pris en charge, il ne m'a rien resté à payer. La cotation et les calques je les avais jamais bossés correctement, là j'ai les bons réflexes."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-27-f00b2b35e7.png" alt="Jérémy" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
+          <img src="assets/extracted-27-f00b2b35e7.webp" alt="Jérémy" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Jérémy</p>
             <p class="text-xs text-ink/50">Technicien BE en reconversion</p>
@@ -1414,7 +1419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <p class="font-display text-lg leading-snug flex-1">"J'ai apprécié la flexibilité totale. Je bossais le soir après ma journée d'archi d'intérieur, à mon rythme, avec des visios calées avec mon formateur. Aujourd'hui je collabore directement en DWG avec les BE de mes clients."</p>
         <div class="mt-6 pt-6 border-t border-ink/5 flex items-center gap-3">
-          <img src="assets/extracted-28-c3611cc7dc.png" alt="Mathilde" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
+          <img src="assets/extracted-28-c3611cc7dc.webp" alt="Mathilde" class="w-12 h-12 rounded-full object-cover shrink-0" loading="lazy" decoding="async">
           <div>
             <p class="font-semibold text-sm">Mathilde</p>
             <p class="text-xs text-ink/50">Architecte d'intérieur freelance</p>
