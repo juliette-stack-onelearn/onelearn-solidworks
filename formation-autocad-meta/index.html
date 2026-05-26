@@ -1256,11 +1256,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </h2>
     </div>
 
-    <!-- 3 cartes principales — fond blanc/clair -->
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
+    <style>
+      /* Carrousel formateurs : scrollbar discrète sur mobile uniquement */
+      .formateurs-carousel { scrollbar-width: none; -ms-overflow-style: none; scroll-padding: 1rem; }
+      .formateurs-carousel::-webkit-scrollbar { display: none; }
+    </style>
+
+    <!-- 3 cartes principales — fond blanc/clair · CAROUSEL mobile / GRID desktop -->
+    <div class="formateurs-carousel flex md:grid md:grid-cols-3 gap-6 mb-12 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0 pb-2 md:pb-0">
 
       <!-- Formateur 1 — Édouard S. -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_1" class="hero-img" src="assets/extracted-19-3198f2d717.png" alt="Édouard S., formateur AutoCAD &amp; architecture One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
@@ -1276,7 +1282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Formateur 2 — Richard Lavalle -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_2" class="hero-img" src="assets/extracted-21-a277246e4c.png" alt="Richard Lavalle, dessinateur projeteur expert AutoCAD 3D" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
@@ -1292,7 +1298,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <!-- Formateur 3 — Stéphanie -->
-      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl">
+      <div class="bg-white rounded-3xl overflow-hidden shadow-2xl snap-start shrink-0 w-[85%] md:w-auto">
         <div class="relative overflow-hidden" style="background: rgb(240, 240, 250); aspect-ratio: 4 / 3;" title="Cliquer pour remplacer l'image">
           <img data-cms="formateur_img_3" class="hero-img" src="assets/extracted-17-23811330cc.png" alt="Stéphanie, référente AutoCAD 2D &amp; mise en page One Learn" style="width:100%;height:100%;object-fit:cover;object-position:top center;" loading="lazy" decoding="async">
         </div>
