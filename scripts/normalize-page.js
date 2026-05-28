@@ -80,6 +80,7 @@ const WHITELIST_PATTERNS = [
   /reveal/,
   /IntersectionObserver/,
   /wy6s0jj04t/, // Microsoft Clarity officiel One Learn (architecture + communication-design)
+  /__ol_tracker_v1/, // One Learn unified GA4 dataLayer tracker
 ];
 
 // Patterns pour identifier les blocs déjà-en-place (à supprimer pour réinjecter)
