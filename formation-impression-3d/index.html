@@ -224,7 +224,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="w-2 h-2 rounded-full bg-[#EF7738]"></span>
         Sessions ouvertes en mai · <strong>6 places restantes</strong>
         <span class="ml-2 text-[10px] uppercase tracking-wider font-bold text-[#545AC0] bg-[#EDEDFB] px-2 py-0.5 rounded-full">Formation Impression 3D</span></div>
-<h1 class="font-display text-[1.9rem] sm:text-[2.4rem] lg:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink">Apprenez à concevoir et imprimer vos objets 3D&nbsp;<br>grâce à la formation</h1>
+<h1 class="font-display text-[1.9rem] sm:text-[2.4rem] lg:text-[2.75rem] leading-[1.1] tracking-tight font-semibold text-ink" style="text-wrap:balance">Apprenez à concevoir et imprimer vos objets en&nbsp;3D</h1>
 
       <p class="mt-4 text-base text-ink/70 max-w-xl leading-relaxed"><b>De la modélisation à l'objet fini</b>&nbsp;: maîtrisez l'impression 3D, du logiciel aux réglages d'impression, grâce à la <b>formation en ligne.</b></p>
 
@@ -859,11 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           banner.style.transform = 'translateX(-50%) translateY(0)';
         });
       });
-      setTimeout(function() {
-        banner.style.opacity = '0';
-        banner.style.transform = 'translateX(-50%) translateY(24px)';
-        setTimeout(function() { banner.style.display = 'none'; }, 600);
-      }, 5000);
+      // Notification fixe : reste affichée une fois apparue (pas d'auto-dismiss)
     }
     setTimeout(function() {
       container.style.display = 'none';
@@ -909,7 +905,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <!-- Image placeholder -->
       <div style="position:relative;">
-      <div id="certif-img-bloc" class="rounded-3xl overflow-hidden" style="aspect-ratio:4/3; background:#EDEDFB; display:flex; align-items:center; justify-content:center;"><!-- observer ci-dessous -->
+      <div id="certif-img-bloc" class="rounded-3xl overflow-hidden" style="aspect-ratio:4/3; background:#fff; display:flex; align-items:center; justify-content:center;"><!-- observer ci-dessous -->
         <img src="certification.jpg" alt="Certification One Learn impression 3D" style="width:100%;height:100%;object-fit:contain;padding:16px;">
       </div>
       <div id="certif-banner" style="display: none; position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%) translateY(24px); z-index: 10; pointer-events: none; transition: opacity 0.4s, transform 0.4s; opacity: 0; width: calc(100% - 32px); max-width: 360px;">
@@ -1073,53 +1069,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
-    </div>
-
-    <!-- Bloc IA — pleine largeur sous la grille -->
-    <!-- Bloc résilience IA -->
-    <div class="bg-gradient-to-br from-[#22244D] via-[#2D3070] to-[#22244D] rounded-3xl p-10 lg:p-14 text-cream relative overflow-hidden">
-      <div class="absolute inset-0 grain opacity-20"></div>
-      <div class="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-orange/15 blur-3xl"></div>
-      <div class="relative grid lg:grid-cols-12 gap-10 items-center">
-        <div class="lg:col-span-7">
-          <span class="inline-block bg-orange text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Métier d'avenir</span>
-          <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight">&nbsp;Modélisez 10x plus vite grâce à l'IA appliquée à la 3D</h3>
-          <p class="mt-5 text-cream/70 leading-relaxed">Notre formation intègre un module dédié à l'IA appliquée à l'impression 3D : génération de modèles texte-vers-3D, design génératif, optimisation des supports et des réglages. Vous concevez plus vite, sans sacrifier la précision de vos pièces.</p>
-          <a href="#rdv" onclick="event.preventDefault();(document.getElementById('rdv-form')||document.getElementById('rdv')).scrollIntoView({behavior:'smooth',block:'start'});" class="mt-7 inline-flex items-center gap-2 bg-orange text-white px-6 py-3.5 rounded-full font-semibold shadow-cta hover:bg-orange-700 transition">
-            Découvrir le module IA
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
-        </div>
-        <div class="lg:col-span-5 space-y-4">
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-orange grid place-items-center shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-cream">Générez vos modèles 3D plus vite.</p>
-              <p class="text-sm text-cream/60 mt-0.5">Vous apprenez à utiliser les outils texte-vers-3D pour partir d'une base solide et gagner des heures de modélisation.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-orange grid place-items-center shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-cream"><strong>Optimisez vos impressions avec le design génératif</strong></p>
-              <p class="text-sm text-cream/60 mt-0.5">Allègement des pièces, optimisation topologique, placement intelligent des supports : vous obtenez des impressions plus solides et plus rapides.</p>
-            </div>
-          </div>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-orange grid place-items-center shrink-0">
-              <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"></path></svg>
-            </div>
-            <div>
-              <p class="font-semibold text-cream"><strong>Gagnez 6 à 8 heures par projet</strong></p>
-              <p class="text-sm text-cream/60 mt-0.5">Nos apprenants qui utilisent les outils IA enseignés conçoivent et impriment leurs pièces deux fois plus vite, avec moins d'essais ratés.</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
   </div>
