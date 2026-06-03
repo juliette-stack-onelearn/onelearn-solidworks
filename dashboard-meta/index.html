@@ -9,8 +9,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
   <title>One Learn — Dashboard Meta Ads</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,7 +63,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     h1,h2,h3,h4 { font-family:'Satoshi','Inter',sans-serif; letter-spacing:-.01em; }
 
     /* HEADER */
-    .hdr { background:var(--ol-indigo); color:#fff; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; }
+    .hdr { background:var(--ol-indigo); color:#fff; padding:20px 40px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
     .hdr-l { display:flex; align-items:center; gap:20px; }
     .logo { font-family:'Satoshi','Inter',sans-serif; font-size:22px; font-weight:800; letter-spacing:-.01em; display:flex; align-items:center; gap:10px; }
     .logo-mark { width:32px; height:32px; border-radius:8px; background:var(--ol-violet); display:flex; align-items:center; justify-content:center; position:relative; }
@@ -71,9 +73,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .logo .learn { color:var(--ol-orange); font-weight:800; }
     .hdiv { width:1px; height:28px; background:rgba(255,255,255,.15); }
     .hdr-title { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.55); font-weight:500; }
+    .hdr-r { display:flex; align-items:center; gap:18px; }
     .live-badge { display:flex; align-items:center; gap:8px; font-size:11px; color:rgba(255,255,255,.65); font-weight:500; }
     .live-dot { width:8px; height:8px; border-radius:50%; background:var(--ol-orange); box-shadow:0 0 0 3px rgba(239,119,56,.25); animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+    .hbtns { display:flex; gap:8px; }
+    .hbtn { display:flex; align-items:center; gap:6px; padding:7px 13px; border:1px solid rgba(255,255,255,.18); border-radius:9px; background:rgba(255,255,255,.06); color:#fff; font-size:12px; font-weight:600; font-family:inherit; cursor:pointer; transition:all .15s; }
+    .hbtn:hover { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.3); }
+    .hbtn svg { width:14px; height:14px; }
 
     /* FILTERS */
     .flt { background:#fff; border-bottom:1px solid var(--border-soft); padding:12px 40px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
@@ -88,13 +95,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .dinput:focus { outline:none; border-color:var(--ol-violet); box-shadow:0 0 0 3px rgba(84,90,192,.12); }
     .csel { padding:7px 12px; border:1px solid var(--border); border-radius:8px; font-size:12px; font-family:inherit; color:var(--text); background:#fff; cursor:pointer; font-weight:500; }
     .csel:focus { outline:none; border-color:var(--ol-violet); box-shadow:0 0 0 3px rgba(84,90,192,.12); }
+    .cmp-toggle { display:flex; align-items:center; gap:7px; font-size:12px; color:var(--graphite); font-weight:500; cursor:pointer; user-select:none; }
+    .cmp-toggle input { accent-color:var(--ol-violet); width:15px; height:15px; cursor:pointer; }
 
     /* MAIN */
-    .main { padding:32px 40px 64px; }
-    .slabel { font-family:'Satoshi','Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--graphite); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+    .main { padding:32px 40px 64px; max-width:1600px; margin:0 auto; }
+    .slabel { font-family:'Satoshi','Inter',sans-serif; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--graphite); margin-bottom:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
     .slabel-pill { padding:3px 10px; border-radius:6px; background:var(--ol-orange-lt); color:var(--ol-orange-dk); font-size:10px; letter-spacing:.3px; font-weight:600; text-transform:none; }
     .slabel-pill.na { background:var(--cloud); color:var(--graphite); }
     .slabel-pill.violet { background:rgba(84,90,192,.1); color:var(--ol-violet); }
+    .slabel-pill.live { background:rgba(22,163,74,.12); color:#15803d; }
+    .slabel-spacer { flex:1; }
+    .slabel-edit { padding:4px 10px; border-radius:6px; border:1px solid var(--smoke); background:#fff; color:var(--graphite); font-size:10px; letter-spacing:.3px; font-weight:600; cursor:pointer; text-transform:none; font-family:inherit; transition:all .15s; }
+    .slabel-edit:hover { border-color:var(--ol-violet); color:var(--ol-violet); }
+
+    /* ROAS SETTINGS */
+    .roas-box { background:#fff; border:1px solid var(--smoke); border-radius:14px; padding:16px 20px; margin-bottom:24px; display:none; align-items:center; gap:22px; flex-wrap:wrap; }
+    .roas-box.open { display:flex; }
+    .roas-fld { display:flex; flex-direction:column; gap:5px; }
+    .roas-fld label { font-size:10px; font-weight:600; letter-spacing:.4px; text-transform:uppercase; color:var(--graphite); }
+    .roas-fld .ipt { display:flex; align-items:center; gap:6px; }
+    .roas-fld input { width:90px; padding:7px 9px; border:1px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; color:var(--text); font-variant-numeric:tabular-nums; }
+    .roas-fld input:focus { outline:none; border-color:var(--ol-violet); box-shadow:0 0 0 3px rgba(84,90,192,.12); }
+    .roas-fld .unit { font-size:12px; color:var(--graphite); font-weight:600; }
+    .roas-note { font-size:11px; color:var(--graphite); max-width:280px; line-height:1.5; }
+    .roas-btn { padding:8px 16px; border:none; border-radius:9px; background:var(--ol-violet); color:#fff; font-size:12px; font-weight:600; cursor:pointer; font-family:inherit; transition:all .15s; }
+    .roas-btn:hover { background:var(--ol-violet-dk); }
+    .roas-btn.ghost { background:var(--cloud); color:var(--graphite); }
+    .roas-btn.ghost:hover { background:var(--smoke); }
 
     /* KPI */
     .krow { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-bottom:32px; }
@@ -107,9 +135,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .kval.gr { color:var(--success); }
     .kval.or { color:var(--ol-orange-dk); }
     .kval.rd { color:var(--error); }
-    .ksub { font-size:11px; color:var(--graphite); margin-top:6px; font-weight:500; }
-    .ksub.up { color:var(--success); }
-    .ksub.dn { color:var(--error); }
+    .ksub { font-size:11px; color:var(--graphite); margin-top:7px; font-weight:500; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .ksub .det { color:var(--space); font-weight:500; }
+    .kdelta { font-weight:700; font-variant-numeric:tabular-nums; }
+    .kdelta.up { color:var(--success); }
+    .kdelta.dn { color:var(--error); }
+    .kdelta.fl { color:var(--space); }
+
+    /* HIGHLIGHTS */
+    .hl-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:32px; }
+    .hl { border-radius:16px; padding:18px 22px; border:1px solid var(--border-soft); background:#fff; display:flex; align-items:center; gap:18px; }
+    .hl.best { border-color:rgba(22,163,74,.3); background:linear-gradient(135deg, rgba(22,163,74,.05), #fff 60%); }
+    .hl.worst { border-color:rgba(220,38,38,.25); background:linear-gradient(135deg, rgba(220,38,38,.05), #fff 60%); }
+    .hl-icon { width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0; }
+    .hl.best .hl-icon { background:rgba(22,163,74,.12); }
+    .hl.worst .hl-icon { background:rgba(220,38,38,.1); }
+    .hl-body { min-width:0; flex:1; }
+    .hl-tag { font-size:10px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; margin-bottom:3px; }
+    .hl.best .hl-tag { color:var(--success); }
+    .hl.worst .hl-tag { color:var(--error); }
+    .hl-name { font-family:'Satoshi','Inter',sans-serif; font-weight:700; font-size:15px; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .hl-meta { font-size:11px; color:var(--graphite); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .hl-stat { text-align:right; flex-shrink:0; }
+    .hl-stat .v { font-family:'Satoshi','Inter',sans-serif; font-size:22px; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+    .hl-stat .l { font-size:10px; color:var(--graphite); text-transform:uppercase; letter-spacing:.4px; font-weight:600; }
 
     /* CHARTS */
     .cgrid { display:grid; grid-template-columns:3fr 2fr; gap:16px; margin-bottom:16px; }
@@ -139,8 +188,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .cname { display:flex; align-items:center; gap:8px; }
     .cdot  { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .bcell { display:flex; align-items:center; justify-content:flex-end; gap:8px; }
-    .mbar  { height:3px; border-radius:2px; background:var(--ol-orange); opacity:.5; }
 
     /* CAMPAIGN CARDS */
     .camp-grid { display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:32px; }
@@ -158,24 +205,66 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .camp.open .camp-chev { transform:rotate(180deg); color:var(--ol-violet); }
     .camp-body { display:none; padding:4px 24px 20px; border-top:1px solid var(--border-soft); background:var(--ol-lavande); }
     .camp.open .camp-body { display:block; }
+    .seg { display:inline-flex; gap:3px; padding:3px; background:var(--cloud); border-radius:9px; margin:14px 0 6px; }
+    .seg button { padding:6px 14px; border:none; border-radius:6px; background:transparent; font-size:11px; font-weight:600; cursor:pointer; color:var(--graphite); font-family:inherit; transition:all .15s; }
+    .seg button.on { background:#fff; color:var(--ol-indigo); box-shadow:0 1px 2px rgba(34,36,77,.12); }
+    .adgrp-name { font-weight:700; }
+    .adset-badge { display:inline-flex; align-items:center; gap:6px; padding:2px 10px; border-radius:6px; font-size:11px; font-weight:600; }
+    .adset-bdot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+    .cs-banner { background:rgba(84,90,192,.06); border:1px solid rgba(84,90,192,.18); border-radius:12px; padding:12px 16px; margin-bottom:16px; font-size:12px; line-height:1.6; color:var(--arsenic); }
+    .cs-banner code { background:rgba(84,90,192,.12); color:var(--ol-violet); padding:1px 6px; border-radius:4px; font-size:11px; }
+    .cs-pending { color:var(--ol-orange-dk); font-style:italic; font-weight:500; }
+    .cs-vp { text-align:left !important; max-width:320px; white-space:normal !important; color:var(--arsenic); font-weight:500 !important; line-height:1.4; }
+
+    /* TABS */
+    .tabs { display:flex; gap:4px; margin-bottom:26px; border-bottom:1px solid var(--smoke); flex-wrap:wrap; }
+    .tab { padding:11px 20px; border:none; background:transparent; font-family:'Satoshi','Inter',sans-serif; font-size:13px; font-weight:700; color:var(--graphite); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:all .15s; letter-spacing:-.01em; display:flex; align-items:center; gap:7px; }
+    .tab:hover { color:var(--ol-indigo); }
+    .tab.active { color:var(--ol-indigo); border-bottom-color:var(--ol-orange); }
+    .tabpanel { animation:fadein .2s ease; }
+    @keyframes fadein { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:none} }
+
+    /* IMPORT */
+    .import-status { font-size:13px; line-height:1.7; margin-bottom:16px; color:var(--text); }
+    .import-status code { background:var(--cloud); color:var(--ol-violet); padding:1px 6px; border-radius:4px; font-size:11px; }
+    .import-ok { color:#15803d; font-weight:700; }
+    .import-err { color:var(--error); font-weight:600; }
+    .import-drop { display:flex; align-items:center; gap:20px; padding:34px 30px; border:2px dashed var(--steel); border-radius:18px; background:#fff; cursor:pointer; transition:all .15s; }
+    .import-drop:hover, .import-drop.drag { border-color:var(--ol-violet); background:rgba(84,90,192,.05); }
+    .import-ico { font-size:36px; line-height:1; }
+    .import-txt { font-size:14px; color:var(--text); }
+    .import-txt b { font-family:'Satoshi','Inter',sans-serif; }
+    .import-txt span { font-size:12px; color:var(--graphite); }
+    .import-actions { margin-top:16px; }
+    .import-help { margin-top:24px; font-size:12px; line-height:1.9; color:var(--arsenic); background:var(--cloud); border-radius:14px; padding:18px 20px; }
+    .import-help code { background:#fff; padding:1px 6px; border-radius:4px; font-size:11px; color:var(--ol-violet); }
+    .ad-sub td:first-child { padding-left:26px; font-weight:500; color:var(--graphite); }
 
     /* PIPEDRIVE */
     .pd-section { background:linear-gradient(135deg, var(--ol-indigo) 0%, var(--ol-violet-d2) 100%); border-radius:20px; padding:28px; margin-bottom:32px; color:#fff; position:relative; overflow:hidden; }
     .pd-section::before { content:''; position:absolute; top:-50%; right:-20%; width:400px; height:400px; background:radial-gradient(circle, rgba(239,119,56,.12) 0%, transparent 70%); pointer-events:none; }
-    .pd-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; position:relative; }
+    .pd-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; position:relative; gap:16px; flex-wrap:wrap; }
     .pd-title { font-family:'Satoshi','Inter',sans-serif; font-size:20px; font-weight:700; letter-spacing:-.01em; }
     .pd-sub { font-size:13px; color:rgba(255,255,255,.55); margin-bottom:20px; }
     .pd-pill { padding:6px 14px; background:rgba(239,119,56,.18); color:var(--ol-orange); border-radius:8px; font-size:12px; font-weight:600; border:1px solid rgba(239,119,56,.25); }
+    .pd-pill.live { background:rgba(22,163,74,.18); color:#86efac; border-color:rgba(22,163,74,.3); }
     .pd-bar { height:3px; background:linear-gradient(to right, var(--ol-orange), var(--ol-violet)); border-radius:2px; margin-bottom:22px; opacity:.6; }
     .pd-funnel { background:rgba(255,255,255,.05); border-radius:14px; padding:22px; margin-bottom:18px; position:relative; }
     .pd-funnel-title { font-family:'Satoshi','Inter',sans-serif; font-size:14px; font-weight:700; margin-bottom:18px; display:flex; justify-content:space-between; align-items:center; }
     .funnel-row { display:grid; grid-template-columns:100px 1fr 110px; gap:16px; align-items:center; margin-bottom:12px; }
     .funnel-lab { font-size:11px; letter-spacing:.5px; text-transform:uppercase; color:rgba(255,255,255,.6); font-weight:600; }
     .funnel-bar { height:36px; background:rgba(255,255,255,.06); border-radius:8px; position:relative; overflow:hidden; }
-    .funnel-fill { height:100%; display:flex; align-items:center; padding:0 14px; color:#fff; font-weight:700; font-size:13px; border-radius:8px; transition:width .5s ease; font-variant-numeric:tabular-nums; }
+    .funnel-fill { height:100%; display:flex; align-items:center; padding:0 14px; color:#fff; font-weight:700; font-size:13px; border-radius:8px; transition:width .5s ease; font-variant-numeric:tabular-nums; min-width:42px; }
     .funnel-side { font-size:12px; color:rgba(255,255,255,.65); text-align:right; }
     .funnel-side .badge { display:inline-block; padding:3px 10px; background:rgba(22,163,74,.22); color:#86efac; border-radius:6px; font-weight:600; }
     .funnel-side .badge.muted { background:rgba(255,255,255,.08); color:rgba(255,255,255,.55); }
+
+    .pd-kpis { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; margin-bottom:18px; }
+    @media (max-width:900px){ .pd-kpis { grid-template-columns:repeat(3,1fr); } }
+    .pd-k { background:rgba(255,255,255,.05); border-radius:12px; padding:14px 16px; }
+    .pd-k .l { font-size:10px; letter-spacing:.5px; text-transform:uppercase; color:rgba(255,255,255,.5); font-weight:600; margin-bottom:6px; }
+    .pd-k .v { font-family:'Satoshi','Inter',sans-serif; font-size:21px; font-weight:700; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
+    .pd-k .v.na { color:rgba(255,255,255,.28); font-style:italic; font-size:16px; }
 
     .pd-table { background:rgba(255,255,255,.04); border-radius:14px; padding:20px; overflow-x:auto; position:relative; }
     .pd-table table { color:#fff; }
@@ -184,6 +273,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .pd-table tbody tr:hover:not(.tr) { background:rgba(255,255,255,.04); }
     .pd-table .tr td { background:rgba(255,255,255,.05); border-top-color:rgba(255,255,255,.12); }
     .pd-na { color:rgba(255,255,255,.28); font-style:italic; font-weight:400; }
+    .pd-help { font-size:11px; color:rgba(255,255,255,.45); margin-top:14px; line-height:1.6; position:relative; }
+    .pd-help code { background:rgba(255,255,255,.1); padding:1px 6px; border-radius:4px; font-size:10.5px; }
 
     /* LOADING */
     .loading { text-align:center; padding:80px 20px; color:var(--graphite); }
@@ -194,7 +285,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* FOOTER */
     .footer { text-align:center; font-size:11px; color:var(--graphite); padding:18px 40px; border-top:1px solid var(--border-soft); font-weight:500; }
     .footer .dot { color:var(--ol-orange); }
+
+    /* RESPONSIVE */
+    @media (max-width:1180px){
+      .krow { grid-template-columns:repeat(3,1fr); }
+      .cgrid, .cgrid2 { grid-template-columns:1fr; }
+      .camp-hdr { grid-template-columns:2fr repeat(3,1fr) auto; }
+      .camp-kpi.hide-md { display:none; }
+    }
+    @media (max-width:760px){
+      .hdr, .flt, .main, .footer { padding-left:18px; padding-right:18px; }
+      .krow { grid-template-columns:repeat(2,1fr); }
+      .hl-grid, .pd-kpis { grid-template-columns:1fr; }
+      .camp-hdr { grid-template-columns:1fr 1fr; gap:12px; }
+      .camp-name { grid-column:1 / -1; }
+      .camp-chev { display:none; }
+      .camp-kpi.hide-sm { display:none; }
+      .flt { gap:10px; }
+      .fsep { display:none; }
+      .hdr-r { width:100%; justify-content:space-between; }
+    }
+
+    /* PRINT */
+    @media print {
+      @page { margin:14mm; }
+      body { background:#fff; font-size:11px; }
+      .flt, .hbtns, .live-badge, .slabel-edit, .roas-box, .camp-chev, .seg { display:none !important; }
+      .hdr { background:var(--ol-indigo) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .pd-section, .hl, .kcard, .cc, .tcard, .camp, .rp { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+      .main { padding:18px 0; max-width:100%; }
+      .cc, .tcard, .camp, .pd-section, .hl { break-inside:avoid; box-shadow:none; }
+      .camp-body { display:block !important; }
+      .cwrap { height:200px; }
+    }
   </style>
+
 <!-- Axeptio Cookie Consent -->
 <script>
 window.axeptioSettings = {
@@ -226,9 +351,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hdiv"></div>
     <div class="hdr-title">Dashboard Meta Ads</div>
   </div>
-  <div class="live-badge">
-    <div class="live-dot"></div>
-    <span>Mis à jour le <span id="upd"></span></span>
+  <div class="hdr-r">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      <span>Données à jour au <span id="upd">…</span></span>
+    </div>
+    <div class="hbtns">
+      <button class="hbtn" onclick="exportCSV()" title="Exporter le tableau mensuel en CSV">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        CSV
+      </button>
+      <button class="hbtn" onclick="window.print()" title="Imprimer / exporter en PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        PDF
+      </button>
+    </div>
   </div>
 </div>
 
@@ -236,99 +373,142 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="flabel">Période</span>
   <div class="pgrp">
     <button class="pbtn" onclick="go('7d',this)">7 jours</button>
-    <button class="pbtn" onclick="go('30d',this)">30 jours</button>
     <button class="pbtn" onclick="go('month',this)">Ce mois</button>
     <button class="pbtn active" onclick="go('all',this)">Depuis le début</button>
   </div>
-  <span class="fsep">|</span>
-  <div class="drange">
-    <input type="date" id="dfrom" class="dinput">
-    <span style="color:var(--muted);font-size:11px">→</span>
-    <input type="date" id="dto" class="dinput">
-    <button class="pbtn" onclick="applyCustom()">Appliquer</button>
-  </div>
+  <input type="hidden" id="dfrom"><input type="hidden" id="dto">
   <span class="fsep">|</span>
   <span class="flabel">Campagne</span>
   <select id="camp-filter" class="csel" onchange="rerender()">
     <option value="">Toutes</option>
   </select>
+  <span class="fsep">|</span>
+  <label class="cmp-toggle"><input type="checkbox" id="cmp-toggle" checked onchange="rerender()"> Comparer à la période précédente</label>
 </div>
 
 <div id="content" class="main">
   <div class="loading"><span class="spinner"></span> Chargement des données depuis Google Sheets…</div>
 </div>
 
-<div class="footer">One Learn <span class="dot">·</span> Dashboard Meta Ads <span class="dot">·</span> Source : Google Sheets (live)</div>
+<div class="footer">One Learn <span class="dot">·</span> Dashboard Meta Ads <span class="dot">·</span> Source : Google Sheets (live, MAJ 1×/jour)</div>
 
 <script>
 // ─── CONFIG ──────────────────────────────────────────────────────
-const SHEET_ID = '1Djqb9kAgEERHhbmtJXEc64rX7D_251diNJXpTXC1sLI';
-const SHEET_TAB = 'Meta Ads';
-const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(SHEET_TAB)}`;
+const SHEET_ID  = '1Djqb9kAgEERHhbmtJXEc64rX7D_251diNJXpTXC1sLI';
+const META_TAB  = 'Meta Ads';
+const PD_TAB    = 'Pipedrive';   // onglet à créer dans le même sheet
+const csvUrl = tab => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
 
-// Mots-clés pour identifier les campagnes META à inclure
-const META_KEYWORDS = ['communication', 'design', 'architecture', 'impression', '3d', 'autocad', 'blender', 'meta'];
+// ─── HYPOTHÈSES ROAS (fallback quand pas de CA réel Pipedrive) ───
+const DEFAULTS = { conv: 0.18, aov: 2054 };   // 18% Lead→Vente · panier 2054€ HT
+let SETTINGS = loadSettings();
+function loadSettings(){
+  try { const s = JSON.parse(localStorage.getItem('ol_roas')||'null'); if(s && s.conv>0 && s.aov>0) return s; } catch(e){}
+  return { ...DEFAULTS };
+}
+function saveSettings(){ try{ localStorage.setItem('ol_roas', JSON.stringify(SETTINGS)); }catch(e){} }
+const revPerLead = () => SETTINGS.conv * SETTINGS.aov;
 
-// ─── HYPOTHÈSES ROAS ─────────────────────────────────────────────
-// Basé sur les données historiques Pipedrive (ajuster ici quand on a la donnée réelle)
-const CONV_LEAD_TO_SALE = 0.18;     // Taux de conversion Lead → Vente (18%)
-const AOV_EUR = 2054;                // Panier moyen € HT
-const REV_PER_LEAD = CONV_LEAD_TO_SALE * AOV_EUR;  // ≈ 369.72€ par lead
-
-// Palette charte One Learn (orange, violet, indigo + déclinaisons)
+// Palette charte One Learn
 const PAL = ['#EF7738','#545AC0','#22244D','#E66A40','#43489A','#CD5025','#9DA2B3','#323673','#F4A261','#6E7180'];
+// Palette dédiée aux Ad Sets — teintes distinctes pour les différencier d'un coup d'œil
+const ADSET_PAL = ['#545AC0','#EF7738','#16a34a','#0EA5E9','#A855F7','#E11D48','#CA8A04','#0D9488','#DB2777','#475569'];
+function adsetColors(rows){
+  const names = [...new Set(rows.map(r => r.adset || '(sans nom)'))].sort();
+  const m = {}; names.forEach((n,i) => m[n] = ADSET_PAL[i % ADSET_PAL.length]); return m;
+}
+
+// ─── PROPOSITIONS DE VALEUR PAR CRÉATIF ──────────────────────────
+// À REMPLIR avec la liste de Juliette. Format :
+//   "NomCréatif (= Publicité Meta)": { vp: "la promesse affichée dans la pub", tag: "Catégorie de valeur" }
+const CREATIVE_VP = {
+  // "Archi_V3":        { vp:"Deviens architecte 3D en 3 mois", tag:"Rapidité" },
+  // "Comm-Design_V2":  { vp:"Formation 100% financée CPF",     tag:"Financement" },
+};
+const TAG_PAL = ['#EF7738','#545AC0','#16a34a','#0EA5E9','#A855F7','#E11D48','#CA8A04','#0D9488','#DB2777'];
+function tagColor(tag){
+  if(!tag) return '#9DA2B3';
+  let h=0; for(let i=0;i<tag.length;i++) h=(h*31+tag.charCodeAt(i))>>>0;
+  return TAG_PAL[h % TAG_PAL.length];
+}
 
 // ─── STATE ───────────────────────────────────────────────────────
-let RAW = [];        // tous les rows parsés
+let RAW = [];          // rows Meta Ads
+let PD_RAW = [];       // deals Pipedrive (affaires)
+let PD_LEADS_RAW = []; // prospects Pipedrive (leads CRM)
+let PD_AVAILABLE = false;
 let DATE_MIN, DATE_MAX;
 
-// ─── HELPERS ─────────────────────────────────────────────────────
-const fnum = n => new Intl.NumberFormat('fr-FR').format(Math.round(n));
-const feur = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const feur2 = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(n);
-const fpct = n => (n*100).toFixed(2)+'%';
-const fdate = d => d.toISOString().split('T')[0];
+// ─── PIPEDRIVE — données (export manuel du 3 juin 2026) ──────────
+// Pour rafraîchir : ré-exporter "deals" + "leads" depuis Pipedrive,
+// reparser et remplacer les deux tableaux ci-dessous (c = créé, w = date gain, a = montant, s = statut, u = utm_campaign, f = formation).
+const PD_DEALS_RAW = [{"c":"2026-05-12","w":"2026-05-19","a":3250,"s":"gagnée","u":"","f":"Dessinateur projeteur","ct":""},{"c":"2026-05-13","w":"","a":2600,"s":"en cours","u":"OL_Formation_architecture","f":"BIM","ct":""},{"c":"2026-05-15","w":"2026-05-20","a":2000,"s":"gagnée","u":"OL_Formation_comm_design","f":"Graphisme","ct":""},{"c":"2026-05-19","w":"","a":2500,"s":"en cours","u":"OL_Formation_architecture","f":"BIM","ct":""},{"c":"2026-05-19","w":"","a":1650,"s":"en cours","u":"OL_Formation_comm_design","f":"Canva","ct":""},{"c":"2026-05-22","w":"2026-05-22","a":1100,"s":"gagnée","u":"OL_Formation_architecture","f":"BIM","ct":""},{"c":"2026-05-26","w":"","a":1650,"s":"en cours","u":"OL_Formation_comm_design","f":"Graphisme","ct":""},{"c":"2026-05-29","w":"","a":1650,"s":"en cours","u":"OL_Formation_architecture","f":"Autocad","ct":"Archi_V6"},{"c":"2026-06-01","w":"","a":0,"s":"en cours","u":"OL_Formation_Autocad","f":"Autocad","ct":"Autocad_V1"},{"c":"2026-06-01","w":"2026-06-01","a":1100,"s":"gagnée","u":"nc","f":"Blender","ct":""},{"c":"2026-06-01","w":"","a":1100,"s":"en cours","u":"OL_Formation_reseaux_sociaux","f":"Canva","ct":"RS_V6"},{"c":"2026-06-02","w":"","a":1650,"s":"en cours","u":"OL_Formation_architecture","f":"Sketchup","ct":"Archi_V3"},{"c":"2026-06-02","w":"","a":1100,"s":"en cours","u":"OL_Formation_architecture","f":"Autocad","ct":""},{"c":"2026-06-02","w":"","a":0,"s":"en cours","u":"nc","f":"Graphisme","ct":"Comm-Design_V2"}];
+const PD_LEADS_DATA = [{"c":"2026-06-03","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-06-02","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-06-02","u":"OL_Formation_canva","f":"Canva"},{"c":"2026-06-02","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-06-02","u":"OL_Formation_canva","f":"Canva"},{"c":"2026-06-01","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-06-01","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-06-01","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-06-01","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-06-01","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-31","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-05-31","u":"OL_Formation_canva","f":"Canva"},{"c":"2026-05-31","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-30","u":"OL_Formation_reseaux_sociaux","f":"Canva"},{"c":"2026-05-30","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-29","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-28","u":"OL_Formation_impression_3d","f":"Impression 3D"},{"c":"2026-05-28","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-28","u":"OL_Formation_reseaux_sociaux","f":"Canva"},{"c":"2026-05-28","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-27","u":"OL_Formation_impression_3d","f":"Impression 3D"},{"c":"2026-05-27","u":"OL_Formation_Blender","f":"Blender"},{"c":"2026-05-25","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-25","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-25","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-25","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-25","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-24","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-21","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-20","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-20","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-16","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-16","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-15","u":"OL_Formation_comm_design","f":""},{"c":"2026-05-15","u":"OL_Formation_architecture","f":""},{"c":"2026-05-12","u":"","f":""},{"c":"2026-05-11","u":"OL_Formation_comm_design","f":"Canva"},{"c":"2026-05-09","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-08","u":"OL_Formation_architecture","f":"V-ray"},{"c":"2026-05-08","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-07","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-05","u":"OL_Formation_architecture","f":"BIM"},{"c":"2026-05-05","u":"OL_Formation_reseaux-sociaux","f":"Canva"}];
 
-// Excel/Sheets serial date → JS Date
-function serialToDate(s) {
-  return new Date(Math.round((s - 25569) * 86400) * 1000);
+// utm_campaign / formation Pipedrive → campagne Meta (règles ajustables)
+function mapPdCamp(u, f){
+  const s = ((u||'') + ' ' + (f||'')).toLowerCase();
+  if (/architect|autocad|sketchup|\bbim\b|v-?ray|dessinateur|projeteur/.test(s)) return 'Campagne Architecture';
+  if (/comm[_-]?design|canva|graphis|reseaux|réseaux|social|figma|design/.test(s)) return 'Campagne Design & Communication';
+  if (/blender|impression|3d|mod[ée]lis/.test(s)) return 'Campagne Modélisation 3D';
+  return null;
 }
 
-// Parse number with comma decimal (FR format)
-function pnum(v) {
+// ─── HELPERS ─────────────────────────────────────────────────────
+const fnum  = n => new Intl.NumberFormat('fr-FR').format(Math.round(n));
+const feur  = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const feur2 = n => new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:2}).format(n);
+const fpct  = n => (n*100).toFixed(2)+'%';
+const fdate = d => d.toISOString().split('T')[0];
+const esc   = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function serialToDate(s){ return new Date(Math.round((s - 25569) * 86400) * 1000); }
+
+function pnum(v){
   if (v === null || v === undefined || v === '') return 0;
   if (typeof v === 'number') return v;
-  return parseFloat(String(v).replace(/\s/g,'').replace(',','.')) || 0;
+  return parseFloat(String(v).replace(/\s/g,'').replace(/ /g,'').replace(',','.')) || 0;
 }
 
-// Format month label
-function ymKey(d) { return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
-function ymLabel(k) {
+// Cellule date → Date (serial Sheets, ISO, ou JJ/MM/AAAA)
+function parseDateCell(v){
+  if (v === null || v === undefined) return null;
+  if (typeof v === 'number') return v > 1000 ? serialToDate(v) : null;
+  const s = String(v).trim();
+  if (s === '') return null;
+  const mfr = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+  if (mfr){ let [,dd,mm,yy]=mfr; yy = yy.length===2 ? '20'+yy : yy; const d=new Date(+yy,+mm-1,+dd); return isNaN(d)?null:d; }
+  if (/^\d+([.,]\d+)?$/.test(s)){ const n=pnum(s); if(n>20000 && n<80000) return serialToDate(n); }
+  const d = new Date(s);
+  return isNaN(d) ? null : d;
+}
+
+function ymKey(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0'); }
+function ymLabel(k){
   const [y,m] = k.split('-');
   return ['Janv','Fév','Mars','Avr','Mai','Juin','Juil','Août','Sept','Oct','Nov','Déc'][+m-1] + ' ' + y;
 }
 
 function rpill(r, type='cpl'){
   if(r===0||r===null||isNaN(r)) return `<span class="rp rp-z">—</span>`;
-  if (type === 'cpl') {
-    // CPL: lower is better. <30€ great, 30-60 ok, >60 bad
-    const cls = r<=30?'rp-hi':r<=60?'rp-md':'rp-lo';
-    return `<span class="rp ${cls}">${feur(r)}</span>`;
-  }
-  if (type === 'ctr') {
-    const cls = r>=0.015?'rp-hi':r>=0.008?'rp-md':'rp-lo';
-    return `<span class="rp ${cls}">${fpct(r)}</span>`;
-  }
+  if (type === 'cpl'){ const cls = r<=30?'rp-hi':r<=60?'rp-md':'rp-lo'; return `<span class="rp ${cls}">${feur(r)}</span>`; }
+  if (type === 'ctr'){ const cls = r>=0.015?'rp-hi':r>=0.008?'rp-md':'rp-lo'; return `<span class="rp ${cls}">${fpct(r)}</span>`; }
   return `<span class="rp">${r}</span>`;
+}
+function rpillRoas(r){
+  if(!r||isNaN(r)) return `<span class="rp rp-z">—</span>`;
+  const cls = r>=2?'rp-hi':r>=1?'rp-md':'rp-lo';
+  return `<span class="rp ${cls}">${r.toFixed(2)}×</span>`;
 }
 
 // ─── DATA LOADING ────────────────────────────────────────────────
-async function loadData() {
+async function loadData(){
   try {
-    const res = await fetch(CSV_URL);
+    // Meta Ads (obligatoire)
+    const res = await fetch(csvUrl(META_TAB));
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const csv = await res.text();
-    const parsed = Papa.parse(csv, { header: true, skipEmptyLines: true });
+    const parsed = Papa.parse(csv, { header:true, skipEmptyLines:true });
 
     RAW = parsed.data.map(r => {
       const dateRaw = r['Date'];
@@ -348,42 +528,295 @@ async function loadData() {
       };
     }).filter(r => r.date && !isNaN(r.date) && r.campaign);
 
-    // Date range
     const dates = RAW.map(r => r.date.getTime());
     DATE_MIN = new Date(Math.min(...dates));
     DATE_MAX = new Date(Math.max(...dates));
 
-    // Populate campaign filter
+    // Pipedrive (optionnel — détection auto)
+    await loadPipedrive();
+
+    // Étendre la plage de dates pour englober aussi les dates Pipedrive
+    recomputeDateBounds();
+
+    // Filtre campagnes
     const camps = [...new Set(RAW.map(r => r.campaign))].sort();
     const sel = document.getElementById('camp-filter');
-    camps.forEach(c => {
-      const o = document.createElement('option');
-      o.value = c; o.textContent = c;
-      sel.appendChild(o);
-    });
+    camps.forEach(c => { const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
 
-    // Init date inputs
     document.getElementById('dfrom').value = fdate(DATE_MIN);
-    document.getElementById('dto').value = fdate(DATE_MAX);
+    document.getElementById('dto').value   = fdate(DATE_MAX);
+    const metaMax = new Date(Math.max(...RAW.map(r => r.date.getTime())));
+    document.getElementById('upd').textContent = metaMax.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
 
-    // Rebuild content shell
     renderShell();
     rerender();
-
-  } catch (e) {
+    updateImportStatus([], null);
+  } catch (e){
     document.getElementById('content').innerHTML =
-      `<div class="error"><b>Erreur de chargement.</b><br>${e.message}<br><br>Vérifie que le sheet est partagé en "Anyone with the link" et que l'onglet s'appelle bien "${SHEET_TAB}".</div>`;
+      `<div class="error"><b>Erreur de chargement.</b><br>${esc(e.message)}<br><br>Vérifie que le sheet est partagé en « Anyone with the link » et que l'onglet s'appelle bien « ${META_TAB} ».</div>`;
   }
 }
 
-// ─── RENDER SHELL ────────────────────────────────────────────────
-function renderShell() {
+// Source des données Pipedrive : import navigateur (localStorage) sinon données embarquées
+function getPdSource(){
+  try { const s = JSON.parse(localStorage.getItem('ol_pd_import') || 'null'); if (s && Array.isArray(s.deals) && Array.isArray(s.leads)) return s; } catch(e){}
+  return null;
+}
+function loadPipedrive(){
+  try {
+    const src = getPdSource();
+    const deals = src ? src.deals : PD_DEALS_RAW;
+    const leads = src ? src.leads : PD_LEADS_DATA;
+    PD_RAW = deals.map(d => ({
+      created: parseDateCell(d.c),
+      won:     parseDateCell(d.w),
+      status:  String(d.s || '').toLowerCase(),
+      amount:  pnum(d.a),
+      campaign: mapPdCamp(d.u, d.f),
+      content: String(d.ct || '').trim()   // utm_content = nom du créatif
+    })).filter(d => d.created);
+    PD_LEADS_RAW = leads.map(l => ({
+      created: parseDateCell(l.c),
+      campaign: mapPdCamp(l.u, l.f),
+      content: String(l.ct || '').trim()
+    })).filter(l => l.created);
+    PD_AVAILABLE = PD_RAW.length > 0 || PD_LEADS_RAW.length > 0;
+  } catch (e){ PD_AVAILABLE = false; }
+}
+
+// Recalcule la plage de dates (Meta + Pipedrive)
+function recomputeDateBounds(){
+  if (!RAW.length) return;
+  const meta = RAW.map(r => r.date.getTime());
+  let mn = Math.min(...meta), mx = Math.max(...meta);
+  const pd = [...PD_RAW.flatMap(d => [d.created, d.won]), ...PD_LEADS_RAW.map(l => l.created)].filter(Boolean).map(d => d.getTime());
+  if (pd.length){ mn = Math.min(mn, ...pd); mx = Math.max(mx, ...pd); }
+  DATE_MIN = new Date(mn); DATE_MAX = new Date(mx);
+}
+
+// ─── IMPORT CSV PIPEDRIVE (navigateur) ───────────────────────────
+function pdPick(row, ...subs){
+  const keys = Object.keys(row);
+  for (const s of subs){ const k = keys.find(k => k.toLowerCase().includes(s.toLowerCase())); if (k && row[k] != null && row[k] !== '') return row[k]; }
+  return '';
+}
+const _dpart = v => String(v || '').trim().split(' ')[0];
+
+function parsePipedriveCSV(text){
+  const parsed = Papa.parse(text, { header:true, skipEmptyLines:true });
+  const fields = (parsed.meta.fields || []).join(' | ').toLowerCase();
+  const isDeals = fields.includes('affaire') || fields.includes('statut') || fields.includes('date de gain');
+  if (isDeals){
+    const rows = parsed.data.map(r => ({
+      c:  _dpart(pdPick(r, 'Affaire créée', 'créée', 'date de création')),
+      w:  _dpart(pdPick(r, 'Date de gain')),
+      a:  pnum(pdPick(r, 'Valeur', 'Montant')),
+      s:  String(pdPick(r, 'Statut')).toLowerCase(),
+      u:  String(pdPick(r, 'utm_campaign')).trim(),
+      f:  String(pdPick(r, 'Formation Principale', 'Formation')).trim(),
+      ct: String(pdPick(r, 'utm_content')).trim()
+    })).filter(d => d.c);
+    return { type:'deals', rows };
+  }
+  const rows = parsed.data.map(r => ({
+    c:  _dpart(pdPick(r, 'Prospect créé', 'prospect cr', 'date de création')),
+    u:  String(pdPick(r, 'utm_campaign')).trim(),
+    f:  String(pdPick(r, 'Formation Principale', 'Formation')).trim(),
+    ct: String(pdPick(r, 'utm_content')).trim()
+  })).filter(l => l.c);
+  return { type:'leads', rows };
+}
+
+function handleImportFiles(files){
+  if (!files || !files.length) return;
+  const got = {}; const errs = []; let pending = files.length;
+  [...files].forEach(f => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      try { const res = parsePipedriveCSV(e.target.result); if (res.rows.length) got[res.type] = res.rows; else errs.push(f.name + ' : aucune ligne reconnue'); }
+      catch(err){ errs.push(f.name + ' : ' + err.message); }
+      if (--pending === 0) finalizeImport(got, errs);
+    };
+    reader.onerror = () => { errs.push(f.name + ' : lecture impossible'); if (--pending === 0) finalizeImport(got, errs); };
+    reader.readAsText(f, 'UTF-8');
+  });
+}
+
+function finalizeImport(got, errs){
+  const existing = getPdSource() || {};
+  const deals = got.deals || existing.deals || PD_DEALS_RAW;
+  const leads = got.leads || existing.leads || PD_LEADS_DATA;
+  let ts = ''; try { ts = new Date().toISOString(); } catch(e){}
+  try { localStorage.setItem('ol_pd_import', JSON.stringify({ deals, leads, ts })); } catch(e){ errs.push('Sauvegarde navigateur impossible (quota)'); }
+  loadPipedrive();
+  recomputeDateBounds();
+  const df = document.getElementById('dfrom'), dt = document.getElementById('dto');
+  if (df && dt && DATE_MIN && DATE_MAX){ df.value = fdate(DATE_MIN); dt.value = fdate(DATE_MAX); }
+  rerender();
+  updateImportStatus(errs, got);
+}
+
+function resetPdImport(){
+  try { localStorage.removeItem('ol_pd_import'); } catch(e){}
+  loadPipedrive();
+  recomputeDateBounds();
+  const df = document.getElementById('dfrom'), dt = document.getElementById('dto');
+  if (df && dt && DATE_MIN && DATE_MAX){ df.value = fdate(DATE_MIN); dt.value = fdate(DATE_MAX); }
+  rerender();
+  updateImportStatus([], null);
+}
+
+function updateImportStatus(errs, got){
+  const el = document.getElementById('import-status'); if (!el) return;
+  const src = getPdSource();
+  const tagged = PD_RAW.filter(d => d.content).length;
+  let html = '';
+  if (src){
+    let ts = ''; try { ts = src.ts ? new Date(src.ts).toLocaleString('fr-FR') : ''; } catch(e){}
+    html += `<span class="import-ok">✅ Données importées actives</span> — <b>${PD_RAW.length}</b> deals (${tagged} tagués <code>utm_content</code>) · <b>${PD_LEADS_RAW.length}</b> prospects${ts ? ` · importé le ${ts}` : ''}.`;
+  } else {
+    html += `Source actuelle : <b>données par défaut</b> (${PD_RAW.length} deals, ${PD_LEADS_RAW.length} prospects). Importe tes CSV pour les remplacer.`;
+  }
+  if (got){ const p = []; if (got.deals) p.push(`${got.deals.length} deals`); if (got.leads) p.push(`${got.leads.length} prospects`); if (p.length) html += `<br><span style="color:var(--graphite)">Dernier import : ${p.join(' + ')} chargé(s) ✓</span>`; }
+  if (errs && errs.length) html += `<br><span class="import-err">⚠️ ${errs.join(' ; ')}</span>`;
+  el.innerHTML = html;
+}
+
+// ─── AGGREGATION ─────────────────────────────────────────────────
+function filterRows(fromStr, toStr, campaign){
+  const from = new Date(fromStr), to = new Date(toStr);
+  to.setHours(23,59,59,999);
+  return RAW.filter(r => {
+    if (r.date < from || r.date > to) return false;
+    if (campaign && r.campaign !== campaign) return false;
+    return true;
+  });
+}
+
+function aggregate(rows){
+  const a = { spend:0, leads:0, impressions:0, reach:0, clicks:0 };
+  rows.forEach(r => { a.spend+=r.spend; a.leads+=r.leads; a.impressions+=r.impressions; a.reach+=r.reach; a.clicks+=r.clicks; });
+  a.cpl = a.leads > 0 ? a.spend / a.leads : null;
+  a.ctr = a.impressions > 0 ? a.clicks / a.impressions : 0;
+  a.cpc = a.clicks > 0 ? a.spend / a.clicks : 0;
+  a.cpm = a.impressions > 0 ? a.spend / a.impressions * 1000 : 0;
+  // Estimation (fallback)
+  a.revenue = a.leads * revPerLead();
+  a.roas = a.spend > 0 ? a.revenue / a.spend : 0;
+  a.salesEst = a.leads * SETTINGS.conv;
+  return a;
+}
+
+// Pipedrive agrégé sur une plage (affaires = par date création, gagnés/CA = par date gain)
+function pdAggregate(fromStr, toStr, campaign){
+  const from = new Date(fromStr), to = new Date(toStr); to.setHours(23,59,59,999);
+  const inRange = d => d && d >= from && d <= to;
+  const campOk  = c => !campaign || c === campaign;
+  let prospects=0, affaires=0, gagnes=0, ca=0;
+  if (PD_AVAILABLE){
+    PD_LEADS_RAW.forEach(l => { if (campOk(l.campaign) && inRange(l.created)) prospects++; });
+    PD_RAW.forEach(d => {
+      if (!campOk(d.campaign)) return;
+      if (inRange(d.created)) affaires++;
+      if (d.status.indexOf('gagn') === 0 && inRange(d.won)) { gagnes++; ca += d.amount; }
+    });
+  }
+  return { prospects, affaires, gagnes, ca };
+}
+// Pipedrive par mois (clé YYYY-MM) — affaires par mois de création, gagnés/CA par mois de gain
+function pdByMonth(fromStr, toStr, campaign){
+  const from = new Date(fromStr), to = new Date(toStr); to.setHours(23,59,59,999);
+  const inRange = d => d && d >= from && d <= to;
+  const campOk  = c => !campaign || c === campaign;
+  const m = {};
+  const bucket = k => (m[k] = m[k] || { affaires:0, gagnes:0, ca:0 });
+  if (PD_AVAILABLE) PD_RAW.forEach(d => {
+    if (!campOk(d.campaign)) return;
+    if (inRange(d.created)) bucket(ymKey(d.created)).affaires++;
+    if (d.status.indexOf('gagn') === 0 && inRange(d.won)) { const b=bucket(ymKey(d.won)); b.gagnes++; b.ca += d.amount; }
+  });
+  return m;
+}
+
+function groupBy(rows, key){
+  const map = new Map();
+  rows.forEach(r => { const k = typeof key==='function' ? key(r) : r[key]; if(!map.has(k)) map.set(k,[]); map.get(k).push(r); });
+  return map;
+}
+
+// ─── COMPARISON ──────────────────────────────────────────────────
+function prevPeriod(fromStr, toStr){
+  const from = new Date(fromStr), to = new Date(toStr);
+  const len = Math.round((to - from)/86400000) + 1;
+  const pTo = new Date(from); pTo.setDate(pTo.getDate()-1);
+  const pFrom = new Date(pTo); pFrom.setDate(pFrom.getDate()-len+1);
+  return [fdate(pFrom), fdate(pTo)];
+}
+function delta(cur, prev, lowerBetter){
+  if (prev === 0 || prev == null || isNaN(prev) || !isFinite(prev))
+    return `<span class="kdelta fl">·</span> <span class="det">pas d'historique</span>`;
+  const d = (cur - prev) / Math.abs(prev);
+  const flat = Math.abs(d) < 0.005;
+  const up = d >= 0;
+  const good = lowerBetter ? !up : up;
+  const arrow = flat ? '→' : up ? '▲' : '▼';
+  const cls = flat ? 'fl' : good ? 'up' : 'dn';
+  return `<span class="kdelta ${cls}">${arrow} ${Math.abs(d*100).toFixed(0)}%</span> <span class="det">vs préc.</span>`;
+}
+
+// ─── KPI ANIM ────────────────────────────────────────────────────
+function animKPI(id, newVal, fmt){
+  const el = document.getElementById(id); if(!el) return;
+  const prev = parseFloat(el.dataset.raw) || 0;
+  el.dataset.raw = newVal;
+  const dur=450, t0=performance.now();
+  function step(now){ const p=Math.min((now-t0)/dur,1); const e=1-Math.pow(1-p,3); el.textContent=fmt(prev+(newVal-prev)*e); if(p<1) requestAnimationFrame(step); else el.textContent=fmt(newVal); }
+  requestAnimationFrame(step);
+}
+function setSub(id, html){ const el=document.getElementById(id); if(el) el.innerHTML = html; }
+
+// ─── CHARTS ──────────────────────────────────────────────────────
+let CH = {};
+function killCharts(){ Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}}); CH={}; }
+
+// ─── SHELL ───────────────────────────────────────────────────────
+function renderShell(){
+  const livePill = PD_AVAILABLE
+    ? `<span class="slabel-pill live">ROAS réel · CA Pipedrive</span>`
+    : `<span class="slabel-pill na" title="Hypothèses tunables">ROAS estimé · <span id="roas-hint"></span></span>`;
   document.getElementById('content').innerHTML = `
-    <div class="slabel">Vue d'ensemble <span class="slabel-pill">Meta Ads · Live</span> <span class="slabel-pill na" title="Hypothèses tunables dans le code">ROAS estimé · ${(CONV_LEAD_TO_SALE*100).toFixed(0)}% × ${AOV_EUR}€</span></div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('acq',this)">📊 Vue globale</button>
+      <button class="tab" onclick="switchTab('import',this)">📥 Import Pipedrive</button>
+    </div>
+
+    <div class="tabpanel" id="tab-acq">
+    <div class="slabel">
+      Vue d'ensemble <span class="slabel-pill">Meta Ads · Live</span> ${livePill}
+      <span class="slabel-spacer"></span>
+      <button class="slabel-edit" onclick="toggleRoasBox()">⚙ Hypothèses ROAS</button>
+    </div>
+
+    <div class="roas-box" id="roas-box">
+      <div class="roas-fld">
+        <label>Taux conv. Lead → Vente</label>
+        <div class="ipt"><input type="number" id="set-conv" step="0.5" min="0" max="100"><span class="unit">%</span></div>
+      </div>
+      <div class="roas-fld">
+        <label>Panier moyen (HT)</label>
+        <div class="ipt"><input type="number" id="set-aov" step="50" min="0"><span class="unit">€</span></div>
+      </div>
+      <div class="roas-note" id="roas-note"></div>
+      <div style="display:flex;gap:8px;margin-left:auto">
+        <button class="roas-btn ghost" onclick="resetRoas()">Réinit.</button>
+        <button class="roas-btn" onclick="applyRoas()">Appliquer</button>
+      </div>
+    </div>
+
     <div class="krow">
       <div class="kcard hi"><div class="klabel">Dépenses</div><div class="kval" id="k-spend">—</div><div class="ksub" id="k-spend-s"></div></div>
-      <div class="kcard hi"><div class="klabel">Revenus est.</div><div class="kval" id="k-rev">—</div><div class="ksub" id="k-rev-s"></div></div>
-      <div class="kcard hi"><div class="klabel">ROAS est.</div><div class="kval" id="k-roas">—</div><div class="ksub" id="k-roas-s"></div></div>
+      <div class="kcard hi"><div class="klabel" id="k-rev-l">Revenus est.</div><div class="kval" id="k-rev">—</div><div class="ksub" id="k-rev-s"></div></div>
+      <div class="kcard hi"><div class="klabel" id="k-roas-l">ROAS est.</div><div class="kval" id="k-roas">—</div><div class="ksub" id="k-roas-s"></div></div>
       <div class="kcard"><div class="klabel">Leads</div><div class="kval" id="k-leads">—</div><div class="ksub" id="k-leads-s"></div></div>
       <div class="kcard"><div class="klabel">CPL Moyen</div><div class="kval" id="k-cpl">—</div><div class="ksub" id="k-cpl-s"></div></div>
       <div class="kcard"><div class="klabel">CTR</div><div class="kval" id="k-ctr">—</div><div class="ksub" id="k-ctr-s"></div></div>
@@ -391,7 +824,7 @@ function renderShell() {
 
     <div class="slabel">Performances</div>
     <div class="cgrid">
-      <div class="cc"><div class="ctitle">Dépenses & Leads · Mensuel</div><div class="cwrap"><canvas id="cTrend"></canvas></div></div>
+      <div class="cc"><div class="ctitle">Dépenses, Leads &amp; CPL · Mensuel</div><div class="cwrap"><canvas id="cTrend"></canvas></div></div>
       <div class="cc"><div class="ctitle">CPL par Campagne</div><div class="cwrap"><canvas id="cCpl"></canvas></div></div>
     </div>
     <div class="cgrid2">
@@ -403,288 +836,284 @@ function renderShell() {
     <div class="tcard">
       <table>
         <thead><tr>
-          <th>Mois</th><th>Dépenses</th><th>Revenus est.</th><th>ROAS est.</th>
-          <th>Leads</th><th>CPL</th>
-          <th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th>
+          <th>Mois</th><th>Dépenses</th><th id="th-rev">Revenus est.</th><th id="th-roas">ROAS est.</th>
+          <th>Leads</th><th>CPL</th><th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th>
         </tr></thead>
         <tbody id="monthly-tbody"></tbody>
       </table>
     </div>
 
-    <div class="slabel">Par Campagne · Cliquer pour voir les créatifs</div>
+    <div class="slabel">Par Campagne · Cliquer pour voir Ad Sets &amp; créatifs</div>
     <div class="camp-grid" id="camp-grid"></div>
 
-    <div class="slabel">Pipeline Commercial <span class="slabel-pill na">Pipedrive · à connecter</span></div>
+    <div class="slabel">Pipeline Commercial <span class="slabel-pill ${PD_AVAILABLE?'live':'na'}" id="pd-status-pill">${PD_AVAILABLE?'Pipedrive · Live':'Pipedrive · à connecter'}</span></div>
     <div class="pd-section">
       <div class="pd-hdr">
         <div>
-          <div class="pd-title">Par mois</div>
-          <div class="pd-sub">Leads créés · Deals gagnés par date de gain</div>
+          <div class="pd-title">Du clic au client</div>
+          <div class="pd-sub">Leads Meta → Prospects CRM → Affaires → Deals gagnés · attribution Pipedrive par utm_campaign</div>
         </div>
-        <div class="pd-pill">Pipedrive (N/A)</div>
+        <div class="pd-pill ${PD_AVAILABLE?'live':''}" id="pd-pill">${PD_AVAILABLE?'Pipedrive (live)':'Pipedrive (N/A)'}</div>
       </div>
       <div class="pd-bar"></div>
+
+      <div class="pd-kpis" id="pd-kpis"></div>
 
       <div class="pd-funnel">
         <div class="pd-funnel-title">
           <span>Entonnoir de conversion</span>
-          <span style="font-size:11px;color:rgba(255,255,255,.6)">Lead → Gagné : <b style="color:#fff">N/A</b></span>
+          <span style="font-size:11px;color:rgba(255,255,255,.6)">Lead → Gagné : <b style="color:#fff" id="pd-conv-tot">—</b></span>
         </div>
         <div class="funnel-row">
           <div class="funnel-lab">Leads</div>
-          <div class="funnel-bar"><div class="funnel-fill" style="width:100%;background:linear-gradient(90deg,#545AC0,#43489A)" id="pd-leads-bar">—</div></div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:100%;background:linear-gradient(90deg,#545AC0,#43489A)" id="pd-f-leads">—</div></div>
           <div class="funnel-side">base</div>
         </div>
         <div class="funnel-row">
           <div class="funnel-lab">Affaires</div>
-          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#EF7738,#CD5025)">—</div></div>
-          <div class="funnel-side"><span class="badge muted">N/A</span></div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#EF7738,#CD5025)" id="pd-f-aff">—</div></div>
+          <div class="funnel-side" id="pd-side-aff"><span class="badge muted">N/A</span></div>
         </div>
         <div class="funnel-row">
           <div class="funnel-lab">Gagnés</div>
-          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#22c55e,#15803d)">—</div></div>
-          <div class="funnel-side"><span class="badge muted">N/A</span></div>
+          <div class="funnel-bar"><div class="funnel-fill" style="width:0%;background:linear-gradient(90deg,#22c55e,#15803d)" id="pd-f-won">—</div></div>
+          <div class="funnel-side" id="pd-side-won"><span class="badge muted">N/A</span></div>
         </div>
       </div>
 
       <div class="pd-table">
         <table>
           <thead><tr>
-            <th>Mois</th>
-            <th>Leads</th><th>Affaires</th><th>L→A</th>
-            <th>Gagnés</th><th>A→G</th><th>Conv. Totale</th>
+            <th>Mois</th><th>Leads</th><th>Affaires</th><th>L→A</th>
+            <th>Gagnés</th><th>A→G</th><th>Conv. Tot.</th>
             <th>CA</th><th>Panier</th><th>Coût HT</th>
             <th>CPL Réel</th><th>CAC Réel</th><th>Bénéfice</th><th>ROI</th>
           </tr></thead>
           <tbody id="pd-tbody"></tbody>
         </table>
       </div>
+      <div class="pd-help" id="pd-help"></div>
     </div>
+    </div><!-- /tab-acq -->
+
+    <div class="tabpanel" id="tab-import" style="display:none">
+    <div class="slabel">Import des données Pipedrive <span class="slabel-pill violet">CSV deals + leads</span></div>
+    <div id="import-status" class="import-status"></div>
+    <label class="import-drop" id="import-drop"
+      ondragover="event.preventDefault();this.classList.add('drag')"
+      ondragleave="this.classList.remove('drag')"
+      ondrop="event.preventDefault();this.classList.remove('drag');handleImportFiles(event.dataTransfer.files)">
+      <input type="file" accept=".csv,text/csv" multiple style="display:none" onchange="handleImportFiles(this.files)">
+      <div class="import-ico">📥</div>
+      <div class="import-txt"><b>Glisse tes 2 fichiers CSV ici</b> (deals + leads)<br><span>ou clique pour les choisir — détection automatique deals / leads</span></div>
+    </label>
+    <div class="import-actions">
+      <button class="roas-btn ghost" onclick="resetPdImport()">↺ Revenir aux données par défaut</button>
+    </div>
+    <div class="import-help">
+      <b>Comment ça marche</b><br>
+      1. Dans Pipedrive, exporte tes <b>deals</b> et tes <b>leads</b> en CSV (garde les colonnes <code>utm_content</code>, <code>utm_campaign</code>, <code>Valeur</code>, <code>Statut</code>, <code>Date de gain</code>, <code>Affaire créée</code> / <code>Prospect créé</code>, <code>Formation Principale</code>).<br>
+      2. Glisse les 2 fichiers ci-dessus (ou un seul) — le dashboard reconnaît tout seul deals vs leads et met à jour le <b>Pipeline</b> + la <b>Signature</b>.<br>
+      3. Les données importées restent dans ton navigateur (conservées après rechargement). « Revenir aux données par défaut » efface l'import.
+    </div>
+    </div><!-- /tab-import -->
   `;
 }
 
-// ─── FILTER + AGGREGATE ──────────────────────────────────────────
-function filterRows(fromStr, toStr, campaign) {
-  const from = new Date(fromStr), to = new Date(toStr);
-  to.setHours(23,59,59,999);
-  return RAW.filter(r => {
-    if (r.date < from || r.date > to) return false;
-    if (campaign && r.campaign !== campaign) return false;
-    return true;
-  });
+// ─── TAB SWITCH ──────────────────────────────────────────────────
+function switchTab(name, btn){
+  document.querySelectorAll('.tabs .tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  ['acq','import'].forEach(t => { const el = document.getElementById('tab-'+t); if (el) el.style.display = (t===name) ? 'block' : 'none'; });
+  if (name === 'acq') Object.values(CH).forEach(c => { try { c.resize(); } catch(e){} });
+  if (name === 'import') updateImportStatus(null, null);
 }
-
-function aggregate(rows) {
-  const a = { spend:0, leads:0, impressions:0, reach:0, clicks:0 };
-  rows.forEach(r => {
-    a.spend += r.spend; a.leads += r.leads;
-    a.impressions += r.impressions; a.reach += r.reach; a.clicks += r.clicks;
-  });
-  a.cpl = a.leads > 0 ? a.spend / a.leads : null;
-  a.ctr = a.impressions > 0 ? a.clicks / a.impressions : 0;
-  a.cpc = a.clicks > 0 ? a.spend / a.clicks : 0;
-  a.cpm = a.impressions > 0 ? a.spend / a.impressions * 1000 : 0;
-  // ROAS estimé : revenu estimé = leads × (conv × AOV)
-  a.revenue = a.leads * REV_PER_LEAD;
-  a.roas = a.spend > 0 ? a.revenue / a.spend : 0;
-  // Sales estimées
-  a.salesEst = a.leads * CONV_LEAD_TO_SALE;
-  return a;
-}
-
-function rpillRoas(r){
-  if(!r||isNaN(r)) return `<span class="rp rp-z">—</span>`;
-  const cls = r>=2?'rp-hi':r>=1?'rp-md':'rp-lo';
-  return `<span class="rp ${cls}">${r.toFixed(2)}×</span>`;
-}
-
-function groupBy(rows, key) {
-  const map = new Map();
-  rows.forEach(r => {
-    const k = typeof key === 'function' ? key(r) : r[key];
-    if (!map.has(k)) map.set(k, []);
-    map.get(k).push(r);
-  });
-  return map;
-}
-
-// ─── KPI ANIMATION ───────────────────────────────────────────────
-function animKPI(id, newVal, fmt){
-  const el = document.getElementById(id);
-  const prev = parseFloat(el.dataset.raw) || 0;
-  el.dataset.raw = newVal;
-  const dur = 450, t0 = performance.now();
-  function step(now){
-    const p = Math.min((now-t0)/dur,1);
-    const e = 1-Math.pow(1-p,3);
-    const v = prev + (newVal-prev)*e;
-    el.textContent = fmt(v);
-    if(p<1) requestAnimationFrame(step);
-    else el.textContent = fmt(newVal);
-  }
-  requestAnimationFrame(step);
-}
-function setS(id,v,cls){ const el=document.getElementById(id); if(el){ el.textContent=v; el.className='ksub '+(cls||''); } }
-
-// ─── CHARTS ──────────────────────────────────────────────────────
-let CH = {};
-function killCharts(){ Object.values(CH).forEach(c=>{try{c.destroy();}catch(e){}}); CH={}; }
 
 // ─── MAIN RENDER ─────────────────────────────────────────────────
-function rerender() {
+function rerender(){
   const fromStr = document.getElementById('dfrom').value;
-  const toStr = document.getElementById('dto').value;
+  const toStr   = document.getElementById('dto').value;
   const campSel = document.getElementById('camp-filter').value;
+  const cmp     = document.getElementById('cmp-toggle').checked;
 
   const rows = filterRows(fromStr, toStr, campSel);
-  const agg = aggregate(rows);
+  const agg  = aggregate(rows);
+
+  // Pipedrive sur la période → ROAS réel si CA dispo
+  const pd = pdAggregate(fromStr, toStr, campSel);
+  const realMode = PD_AVAILABLE && pd.ca > 0;
+  const revenue = realMode ? pd.ca : agg.revenue;
+  const roas = agg.spend > 0 ? revenue / agg.spend : 0;
+
+  // Comparaison période précédente
+  let pAgg=null, pRev=null, pRoas=null, pPd=null;
+  if (cmp){
+    const [pf,pt] = prevPeriod(fromStr, toStr);
+    const pRows = filterRows(pf, pt, campSel);
+    pAgg = aggregate(pRows);
+    pPd = pdAggregate(pf, pt, campSel);
+    pRev = (PD_AVAILABLE && pPd.ca>0) ? pPd.ca : pAgg.revenue;
+    pRoas = pAgg.spend>0 ? pRev/pAgg.spend : 0;
+  }
+
+  // Labels Revenus/ROAS (réel vs estimé)
+  document.getElementById('k-rev-l').textContent  = realMode ? 'Revenus (CA réel)' : 'Revenus est.';
+  document.getElementById('k-roas-l').textContent = realMode ? 'ROAS réel' : 'ROAS est.';
+  document.getElementById('th-rev').textContent   = realMode ? 'Revenus' : 'Revenus est.';
+  document.getElementById('th-roas').textContent  = realMode ? 'ROAS' : 'ROAS est.';
+  const hint = document.getElementById('roas-hint'); if(hint) hint.textContent = `${(SETTINGS.conv*100).toFixed(0)}% × ${fnum(SETTINGS.aov)}€`;
 
   // KPIs
   animKPI('k-spend', agg.spend, v=>feur(v));
-  animKPI('k-rev', agg.revenue, v=>feur(v));
-  animKPI('k-roas', agg.roas, v=>v.toFixed(2)+'×');
+  animKPI('k-rev', revenue, v=>feur(v));
+  animKPI('k-roas', roas, v=>v.toFixed(2)+'×');
   animKPI('k-leads', agg.leads, v=>fnum(v));
   animKPI('k-cpl', agg.cpl||0, v=>agg.cpl?feur(v):'—');
   document.getElementById('k-ctr').textContent = fpct(agg.ctr);
 
-  // KPI sub-labels + classes
-  document.getElementById('k-roas').className = 'kval ' + (agg.roas>=2?'gr':agg.roas>=1?'or':'rd');
-  document.getElementById('k-cpl').className = 'kval ' + (agg.cpl===null?'':(agg.cpl<=30?'gr':agg.cpl<=60?'or':'rd'));
-  setS('k-spend-s', 'CPM : ' + feur2(agg.cpm) + ' · CPC : ' + feur2(agg.cpc), '');
-  setS('k-rev-s', '≈ ' + Math.round(agg.salesEst) + ' ventes estimées', '');
-  setS('k-roas-s', agg.roas>=2?'▲ ROAS > 2×':agg.roas>=1?'Au-dessus du break-even':'▼ Sous le break-even', agg.roas>=2?'up':agg.roas<1?'dn':'');
-  setS('k-leads-s', rows.length + ' rows · ' + new Set(rows.map(r=>r.creative)).size + ' créas · ' + fnum(agg.impressions) + ' impr.', '');
-  setS('k-cpl-s', agg.cpl===null?'Aucun lead':(agg.cpl<=60?'✓ Objectif < 60€':'⚠ Au-dessus de 60€'), agg.cpl<=60?'up':'dn');
-  setS('k-ctr-s', agg.ctr>=0.015?'▲ Au-dessus de 1.5%':'Objectif > 1.5%', agg.ctr>=0.015?'up':'');
+  document.getElementById('k-roas').className = 'kval ' + (roas>=2?'gr':roas>=1?'or':'rd');
+  document.getElementById('k-cpl').className  = 'kval ' + (agg.cpl===null?'':(agg.cpl<=30?'gr':agg.cpl<=60?'or':'rd'));
+
+  // Sous-titres : comparaison si activée, sinon détail
+  if (cmp){
+    setSub('k-spend-s', delta(agg.spend, pAgg.spend, false) + ` <span class="det">· CPC ${feur2(agg.cpc)}</span>`);
+    setSub('k-rev-s',   delta(revenue, pRev, false) + ` <span class="det">· ${realMode?fnum(pd.gagnes)+' gagnés':Math.round(agg.salesEst)+' ventes est.'}</span>`);
+    setSub('k-roas-s',  delta(roas, pRoas, false));
+    setSub('k-leads-s', delta(agg.leads, pAgg.leads, false) + ` <span class="det">· ${new Set(rows.map(r=>r.creative)).size} créas</span>`);
+    setSub('k-cpl-s',   agg.cpl===null?'<span class="det">Aucun lead</span>':delta(agg.cpl, pAgg.cpl, true));
+    setSub('k-ctr-s',   delta(agg.ctr, pAgg.ctr, false));
+  } else {
+    setSub('k-spend-s', `<span class="det">CPM ${feur2(agg.cpm)} · CPC ${feur2(agg.cpc)}</span>`);
+    setSub('k-rev-s',   `<span class="det">${realMode?fnum(pd.gagnes)+' deals gagnés':'≈ '+Math.round(agg.salesEst)+' ventes estimées'}</span>`);
+    setSub('k-roas-s',  `<span class="kdelta ${roas>=2?'up':roas<1?'dn':'fl'}">${roas>=2?'▲ > 2×':roas>=1?'> break-even':'▼ < break-even'}</span>`);
+    setSub('k-leads-s', `<span class="det">${rows.length} lignes · ${new Set(rows.map(r=>r.creative)).size} créas · ${fnum(agg.impressions)} impr.</span>`);
+    setSub('k-cpl-s',   agg.cpl===null?'<span class="det">Aucun lead</span>':`<span class="kdelta ${agg.cpl<=60?'up':'dn'}">${agg.cpl<=60?'✓ < 60€':'⚠ > 60€'}</span>`);
+    setSub('k-ctr-s',   `<span class="kdelta ${agg.ctr>=0.015?'up':'fl'}">${agg.ctr>=0.015?'▲ > 1.5%':'objectif 1.5%'}</span>`);
+  }
 
   killCharts();
   renderTrendChart(rows);
   renderCplChart(rows);
   renderSpendChart(rows);
   renderPlatformChart(rows);
-  renderMonthlyTable(rows);
-  renderCampaignCards(rows, fromStr, toStr);
-  renderPipedriveTable(rows);
+  renderMonthlyTable(rows, fromStr, toStr, campSel, realMode);
+  renderCampaignCards(rows, fromStr, toStr, campSel, realMode);
+  renderPipedrive(rows, fromStr, toStr, campSel);
 }
 
-function renderTrendChart(rows) {
-  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()]
-    .sort((a,b) => a[0].localeCompare(b[0]));
+// ─── HIGHLIGHTS ──────────────────────────────────────────────────
+function renderHighlights(rows){
+  const el = document.getElementById('hl-grid');
+  const creas = [...groupBy(rows, r => r.campaign + ' ⟡ ' + (r.creative||'(sans nom)')).entries()]
+    .map(([k, rs]) => {
+      const a = aggregate(rs);
+      const [camp, crea] = k.split(' ⟡ ');
+      return { camp, crea, cpl:a.cpl, leads:a.leads, spend:a.spend };
+    })
+    .filter(c => c.leads >= 3 && c.cpl !== null)
+    .sort((a,b) => a.cpl - b.cpl);
+
+  if (creas.length < 2){
+    el.innerHTML = `<div class="hl"><div class="hl-body"><div class="hl-meta">Pas assez de données sur la période (min. 3 leads par créatif).</div></div></div>`;
+    return;
+  }
+  const best = creas[0], worst = creas[creas.length-1];
+  const card = (c, kind, tag, icon) => `
+    <div class="hl ${kind}">
+      <div class="hl-icon">${icon}</div>
+      <div class="hl-body">
+        <div class="hl-tag">${tag}</div>
+        <div class="hl-name" title="${esc(c.crea)}">${esc(c.crea)}</div>
+        <div class="hl-meta">${esc(c.camp)} · ${fnum(c.leads)} leads · ${feur(c.spend)}</div>
+      </div>
+      <div class="hl-stat"><div class="v" style="color:${kind==='best'?'#16a34a':'#dc2626'}">${feur(c.cpl)}</div><div class="l">CPL</div></div>
+    </div>`;
+  el.innerHTML = card(best,'best','Meilleur CPL','🏆') + card(worst,'worst','CPL le plus élevé','⚠️');
+}
+
+// ─── CHARTS ──────────────────────────────────────────────────────
+function renderTrendChart(rows){
+  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
   const labels = byMonth.map(([k]) => ymLabel(k));
   const spends = byMonth.map(([,rs]) => rs.reduce((s,r)=>s+r.spend,0));
-  const leads = byMonth.map(([,rs]) => rs.reduce((s,r)=>s+r.leads,0));
+  const leads  = byMonth.map(([,rs]) => rs.reduce((s,r)=>s+r.leads,0));
+  const cpl    = byMonth.map(([,rs]) => { const a=aggregate(rs); return a.cpl||0; });
 
   CH.trend = new Chart(document.getElementById('cTrend'), {
     type:'bar',
-    data:{
-      labels,
-      datasets:[
-        {label:'Dépenses (€)', data:spends, backgroundColor:'rgba(84,90,192,.75)', borderColor:'#545AC0', borderWidth:1, borderRadius:6, yAxisID:'y', order:2},
-        {label:'Leads', data:leads, type:'line', borderColor:'#EF7738', backgroundColor:'rgba(239,119,56,.12)', borderWidth:2.5, pointBackgroundColor:'#EF7738', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:6, yAxisID:'y2', order:1, tension:.35, fill:true}
-      ]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      plugins:{legend:{position:'top',labels:{font:{size:11,family:'Inter'},boxWidth:10,padding:12,color:'#40424D'}}},
+    data:{ labels, datasets:[
+      {label:'Dépenses (€)', data:spends, backgroundColor:'rgba(84,90,192,.75)', borderColor:'#545AC0', borderWidth:1, borderRadius:6, yAxisID:'y', order:3},
+      {label:'Leads', data:leads, type:'line', borderColor:'#EF7738', backgroundColor:'rgba(239,119,56,.12)', borderWidth:2.5, pointBackgroundColor:'#EF7738', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:6, yAxisID:'y2', order:1, tension:.35, fill:true},
+      {label:'CPL (€)', data:cpl, type:'line', borderColor:'#9DA2B3', borderDash:[5,4], backgroundColor:'transparent', borderWidth:2, pointBackgroundColor:'#9DA2B3', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:4, yAxisID:'y', order:2, tension:.3}
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{font:{size:11,family:'Inter'},boxWidth:10,padding:12,color:'#40424D'}},
+        tooltip:{callbacks:{label:ctx=>{ const l=ctx.dataset.label; if(l==='Leads') return ' '+l+' : '+fnum(ctx.raw); return ' '+l+' : '+feur2(ctx.raw); }}}},
       scales:{
         x:{grid:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#6E7180'}},
         y:{grid:{color:'#EDEFF7'},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3',callback:v=>'€'+new Intl.NumberFormat('fr').format(v)}},
         y2:{position:'right',grid:{display:false},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3'},title:{display:true,text:'Leads',font:{size:10,family:'Inter'},color:'#6E7180'}}
-      }
-    }
+      }}
   });
 }
 
-function renderCplChart(rows) {
-  const byCamp = [...groupBy(rows, 'campaign').entries()].map(([c, rs]) => {
-    const a = aggregate(rs);
-    return { campaign:c, cpl: a.cpl||0, spend: a.spend, leads: a.leads };
-  }).filter(c => c.leads > 0).sort((a,b) => a.cpl - b.cpl).slice(0,10);
-
+function renderCplChart(rows){
+  const byCamp = [...groupBy(rows,'campaign').entries()].map(([c,rs])=>{ const a=aggregate(rs); return {campaign:c, cpl:a.cpl||0, leads:a.leads}; })
+    .filter(c=>c.leads>0).sort((a,b)=>a.cpl-b.cpl).slice(0,10);
   CH.cpl = new Chart(document.getElementById('cCpl'), {
     type:'bar',
-    data:{
-      labels: byCamp.map(c => c.campaign.length>22 ? c.campaign.slice(0,21)+'…' : c.campaign),
-      datasets:[{
-        data: byCamp.map(c => c.cpl),
-        backgroundColor: byCamp.map(c => c.cpl<=30?'#16a34a':c.cpl<=60?'#EF7738':'#dc2626'),
-        borderRadius:6,
-        barThickness:14
-      }]
-    },
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+    data:{ labels:byCamp.map(c=>c.campaign.length>22?c.campaign.slice(0,21)+'…':c.campaign),
+      datasets:[{ data:byCamp.map(c=>c.cpl), backgroundColor:byCamp.map(c=>c.cpl<=30?'#16a34a':c.cpl<=60?'#EF7738':'#dc2626'), borderRadius:6, barThickness:14 }]},
+    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
       plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' CPL : '+feur2(ctx.raw)}}},
-      scales:{
-        x:{grid:{color:'#EDEFF7'},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3',callback:v=>'€'+v}},
-        y:{grid:{display:false},border:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#40424D'}}
-      }
-    }
+      scales:{ x:{grid:{color:'#EDEFF7'},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3',callback:v=>'€'+v}},
+        y:{grid:{display:false},border:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#40424D'}}}}
   });
 }
 
-function renderSpendChart(rows) {
-  const byCamp = [...groupBy(rows, 'campaign').entries()]
-    .map(([c, rs]) => ({ c, s: rs.reduce((x,r)=>x+r.spend,0) }))
-    .sort((a,b) => b.s - a.s).slice(0,9);
-
+function renderSpendChart(rows){
+  const byCamp = [...groupBy(rows,'campaign').entries()].map(([c,rs])=>({c, s:rs.reduce((x,r)=>x+r.spend,0)})).sort((a,b)=>b.s-a.s).slice(0,9);
   CH.spend = new Chart(document.getElementById('cSpend'), {
     type:'doughnut',
-    data:{
-      labels: byCamp.map(c=>c.c),
-      datasets:[{ data: byCamp.map(c=>Math.round(c.s)), backgroundColor:PAL, borderWidth:3, borderColor:'#fff', hoverBorderWidth:4 }]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
-      cutout:'62%',
-      plugins:{
-        legend:{position:'right',labels:{font:{size:11,family:'Inter'},boxWidth:10,padding:8,color:'#40424D'}},
-        tooltip:{callbacks:{label:ctx=>' '+ctx.label+' : '+feur(ctx.raw)}}
-      }
-    }
+    data:{ labels:byCamp.map(c=>c.c), datasets:[{ data:byCamp.map(c=>Math.round(c.s)), backgroundColor:PAL, borderWidth:3, borderColor:'#fff', hoverBorderWidth:4 }]},
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{legend:{position:'right',labels:{font:{size:11,family:'Inter'},boxWidth:10,padding:8,color:'#40424D'}},
+        tooltip:{callbacks:{label:ctx=>' '+ctx.label+' : '+feur(ctx.raw)}}}}
   });
 }
 
-function renderPlatformChart(rows) {
-  const byPlat = [...groupBy(rows, 'platform').entries()].map(([p,rs]) => ({
-    plat: p || '(n/a)',
-    leads: rs.reduce((s,r)=>s+r.leads,0),
-    spend: rs.reduce((s,r)=>s+r.spend,0)
-  })).sort((a,b) => b.leads - a.leads);
-
+function renderPlatformChart(rows){
+  const byPlat = [...groupBy(rows,'platform').entries()].map(([p,rs])=>({ plat:p||'(n/a)', leads:rs.reduce((s,r)=>s+r.leads,0), spend:rs.reduce((s,r)=>s+r.spend,0) })).sort((a,b)=>b.leads-a.leads);
   CH.plat = new Chart(document.getElementById('cPlat'), {
     type:'bar',
-    data:{
-      labels: byPlat.map(p => p.plat),
-      datasets:[
-        {label:'Leads', data: byPlat.map(p=>p.leads), backgroundColor:'#EF7738', borderRadius:6, yAxisID:'y', barThickness:32},
-        {label:'Dépenses (€)', data: byPlat.map(p=>p.spend), type:'line', borderColor:'#545AC0', backgroundColor:'transparent', borderWidth:2.5, pointBackgroundColor:'#545AC0', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:5, yAxisID:'y2', tension:.3}
-      ]
-    },
-    options:{
-      responsive:true, maintainAspectRatio:false,
+    data:{ labels:byPlat.map(p=>p.plat), datasets:[
+      {label:'Leads', data:byPlat.map(p=>p.leads), backgroundColor:'#EF7738', borderRadius:6, yAxisID:'y', barThickness:32},
+      {label:'Dépenses (€)', data:byPlat.map(p=>p.spend), type:'line', borderColor:'#545AC0', backgroundColor:'transparent', borderWidth:2.5, pointBackgroundColor:'#545AC0', pointBorderColor:'#fff', pointBorderWidth:2, pointRadius:5, yAxisID:'y2', tension:.3}]},
+    options:{ responsive:true, maintainAspectRatio:false,
       plugins:{legend:{position:'top',labels:{font:{size:11,family:'Inter'},boxWidth:10,padding:10,color:'#40424D'}}},
-      scales:{
-        x:{grid:{display:false},border:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#6E7180'}},
+      scales:{ x:{grid:{display:false},border:{display:false},ticks:{font:{size:11,family:'Inter'},color:'#6E7180'}},
         y:{grid:{color:'#EDEFF7'},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3'},title:{display:true,text:'Leads',font:{size:10,family:'Inter'},color:'#6E7180'}},
-        y2:{position:'right',grid:{display:false},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3',callback:v=>'€'+v},title:{display:true,text:'Dépenses',font:{size:10,family:'Inter'},color:'#6E7180'}}
-      }
-    }
+        y2:{position:'right',grid:{display:false},border:{display:false},ticks:{font:{size:10,family:'Inter'},color:'#9DA2B3',callback:v=>'€'+v},title:{display:true,text:'Dépenses',font:{size:10,family:'Inter'},color:'#6E7180'}}}}
   });
 }
 
-function renderMonthlyTable(rows) {
+// ─── MONTHLY TABLE ───────────────────────────────────────────────
+function renderMonthlyTable(rows, fromStr, toStr, campSel, realMode){
   const tbody = document.getElementById('monthly-tbody');
-  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()].sort((a,b) => a[0].localeCompare(b[0]));
+  const byMonth = [...groupBy(rows, r=>ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+  const pdM = pdByMonth(fromStr, toStr, campSel);
 
   let html = '';
-  byMonth.forEach(([k, rs]) => {
+  byMonth.forEach(([k,rs]) => {
     const a = aggregate(rs);
+    const ca = (realMode && pdM[k]) ? pdM[k].ca : 0;
+    const rev = realMode ? ca : a.revenue;
+    const roas = a.spend>0 ? rev/a.spend : 0;
     html += `<tr>
       <td>${ymLabel(k)}</td>
       <td>${feur(a.spend)}</td>
-      <td>${feur(a.revenue)}</td>
-      <td>${rpillRoas(a.roas)}</td>
+      <td>${feur(rev)}</td>
+      <td>${rpillRoas(roas)}</td>
       <td>${fnum(a.leads)}</td>
       <td>${a.cpl?rpill(a.cpl,'cpl'):'—'}</td>
       <td>${fnum(a.impressions)}</td>
@@ -694,112 +1123,321 @@ function renderMonthlyTable(rows) {
     </tr>`;
   });
   const t = aggregate(rows);
+  const tPd = pdAggregate(fromStr, toStr, campSel);
+  const tRev = realMode ? tPd.ca : t.revenue;
+  const tRoas = t.spend>0 ? tRev/t.spend : 0;
   html += `<tr class="tr">
-    <td>TOTAL</td>
-    <td>${feur(t.spend)}</td>
-    <td>${feur(t.revenue)}</td>
-    <td>${t.roas.toFixed(2)}×</td>
-    <td>${fnum(t.leads)}</td>
-    <td>${t.cpl?feur(t.cpl):'—'}</td>
-    <td>${fnum(t.impressions)}</td>
-    <td>${fnum(t.clicks)}</td>
-    <td>${fpct(t.ctr)}</td>
-    <td>${feur2(t.cpc)}</td>
+    <td>TOTAL</td><td>${feur(t.spend)}</td><td>${feur(tRev)}</td><td>${tRoas.toFixed(2)}×</td>
+    <td>${fnum(t.leads)}</td><td>${t.cpl?feur(t.cpl):'—'}</td>
+    <td>${fnum(t.impressions)}</td><td>${fnum(t.clicks)}</td><td>${fpct(t.ctr)}</td><td>${feur2(t.cpc)}</td>
   </tr>`;
   tbody.innerHTML = html;
 }
 
-function renderCampaignCards(rows, fromStr, toStr) {
+// ─── CAMPAIGN CARDS (+ Ad Set / Créatif toggle) ──────────────────
+function renderCampaignCards(rows, fromStr, toStr, campSel, realMode){
   const container = document.getElementById('camp-grid');
-  const byCamp = [...groupBy(rows, 'campaign').entries()]
-    .map(([c, rs]) => ({ name:c, rows:rs, agg:aggregate(rs) }))
-    .sort((a,b) => b.agg.spend - a.agg.spend);
+  const byCamp = [...groupBy(rows,'campaign').entries()].map(([c,rs])=>({ name:c, rows:rs, agg:aggregate(rs) })).sort((a,b)=>b.agg.spend-a.agg.spend);
+
+  // Vue « Par créatif » : exhaustive — une ligne par (Ad Set × créatif), couleur = Ad Set d'appartenance
+  const creaTable = (rs, color) => {
+    const ac = adsetColors(rs);
+    const items = [...groupBy(rs, r => (r.adset||'(sans nom)') + ' ⟡ ' + (r.creative||'(sans nom)')).entries()]
+      .map(([k, rr]) => { const i = k.indexOf(' ⟡ '); return { adset:k.slice(0,i), name:k.slice(i+3), agg:aggregate(rr) }; })
+      .sort((a,b)=>b.agg.spend-a.agg.spend);
+    return `<table><thead><tr><th>Créatif</th><th>Ad Set</th><th>Dépenses</th><th>Leads</th><th>CPL</th><th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th></tr></thead><tbody>
+      ${items.map(cr=>{ const c = ac[cr.adset] || color; return `<tr>
+        <td><div class="cname"><div class="cdot" style="background:${c}"></div>${esc(cr.name)}</div></td>
+        <td style="text-align:left"><span class="adset-badge" style="background:${c}1f;color:${c}"><span class="adset-bdot" style="background:${c}"></span>${esc(cr.adset)}</span></td>
+        <td>${feur2(cr.agg.spend)}</td><td>${fnum(cr.agg.leads)}</td><td>${cr.agg.cpl?rpill(cr.agg.cpl,'cpl'):'—'}</td>
+        <td>${fnum(cr.agg.impressions)}</td><td>${fnum(cr.agg.clicks)}</td><td>${rpill(cr.agg.ctr,'ctr')}</td><td>${feur2(cr.agg.cpc)}</td>
+      </tr>`; }).join('')}
+    </tbody></table>`;
+  };
+  // Vue « Par Ad Set » : agrégat par Ad Set uniquement (pas de détail créatif), pastille couleur par Ad Set
+  const adsetTable = (rs, color) => {
+    const ac = adsetColors(rs);
+    const adsets = [...groupBy(rs, r=>r.adset||'(sans nom)').entries()].map(([n,rr])=>({name:n, agg:aggregate(rr)})).sort((a,b)=>b.agg.spend-a.agg.spend);
+    return `<table><thead><tr><th>Ad Set</th><th>Dépenses</th><th>Leads</th><th>CPL</th><th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th></tr></thead><tbody>
+      ${adsets.map(as=>{ const c = ac[as.name] || color; return `<tr>
+        <td><div class="cname"><div class="cdot" style="background:${c};width:10px;height:10px"></div><span class="adgrp-name" style="color:${c}">${esc(as.name)}</span></div></td>
+        <td>${feur2(as.agg.spend)}</td><td>${fnum(as.agg.leads)}</td><td>${as.agg.cpl?rpill(as.agg.cpl,'cpl'):'—'}</td>
+        <td>${fnum(as.agg.impressions)}</td><td>${fnum(as.agg.clicks)}</td><td>${rpill(as.agg.ctr,'ctr')}</td><td>${feur2(as.agg.cpc)}</td>
+      </tr>`; }).join('')}
+    </tbody></table>`;
+  };
+  // Pipeline Pipedrive par créatif (utm_content) sur la période
+  const _from = new Date(fromStr), _to = new Date(toStr); _to.setHours(23,59,59,999);
+  const _inR = d => d && d >= _from && d <= _to;
+  const pdc = {};
+  PD_RAW.forEach(d => { if(!d.content) return; const b = pdc[d.content] = pdc[d.content] || {affaires:0, gagnes:0, ca:0}; if(_inR(d.created)) b.affaires++; if(d.status.indexOf('gagn')===0 && _inR(d.won)){ b.gagnes++; b.ca += d.amount; } });
+  // Vue « Par proposition de valeur » : créatif + promesse + tag + signature
+  const vpTable = (rs, color) => {
+    const ac = adsetColors(rs);
+    const items = [...groupBy(rs, r => r.creative||'(sans nom)').entries()].map(([name, rr]) => {
+      const a = aggregate(rr);
+      const sba = {}; rr.forEach(r => { const s=r.adset||'(sans nom)'; sba[s]=(sba[s]||0)+r.spend; });
+      const adset = Object.entries(sba).sort((x,y)=>y[1]-x[1])[0]?.[0] || '—';
+      const pd = pdc[name] || {affaires:0, gagnes:0, ca:0};
+      const vpm = CREATIVE_VP[name] || {};
+      return { name, adset, leads:a.leads, cpl:a.cpl, ...pd, vp:vpm.vp, tag:vpm.tag };
+    }).filter(c => c.leads>0 || c.affaires>0).sort((a,b)=>(b.gagnes-a.gagnes)||(b.affaires-a.affaires)||(b.leads-a.leads));
+    return `<table><thead><tr><th>Créatif</th><th>Proposition de valeur</th><th>Tag</th><th>Leads</th><th>CPL</th><th>Affaires</th><th>Gagnés</th><th>Taux sign.</th></tr></thead><tbody>
+      ${items.map(c => { const col=ac[c.adset]||color; const tc=tagColor(c.tag); const taux=c.leads>0?c.gagnes/c.leads:0; return `<tr>
+        <td><div class="cname"><div class="cdot" style="background:${col}"></div>${esc(c.name)}</div></td>
+        <td class="cs-vp">${c.vp?esc(c.vp):'<span class="cs-pending">à définir</span>'}</td>
+        <td style="text-align:left">${c.tag?`<span class="adset-badge" style="background:${tc}1f;color:${tc}"><span class="adset-bdot" style="background:${tc}"></span>${esc(c.tag)}</span>`:'—'}</td>
+        <td>${fnum(c.leads)}</td>
+        <td>${c.cpl?feur(c.cpl):'—'}</td>
+        <td>${c.affaires?`<span class="rp rp-md">${fnum(c.affaires)}</span>`:'—'}</td>
+        <td>${c.gagnes?fnum(c.gagnes):'—'}</td>
+        <td>${c.gagnes>0?`<b>${fpct(taux)}</b>`:(c.affaires>0?'<span class="cs-pending">en cours</span>':'—')}</td>
+      </tr>`; }).join('')}
+    </tbody></table>`;
+  };
 
   let html = '';
-  byCamp.forEach((c, i) => {
+  byCamp.forEach((c,i) => {
     const color = PAL[i % PAL.length];
-    const creatives = [...groupBy(c.rows, 'creative').entries()]
-      .map(([n, rs]) => ({ name:n, agg:aggregate(rs) }))
-      .sort((a,b) => b.agg.spend - a.agg.spend);
-
-    const cplCls = c.agg.cpl===null ? '' : (c.agg.cpl<=30?'gr':c.agg.cpl<=60?'or':'rd');
-
-    const roasCls = c.agg.roas>=2?'gr':c.agg.roas>=1?'or':'rd';
+    const pdC = pdAggregate(fromStr, toStr, c.name);
+    const realC = realMode && pdC.ca > 0;
+    const rev = realC ? pdC.ca : c.agg.revenue;
+    const roas = c.agg.spend>0 ? rev/c.agg.spend : 0;
     html += `<div class="camp">
       <div class="camp-hdr" onclick="this.parentElement.classList.toggle('open')">
-        <div class="camp-name"><div class="camp-dot" style="background:${color}"></div>${c.name || '(sans nom)'}</div>
+        <div class="camp-name"><div class="camp-dot" style="background:${color}"></div>${esc(c.name||'(sans nom)')}</div>
         <div class="camp-kpi"><div class="lab">Dépenses</div><div class="val">${feur(c.agg.spend)}</div></div>
-        <div class="camp-kpi"><div class="lab">Revenus est.</div><div class="val">${feur(c.agg.revenue)}</div></div>
-        <div class="camp-kpi"><div class="lab">ROAS est.</div><div class="val" style="color:${c.agg.roas>=2?'#16a34a':c.agg.roas>=1?'#C2410C':'#dc2626'}">${c.agg.roas.toFixed(2)}×</div></div>
+        <div class="camp-kpi hide-md"><div class="lab">${realC?'CA réel':'Revenus est.'}</div><div class="val">${feur(rev)}</div></div>
+        <div class="camp-kpi hide-sm"><div class="lab">ROAS${realC?'':' est.'}</div><div class="val" style="color:${roas>=2?'#16a34a':roas>=1?'#C2410C':'#dc2626'}">${roas.toFixed(2)}×</div></div>
         <div class="camp-kpi"><div class="lab">Leads</div><div class="val">${fnum(c.agg.leads)}</div></div>
         <div class="camp-kpi"><div class="lab">CPL</div><div class="val">${c.agg.cpl?feur(c.agg.cpl):'—'}</div></div>
         <div class="camp-chev">▾</div>
       </div>
       <div class="camp-body">
-        <table>
-          <thead><tr>
-            <th>Créatif</th><th>Dépenses</th><th>Revenus est.</th><th>ROAS</th>
-            <th>Leads</th><th>CPL</th>
-            <th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th>
-          </tr></thead>
-          <tbody>
-            ${creatives.map(cr => `<tr>
-              <td><div class="cname"><div class="cdot" style="background:${color}"></div>${cr.name || '(sans nom)'}</div></td>
-              <td>${feur2(cr.agg.spend)}</td>
-              <td>${feur(cr.agg.revenue)}</td>
-              <td>${rpillRoas(cr.agg.roas)}</td>
-              <td>${fnum(cr.agg.leads)}</td>
-              <td>${cr.agg.cpl?rpill(cr.agg.cpl,'cpl'):'—'}</td>
-              <td>${fnum(cr.agg.impressions)}</td>
-              <td>${fnum(cr.agg.clicks)}</td>
-              <td>${rpill(cr.agg.ctr,'ctr')}</td>
-              <td>${feur2(cr.agg.cpc)}</td>
-            </tr>`).join('')}
-          </tbody>
-        </table>
+        <div class="seg">
+          <button class="on" onclick="segView(event,${i},'adset')">Par Ad Set</button>
+          <button onclick="segView(event,${i},'crea')">Par créatif</button>
+          <button onclick="segView(event,${i},'vp')">Par proposition de valeur</button>
+        </div>
+        <div id="seg-adset-${i}">${adsetTable(c.rows, color)}</div>
+        <div id="seg-crea-${i}" style="display:none">${creaTable(c.rows, color)}</div>
+        <div id="seg-vp-${i}" style="display:none">${vpTable(c.rows, color)}</div>
       </div>
     </div>`;
   });
   container.innerHTML = html;
 }
+function segView(e, i, mode){
+  e.stopPropagation();
+  e.currentTarget.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+  e.currentTarget.classList.add('on');
+  ['adset','crea','vp'].forEach(m => { const el = document.getElementById('seg-'+m+'-'+i); if (el) el.style.display = (m===mode) ? 'block' : 'none'; });
+}
 
-function renderPipedriveTable(rows) {
-  const tbody = document.getElementById('pd-tbody');
-  const byMonth = [...groupBy(rows, r => ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+// ─── CRÉATIF → SIGNATURE (join Meta.Publicité ⟷ Pipedrive.utm_content) ───
+function renderCreativeSignature(rows, fromStr, toStr, campSel){
+  const tbody  = document.getElementById('cs-tbody');
+  const banner = document.getElementById('cs-banner');
+  if (!tbody) return;
+
+  const from = new Date(fromStr), to = new Date(toStr); to.setHours(23,59,59,999);
+  const inR = d => d && d >= from && d <= to;
+  const campOk = c => !campSel || c === campSel;
+
+  // Pipedrive agrégé par créatif (utm_content)
+  const pdByContent = {};
+  let periodDeals = 0, taggedDeals = 0;
+  PD_RAW.forEach(d => {
+    if (inR(d.created) && campOk(d.campaign)) { periodDeals++; if (d.content) taggedDeals++; }
+    if (!d.content) return;
+    const b = pdByContent[d.content] = pdByContent[d.content] || { affaires:0, gagnes:0, ca:0 };
+    if (inR(d.created) && campOk(d.campaign)) b.affaires++;
+    if (d.status.indexOf('gagn') === 0 && inR(d.won) && campOk(d.campaign)) { b.gagnes++; b.ca += d.amount; }
+  });
+  const coverage = periodDeals ? taggedDeals / periodDeals : 0;
+
+  // Créatifs Meta (lignes filtrées) → leads complets + ad set dominant
+  const ac = adsetColors(rows);
+  const items = [...groupBy(rows, r => r.creative || '(sans nom)').entries()].map(([name, rs]) => {
+    const a = aggregate(rs);
+    const spendByAdset = {}; rs.forEach(r => { const s = r.adset||'(sans nom)'; spendByAdset[s] = (spendByAdset[s]||0) + r.spend; });
+    const adset = Object.entries(spendByAdset).sort((x,y)=>y[1]-x[1])[0]?.[0] || '—';
+    const pd = pdByContent[name] || { affaires:0, gagnes:0, ca:0 };
+    return { name, adset, leads:a.leads, cpl:a.cpl, ...pd };
+  }).filter(c => c.leads > 0 || c.affaires > 0)
+    .sort((a,b) => (b.gagnes - a.gagnes) || (b.affaires - a.affaires) || (b.leads - a.leads));
+
+  banner.innerHTML = `Couverture <code>utm_content</code> : <b>${(coverage*100).toFixed(0)}%</b> des ${periodDeals} affaires de la période sont taguées (créatif tracké). `
+    + (taggedDeals && Object.values(pdByContent).some(b=>b.gagnes>0)
+        ? `Le taux de signature se calcule sur les deals gagnés tagués.`
+        : `⏳ Aucun deal <b>gagné</b> n'est encore tagué (tracking récent) → le <b>taux de signature</b> se remplira à mesure que les deals tagués se gagnent. En attendant, la colonne <b>Affaires</b> montre le pipeline qui se forme par créatif.`)
+    + (Object.keys(CREATIVE_VP).length === 0
+        ? `<br>📝 <b>Propositions de valeur à renseigner</b> — envoie-moi la liste « créatif → promesse + tag » et je remplis les colonnes.`
+        : '');
 
   let html = '';
-  byMonth.forEach(([k, rs]) => {
-    const leads = rs.reduce((s,r)=>s+r.leads, 0);
+  items.forEach(c => {
+    const taux = c.leads > 0 ? c.gagnes / c.leads : 0;
+    // 🔴 = volume de pipeline mais 0 signature ; 🟢 = signe ; sinon neutre
+    const flag = c.gagnes > 0 ? (taux >= 0.05 ? '🟢' : '🔴')
+               : (c.affaires >= 3 ? '🔴' : '');
+    const col = ac[c.adset] || '#9DA2B3';
+    const vpm = CREATIVE_VP[c.name] || {};
+    const tc = tagColor(vpm.tag);
     html += `<tr>
-      <td>${ymLabel(k)}</td>
-      <td>${fnum(leads)}</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
-      <td class="pd-na">N/A</td>
+      <td><div class="cname"><div class="cdot" style="background:${col}"></div>${esc(c.name)}</div></td>
+      <td class="cs-vp">${vpm.vp ? esc(vpm.vp) : '<span class="cs-pending">à définir</span>'}</td>
+      <td style="text-align:left">${vpm.tag ? `<span class="adset-badge" style="background:${tc}1f;color:${tc}"><span class="adset-bdot" style="background:${tc}"></span>${esc(vpm.tag)}</span>` : '—'}</td>
+      <td>${fnum(c.leads)}</td>
+      <td>${c.affaires ? `<span class="rp rp-md">${fnum(c.affaires)}</span>` : '—'}</td>
+      <td>${c.gagnes ? fnum(c.gagnes) : '—'}</td>
+      <td>${c.gagnes > 0 ? `<b>${fpct(taux)}</b>` : (c.affaires > 0 ? '<span class="cs-pending">en cours</span>' : '—')}</td>
+      <td style="text-align:center;font-size:14px">${flag}</td>
     </tr>`;
   });
+  tbody.innerHTML = html || `<tr><td colspan="8" style="text-align:center;color:var(--graphite);padding:24px">Aucun créatif sur la période.</td></tr>`;
+}
+
+// ─── PIPEDRIVE ───────────────────────────────────────────────────
+function renderPipedrive(rows, fromStr, toStr, campSel){
   const totalLeads = rows.reduce((s,r)=>s+r.leads,0);
-  html += `<tr class="tr">
-    <td>Total</td>
-    <td>${fnum(totalLeads)}</td>
-    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
-    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
-    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
-    <td class="pd-na">N/A</td><td class="pd-na">N/A</td><td class="pd-na">N/A</td>
-  </tr>`;
+  const totalSpend = rows.reduce((s,r)=>s+r.spend,0);
+  const pd = pdAggregate(fromStr, toStr, campSel);
+  const NA = '<span class="pd-na">N/A</span>';
+
+  // KPI strip
+  const kpis = document.getElementById('pd-kpis');
+  if (PD_AVAILABLE){
+    const cac = pd.gagnes>0 ? totalSpend/pd.gagnes : 0;
+    const panier = pd.gagnes>0 ? pd.ca/pd.gagnes : 0;
+    const roi = totalSpend>0 ? (pd.ca-totalSpend)/totalSpend : 0;
+    kpis.innerHTML = `
+      <div class="pd-k"><div class="l">Prospects CRM</div><div class="v">${fnum(pd.prospects)}</div></div>
+      <div class="pd-k"><div class="l">Affaires créées</div><div class="v">${fnum(pd.affaires)}</div></div>
+      <div class="pd-k"><div class="l">Deals gagnés</div><div class="v">${fnum(pd.gagnes)}</div></div>
+      <div class="pd-k"><div class="l">CA généré</div><div class="v">${feur(pd.ca)}</div></div>
+      <div class="pd-k"><div class="l">CAC réel</div><div class="v">${pd.gagnes>0?feur(cac):NA}</div></div>
+      <div class="pd-k"><div class="l">ROI</div><div class="v" style="color:${roi>=0?'#86efac':'#fca5a5'}">${totalSpend>0?(roi>=0?'+':'')+(roi*100).toFixed(0)+'%':NA}</div></div>`;
+  } else {
+    kpis.innerHTML = ['Prospects CRM','Affaires créées','Deals gagnés','CA généré','CAC réel','ROI'].map(l=>`<div class="pd-k"><div class="l">${l}</div><div class="v na">N/A</div></div>`).join('');
+  }
+
+  // Funnel
+  const aff = pd.affaires, won = pd.gagnes;
+  document.getElementById('pd-f-leads').textContent = fnum(totalLeads);
+  const fAff = document.getElementById('pd-f-aff'), fWon = document.getElementById('pd-f-won');
+  if (PD_AVAILABLE && totalLeads>0){
+    fAff.style.width = Math.max(6, aff/totalLeads*100)+'%'; fAff.textContent = fnum(aff);
+    fWon.style.width = Math.max(6, won/totalLeads*100)+'%'; fWon.textContent = fnum(won);
+    document.getElementById('pd-side-aff').innerHTML = `<span class="badge">${aff>0?((aff/totalLeads)*100).toFixed(0):0}% des leads</span>`;
+    document.getElementById('pd-side-won').innerHTML = `<span class="badge">${aff>0?((won/aff)*100).toFixed(0):0}% des affaires</span>`;
+    document.getElementById('pd-conv-tot').textContent = totalLeads>0?((won/totalLeads)*100).toFixed(1)+'%':'—';
+  } else {
+    fAff.style.width='0%'; fAff.textContent='—'; fWon.style.width='0%'; fWon.textContent='—';
+    document.getElementById('pd-side-aff').innerHTML = '<span class="badge muted">N/A</span>';
+    document.getElementById('pd-side-won').innerHTML = '<span class="badge muted">N/A</span>';
+    document.getElementById('pd-conv-tot').textContent = 'N/A';
+  }
+
+  // Table mensuelle
+  const tbody = document.getElementById('pd-tbody');
+  const byMonth = [...groupBy(rows, r=>ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+  const pdM = pdByMonth(fromStr, toStr, campSel);
+  const pct = (a,b)=> b>0 ? (a/b*100).toFixed(0)+'%' : '—';
+  let html = '';
+  byMonth.forEach(([k,rs]) => {
+    const leads = rs.reduce((s,r)=>s+r.leads,0);
+    const spend = rs.reduce((s,r)=>s+r.spend,0);
+    const p = pdM[k] || {affaires:0,gagnes:0,ca:0};
+    if (PD_AVAILABLE){
+      const panier = p.gagnes>0?p.ca/p.gagnes:0;
+      const cpl = leads>0?spend/leads:0;
+      const cac = p.gagnes>0?spend/p.gagnes:0;
+      const benef = p.ca - spend;
+      const roi = spend>0?benef/spend:0;
+      html += `<tr><td>${ymLabel(k)}</td><td>${fnum(leads)}</td><td>${fnum(p.affaires)}</td><td>${pct(p.affaires,leads)}</td>
+        <td>${fnum(p.gagnes)}</td><td>${pct(p.gagnes,p.affaires)}</td><td>${pct(p.gagnes,leads)}</td>
+        <td>${feur(p.ca)}</td><td>${p.gagnes>0?feur(panier):'—'}</td><td>${feur(spend)}</td>
+        <td>${leads>0?feur(cpl):'—'}</td><td>${p.gagnes>0?feur(cac):'—'}</td>
+        <td style="color:${benef>=0?'#86efac':'#fca5a5'}">${feur(benef)}</td><td style="color:${roi>=0?'#86efac':'#fca5a5'}">${spend>0?(roi>=0?'+':'')+(roi*100).toFixed(0)+'%':'—'}</td></tr>`;
+    } else {
+      html += `<tr><td>${ymLabel(k)}</td><td>${fnum(leads)}</td>${'<td class="pd-na">N/A</td>'.repeat(12)}</tr>`;
+    }
+  });
+  // Total
+  if (PD_AVAILABLE){
+    const panier = pd.gagnes>0?pd.ca/pd.gagnes:0;
+    const cpl = totalLeads>0?totalSpend/totalLeads:0;
+    const cac = pd.gagnes>0?totalSpend/pd.gagnes:0;
+    const benef = pd.ca-totalSpend;
+    const roi = totalSpend>0?benef/totalSpend:0;
+    html += `<tr class="tr"><td>Total</td><td>${fnum(totalLeads)}</td><td>${fnum(pd.affaires)}</td><td>${pct(pd.affaires,totalLeads)}</td>
+      <td>${fnum(pd.gagnes)}</td><td>${pct(pd.gagnes,pd.affaires)}</td><td>${pct(pd.gagnes,totalLeads)}</td>
+      <td>${feur(pd.ca)}</td><td>${pd.gagnes>0?feur(panier):'—'}</td><td>${feur(totalSpend)}</td>
+      <td>${totalLeads>0?feur(cpl):'—'}</td><td>${pd.gagnes>0?feur(cac):'—'}</td>
+      <td style="color:${benef>=0?'#86efac':'#fca5a5'}">${feur(benef)}</td><td style="color:${roi>=0?'#86efac':'#fca5a5'}">${(roi>=0?'+':'')+(roi*100).toFixed(0)+'%'}</td></tr>`;
+  } else {
+    html += `<tr class="tr"><td>Total</td><td>${fnum(totalLeads)}</td>${'<td class="pd-na">N/A</td>'.repeat(12)}</tr>`;
+  }
   tbody.innerHTML = html;
 
-  // Funnel bar
-  document.getElementById('pd-leads-bar').textContent = fnum(totalLeads);
+  // Aide setup (si non connecté)
+  const help = document.getElementById('pd-help');
+  help.innerHTML = PD_AVAILABLE ? ''
+    : `Pour activer : crée un onglet <code>Pipedrive</code> dans le même Google Sheet avec les colonnes <code>Date création</code> · <code>Date gain</code> · <code>Campagne</code> · <code>Statut</code> (Gagné / Perdu / Ouvert) · <code>Montant (€)</code> — une ligne par deal. Le dashboard le détecte automatiquement et passe le ROAS en réel.`;
+}
+
+// ─── ROAS SETTINGS UI ────────────────────────────────────────────
+function toggleRoasBox(){
+  const box = document.getElementById('roas-box');
+  box.classList.toggle('open');
+  if (box.classList.contains('open')){
+    document.getElementById('set-conv').value = (SETTINGS.conv*100);
+    document.getElementById('set-aov').value  = SETTINGS.aov;
+    updateRoasNote();
+  }
+}
+function updateRoasNote(){
+  const conv = pnum(document.getElementById('set-conv').value)/100;
+  const aov  = pnum(document.getElementById('set-aov').value);
+  document.getElementById('roas-note').innerHTML = `Revenu estimé par lead : <b>${feur2(conv*aov)}</b>. ${PD_AVAILABLE?'Le CA réel Pipedrive prime quand il est disponible.':'Utilisé tant que Pipedrive n\'est pas connecté.'}`;
+}
+function applyRoas(){
+  const conv = pnum(document.getElementById('set-conv').value)/100;
+  const aov  = pnum(document.getElementById('set-aov').value);
+  if (conv>0 && aov>0){ SETTINGS = { conv, aov }; saveSettings(); }
+  document.getElementById('roas-box').classList.remove('open');
+  rerender();
+}
+function resetRoas(){
+  SETTINGS = { ...DEFAULTS }; saveSettings();
+  document.getElementById('set-conv').value = SETTINGS.conv*100;
+  document.getElementById('set-aov').value  = SETTINGS.aov;
+  updateRoasNote();
+  rerender();
+}
+document.addEventListener('input', e => { if(e.target.id==='set-conv'||e.target.id==='set-aov') updateRoasNote(); });
+
+// ─── EXPORT CSV ──────────────────────────────────────────────────
+function exportCSV(){
+  const fromStr = document.getElementById('dfrom').value, toStr = document.getElementById('dto').value, campSel = document.getElementById('camp-filter').value;
+  const rows = filterRows(fromStr, toStr, campSel);
+  const realMode = PD_AVAILABLE && pdAggregate(fromStr,toStr,campSel).ca>0;
+  const pdM = pdByMonth(fromStr,toStr,campSel);
+  const byMonth = [...groupBy(rows, r=>ymKey(r.date)).entries()].sort((a,b)=>a[0].localeCompare(b[0]));
+  const head = ['Mois','Dépenses','Revenus','ROAS','Leads','CPL','Impressions','Clics','CTR','CPC'];
+  const lines = [head.join(';')];
+  byMonth.forEach(([k,rs])=>{
+    const a = aggregate(rs);
+    const rev = realMode && pdM[k] ? pdM[k].ca : a.revenue;
+    const roas = a.spend>0?rev/a.spend:0;
+    lines.push([ymLabel(k), a.spend.toFixed(2), rev.toFixed(2), roas.toFixed(2), a.leads, (a.cpl||0).toFixed(2), a.impressions, a.clicks, (a.ctr*100).toFixed(2)+'%', a.cpc.toFixed(2)].join(';'));
+  });
+  const blob = new Blob(['﻿'+lines.join('\n')], {type:'text/csv;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `onelearn-meta-${fromStr}_${toStr}.csv`; a.click();
+  URL.revokeObjectURL(url);
 }
 
 // ─── PERIOD SHORTCUTS ────────────────────────────────────────────
@@ -808,22 +1446,17 @@ function go(k, btn){
   if(btn) btn.classList.add('active');
   const today = DATE_MAX || new Date();
   let from;
-  if (k==='7d') { from = new Date(today); from.setDate(from.getDate()-7); }
-  else if (k==='30d') { from = new Date(today); from.setDate(from.getDate()-30); }
-  else if (k==='month') { from = new Date(today.getFullYear(), today.getMonth(), 1); }
-  else { from = DATE_MIN || new Date(today.getFullYear(), 0, 1); }
+  if (k==='7d'){ from=new Date(today); from.setDate(from.getDate()-6); }
+  else if (k==='30d'){ from=new Date(today); from.setDate(from.getDate()-29); }
+  else if (k==='month'){ from=new Date(today.getFullYear(), today.getMonth(), 1); }
+  else { from = DATE_MIN || new Date(today.getFullYear(),0,1); }
   document.getElementById('dfrom').value = fdate(from);
   document.getElementById('dto').value = fdate(today);
   rerender();
 }
-
-function applyCustom() {
-  document.querySelectorAll('.pgrp .pbtn').forEach(b=>b.classList.remove('active'));
-  rerender();
-}
+function applyCustom(){ document.querySelectorAll('.pgrp .pbtn').forEach(b=>b.classList.remove('active')); rerender(); }
 
 // ─── INIT ────────────────────────────────────────────────────────
-document.getElementById('upd').textContent = new Date().toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
 loadData();
 </script>
 </body>
