@@ -563,9 +563,10 @@ async function loadData(){
   }
 }
 
-// Source des données Pipedrive : import navigateur (localStorage) sinon données embarquées
+// Source des données Pipedrive : UNE SEULE source de vérité = données embarquées (PD_DEALS_RAW / PD_LEADS_DATA).
+// On purge tout ancien import navigateur pour qu'il n'écrase plus jamais silencieusement la data déployée.
 function getPdSource(){
-  try { const s = JSON.parse(localStorage.getItem('ol_pd_import') || 'null'); if (s && Array.isArray(s.deals) && Array.isArray(s.leads)) return s; } catch(e){}
+  try { localStorage.removeItem('ol_pd_import'); } catch(e){}
   return null;
 }
 function loadPipedrive(){
@@ -791,11 +792,6 @@ function renderShell(){
     ? `<span class="slabel-pill live">ROAS réel · CA Pipedrive</span>`
     : `<span class="slabel-pill na" title="Hypothèses tunables">ROAS estimé · <span id="roas-hint"></span></span>`;
   document.getElementById('content').innerHTML = `
-    <div class="tabs">
-      <button class="tab active" onclick="switchTab('acq',this)">📊 Vue globale</button>
-      <button class="tab" onclick="switchTab('import',this)">📥 Import Pipedrive</button>
-    </div>
-
     <div class="tabpanel" id="tab-acq">
     <div class="slabel">
       Vue d'ensemble <span class="slabel-pill">Meta Ads · Live</span> ${livePill}
@@ -901,28 +897,6 @@ function renderShell(){
       <div class="pd-help" id="pd-help"></div>
     </div>
     </div><!-- /tab-acq -->
-
-    <div class="tabpanel" id="tab-import" style="display:none">
-    <div class="slabel">Import des données Pipedrive <span class="slabel-pill violet">CSV deals + leads</span></div>
-    <div id="import-status" class="import-status"></div>
-    <label class="import-drop" id="import-drop"
-      ondragover="event.preventDefault();this.classList.add('drag')"
-      ondragleave="this.classList.remove('drag')"
-      ondrop="event.preventDefault();this.classList.remove('drag');handleImportFiles(event.dataTransfer.files)">
-      <input type="file" accept=".csv,text/csv" multiple style="display:none" onchange="handleImportFiles(this.files)">
-      <div class="import-ico">📥</div>
-      <div class="import-txt"><b>Glisse tes 2 fichiers CSV ici</b> (deals + leads)<br><span>ou clique pour les choisir — détection automatique deals / leads</span></div>
-    </label>
-    <div class="import-actions">
-      <button class="roas-btn ghost" onclick="resetPdImport()">↺ Revenir aux données par défaut</button>
-    </div>
-    <div class="import-help">
-      <b>Comment ça marche</b><br>
-      1. Dans Pipedrive, exporte tes <b>deals</b> et tes <b>leads</b> en CSV (garde les colonnes <code>utm_content</code>, <code>utm_campaign</code>, <code>Valeur</code>, <code>Statut</code>, <code>Date de gain</code>, <code>Affaire créée</code> / <code>Prospect créé</code>, <code>Formation Principale</code>).<br>
-      2. Glisse les 2 fichiers ci-dessus (ou un seul) — le dashboard reconnaît tout seul deals vs leads et met à jour le <b>Pipeline</b> + la <b>Signature</b>.<br>
-      3. Les données importées restent dans ton navigateur (conservées après rechargement). « Revenir aux données par défaut » efface l'import.
-    </div>
-    </div><!-- /tab-import -->
   `;
 }
 
