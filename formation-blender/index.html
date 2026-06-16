@@ -248,10 +248,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- RIGHT visual + floating trust -->
     <div class="lg:col-span-5 relative">
-      <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-700 to-ink aspect-[1/1] shadow-2xl" title="Cliquer pour remplacer l'image">
+      <div id="hero-media" class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-navy via-navy-700 to-ink aspect-[1/1] shadow-2xl cursor-pointer group" onclick="playHeroVideo()" title="Lire la vidéo de présentation">
         <img data-cms="hero_img" class="hero-img w-full h-full object-cover" src="hero-artist.jpg" alt="Artiste 3D travaillant sur un personnage dans Blender">
         <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/15 to-ink/20"></div>
         <div class="absolute inset-0 grain opacity-15"></div>
+        <!-- Bouton play -->
+        <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <div class="w-20 h-20 rounded-full flex items-center justify-center transition-transform group-hover:scale-110" style="background:rgba(239,119,56,.95);box-shadow:0 10px 40px rgba(239,119,56,.5);">
+            <svg class="w-9 h-9 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+          </div>
+        </div>
         <!-- Badge logiciel flottant -->
          <div class="hero-badge absolute top-5 right-5 z-20 bg-white/95 backdrop-blur-sm rounded-2xl anim-in" style="box-shadow: rgba(34, 36, 77, 0.22) 0px 8px 32px; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center;" data-anim="" title="Cliquer pour remplacer l'image">
            <img src="img/logo-blender-sm.jpg" alt="Blender" style="width:44px;height:44px;object-fit:contain;border-radius:8px;">
@@ -2371,4 +2377,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   toast('✏️ Mode édition actif, cliquez sur un texte ou une image pour modifier');
 })();
-</script><div id="batBeacon570097737583" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon855437254940" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=b3c9a706-a79c-4f18-b456-b27f0dbc5e28&amp;bo=2&amp;sid=bf188770420d11f1a57a37ba0687d043&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1470&amp;sh=956&amp;sc=30&amp;tl=Formation%20Blender%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fblender%2F%3Fedit&amp;r=&amp;lt=548&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=685855" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"></body></html>
+</script><div id="batBeacon570097737583" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon855437254940" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=b3c9a706-a79c-4f18-b456-b27f0dbc5e28&amp;bo=2&amp;sid=bf188770420d11f1a57a37ba0687d043&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1470&amp;sh=956&amp;sc=30&amp;tl=Formation%20Blender%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fblender%2F%3Fedit&amp;r=&amp;lt=548&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=685855" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><input type="file" accept="image/*" style="position: fixed; top: -9999px; left: -9999px; opacity: 0;"><script>
+function playHeroVideo(){var el=document.getElementById("hero-media");if(!el||el.dataset.playing)return;el.dataset.playing="1";el.style.cursor="default";el.onclick=null;el.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/XUGKsORypJY?autoplay=1&rel=0" title="Formation Blender One Learn" style="position:absolute;inset:0;width:100%;height:100%;border:0;" allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';}
+</script>
+</body></html>
