@@ -97,6 +97,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .csel:focus { outline:none; border-color:var(--ol-violet); box-shadow:0 0 0 3px rgba(84,90,192,.12); }
     .cmp-toggle { display:flex; align-items:center; gap:7px; font-size:12px; color:var(--graphite); font-weight:500; cursor:pointer; user-select:none; }
     .cmp-toggle input { accent-color:var(--ol-violet); width:15px; height:15px; cursor:pointer; }
+    /* Statut créatifs actif/inactif */
+    .st-pill { display:inline-flex; align-items:center; font-size:10px; font-weight:600; padding:1px 7px; border-radius:20px; letter-spacing:.2px; vertical-align:middle; }
+    .st-on  { background:rgba(22,163,74,.12); color:#16a34a; }
+    .st-off { background:rgba(148,163,184,.18); color:#6E7180; }
+    .crea-count { display:inline-flex; gap:9px; align-items:center; margin-left:4px; font-size:11px; font-weight:600; }
+    .crea-count .cc-sep { color:rgba(255,255,255,.4); font-weight:400; }
+    .crea-count .cc-on  { color:#7ee2a8; }
+    .crea-count .cc-off { color:rgba(255,255,255,.55); }
 
     /* MAIN */
     .main { padding:32px 40px 64px; max-width:1600px; margin:0 auto; }
@@ -355,6 +363,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="live-badge">
       <div class="live-dot"></div>
       <span>Données à jour au <span id="upd">…</span></span>
+      <span id="crea-count" class="crea-count"></span>
     </div>
     <div class="hbtns">
       <button class="hbtn" onclick="exportCSV()" title="Exporter le tableau mensuel en CSV">
@@ -383,6 +392,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <option value="">Toutes</option>
   </select>
   <span class="fsep">|</span>
+  <label class="cmp-toggle"><input type="checkbox" id="hide-inactive" onchange="rerender()"> Masquer les créatifs inactifs</label>
+  <span class="fsep">|</span>
   <label class="cmp-toggle"><input type="checkbox" id="cmp-toggle" checked onchange="rerender()"> Comparer à la période précédente</label>
 </div>
 
@@ -396,8 +407,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 // ─── CONFIG ──────────────────────────────────────────────────────
 const SHEET_ID  = '1Djqb9kAgEERHhbmtJXEc64rX7D_251diNJXpTXC1sLI';
 const META_TAB  = 'Meta Ads';
+const CREA_TAB  = 'Meta - Creative';   // onglet statut créatifs (creative name / creative id / status)
 const PD_TAB    = 'Pipedrive';   // onglet à créer dans le même sheet
 const csvUrl = tab => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+
+// Statut créatifs (chargé depuis l'onglet "Meta - Creative")
+let CREA_STATUS = {};       // creative id  -> 'active' | 'inactive'
+let CREA_STATUS_NAME = {};  // creative name (lc) -> 'active' | 'inactive' (fallback si id absent)
+let CREA_COUNT = { active:0, inactive:0 };
+// Statut d'un créatif : par ID (fiable) sinon par nom. Renvoie 'active' | 'inactive' | null (inconnu).
+function creaStatusOf(id, name){
+  return CREA_STATUS[String(id||'').trim()] || CREA_STATUS_NAME[String(name||'').trim().toLowerCase()] || null;
+}
+async function loadCreativeStatus(){
+  try {
+    const res = await fetch(csvUrl(CREA_TAB));
+    if (!res.ok) return;
+    const parsed = Papa.parse(await res.text(), { header:true, skipEmptyLines:true });
+    CREA_STATUS = {}; CREA_STATUS_NAME = {}; CREA_COUNT = { active:0, inactive:0 };
+    parsed.data.forEach(r => {
+      const id = String(r['creative id'] || '').trim();
+      const name = String(r['creative name'] || '').trim().toLowerCase();
+      const st = String(r['status'] || '').trim().toLowerCase();
+      if (st !== 'active' && st !== 'inactive') return;
+      if (id) CREA_STATUS[id] = st;
+      // par nom : 'active' l'emporte (un nom peut avoir un ancien id inactif + un nouvel id actif)
+      if (name && CREA_STATUS_NAME[name] !== 'active') CREA_STATUS_NAME[name] = st;
+      CREA_COUNT[st]++;
+    });
+  } catch(e){ /* non bloquant */ }
+}
+// Pastille statut pour la vue créatif
+function statusPill(s){
+  if (s === 'active')   return ` <span class="st-pill st-on">● actif</span>`;
+  if (s === 'inactive') return ` <span class="st-pill st-off">● inactif</span>`;
+  return '';
+}
 
 // ─── HYPOTHÈSES ROAS (fallback quand pas de CA réel Pipedrive) ───
 const DEFAULTS = { conv: 0.18, aov: 2054 };   // 18% Lead→Vente · panier 2054€ HT
@@ -516,6 +561,9 @@ async function loadData(){
     const csv = await res.text();
     const parsed = Papa.parse(csv, { header:true, skipEmptyLines:true });
 
+    // Statut créatifs (onglet "Meta - Creative") — chargé avant le map pour taguer chaque ligne
+    await loadCreativeStatus();
+
     RAW = parsed.data.map(r => {
       const dateRaw = r['Date'];
       const dateNum = typeof dateRaw === 'number' ? dateRaw : pnum(dateRaw);
@@ -525,6 +573,8 @@ async function loadData(){
         campaign: (r['Campagne'] || r['Campagne '] || '').trim(),
         adset: (r['Ad Set'] || '').trim(),
         creative: (r['Publicité'] || '').trim(),
+        creativeId: String(r['Publicité ID'] || '').trim(),
+        status: creaStatusOf(r['Publicité ID'], r['Publicité']),
         impressions: pnum(r['Impressions']),
         reach: pnum(r['Reach']),
         clicks: pnum(r['Clics']),
@@ -553,6 +603,9 @@ async function loadData(){
     document.getElementById('dto').value   = fdate(DATE_MAX);
     const metaMax = new Date(Math.max(...RAW.map(r => r.date.getTime())));
     document.getElementById('upd').textContent = metaMax.toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'});
+    const cc = document.getElementById('crea-count');
+    if (cc && (CREA_COUNT.active || CREA_COUNT.inactive))
+      cc.innerHTML = `<span class="cc-sep">·</span> <span class="cc-on">● ${CREA_COUNT.active} créas actifs</span> <span class="cc-off">● ${CREA_COUNT.inactive} inactifs</span>`;
 
     renderShell();
     rerender();
@@ -693,9 +746,11 @@ function updateImportStatus(errs, got){
 function filterRows(fromStr, toStr, campaign){
   const from = new Date(fromStr), to = new Date(toStr);
   to.setHours(23,59,59,999);
+  const hideInactive = (() => { const el = document.getElementById('hide-inactive'); return el && el.checked; })();
   return RAW.filter(r => {
     if (r.date < from || r.date > to) return false;
     if (campaign && r.campaign !== campaign) return false;
+    if (hideInactive && r.status === 'inactive') return false;
     return true;
   });
 }
@@ -1123,11 +1178,13 @@ function renderCampaignCards(rows, fromStr, toStr, campSel, realMode){
   const creaTable = (rs, color) => {
     const ac = adsetColors(rs);
     const items = [...groupBy(rs, r => (r.adset||'(sans nom)') + ' ⟡ ' + (r.creative||'(sans nom)')).entries()]
-      .map(([k, rr]) => { const i = k.indexOf(' ⟡ '); return { adset:k.slice(0,i), name:k.slice(i+3), agg:aggregate(rr) }; })
+      .map(([k, rr]) => { const i = k.indexOf(' ⟡ ');
+        const st = rr.some(r=>r.status==='active') ? 'active' : rr.some(r=>r.status==='inactive') ? 'inactive' : null;
+        return { adset:k.slice(0,i), name:k.slice(i+3), agg:aggregate(rr), status:st }; })
       .sort((a,b)=>b.agg.spend-a.agg.spend);
     return `<table><thead><tr><th>Créatif</th><th>Ad Set</th><th>Dépenses</th><th>Leads</th><th>CPL</th><th>Impressions</th><th>Clics</th><th>CTR</th><th>CPC</th></tr></thead><tbody>
       ${items.map(cr=>{ const c = ac[cr.adset] || color; return `<tr>
-        <td><div class="cname"><div class="cdot" style="background:${c}"></div>${esc(cr.name)}</div></td>
+        <td><div class="cname"><div class="cdot" style="background:${c}"></div>${esc(cr.name)}${statusPill(cr.status)}</div></td>
         <td style="text-align:left"><span class="adset-badge" style="background:${c}1f;color:${c}"><span class="adset-bdot" style="background:${c}"></span>${esc(cr.adset)}</span></td>
         <td>${feur2(cr.agg.spend)}</td><td>${fnum(cr.agg.leads)}</td><td>${cr.agg.cpl?rpill(cr.agg.cpl,'cpl'):'—'}</td>
         <td>${fnum(cr.agg.impressions)}</td><td>${fnum(cr.agg.clicks)}</td><td>${rpill(cr.agg.ctr,'ctr')}</td><td>${feur2(cr.agg.cpc)}</td>
