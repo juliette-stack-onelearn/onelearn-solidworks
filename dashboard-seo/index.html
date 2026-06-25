@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
+<!-- End Google Tag Manager -->
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>One Learn — Dashboard SEO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <style>
+    :root{
+      --ol-orange:#EF7738; --ol-orange-md:#E66A40; --ol-orange-dk:#CD5025; --ol-orange-lt:#FDE2D2;
+      --ol-violet:#545AC0; --ol-violet-dk:#43489A; --ol-indigo:#22244D; --ol-lavande:#EDEDFB; --ol-text:#282C37;
+      --cloud:#EDEFF7; --smoke:#D3D6E0; --steel:#BCBFCC; --space:#9DA2B3; --graphite:#6E7180; --arsenic:#40424D;
+      --success:#16a34a; --error:#dc2626;
+      --bg:var(--ol-lavande); --surface:#fff; --border:var(--smoke); --border-soft:var(--cloud); --text:var(--ol-text); --muted:var(--graphite);
+      color-scheme:light;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.5}
+    h1,h2,h3,h4{font-family:'Satoshi','Inter',sans-serif;letter-spacing:-.01em}
+    a{color:inherit}
+
+    /* HEADER */
+    .hdr{background:var(--ol-indigo);color:#fff;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .hdr-l{display:flex;align-items:center;gap:20px}
+    .logo{font-family:'Satoshi','Inter',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+    .logo-mark{width:32px;height:32px;border-radius:8px;background:var(--ol-violet);position:relative;flex-shrink:0}
+    .logo-mark::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:18px;height:6px;background:var(--ol-orange);border-radius:2px 2px 0 0}
+    .logo-mark::after{content:'';position:absolute;top:11px;left:50%;transform:translateX(-50%);width:2px;height:8px;background:var(--ol-orange)}
+    .logo .one{color:#fff} .logo .learn{color:var(--ol-orange)}
+    .hdiv{width:1px;height:28px;background:rgba(255,255,255,.15)}
+    .hdr-title{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);font-weight:500}
+    .hdr-r{display:flex;align-items:center;gap:18px}
+    .live-badge{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.65);font-weight:500}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:var(--ol-orange);box-shadow:0 0 0 3px rgba(239,119,56,.25);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+    .hbtn{display:flex;align-items:center;gap:6px;padding:7px 13px;border:1px solid rgba(255,255,255,.18);border-radius:9px;background:rgba(255,255,255,.06);color:#fff;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;transition:all .15s}
+    .hbtn:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+
+    /* HUB NAV (SEO / SEA) */
+    .hub{background:var(--ol-indigo);padding:0 40px;display:flex;gap:6px;border-top:1px solid rgba(255,255,255,.08)}
+    .hub a{padding:11px 18px;font-family:'Satoshi','Inter',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.55);text-decoration:none;border-bottom:2.5px solid transparent;display:flex;align-items:center;gap:8px;transition:all .15s}
+    .hub a:hover{color:#fff}
+    .hub a.on{color:#fff;border-bottom-color:var(--ol-orange)}
+
+    /* FILTERS */
+    .flt{background:#fff;border-bottom:1px solid var(--border-soft);padding:12px 40px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .flabel{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--muted)}
+    .pgrp{display:flex;gap:4px;padding:3px;background:var(--cloud);border-radius:10px}
+    .pbtn{padding:7px 14px;border:none;border-radius:7px;background:transparent;font-size:12px;font-weight:500;cursor:pointer;color:var(--graphite);font-family:inherit;transition:all .15s}
+    .pbtn:hover{color:var(--ol-indigo);background:rgba(255,255,255,.5)}
+    .pbtn.active{background:var(--ol-indigo);color:#fff;box-shadow:0 1px 3px rgba(34,36,77,.2)}
+    .fspacer{flex:1}
+    .csel{padding:7px 12px;border:1px solid var(--border);border-radius:8px;font-size:12px;font-family:inherit;color:var(--text);background:#fff;cursor:pointer;font-weight:500}
+    .csel:focus{outline:none;border-color:var(--ol-violet);box-shadow:0 0 0 3px rgba(84,90,192,.12)}
+
+    /* MAIN */
+    .main{padding:30px 40px 64px;max-width:1600px;margin:0 auto}
+    .tabs{display:flex;gap:4px;margin-bottom:26px;border-bottom:1px solid var(--smoke);flex-wrap:wrap}
+    .tab{padding:11px 20px;border:none;background:transparent;font-family:'Satoshi','Inter',sans-serif;font-size:13px;font-weight:700;color:var(--graphite);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;display:flex;align-items:center;gap:7px}
+    .tab:hover{color:var(--ol-indigo)}
+    .tab.active{color:var(--ol-indigo);border-bottom-color:var(--ol-orange)}
+    .tabpanel{animation:fadein .2s ease}
+    @keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    .slabel{font-family:'Satoshi','Inter',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--graphite);margin:4px 0 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .slabel-pill{padding:3px 10px;border-radius:6px;background:var(--ol-orange-lt);color:var(--ol-orange-dk);font-size:10px;font-weight:600;text-transform:none}
+    .slabel-pill.violet{background:rgba(84,90,192,.1);color:var(--ol-violet)}
+    .slabel-spacer{flex:1}
+
+    /* KPI */
+    .krow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+    .kcard{background:var(--surface);border:1px solid var(--border-soft);border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:all .2s}
+    .kcard:hover{border-color:var(--smoke);transform:translateY(-1px);box-shadow:0 4px 12px rgba(40,44,55,.04)}
+    .kcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ol-orange);opacity:0;transition:opacity .2s}
+    .kcard.hi::before{opacity:1}
+    .klabel{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--graphite);margin-bottom:8px}
+    .kval{font-family:'Satoshi','Inter',sans-serif;font-size:26px;font-weight:700;color:var(--text);letter-spacing:-.02em;line-height:1}
+    .ksub{font-size:11px;color:var(--graphite);margin-top:7px;font-weight:500;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .ksub .det{color:var(--space)}
+    .kdelta{font-weight:700;font-variant-numeric:tabular-nums}
+    .kdelta.up{color:var(--success)} .kdelta.dn{color:var(--error)} .kdelta.fl{color:var(--space)}
+
+    /* CHART + TABLE CARDS */
+    .cc{background:var(--surface);border:1px solid var(--border-soft);border-radius:20px;padding:24px;margin-bottom:28px}
+    .ctitle{font-family:'Satoshi','Inter',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .ctitle .sp{flex:1}
+    .cwrap{position:relative;height:280px}
+    .tcard{background:var(--surface);border:1px solid var(--border-soft);border-radius:20px;padding:22px 24px;margin-bottom:28px;overflow-x:auto}
+    table{width:100%;border-collapse:collapse}
+    thead th{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--graphite);text-align:right;padding:0 10px 12px;border-bottom:1px solid var(--border-soft);white-space:nowrap}
+    thead th:first-child{text-align:left}
+    tbody tr{border-bottom:1px solid var(--border-soft)}
+    tbody tr:last-child{border-bottom:none}
+    tbody tr:hover{background:var(--ol-lavande)}
+    tbody td{padding:11px 10px;text-align:right;white-space:nowrap;font-size:13px;font-variant-numeric:tabular-nums}
+    tbody td:first-child{text-align:left;font-weight:600}
+    .ent{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+    .ent a{color:var(--ol-violet);text-decoration:none}
+    .ent a:hover{text-decoration:underline}
+
+    /* PILLS / DELTAS */
+    .rp{display:inline-block;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;font-variant-numeric:tabular-nums}
+    .rp-hi{background:rgba(22,163,74,.12);color:#15803d}
+    .rp-md{background:var(--ol-orange-lt);color:var(--ol-orange-dk)}
+    .rp-lo{background:rgba(220,38,38,.1);color:var(--error)}
+    .rp-z{background:var(--cloud);color:var(--graphite)}
+    .d-up{color:var(--success);font-weight:700} .d-dn{color:var(--error);font-weight:700} .d-fl{color:var(--space);font-weight:700}
+    .na-val{color:var(--steel);font-weight:600;font-style:italic}
+    .badge{display:inline-block;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;letter-spacing:.3px}
+    .badge.new{background:rgba(84,90,192,.12);color:var(--ol-violet)}
+    .badge.gone{background:var(--cloud);color:var(--graphite)}
+
+    /* NOTES / banners */
+    .note{background:rgba(84,90,192,.06);border:1px solid rgba(84,90,192,.18);border-radius:12px;padding:12px 16px;margin-bottom:20px;font-size:12px;line-height:1.6;color:var(--arsenic)}
+    .note.warn{background:rgba(230,106,64,.07);border-color:rgba(230,106,64,.25);color:var(--ol-orange-dk)}
+    .note code{background:rgba(84,90,192,.12);color:var(--ol-violet);padding:1px 6px;border-radius:4px}
+    .seg{display:inline-flex;gap:3px;padding:3px;background:var(--cloud);border-radius:9px}
+    .seg button{padding:6px 14px;border:none;border-radius:6px;background:transparent;font-size:12px;font-weight:600;cursor:pointer;color:var(--graphite);font-family:inherit;transition:all .15s}
+    .seg button.on{background:#fff;color:var(--ol-indigo);box-shadow:0 1px 2px rgba(34,36,77,.12)}
+
+    .loader{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:90px 20px;gap:16px;color:var(--graphite)}
+    .spin{width:34px;height:34px;border:3px solid var(--cloud);border-top-color:var(--ol-orange);border-radius:50%;animation:rot .8s linear infinite}
+    @keyframes rot{to{transform:rotate(360deg)}}
+    .ftr{padding:22px 40px 40px;color:var(--graphite);font-size:11px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;max-width:1600px;margin:0 auto}
+    .ftr .dot{width:5px;height:5px;border-radius:50%;background:var(--steel)}
+    .hide{display:none}
+    @media(max-width:980px){.krow{grid-template-columns:repeat(2,1fr)}.hdr,.hub,.flt,.main,.ftr{padding-left:20px;padding-right:20px}}
+  </style>
+
+<!-- Axeptio Cookie Consent -->
+<script>
+window.axeptioSettings = {
+  clientId: "630de1b500fec812caa2de5e",
+  cookiesVersion: "one learn-fr",
+};
+
+(function(d, s) {
+  var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+  e.async = true; e.src = "//static.axept.io/sdk.js";
+  t.parentNode.insertBefore(e, t);
+})(document, "script");
+</script>
+<!-- End Axeptio Cookie Consent -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+  <div class="hdr">
+    <div class="hdr-l">
+      <div class="logo"><span class="logo-mark"></span><span class="one">One</span><span class="learn">learn</span></div>
+      <div class="hdiv"></div>
+      <div class="hdr-title">Dashboard SEO</div>
+    </div>
+    <div class="hdr-r">
+      <div class="live-badge"><span class="live-dot"></span><span id="freshness">Chargement…</span></div>
+      <button class="hbtn" onclick="location.reload()">↻ Rafraîchir</button>
+    </div>
+  </div>
+  <nav class="hub">
+    <a href="#" class="on">🔍 SEO</a>
+    <a href="../dashboard-meta/">📣 SEA — Meta Ads</a>
+  </nav>
+
+  <div id="app">
+    <div class="loader"><div class="spin"></div><div>Lecture des données Search Console…</div></div>
+  </div>
+  <div class="ftr" id="footer"></div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────
+const SHEET_ID = '1P5EU9oZqPiQKOnIjWl8R5EFnfI8BZiUBoVpOl_OuX6w';
+const csvUrl = tab => `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+const TABS = ['Daily','Pages','Pages_prev','Queries','Queries_prev','Pages_monthly','Queries_monthly','Run'];
+
+// ─── HELPERS ─────────────────────────────────────────────────────
+const num = v => parseFloat(String(v==null?'':v).replace(/\s/g,'').replace(/ /g,'').replace(',','.'));
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fInt = n => new Intl.NumberFormat('fr-FR').format(Math.round(n));
+const fPct = n => new Intl.NumberFormat('fr-FR',{style:'percent',maximumFractionDigits:1}).format(n);
+const fPos = n => new Intl.NumberFormat('fr-FR',{minimumFractionDigits:1,maximumFractionDigits:1}).format(n);
+const NA = '<span class="na-val">N/A</span>';
+// na(v, fmt): renvoie N/A si la valeur est manquante/non finie, sinon formate
+function na(v, fmt){ if(v===null||v===undefined||v===''||(typeof v==='number'&&!isFinite(v))) return NA; return fmt?fmt(v):esc(String(v)); }
+function pageLabel(u){ const p = String(u).replace(/^https?:\/\/(www\.)?one-learn\.fr/i,'')||'/'; return p; }
+function shiftMonth(label, off){ const a=label.split('-').map(Number); const d=new Date(Date.UTC(a[0],a[1]-1-off,1)); return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0'); }
+function monthName(label){ const a=label.split('-').map(Number); return new Intl.DateTimeFormat('fr-FR',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(a[0],a[1]-1,1))); }
+function dFmt(s){ if(!s) return '—'; const d=new Date(s); return isNaN(d)?s:new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'short',year:'numeric'}).format(d); }
+// delta cell (clics): positif = vert. fmt applique au nb.
+function dCell(v, fmt, invert){ if(v===null||v===undefined||!isFinite(v)) return NA; const up=(invert?-v:v)>0.0001, dn=(invert?-v:v)<-0.0001; const cls=up?'d-up':dn?'d-dn':'d-fl'; const sign=v>0?'+':''; return `<span class="${cls}">${sign}${fmt(v)}</span>`; }
+
+// ─── STATE ───────────────────────────────────────────────────────
+const D = {};            // données par onglet
+const ERR = {};          // erreurs de fetch par onglet
+let macroWin = 28;       // 28 / 90 / 280
+let mvDim = 'page';      // perte de vitesse : page|query
+let mvCmp = 1;           // décalage en mois : 1 | 3 | 12
+let trendChart = null;
+
+// ─── LOAD ────────────────────────────────────────────────────────
+async function loadTab(tab){
+  try{
+    const res = await fetch(csvUrl(tab));
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const txt = await res.text();
+    if(/<html|google.visualization|Sorry, unable/i.test(txt.slice(0,200)) && !/,/.test(txt.split('\n')[0]||'')){
+      throw new Error('accès refusé');
+    }
+    const parsed = Papa.parse(txt.trim(), {header:true, skipEmptyLines:true});
+    return parsed.data;
+  }catch(e){ ERR[tab]=e.message||String(e); return null; }
+}
+async function boot(){
+  const results = await Promise.all(TABS.map(loadTab));
+  TABS.forEach((t,i)=>{ D[t]=results[i]||[]; });
+  // Si tout a échoué → message d'accès
+  if(TABS.every(t=>ERR[t])){
+    document.getElementById('app').innerHTML =
+      `<div class="main"><div class="note warn"><b>Impossible de lire le Google Sheet.</b><br>
+      Vérifie que le Sheet est partagé en lecture : <b>Partager → Tout utilisateur disposant du lien → Lecteur</b>.
+      <br>(Détail : ${esc(ERR['Daily']||'accès refusé')})</div></div>`;
+    return;
+  }
+  render();
+  renderFooter();
+}
+
+function parseRows(tab, keyCol){
+  return (D[tab]||[]).map(r=>({
+    key: r[keyCol],
+    clicks: num(r.clicks)||0,
+    impressions: num(r.impressions)||0,
+    ctr: num(r.ctr)||0,
+    position: isFinite(num(r.position))?num(r.position):null,
+    month: r.month, date: r.date, snap: r.snapshot_date
+  })).filter(x=>x.key!==undefined && x.key!=='');
+}
+
+// ─── RENDER SHELL ────────────────────────────────────────────────
+function render(){
+  document.getElementById('app').innerHTML = `
+    <div class="flt" id="macroFlt">
+      <span class="flabel">Période macro</span>
+      <div class="pgrp" id="macroPg">
+        <button class="pbtn active" data-w="28">28 jours</button>
+        <button class="pbtn" data-w="90">3 mois</button>
+        <button class="pbtn" data-w="280">3 trimestres</button>
+      </div>
+      <span class="fspacer"></span>
+    </div>
+    <div class="main">
+      <div class="tabs">
+        <button class="tab active" data-tab="macro">📈 Macro</button>
+        <button class="tab" data-tab="pages">📄 Pages</button>
+        <button class="tab" data-tab="queries">🔑 Requêtes</button>
+        <button class="tab" data-tab="movers">📉 Perte de vitesse</button>
+      </div>
+      <div class="tabpanel" id="tab-macro"></div>
+      <div class="tabpanel hide" id="tab-pages"></div>
+      <div class="tabpanel hide" id="tab-queries"></div>
+      <div class="tabpanel hide" id="tab-movers"></div>
+    </div>`;
+  document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>switchTab(b.dataset.tab,b));
+  document.querySelectorAll('#macroPg .pbtn').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#macroPg .pbtn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); macroWin=+b.dataset.w; renderMacro();
+  });
+  renderMacro(); renderPages(); renderQueries(); renderMovers();
+}
+function switchTab(name, btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+  ['macro','pages','queries','movers'].forEach(t=>document.getElementById('tab-'+t).classList.toggle('hide',t!==name));
+  const mf=document.getElementById('macroFlt'); if(mf) mf.classList.toggle('hide', name!=='macro');
+  if(name==='macro' && trendChart) trendChart.resize();
+}
+
+// ─── MACRO ───────────────────────────────────────────────────────
+function renderMacro(){
+  const el = document.getElementById('tab-macro'); if(!el) return;
+  if(ERR['Daily']){ el.innerHTML = naSection('Données quotidiennes indisponibles', ERR['Daily']); return; }
+  let rows = parseRows('Daily','date').filter(r=>r.date).sort((a,b)=>a.date<b.date?-1:1);
+  if(!rows.length){ el.innerHTML = naSection('Aucune donnée quotidienne'); return; }
+  const N = macroWin;
+  const cur = rows.slice(-N), prev = rows.slice(-2*N, -N);
+  const agg = rs => { const c=rs.reduce((s,r)=>s+r.clicks,0), i=rs.reduce((s,r)=>s+r.impressions,0);
+    const pw = rs.reduce((s,r)=>s+(r.position!=null?r.position*r.impressions:0),0);
+    return { clicks:c, impr:i, ctr:i?c/i:null, pos:i?pw/i:null, n:rs.length }; };
+  const A=agg(cur), B=prev.length?agg(prev):null;
+  const dPct = (a,b)=> (b==null||b===0)?null:(a-b)/b;
+  const kcard=(lab,val,a,b,invert)=>{
+    let sub = '<span class="det">période préc. indispo.</span>';
+    if(b!=null && isFinite(b)){ const dp=dPct(a,b);
+      if(dp==null){ sub='<span class="det">—</span>'; }
+      else { const up=(invert?-dp:dp)>0, fl=Math.abs(dp)<0.0005;
+        sub=`<span class="kdelta ${fl?'fl':up?'up':'dn'}">${dp>0?'+':''}${fPct(dp)}</span><span class="det">vs période préc.</span>`; } }
+    return `<div class="kcard hi"><div class="klabel">${lab}</div><div class="kval">${val}</div><div class="ksub">${sub}</div></div>`;
+  };
+  el.innerHTML = `
+    <div class="slabel">Santé du site
+      <span class="slabel-pill">${N===28?'28 derniers jours':N===90?'3 derniers mois':'3 derniers trimestres'}</span>
+      <span class="slabel-spacer"></span></div>
+    <div class="krow">
+      ${kcard('Clics', na(A.clicks,fInt), A.clicks, B&&B.clicks)}
+      ${kcard('Impressions', na(A.impr,fInt), A.impr, B&&B.impr)}
+      ${kcard('CTR', na(A.ctr,fPct), A.ctr, B&&B.ctr)}
+      ${kcard('Position moy.', na(A.pos,fPos), A.pos, B&&B.pos, true)}
+    </div>
+    <div class="cc">
+      <div class="ctitle">Tendance — clics &amp; position<span class="sp"></span>
+        <span style="font-weight:500;color:var(--graphite)">${dFmt(cur[0].date)} → ${dFmt(cur[cur.length-1].date)}</span></div>
+      <div class="cwrap"><canvas id="trend"></canvas></div>
+    </div>`;
+  drawTrend(cur);
+}
+function drawTrend(rows){
+  const ctx=document.getElementById('trend'); if(!ctx) return;
+  if(trendChart) trendChart.destroy();
+  const step = Math.max(1, Math.round(rows.length/14));
+  const labels = rows.map(r=>r.date);
+  trendChart = new Chart(ctx,{
+    data:{ labels,
+      datasets:[
+        {type:'bar', label:'Clics', data:rows.map(r=>r.clicks), backgroundColor:'rgba(239,119,56,.85)', borderRadius:3, yAxisID:'y', order:2},
+        {type:'line', label:'Position moy.', data:rows.map(r=>r.position), borderColor:'#545AC0', backgroundColor:'#545AC0', borderWidth:2, pointRadius:0, tension:.3, yAxisID:'y1', order:1}
+      ]},
+    options:{ responsive:true, maintainAspectRatio:false, interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{position:'bottom', labels:{boxWidth:12,font:{size:11},color:'#6E7180'}},
+        tooltip:{callbacks:{title:i=>dFmt(i[0].label), label:c=>c.dataset.label+': '+(c.dataset.yAxisID==='y1'?fPos(c.raw):fInt(c.raw))}}},
+      scales:{
+        x:{grid:{display:false}, ticks:{color:'#9DA2B3',font:{size:10},maxRotation:0,autoSkip:false,callback:(v,i)=>i%step===0?dFmt(labels[i]).replace(/ \d{4}$/,''):''}},
+        y:{position:'left',grid:{color:'#EDEFF7'},ticks:{color:'#9DA2B3',font:{size:10}},title:{display:true,text:'Clics',color:'#9DA2B3',font:{size:10}}},
+        y1:{position:'right',reverse:true,grid:{display:false},ticks:{color:'#9DA2B3',font:{size:10}},title:{display:true,text:'Position',color:'#9DA2B3',font:{size:10}}}
+      }}
+  });
+}
+
+// ─── MICRO COURANT (Pages / Queries) ─────────────────────────────
+function joinPrev(curRows, prevRows){
+  const pm={}; prevRows.forEach(r=>pm[r.key]=r);
+  return curRows.map(r=>({ ...r, prev: pm[r.key]||null,
+    dClicks: pm[r.key]?r.clicks-pm[r.key].clicks:null,
+    dPos: (pm[r.key]&&pm[r.key].position!=null&&r.position!=null)?r.position-pm[r.key].position:null }));
+}
+function microTab(elId, curTab, prevTab, keyCol, isPage){
+  const el=document.getElementById(elId); if(!el) return;
+  if(ERR[curTab]){ el.innerHTML=naSection('Données indisponibles', ERR[curTab]); return; }
+  const cur=parseRows(curTab,keyCol), prev=parseRows(prevTab,keyCol);
+  if(!cur.length){ el.innerHTML=naSection('Aucune donnée'); return; }
+  const joined=joinPrev(cur,prev);
+  const top=[...joined].sort((a,b)=>b.clicks-a.clicks).slice(0,50);
+  // Opportunités : position 4-15, impressions notables, triées par impressions
+  const opp=[...cur].filter(r=>r.position!=null&&r.position>=4&&r.position<=15&&r.impressions>=800)
+    .sort((a,b)=>b.impressions-a.impressions).slice(0,25);
+  const entCell=v=> isPage
+    ? `<span class="ent"><a href="${esc(v)}" target="_blank" rel="noopener">${esc(pageLabel(v))}</a></span>`
+    : `<span class="ent">${esc(v)}</span>`;
+  const ctrPill=c=>{ const cls=c>=0.05?'rp-hi':c>=0.02?'rp-md':c>0?'rp-lo':'rp-z'; return `<span class="rp ${cls}">${na(c,fPct)}</span>`; };
+  el.innerHTML = `
+    <div class="slabel">${isPage?'Pages':'Requêtes'} — 28 derniers jours
+      <span class="slabel-pill violet">vs 28 j précédents</span><span class="slabel-spacer"></span>
+      <span style="font-weight:500;text-transform:none;color:var(--graphite)">${cur.length} ${isPage?'pages':'requêtes'}</span></div>
+    <div class="tcard">
+      <div class="ctitle">Top ${isPage?'pages':'requêtes'} par clics</div>
+      <table><thead><tr><th>${isPage?'Page':'Requête'}</th><th>Clics</th><th>Δ clics</th><th>Impressions</th><th>CTR</th><th>Position</th><th>Δ pos.</th></tr></thead>
+      <tbody>${top.map(r=>`<tr>
+        <td>${entCell(r.key)}</td>
+        <td>${na(r.clicks,fInt)}</td>
+        <td>${dCell(r.dClicks,fInt)}</td>
+        <td>${na(r.impressions,fInt)}</td>
+        <td>${ctrPill(r.ctr)}</td>
+        <td>${na(r.position,fPos)}</td>
+        <td>${dCell(r.dPos,fPos,true)}</td></tr>`).join('')}</tbody></table>
+    </div>
+    <div class="slabel">Opportunités CTR <span class="slabel-pill">position 4–15 · fortes impressions</span></div>
+    <div class="note">Ces ${isPage?'pages':'requêtes'} sont déjà bien positionnées avec beaucoup d'impressions mais un CTR faible — un meilleur title/meta peut capter plus de clics.</div>
+    <div class="tcard">
+      <table><thead><tr><th>${isPage?'Page':'Requête'}</th><th>Impressions</th><th>Clics</th><th>CTR</th><th>Position</th></tr></thead>
+      <tbody>${opp.length?opp.map(r=>`<tr>
+        <td>${entCell(r.key)}</td><td>${na(r.impressions,fInt)}</td><td>${na(r.clicks,fInt)}</td><td>${ctrPill(r.ctr)}</td><td>${na(r.position,fPos)}</td></tr>`).join(''):`<tr><td colspan="5">${NA}</td></tr>`}</tbody></table>
+    </div>`;
+}
+function renderPages(){ microTab('tab-pages','Pages','Pages_prev','page',true); }
+function renderQueries(){ microTab('tab-queries','Queries','Queries_prev','query',false); }
+
+// ─── PERTE DE VITESSE (buckets mensuels) ─────────────────────────
+function renderMovers(){
+  const el=document.getElementById('tab-movers'); if(!el) return;
+  el.innerHTML = `
+    <div class="slabel">Perte de vitesse — comparaison de périodes<span class="slabel-spacer"></span></div>
+    <div class="flt" style="border-radius:14px;border:1px solid var(--border-soft);margin-bottom:20px">
+      <span class="flabel">Dimension</span>
+      <div class="seg" id="mvDim">
+        <button data-d="page" class="${mvDim==='page'?'on':''}">Pages</button>
+        <button data-d="query" class="${mvDim==='query'?'on':''}">Requêtes</button>
+      </div>
+      <span class="flabel" style="margin-left:14px">Comparer à</span>
+      <select class="csel" id="mvCmp">
+        <option value="1" ${mvCmp==1?'selected':''}>Mois précédent (M-1)</option>
+        <option value="3" ${mvCmp==3?'selected':''}>Il y a 3 mois (M-3)</option>
+        <option value="12" ${mvCmp==12?'selected':''}>Année préc. (M-12, YoY)</option>
+      </select>
+      <span class="fspacer"></span>
+    </div>
+    <div id="mvBody"></div>`;
+  el.querySelectorAll('#mvDim button').forEach(b=>b.onclick=()=>{ mvDim=b.dataset.d; renderMovers(); });
+  el.querySelector('#mvCmp').onchange=e=>{ mvCmp=+e.target.value; renderMoversBody(); };
+  renderMoversBody();
+}
+function renderMoversBody(){
+  const body=document.getElementById('mvBody'); if(!body) return;
+  const tab = mvDim==='page'?'Pages_monthly':'Queries_monthly';
+  const keyCol = mvDim;
+  if(ERR[tab]){ body.innerHTML=naSection('Buckets mensuels indisponibles', ERR[tab]); return; }
+  const rows=parseRows(tab,keyCol).filter(r=>r.month);
+  if(!rows.length){ body.innerHTML=naSection('Aucun bucket mensuel'); return; }
+  const months=[...new Set(rows.map(r=>r.month))].sort();
+  const A=months[months.length-1];
+  const B=shiftMonth(A, mvCmp);
+  const has=months.includes(B);
+  const byMonth=m=>{ const o={}; rows.filter(r=>r.month===m).forEach(r=>o[r.key]=r); return o; };
+  const mapA=byMonth(A), mapB=has?byMonth(B):{};
+  const keys=new Set([...Object.keys(mapA), ...Object.keys(mapB)]);
+  const cmp=[...keys].map(k=>{
+    const a=mapA[k], b=mapB[k];
+    const ca=a?a.clicks:0, cb=b?b.clicks:(has?0:null);
+    const dC = (cb==null)?null:ca-cb;
+    const dP = (a&&b&&a.position!=null&&b.position!=null)?a.position-b.position:null;
+    return { key:k, ca:a?a.clicks:null, cb:b?b.clicks:(has?0:null), dC,
+      pa:a?a.position:null, pb:b?b.position:null, dP,
+      status: !has?'na' : (!b?'new' : (!a?'gone' : (dC<0?'down':'up'))) };
+  });
+  // décliners = présents dans B, plus grosse perte de clics
+  const decliners = has ? cmp.filter(x=>x.status==='down'||x.status==='gone').sort((a,b)=>(a.dC??0)-(b.dC??0)).slice(0,30) : cmp.sort((a,b)=>(b.ca||0)-(a.ca||0)).slice(0,30);
+  const entCell=v=> mvDim==='page'
+    ? `<span class="ent"><a href="${esc(v)}" target="_blank" rel="noopener">${esc(pageLabel(v))}</a></span>`
+    : `<span class="ent">${esc(v)}</span>`;
+  const head = `
+    <div class="note ${has?'':'warn'}">
+      ${has
+        ? `Comparaison <b>${monthName(A)}</b> vs <b>${monthName(B)}</b> — triées par plus grosse <b>perte de clics</b>. Une position en hausse (chiffre ↑) = recul.`
+        : `Historique insuffisant pour <b>${monthName(B)}</b> (pas encore dans les données). Les colonnes de comparaison affichent <b>N/A</b>. Le YoY se débloquera automatiquement au fil des mois.`}
+    </div>`;
+  const stCell=s=> s==='down'?'<span class="rp rp-lo">🔴 recul</span>':s==='up'?'<span class="rp rp-hi">🟢 progrès</span>':s==='new'?'<span class="badge new">nouvelle</span>':s==='gone'?'<span class="badge gone">disparue</span>':NA;
+  body.innerHTML = head + `
+    <div class="tcard">
+      <table><thead><tr>
+        <th>${mvDim==='page'?'Page':'Requête'}</th>
+        <th>Clics ${has?monthName(A).replace(/ \d{4}/,''):''}</th>
+        <th>Clics ${has?monthName(B).replace(/ \d{4}/,''):'(réf.)'}</th>
+        <th>Δ clics</th><th>Pos. A</th><th>Pos. B</th><th>Δ pos.</th><th>Statut</th></tr></thead>
+      <tbody>${decliners.map(r=>`<tr>
+        <td>${entCell(r.key)}</td>
+        <td>${na(r.ca,fInt)}</td>
+        <td>${na(r.cb,fInt)}</td>
+        <td>${dCell(r.dC,fInt)}</td>
+        <td>${na(r.pa,fPos)}</td>
+        <td>${na(r.pb,fPos)}</td>
+        <td>${dCell(r.dP,fPos,true)}</td>
+        <td>${stCell(r.status)}</td></tr>`).join('')}</tbody></table>
+    </div>`;
+}
+
+// ─── DIVERS ──────────────────────────────────────────────────────
+function naSection(title, detail){
+  return `<div class="note warn"><b>${esc(title)}.</b> ${NA}${detail?`<br><span style="color:var(--graphite)">${esc(detail)}</span>`:''}</div>`;
+}
+function renderFooter(){
+  const run=(D['Run']||[])[0]||{};
+  const fresh = run.cur_end ? `Données jusqu'au ${dFmt(run.cur_end)}` : 'Fraîcheur inconnue';
+  document.getElementById('freshness').textContent = run.cur_end ? `Données au ${dFmt(run.cur_end)}` : 'Connecté';
+  const errs = TABS.filter(t=>ERR[t]);
+  document.getElementById('footer').innerHTML =
+    `<span>One Learn · Dashboard SEO</span><span class="dot"></span>
+     <span>${esc(fresh)}</span><span class="dot"></span>
+     <span>Source : Google Search Console (one-learn.fr)</span>
+     ${run.run_at?`<span class="dot"></span><span>MAJ ${dFmt(run.run_at)}</span>`:''}
+     ${errs.length?`<span class="dot"></span><span style="color:var(--ol-orange-dk)">⚠ ${errs.length} onglet(s) indispo.</span>`:''}`;
+}
+
+boot();
+</script>
+</body>
+</html>
