@@ -8,6 +8,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+<link rel="stylesheet" href="/assets/onelearn-tw.css">
+
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
 
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzYiIGhlaWdodD0iNzYiIHZpZXdCb3g9IjAgMCA3NiA3NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTU3LjM5IDBIMTcuODFDNy45OCAwIDAgNy45NyAwIDE3LjgxVjU3LjM5QzAgNjcuMjMgNy45OCA3NS4yIDE3LjgxIDc1LjJINTcuMzlDNjcuMjMgNzUuMiA3NS4yMSA2Ny4yMyA3NS4yMSA1Ny4zOVYxNy44MUM3NS4yMSA3Ljk3IDY3LjIzIDAgNTcuMzkgMFpNNTYuODEgNDkuNjFDNTYuODEgNTYuODggNTAuOTIgNjIuNzYgNDMuNjYgNjIuNzZIMzEuNTVDMjQuMjkgNjIuNzYgMTguNCA1Ni44OCAxOC40IDQ5LjYxVjI4LjQ1SDU2LjgxVjQ5LjYxWiIgZmlsbD0iIzU0NUFDMCIvPgo8cGF0aCBkPSJNNjMuNjg5OSAyNi44NzA0TDM5LjYyOTkgMTIuOTgwNEMzOC4zNzk5IDEyLjI2MDQgMzYuODM5OSAxMi4yNjA0IDM1LjU4OTkgMTIuOTgwNEwxMS41Mjk5IDI2Ljg3MDRDMTAuNTQ5OSAyNy40NDA0IDEwLjU0OTkgMjguODUwNCAxMS41Mjk5IDI5LjQxMDRMMjAuOTY5OSAzNC44NzA0SDIwLjk3OTlMMzUuMTc5OSA0My4wNzA0QzM2LjY3OTkgNDMuOTQwNCAzOC41Mjk5IDQzLjk0MDQgNDAuMDI5OSA0My4wNzA0TDU0LjIyOTkgMzQuODcwNEg1NC4yMzk5TDYzLjY3OTkgMjkuNDEwNEM2NC42NTk5IDI4Ljg1MDQgNjQuNjU5OSAyNy40NDA0IDYzLjY3OTkgMjYuODcwNCIgZmlsbD0iI0VGNzczOCIvPgo8L3N2Zz4K">
@@ -16,36 +46,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Formation Canva en ligne – Certifiante &amp; financée à 100% | One Learn</title>
 <meta name="description" content="Maîtrisez Canva en 6 semaines : posts sociaux, présentations, brand kit, supports print. Formateur dédié, certification reconnue, financement CPF. Réservez votre appel gratuit.">
 
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" rel="stylesheet">
 
 <!-- iClosed widget (inline + popup) -->
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { DEFAULT: '#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
-        orange: { DEFAULT: '#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
-        cream: '#ffffff',
-        ink: '#282C37',
-      },
-      fontFamily: {
-        display: ['"Satoshi"', '"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        'card': '0 1px 0 rgba(34,36,77,.04), 0 8px 24px -12px rgba(34,36,77,.12)',
-        'cta': '0 10px 30px -10px rgba(230,106,64,.5)',
-      }
-    }
-  }
-}
-</script>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -147,13 +153,15 @@ tailwind.config = {
 <script src="https://bat.bing.com/p/action/97075862.js" type="text/javascript" async="" data-ueto="ueto_4a6df912b5"></script><meta http-equiv="origin-trial" content="A7JYkbIvWKmS8mWYjXO12SIIsfPdI7twY91Y3LWOV/YbZmN1ZhYv8O+Zs6/IPCfBE99aV9tIC8sWZSCN09vf7gkAAACWeyJvcmlnaW4iOiJodHRwczovL2N0LnBpbnRlcmVzdC5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZzIiLCJleHBpcnkiOjE3NDIzNDIzOTksImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><script src="https://bat.bing.com/p/action/97075862.js" type="text/javascript" async="" data-ueto="ueto_d0997a54d3"></script><script src="chrome-extension://liecbddmkiiihnedobmlmillhodjkdmb/js/recordConsoleEvents.js"></script>
 
 <!-- Microsoft Clarity -->
-<script type="text/javascript">
+<script type="text/javascript">/*OL-TRY*/try{
+
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wy6s0jj04t");
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- End Microsoft Clarity -->
 
 <!-- Axeptio Cookie Consent -->
@@ -324,7 +332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
   <!-- Scroll indicator -->
   <div class="flex justify-center pb-4">
-    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="document.getElementById('stats-bar').scrollIntoView({behavior:'smooth'})">
+    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="$('stats-bar').scrollIntoView({behavior:'smooth'})">
       <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#9DA2B3;">Découvrir</span>
       <svg class="w-4 h-4 animate-bounce" style="color:#9DA2B3;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
@@ -791,7 +799,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </style>
 
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   var steps = document.querySelectorAll('.timeline-step');
   var confettiFired = false;
@@ -882,7 +891,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   steps.forEach(function(s) { observer.observe(s); });
   window._fireConfetti = fireConfetti;
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- ══ Bloc certification ══ -->
 <section class="py-16 bg-cream">
@@ -918,7 +928,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       </div>
-<script>(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();</script>
+<script>/*OL-TRY*/try{
+(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
       <!-- Contenu -->
       <div>
@@ -1737,7 +1749,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script>
+<script>/*OL-TRY*/try{
+
 // ── Sticky CTAs (mobile bottom + desktop topbar) : apparaissent quand le hero CTA disparait ──────
 (function() {
   var heroCta = document.getElementById('hero-cta');
@@ -1758,9 +1771,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { threshold: 0 });
   observer.observe(heroCta);
 })();
-</script>
 
-<script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script>/*OL-TRY*/try{
+
 (function(){
   var m = document.querySelector('.marquee');
   if(!m) return;
@@ -1773,9 +1788,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(document.readyState === 'complete') initMarquee();
   else window.addEventListener('load', initMarquee);
 })();
-</script>
 
-<script id="_scroll_anim_js">
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script id="_scroll_anim_js">/*OL-TRY*/try{
+
 (function(){
   // Marquer les éléments à animer
   var selectors = [
@@ -1829,212 +1846,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.querySelectorAll('[data-anim]').forEach(function(el) { io.observe(el); });
 })();
-</script>
 
-<script id="_ed_script">
-(function(){
-  if(!location.search.includes('edit'))return;
-  if(sessionStorage.getItem('_ed_auth')!=='1'){
-    document.addEventListener('DOMContentLoaded',function(){
-      var ov=document.createElement('div');
-      ov.style.cssText='position:fixed;inset:0;background:rgba(34,36,77,.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;';
-      ov.innerHTML='<div style="background:#fff;border-radius:20px;padding:36px 40px;width:340px;max-width:90vw;box-shadow:0 25px 60px rgba(0,0,0,.5);">'
-        +'<div style="text-align:center;margin-bottom:24px;">'
-        +'<svg style="width:40px;height:40px;margin:0 auto 12px;display:block;" fill="none" viewBox="0 0 24 24" stroke="#545AC0" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>'
-        +'<h2 style="font-size:18px;font-weight:700;color:#22244D;margin:0 0 4px;">Mode \u00e9dition</h2>'
-        +'<p style="font-size:13px;color:#888;margin:0;">Identifiez-vous pour continuer</p></div>'
-        +'<input id="_glogin" type="email" placeholder="Email" autocomplete="email" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:10px;outline:none;display:block;">'
-        +'<input id="_glpass" type="password" placeholder="Mot de passe" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:6px;outline:none;display:block;">'
-        +'<p id="_glerr" style="color:#ef4444;font-size:12px;margin:0 0 14px;display:none;">Identifiants incorrects.</p>'
-        +'<button id="_glbtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#545AC0,#43489A);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">Se connecter</button>'
-        +'</div>';
-      document.body.appendChild(ov);
-      function _try(){
-        var l=document.getElementById('_glogin').value.trim();
-        var p=document.getElementById('_glpass').value;
-        if(l==='juliette@one-learn.fr'&&p==='#Onelearn.040297.88'){sessionStorage.setItem('_ed_auth','1');location.reload();}
-        else{document.getElementById('_glerr').style.display='block';}
-      }
-      document.getElementById('_glbtn').addEventListener('click',_try);
-      document.getElementById('_glpass').addEventListener('keydown',function(e){if(e.key==='Enter')_try();});
-    });
-    return;
-  }
-  if(sessionStorage.getItem('_ed_auth')!=='1'){
-    document.addEventListener('DOMContentLoaded',function(){
-      var ov=document.createElement('div');
-      ov.style.cssText='position:fixed;inset:0;background:rgba(34,36,77,.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;';
-      ov.innerHTML='<div style="background:#fff;border-radius:20px;padding:36px 40px;width:340px;max-width:90vw;box-shadow:0 25px 60px rgba(0,0,0,.5);">'
-        +'<div style="text-align:center;margin-bottom:24px;">'
-        +'<svg style="width:40px;height:40px;margin:0 auto 12px;display:block;" fill="none" viewBox="0 0 24 24" stroke="#545AC0" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>'
-        +'<h2 style="font-size:18px;font-weight:700;color:#22244D;margin:0 0 4px;">Mode \u00e9dition</h2>'
-        +'<p style="font-size:13px;color:#888;margin:0;">Identifiez-vous pour continuer</p></div>'
-        +'<input id="_glogin" type="email" placeholder="Email" autocomplete="email" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:10px;outline:none;display:block;">'
-        +'<input id="_glpass" type="password" placeholder="Mot de passe" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:6px;outline:none;display:block;">'
-        +'<p id="_glerr" style="color:#ef4444;font-size:12px;margin:0 0 14px;display:none;">Identifiants incorrects.</p>'
-        +'<button id="_glbtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#545AC0,#43489A);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">Se connecter</button>'
-        +'</div>';
-      document.body.appendChild(ov);
-      function _try(){
-        var l=document.getElementById('_glogin').value.trim();
-        var p=document.getElementById('_glpass').value;
-        if(l==='juliette@one-learn.fr'&&p==='#Onelearn.040297.88'){sessionStorage.setItem('_ed_auth','1');location.reload();}
-        else{document.getElementById('_glerr').style.display='block';}
-      }
-      document.getElementById('_glbtn').addEventListener('click',_try);
-      document.getElementById('_glpass').addEventListener('keydown',function(e){if(e.key==='Enter')_try();});
-    });
-    return;
-  }
-  var REPO='juliette-stack-onelearn/onelearn-solidworks';
-  var FILE='formation-canva-meta/index.html';
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
-  /* ── Styles ── */
-  var s=document.createElement('style');
-  s.id='_ed_style';
-  s.textContent=[
-    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
-    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
-    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
-    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
-    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
-    '._ed-btn:hover{background:#CD5025;}',
-    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
-    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
-    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
-    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
-    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
-    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
-    'animation:_ed-fadein .2s ease;}',
-    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
-    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
-    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;',
-    'border-radius:3px;}'
-  ].join('');
-  document.head.appendChild(s);
-
-  /* ── Toast ── */
-  function toast(msg){
-    var t=document.createElement('div');
-    t.className='_ed-toast';t.textContent=msg;
-    document.body.appendChild(t);
-    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';
-    setTimeout(function(){t.remove();},300);},3000);
-  }
-
-  /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],span.rounded-full,div[data-cms]:not(.photo-slot),td,th';
-  document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
-    el.contentEditable='true';
-    el.spellcheck=false;
-  });
-
-  /* ── Pause marquee en mode edit ── */
-  document.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='paused';});
-
-  /* ── Logos marquee : listener direct sur l'img (partagent le même parent) ── */
-  document.querySelectorAll('img.rec-logo').forEach(function(img){
-    img.style.cursor='pointer';
-    img.title='Cliquer pour remplacer ce logo';
-    img.addEventListener('click',function(e){
-      e.stopPropagation();
-      var recId=img.getAttribute('data-rec-img');
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.display='none';
-      document.body.appendChild(inp);
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){
-          if(recId){document.querySelectorAll('img[data-rec-img="'+recId+'"]').forEach(function(c){c.src=ev.target.result;});}
-          else{img.src=ev.target.result;}
-          toast('📷 Logo mis à jour');
-          if(inp.parentNode)inp.parentNode.removeChild(inp);
-        };
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Autres images (hero, cms) : listener sur le container ── */
-  document.querySelectorAll('img[data-cms],img.hero-img').forEach(function(img){
-    var container=img.parentElement;
-    container.style.cursor='pointer';
-    container.title='Cliquer pour remplacer l\'image';
-    container.addEventListener('click',function(e){
-      if(e.target.closest('[contenteditable]'))return;
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Photo slots (divs cliquables) ── */
-  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
-    slot.style.cursor='pointer';
-    slot.title='Cliquer pour insérer une photo';
-    slot.addEventListener('click',function(e){
-      e.stopPropagation();
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.display='none';
-      document.body.appendChild(inp);
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){
-          var cms=slot.getAttribute('data-cms');
-          slot.innerHTML='';
-          slot.style.background='none';
-          slot.style.border='none';
-          slot.classList.remove('photo-slot');
-          var img=document.createElement('img');
-          img.src=ev.target.result;
-          if(cms)img.setAttribute('data-cms',cms);
-          img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:.75rem;display:block;';
-          slot.appendChild(img);
-          toast('📷 Photo insérée');
-          if(inp.parentNode)inp.parentNode.removeChild(inp);
-        };
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Sauvegarde GitHub ── */
-  function save(){
-    var token=localStorage.getItem('_ol_token');
-    if(!token){token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
-    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
-
-    var clone=document.documentElement.cloneNode(true);
-    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
-    clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
-    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
-    clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
-    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
-
-    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    /* ── Strip scripts injectés runtime ── */
-    // 1. Supprimer tous les blocs GTM existants
-    raw=raw.replace(//g,'');
-    raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
-    raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
-    raw=raw.replace(/
-
-</script>
-<script>window.scrollToRdvForm=function(){var el=document.getElementById("rdv-form")||document.getElementById("rdv");if(!el)return;var hdr=document.querySelector("header.sticky");var off=(hdr?hdr.offsetHeight:0)+12;var y=el.getBoundingClientRect().top+window.scrollY-off;window.scrollTo({top:y,behavior:"smooth"});};</script>
+<script>/*OL-TRY*/try{
+window.scrollToRdvForm=function(){var el=document.getElementById("rdv-form")||document.getElementById("rdv");if(!el)return;var hdr=document.querySelector("header.sticky");var off=(hdr?hdr.offsetHeight:0)+12;var y=el.getBoundingClientRect().top+window.scrollY-off;window.scrollTo({top:y,behavior:"smooth"});};
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- Scroll animations -->
 <style id="__ol_scroll_anim_css">
   .has-scroll-anim .reveal {
@@ -2051,7 +1868,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .has-scroll-anim .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 </style>
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const html = document.documentElement;
@@ -2102,10 +1920,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- One Learn — Unified GA4 dataLayer tracker v1 (__OL_TRACKER_V1__) -->
-<script>
+<script>/*OL-TRY*/try{
+
 (function(){
   'use strict';
   if (window.__ol_tracker_v1) return;
@@ -2315,6 +2135,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   } catch(e){}
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- /__OL_TRACKER_V1__ -->
 </body></html>

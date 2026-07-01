@@ -8,6 +8,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+<link rel="stylesheet" href="/assets/onelearn-tw.css">
+
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
 
 <meta name="robots" content="noindex, follow">
 
@@ -17,34 +47,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Formation Communication &amp; Design en ligne – Certifiante &amp; financée à 100% | One Learn</title>
 <meta name="description" content="Maîtrisez Canva, le Pack Adobe, Figma, Webflow et Première Pro en 12 semaines. Formation certifiante, formateur dédié, finançable CPF. Réservez votre appel gratuit.">
 
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&amp;display=swap" rel="stylesheet">
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { DEFAULT: '#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
-        orange: { DEFAULT: '#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
-        cream: '#ffffff',
-        ink: '#282C37',
-      },
-      fontFamily: {
-        display: ['"Satoshi"', '"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        'card': '0 1px 0 rgba(34,36,77,.04), 0 8px 24px -12px rgba(34,36,77,.12)',
-        'cta': '0 10px 30px -10px rgba(230,106,64,.5)',
-      }
-    }
-  }
-}
-</script>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -66,13 +72,15 @@ tailwind.config = {
   
 
 <!-- Microsoft Clarity -->
-<script type="text/javascript">
+<script type="text/javascript">/*OL-TRY*/try{
+
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wy6s0jj04t");
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- End Microsoft Clarity -->
 
 <!-- Axeptio Cookie Consent -->
@@ -121,7 +129,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 </div>
-<script>
+<script>/*OL-TRY*/try{
+
 (function(){
   function init() {
     var topCta = document.getElementById('topbar-cta');
@@ -153,9 +162,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     init();
   }
 })();
-</script>
 
-<script type="text/javascript">(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();</script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script type="text/javascript">/*OL-TRY*/try{
+(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- ============ NAV ============ -->
 <header class="sticky top-0 z-40 backdrop-blur-md bg-cream/85 border-b border-ink/5">
@@ -1076,7 +1088,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       </div>
-<script class="reveal" style="transition-delay: 70ms;">(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();</script>
+<script class="reveal" style="transition-delay: 70ms;">/*OL-TRY*/try{
+(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
       <!-- Contenu -->
       <div class="reveal" style="transition-delay: 140ms;">
@@ -1531,7 +1545,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .has-scroll-anim .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 </style>
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const html = document.documentElement;
@@ -1593,7 +1608,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   });
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;">
 <style>
   /* CTA breathing - subtle pulse on primary hero CTA */
@@ -1604,7 +1620,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .cta-breath { animation: cta-breath 2.8s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) { .cta-breath { animation: none; } }
 </style>
-<script>
+<script>/*OL-TRY*/try{
+
   // Stats bar counter animation - triggers when section enters viewport
   (function() {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1661,9 +1678,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }, { threshold: 0.35 });
     obs.observe(bar);
   })();
-</script>
 
-<div id="batBeacon489617864547" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon388736872062" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=ac88bf5d-eacb-410e-b739-fcee0408a806&amp;bo=2&amp;sid=787acef0431311f197ae43a3609cfa98&amp;vid=787ac610431311f1b92d39ff37e31751&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20Communication%20%26%20Design%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fcommunication-design%2F%3Fedit&amp;r=&amp;lt=498&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=167786" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<div id="batBeacon489617864547" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon388736872062" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=ac88bf5d-eacb-410e-b739-fcee0408a806&amp;bo=2&amp;sid=787acef0431311f197ae43a3609cfa98&amp;vid=787ac610431311f1b92d39ff37e31751&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20Communication%20%26%20Design%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fcommunication-design%2F%3Fedit&amp;r=&amp;lt=498&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=167786" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><input type="file" accept="image/png,image/jpeg,image/jpg,image/svg+xml,image/webp,image/gif" style="display: none;"><script>/*OL-TRY*/try{
+
 /* Scroll #rdv links directly to the iClosed form (skip section title for faster mobile UX) */
 (function(){
   function init(){
@@ -1684,12 +1703,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.addEventListener('DOMContentLoaded', init);
   } else { init(); }
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <div id="batBeacon34274834738" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon50930982526" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=8d3cbf30-b312-4635-a004-dc4f0c2ed7d3&amp;bo=2&amp;sid=787acef0431311f197ae43a3609cfa98&amp;vid=787ac610431311f1b92d39ff37e31751&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1470&amp;sh=956&amp;sc=30&amp;tl=Formation%20Communication%20%26%20Design%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fcommunication-design%2F%3Fedit&amp;r=&amp;lt=423&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=337180" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div>  <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
 
 <!-- One Learn — Unified GA4 dataLayer tracker v1 (__OL_TRACKER_V1__) -->
-<script>
+<script>/*OL-TRY*/try{
+
 (function(){
   'use strict';
   if (window.__ol_tracker_v1) return;
@@ -1899,6 +1920,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   } catch(e){}
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- /__OL_TRACKER_V1__ -->
 </body></html>

@@ -9,6 +9,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
+
 <meta name="robots" content="noindex, follow">
 
 <meta charset="UTF-8">
@@ -95,7 +124,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <script async="" src="https://tally.so/widgets/embed.js"></script>
   <!-- Google Analytics 4 — One Learn Landing Pages -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3JNLSYWG7S"></script>
-  <script>
+  <script>/*OL-TRY*/try{
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -124,7 +154,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }, { threshold: 0.3 }).observe(el);
       });
     }
-  </script>
+  
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <style id="_scroll_anim_css">
   
@@ -338,7 +369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
   <!-- Scroll indicator -->
   <div class="flex justify-center pb-4">
-    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="document.getElementById('stats-bar').scrollIntoView({behavior:'smooth'})">
+    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="$('stats-bar').scrollIntoView({behavior:'smooth'})">
       <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#9DA2B3;">Découvrir</span>
       <svg class="w-4 h-4 animate-bounce" style="color:#9DA2B3;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
@@ -900,7 +931,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       </div>
-<script>(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();</script>
+<script>/*OL-TRY*/try{
+(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
       <!-- Contenu -->
       <div>
@@ -1008,7 +1041,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </style>
 
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   var steps = document.querySelectorAll('.timeline-step');
   var confettiFired = false;
@@ -1104,7 +1138,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   steps.forEach(function(s) { observer.observe(s); });
   window._fireConfetti = fireConfetti;
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- ============ MÉTIERS & DÉBOUCHÉS ============ -->
 <section id="metiers" class="py-20">
@@ -1494,7 +1529,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <script>
+    <script>/*OL-TRY*/try{
+
     (function() {
       var slider = document.getElementById('formateurs-slider');
       var dots = document.querySelectorAll('#sl-dots .sl-dot');
@@ -1528,7 +1564,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
     })();
-    </script>
+    
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
   </div>
 </section>
@@ -1902,7 +1939,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
 </div>
 
-<script>
+<script>/*OL-TRY*/try{
+
 // ── Sticky topbar CTA ──────────────────────────
 (function() {
   var heroCta = document.getElementById('hero-cta');
@@ -1924,9 +1962,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     observer.observe(heroCta);
   });
 })();
-</script>
 
-<script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script>/*OL-TRY*/try{
+
 (function(){
   var m = document.querySelector('.marquee');
   if(!m) return;
@@ -1938,9 +1978,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(document.readyState === 'complete') initMarquee();
   else window.addEventListener('load', initMarquee);
 })();
-</script>
 
-<script id="_scroll_anim_js">
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script id="_scroll_anim_js">/*OL-TRY*/try{
+
 (function(){
   // Marquer les éléments à animer
   var selectors = [
@@ -1994,323 +2036,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.querySelectorAll('[data-anim]').forEach(function(el) { io.observe(el); });
 })();
-</script>
 
-<script id="_ed_script">
-(function(){
-  if(!location.search.includes('edit'))return;
-  if(sessionStorage.getItem('_ed_auth')!=='1'){
-    document.addEventListener('DOMContentLoaded',function(){
-      var ov=document.createElement('div');
-      ov.style.cssText='position:fixed;inset:0;background:rgba(34,36,77,.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;';
-      ov.innerHTML='<div style="background:#fff;border-radius:20px;padding:36px 40px;width:340px;max-width:90vw;box-shadow:0 25px 60px rgba(0,0,0,.5);">'
-        +'<div style="text-align:center;margin-bottom:24px;">'
-        +'<svg style="width:40px;height:40px;margin:0 auto 12px;display:block;" fill="none" viewBox="0 0 24 24" stroke="#545AC0" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>'
-        +'<h2 style="font-size:18px;font-weight:700;color:#22244D;margin:0 0 4px;">Mode \u00e9dition</h2>'
-        +'<p style="font-size:13px;color:#888;margin:0;">Identifiez-vous pour continuer</p></div>'
-        +'<input id="_glogin" type="email" placeholder="Email" autocomplete="email" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:10px;outline:none;display:block;">'
-        +'<input id="_glpass" type="password" placeholder="Mot de passe" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:6px;outline:none;display:block;">'
-        +'<p id="_glerr" style="color:#ef4444;font-size:12px;margin:0 0 14px;display:none;">Identifiants incorrects.</p>'
-        +'<button id="_glbtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#545AC0,#43489A);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">Se connecter</button>'
-        +'</div>';
-      document.body.appendChild(ov);
-      function _try(){
-        var l=document.getElementById('_glogin').value.trim();
-        var p=document.getElementById('_glpass').value;
-        if(l==='juliette@one-learn.fr'&&p==='#Onelearn.040297.88'){sessionStorage.setItem('_ed_auth','1');location.reload();}
-        else{document.getElementById('_glerr').style.display='block';}
-      }
-      document.getElementById('_glbtn').addEventListener('click',_try);
-      document.getElementById('_glpass').addEventListener('keydown',function(e){if(e.key==='Enter')_try();});
-    });
-    return;
-  }
-  var REPO='juliette-stack-onelearn/onelearn-solidworks';
-  var FILE='bim/index.html';
-
-  /* ── Styles ── */
-  var s=document.createElement('style');
-  s.id='_ed_style';
-  s.textContent=[
-    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
-    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
-    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
-    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
-    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
-    '._ed-btn:hover{background:#CD5025;}',
-    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
-    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
-    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
-    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
-    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
-    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
-    'animation:_ed-fadein .2s ease;}',
-    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
-    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
-    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;',
-    'border-radius:3px;}'
-  ].join('');
-  document.head.appendChild(s);
-
-  /* ── Toast ── */
-  function toast(msg){
-    var t=document.createElement('div');
-    t.className='_ed-toast';t.textContent=msg;
-    document.body.appendChild(t);
-    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';
-    setTimeout(function(){t.remove();},300);},3000);
-  }
-
-  /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms]:not(.photo-slot),td,th';
-  document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL))return;
-    el.contentEditable='true';
-    el.spellcheck=false;
-  });
-
-  /* ── Pause marquee en mode edit ── */
-  document.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='paused';});
-
-  /* ── Logos marquee : listener direct sur l'img (partagent le même parent) ── */
-  document.querySelectorAll('img.rec-logo').forEach(function(img){
-    img.style.cursor='pointer';
-    img.title='Cliquer pour remplacer ce logo';
-    img.addEventListener('click',function(e){
-      e.stopPropagation();
-      var recId=img.getAttribute('data-rec-img');
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.display='none';
-      document.body.appendChild(inp);
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){
-          if(recId){document.querySelectorAll('img[data-rec-img="'+recId+'"]').forEach(function(c){c.src=ev.target.result;});}
-          else{img.src=ev.target.result;}
-          toast('📷 Logo mis à jour');
-          if(inp.parentNode)inp.parentNode.removeChild(inp);
-        };
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Autres images (hero, cms) : listener sur le container ── */
-  document.querySelectorAll('img[data-cms],img.hero-img').forEach(function(img){
-    var container=img.parentElement;
-    container.style.cursor='pointer';
-    container.title='Cliquer pour remplacer l\'image';
-    container.addEventListener('click',function(e){
-      if(e.target.closest('[contenteditable]'))return;
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.onchange=function(){
-        var file=inp.files[0];if(!file)return;
-        var r=new FileReader();
-        r.onload=function(ev){img.src=ev.target.result;toast('📷 Image mise à jour');};
-        r.readAsDataURL(file);
-      };
-      inp.click();
-    });
-  });
-
-  /* ── Sauvegarde GitHub ── */
-  function save(){
-    var token=localStorage.getItem('_ol_token');
-    if(!token){token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
-    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
-
-    var clone=document.documentElement.cloneNode(true);
-    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
-    clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
-    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
-    clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
-    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
-
-    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    /* ── Strip scripts injectés runtime ── */
-    // 1. Supprimer tous les blocs GTM existants
-    raw=raw.replace(//g,'');
-    raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
-    raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
-    raw=raw.replace(/<noscript><iframe src=["'][^"']*googletagmanager\.com\/ns\.html[^"']*["'][^>]*><\/iframe><\/noscript>/g,'');
-    // 2. Supprimer les scripts pixels injectés par GTM (FB, TikTok, Pinterest, Clarity, Datadog...)
-    raw=raw.replace(/<script\b[^>]*\bsrc=["'][^"']*(connect\.facebook\.net|fbevents|pinterest\.com\/pinit|analytics\.tiktok\.com|clarity\.ms|browser\.dd-rum|axeptio|snap\.licdn)[^"']*["'][^>]*>[\s\S]*?<\/script>/gi,'');
-    raw=raw.replace(/<script\b[^>]*>([\s\S]*?(fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\.)[\s\S]*?)<\/script>/gi,'');
-    raw=raw.replace(/<noscript>[\s\S]*?(pixel|fbq|pintrk|tfa_)[\s\S]*?<\/noscript>/gi,'');
-    // 3. Réinsérer GTM propre en tête
-    var _GTM_H='';
-    var _GTM_B='';
-    raw=raw.replace('<head>\n','<head>\n'+_GTM_H+'\n');
-    raw=raw.replace(/(<body[^>]*>)/,'$1\n'+_GTM_B);
-    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
-    console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
-    toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
-
-    var reader=new FileReader();
-    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
-    reader.onload=function(){
-      var encoded=reader.result.split(',')[1];
-      console.log('[save] base64 length:',encoded.length);
-      var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
-      var base='https://api.github.com/repos/'+REPO;
-
-      function fail(step,r){
-        console.error('[save] fail at step:',step,r);
-        var msg=r&&r.message?r.message:(typeof r==='string'?r:'erreur inconnue');
-        toast('\u274C \u00C9tape '+step+' : '+msg);
-        if(step==='blob'||step==='ref')localStorage.removeItem('_ol_token');
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      }
-
-      /* 1. Créer le blob */
-      console.log('[save] step 1: create blob');
-      fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
-      .then(function(r){
-        console.log('[save] blob status:',r.status);
-        return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});
-      })
-      .then(function(res){
-        if(!res.ok)return fail('blob ('+res.status+')',res.data);
-        var blobSha=res.data.sha;
-        console.log('[save] blob sha:',blobSha);
-
-        /* 2. Récupérer HEAD */
-        return fetch(base+'/git/refs/heads/main',{headers:h})
-        .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-        .then(function(res){
-          if(!res.ok)return fail('ref',res.data);
-          var commitSha=res.data.object.sha;
-          console.log('[save] head commit:',commitSha);
-
-          /* 3. Tree du commit */
-          return fetch(base+'/git/commits/'+commitSha,{headers:h})
-          .then(function(r){return r.json();})
-          .then(function(commit){
-            console.log('[save] tree sha:',commit.tree.sha);
-
-            /* 4. Nouveau tree */
-            return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
-              base_tree:commit.tree.sha,
-              tree:[{path:FILE,mode:'100644',type:'blob',sha:blobSha}]
-            })})
-            .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-            .then(function(res){
-              if(!res.ok)return fail('tree',res.data);
-              console.log('[save] new tree:',res.data.sha);
-
-              /* 5. Commit */
-              return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
-                message:'update: inline edit',tree:res.data.sha,parents:[commitSha]
-              })})
-              .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-              .then(function(res){
-                if(!res.ok)return fail('commit',res.data);
-                console.log('[save] new commit:',res.data.sha);
-
-                /* 6. Avancer la branche */
-                return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
-                  body:JSON.stringify({sha:res.data.sha,force:false})})
-                .then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});})
-                .then(function(res){
-                  if(!res.ok)return fail('push ('+res.status+')',res.data);
-                  console.log('[save] \u2705 done!');
-                  toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');
-                  saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-                });
-              });
-            });
-          });
-        });
-      })
-      .catch(function(e){
-        console.error('[save] catch:',e);
-        toast('\u274C R\u00E9seau : '+e.message);
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      });
-    };
-    reader.readAsDataURL(blob);
-  }
-
-      /* ── Photo slots ── */
-      document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
-        slot.style.cursor='pointer';
-        slot.title='Cliquer pour insérer une photo';
-        slot.addEventListener('click',function(e){
-          e.stopPropagation();
-          var inp=document.createElement('input');inp.type='file';inp.accept='image/*';
-          inp.style.display='none';document.body.appendChild(inp);
-          inp.onchange=function(){
-            var file=inp.files[0];if(!file)return;
-            var r=new FileReader();
-            _compressImg(file,function(dataUrl){
-              var key=slot.getAttribute('data-cms');
-              slot.innerHTML='';slot.style.background='none';slot.style.border='none';slot.style.padding='0';
-              slot.classList.remove('photo-slot');
-              var img=document.createElement('img');
-              img.src=dataUrl;img.setAttribute('data-cms',key);
-              img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block;';
-              slot.appendChild(img);toast('\u{1F4F7} Photo insérée (compressée)');
-            });
-            document.body.removeChild(inp);
-          };inp.click();
-        });
-      });
-
-      /* ── Logos marquee (listener direct sur img) ── */
-      document.querySelectorAll('img.rec-logo').forEach(function(img){
-        img.style.cursor='pointer';img.title='Cliquer pour remplacer ce logo';
-        img.addEventListener('click',function(e){
-          e.stopPropagation();
-          var inp=document.createElement('input');inp.type='file';inp.accept='image/*';
-          inp.style.display='none';document.body.appendChild(inp);
-          inp.onchange=function(){
-            var file=inp.files[0];if(!file)return;
-            var r=new FileReader();
-            _compressImg(file,function(dataUrl){img.src=dataUrl;toast('\u{1F4F7} Logo mis à jour (compressé)');});document.body.removeChild(inp);
-          };inp.click();
-        });
-      });
-
-      function _compressImg(file, cb){
-        var MAX=900, Q=0.78;
-        var r=new FileReader();
-        r.onload=function(e){
-          var img=new Image();
-          img.onload=function(){
-            var w=img.width,h=img.height;
-            if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
-            if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
-            var c=document.createElement('canvas');c.width=w;c.height=h;
-            c.getContext('2d').drawImage(img,0,0,w,h);
-            cb(c.toDataURL('image/jpeg',Q));
-          };
-          img.src=e.target.result;
-        };
-        r.readAsDataURL(file);
-      }
-
-  /* ── Toolbar ── */
-  var bar=document.createElement('div');
-  bar.id='_ed_bar';bar.className='_ed-bar';
-  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
-  var saveBtn=document.createElement('button');
-  saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';
-  saveBtn.addEventListener('click',save);
-  var resetBtn=document.createElement('button');
-  resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';
-  resetBtn.addEventListener('click',function(){
-    localStorage.removeItem('_ol_token');toast('Token effacé');
-  });
-  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
-  document.body.appendChild(bar);
-
-  toast('✏️ Mode édition actif — cliquez sur un texte ou une image pour modifier');
-})();
-</script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 </body></html>

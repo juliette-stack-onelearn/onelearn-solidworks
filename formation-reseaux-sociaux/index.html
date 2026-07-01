@@ -8,6 +8,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+<link rel="stylesheet" href="/assets/onelearn-tw.css">
+
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
 
 <meta name="robots" content="noindex, follow">
 
@@ -17,7 +47,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Formation Réseaux Sociaux &amp; Canva en ligne – Certifiante &amp; financée à 100% | One Learn</title>
 <meta name="description" content="Animez vos réseaux sociaux comme un pro : Instagram, LinkedIn, TikTok, YouTube. Canva Pro inclus. Formateur dédié, certification reconnue, financement CPF. Réservez votre appel gratuit.">
 
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -25,29 +54,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- iClosed widget (inline + popup) -->
 <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async=""></script>
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { DEFAULT: '#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
-        orange: { DEFAULT: '#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
-        cream: '#ffffff',
-        ink: '#282C37',
-      },
-      fontFamily: {
-        display: ['"Satoshi"', '"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        'card': '0 1px 0 rgba(34,36,77,.04), 0 8px 24px -12px rgba(34,36,77,.12)',
-        'cta': '0 10px 30px -10px rgba(230,106,64,.5)',
-      }
-    }
-  }
-}
-</script>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -279,7 +285,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
   <!-- Scroll indicator -->
   <div class="flex justify-center pb-4">
-    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="document.getElementById('stats-bar').scrollIntoView({behavior:'smooth'})">
+    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="$('stats-bar').scrollIntoView({behavior:'smooth'})">
       <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#9DA2B3;">Découvrir</span>
       <svg class="w-4 h-4 animate-bounce" style="color:#9DA2B3;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
@@ -681,7 +687,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 </style>
 
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   var steps = document.querySelectorAll('.timeline-step');
   var confettiFired = false;
@@ -777,7 +784,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   steps.forEach(function(s) { observer.observe(s); });
   window._fireConfetti = fireConfetti;
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- ══ Bloc certification ══ -->
 <section class="py-16 bg-cream">
   <div class="max-w-7xl mx-auto px-4">
@@ -804,7 +812,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       </div>
-<script>(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();</script>
+<script>/*OL-TRY*/try{
+(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
       <!-- Contenu -->
       <div>
@@ -1119,73 +1129,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- ============ POURQUOI ONE LEARN ============ -->
-<section class="py-20 relative" style="background:linear-gradient(160deg,#F5F5FD 0%,#ffffff 55%,#FDF4F0 100%);">
-  <div class="absolute inset-0 grain opacity-40"></div>
-  <div class="relative max-w-7xl mx-auto px-4">
-    <div class="max-w-3xl mb-14">
-      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Pourquoi One Learn</p>
-      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">
-        Ce qui fait vraiment la différence.
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un formateur dédié</h3>
-        <p class="text-sm text-ink/70 leading-relaxed"><b>+10h en visio individuelle</b> avec un pro qui exerce le métier. Prise de rendez-vous depuis l'agenda en ligne.</p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un programme calibré sur vos objectifs</h3>
-        <p class="text-sm text-ink/70 leading-relaxed">Pas un cours générique : le contenu est <b>adapté à votre projet</b> après un premier échange.</p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une certification reconnue, garantie</h3>
-        <p class="text-sm text-ink/70 leading-relaxed">Inscrite à France Compétences. 97% de réussite. Et si vous échouez,<b> on vous rembourse intégralement.</b> Sans condition.</p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-7 shadow-lg relative overflow-hidden" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <span class="absolute top-4 right-4 inline-flex items-center gap-1 bg-orange text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:#EF7738;">
-          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-          Exclusif
-        </span>
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5m-18 0v8l9 5 9-5V8m-18 0l9 5m9-5l-9 5"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un portfolio prêt à l'emploi&nbsp;</h3>
-        <p class="text-sm text-ink/70 leading-relaxed">Vous repartez avec <strong>vos propres créations pro</strong> (visuels, templates, identité visuelle) prêtes à servir.</p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un accompagnement sur le financement de votre projet</h3>
-        <p class="text-sm text-ink/70 leading-relaxed"><b>Notre équipe monte votre dossier</b> CPF, OPCO ou France Travail à votre place. 85% bénéficient d'une prise en charge majoritaire.</p>
-      </div>
-
-      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
-        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
-          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une communauté de +5 000 anciens apprenants</h3>
-        <p class="text-sm text-ink/70 leading-relaxed">Accès à un <b>réseau actif de professionnels</b> formés chez nous, avec retours d'expérience et opportunités d'emploi régulières.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FORMATEURS ============ -->
 <section class="py-24 text-cream relative overflow-hidden" style="background: linear-gradient(135deg, #22244D 0%, #2D3070 50%, #22244D 100%);">
 
@@ -1250,19 +1193,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div style="position:relative; padding:0 28px;">
         <div id="formateurs-slider" style="display:flex; gap:12px; overflow:hidden; scroll-behavior:smooth;">
-          <div style="flex:0 0 calc(25% - 9px); min-width:160px; background:#fff; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 14px rgba(34,36,77,.1); border:1px solid #EDEFF7;">
-            <div style="position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: radial-gradient(at 60% 40%, rgb(237, 237, 251) 0%, rgb(248, 248, 255) 60%, rgb(255, 255, 255) 100%);" title="Cliquer pour remplacer l'image">
-              <img data-cms="formateur_img_3" class="hero-img" src="assets/img/img-34993eb6a1.webp" alt="Formateur 5" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;">
-            </div>
-            <div style="padding:10px 10px 12px; text-align:center;">
-              <div style="display:flex;align-items:center;justify-content:center;gap:5px;margin-bottom:2px;">
-                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="#E66A40" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                <p style="font-family:'Satoshi','Inter',sans-serif; font-size:13px; font-weight:700; color:#22244D; margin:0;" data-trainer-name="5">Stéphanie</p>
-              </div>
-              <p style="font-size:11px; color:#9DA2B3; margin-bottom:4px;" data-trainer-role="5">Formatrice Design et Canva</p>
-              <p style="font-size:11px; font-weight:700; color:#E66A40;" data-trainer-exp="5">9 ans d'exp.</p>
-            </div>
-          </div>
           <div style="flex:0 0 calc(25% - 9px); min-width:160px; background:#fff; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 2px 14px rgba(34,36,77,.1); border:1px solid #EDEFF7;">
             <div style="position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: radial-gradient(at 40% 60%, rgb(232, 233, 249) 0%, rgb(244, 244, 251) 60%, rgb(255, 255, 255) 100%);" title="Cliquer pour remplacer l'image">
               <img data-cms="formateur_img_4" class="hero-img" src="assets/img/img-0842e65d50.webp" alt="Formateur 6" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:1;">
@@ -1369,7 +1299,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <script>
+    <script>/*OL-TRY*/try{
+
     (function() {
       var slider = document.getElementById('formateurs-slider');
       var dots = document.querySelectorAll('#sl-dots .sl-dot');
@@ -1403,7 +1334,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });
       }
     })();
-    </script>
+    
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
   </div>
 </section>
@@ -1494,6 +1426,73 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ============ POURQUOI ONE LEARN ============ -->
+<section class="py-20 relative" style="background:linear-gradient(160deg,#F5F5FD 0%,#ffffff 55%,#FDF4F0 100%);">
+  <div class="absolute inset-0 grain opacity-40"></div>
+  <div class="relative max-w-7xl mx-auto px-4">
+    <div class="max-w-3xl mb-14">
+      <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Pourquoi One Learn</p>
+      <h2 class="font-display text-4xl md:text-5xl font-semibold leading-tight">
+        Ce qui fait vraiment la différence.
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un formateur dédié</h3>
+        <p class="text-sm text-ink/70 leading-relaxed"><b>+10h en visio individuelle</b> avec un pro qui exerce le métier. Prise de rendez-vous depuis l'agenda en ligne.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un programme calibré sur vos objectifs</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Pas un cours générique : le contenu est <b>adapté à votre projet</b> après un premier échange.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une certification reconnue, garantie</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Inscrite à France Compétences. 97% de réussite. Et si vous échouez,<b> on vous rembourse intégralement.</b> Sans condition.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-7 shadow-lg relative overflow-hidden" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <span class="absolute top-4 right-4 inline-flex items-center gap-1 bg-orange text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:#EF7738;">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+          Exclusif
+        </span>
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9-5 9 5m-18 0v8l9 5 9-5V8m-18 0l9 5m9-5l-9 5"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un portfolio prêt à l'emploi&nbsp;</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Vous repartez avec <strong>vos propres créations pro</strong> (visuels, templates, identité visuelle) prêtes à servir.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Un accompagnement sur le financement de votre projet</h3>
+        <p class="text-sm text-ink/70 leading-relaxed"><b>Notre équipe monte votre dossier</b> CPF, OPCO ou France Travail à votre place. 85% bénéficient d'une prise en charge majoritaire.</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-7 shadow-lg" style="border-top:3px solid #EF7738;border-left:none;border-right:none;border-bottom:none;">
+        <div class="w-14 h-14 rounded-2xl grid place-items-center text-orange mb-5 shadow-sm anim-in" style="background:linear-gradient(135deg,#FEF4F1,#FBD9C5);" data-anim="">
+          <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 text-ink">Une communauté de +5 000 anciens apprenants</h3>
+        <p class="text-sm text-ink/70 leading-relaxed">Accès à un <b>réseau actif de professionnels</b> formés chez nous, avec retours d'expérience et opportunités d'emploi régulières.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ TARIFS & FINANCEMENT ============ -->
 <section id="financement" class="py-20 bg-cream relative">
   <div class="absolute inset-0 grain opacity-40"></div>
@@ -1509,22 +1508,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="grid lg:grid-cols-5 gap-6 mb-10">
       <!-- Card principale -->
       <div class="lg:col-span-3 relative bg-white rounded-3xl border border-ink/10 shadow-card overflow-hidden anim-in" data-anim="">
-        <div class="absolute top-0 right-0 bg-orange text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-bl-2xl">
-          −10% jusqu'au 30/06
-        </div>
         <div class="p-8 lg:p-10">
           <p class="text-xs uppercase tracking-wider text-orange font-semibold">Bootcamp Solidworks Pro</p>
           <h3 class="font-display text-3xl font-semibold mt-2">Formation certifiante complète</h3>
           <p class="text-ink/60 mt-2">6 semaines · 100% en ligne · sur-mesure</p>
 
-          <div class="flex items-baseline gap-3 mt-6 pb-6 border-b border-ink/5">
-            <span class="font-display text-5xl font-semibold text-navy">1 490€</span>
-            <span class="text-ink/40 line-through text-lg">1 656€</span>
-            <span class="ml-auto text-right">
-              <span class="block text-xs text-ink/50">à partir de</span>
-              <span class="block font-display text-2xl font-semibold text-orange">150€</span>
-              <span class="block text-xs text-emerald-600 font-semibold">avec ton CPF*</span>
-            </span>
+          <div class="mt-6 pb-6 border-b border-ink/5">
+            <span class="font-display text-5xl font-semibold text-navy">Tarif sur mesure</span>
+            <p class="text-sm text-ink/50 mt-2">Établi avec ton conseiller selon ton projet et ton financement (CPF, OPCO, France Travail).</p>
           </div>
 
           <p class="text-xs uppercase tracking-wider text-ink/40 font-bold mt-6 mb-4">Tout est inclus :</p>
@@ -1664,166 +1655,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<script>
-(function() {
-  var answers = {};
-  var currentQ = 1;
-  var totalQ = 5;
-  var TALLY_FORM = 'https://tally.so/r/9qqobV';
-
-  // Résultats personnalisés par statut
-  var results = {
-    "Salarié(e)": {
-      tag: "CPF disponible",
-      text: "En tant que salarié(e), votre CPF est probablement crédité. Vous pouvez financer jusqu'à 100% de la formation avec zéro reste à charge.",
-      options: ["✅ CPF (Compte Personnel de Formation)", "✅ Prise en charge OPCO via employeur", "✅ Plan de développement des compétences"]
-    },
-    "Demandeur d'emploi": {
-      tag: "France Travail éligible",
-      text: "En tant que demandeur d'emploi, France Travail peut prendre en charge l'intégralité de votre formation. Taux de prise en charge : jusqu'à 100%.",
-      options: ["✅ Financement France Travail (AIF)", "✅ CPF si crédité", "✅ Aide régionale possible"]
-    },
-    "Travailleur indépendant": {
-      tag: "CPF + FIF-PL",
-      text: "En tant qu'indépendant, votre CPF est utilisable. Selon votre activité, le FIF-PL ou le FAF peut compléter le financement.",
-      options: ["✅ CPF (Compte Personnel de Formation)", "✅ FIF-PL ou AGEFICE selon statut", "✅ Paiement en 4x sans frais via Alma"]
-    },
-    "Profession libérale": {
-      tag: "FIF-PL disponible",
-      text: "Les professions libérales peuvent bénéficier du FIF-PL en complément du CPF pour couvrir tout ou partie de la formation.",
-      options: ["✅ CPF utilisable", "✅ FIF-PL (Fonds interprofessionnel)", "✅ Paiement fractionné disponible"]
-    },
-    "default": {
-      tag: "Options disponibles",
-      text: "Selon votre situation, plusieurs dispositifs peuvent s'appliquer. Notre équipe vous identifie la solution optimale en 20 minutes.",
-      options: ["✅ CPF si disponible", "✅ Paiement en 4x sans frais via Alma", "✅ Devis personnalisé gratuit"]
-    }
-  };
-
-  function getResult(statut) {
-    return results[statut] || results["default"];
-  }
-
-  function updateProgress(q) {
-    var pct = q === 6 ? 95 : Math.round(((q - 1) / totalQ) * 100);
-    document.getElementById('sim-progress-bar').style.width = pct + '%';
-    document.getElementById('sim-step-label').textContent = q === 6 ? 'Ton email' : 'Question ' + q + ' sur ' + totalQ;
-    document.getElementById('sim-pct-label').textContent = pct + '%';
-  }
-
-  function showQ(n) {
-    document.querySelectorAll('.sim-q').forEach(function(el) { el.classList.add('hidden'); });
-    var target = document.querySelector('.sim-q[data-q="' + n + '"]');
-    if (target) target.classList.remove('hidden');
-    document.getElementById('sim-back').classList.toggle('hidden', n <= 1);
-    updateProgress(n);
-    currentQ = n;
-  }
-
-  function submitToTally() {
-    // Envoi réel vers Make webhook → Google Sheets + Brevo
-    // (remplace l'ancien chargement iframe Tally sans données)
-  }
-
-  function showResult() {
-    var statut = answers[1] || 'default';
-    var r = getResult(statut);
-
-    var horizon = answers[5] || '';
-    var urgencyMsg = '';
-    if (horizon === 'Le plus tôt possible') urgencyMsg = '<p class="text-xs text-orange font-bold mt-3">⚡ Places limitées — prochaine session en juin</p>';
-
-    var name = answers['firstname'] ? answers['firstname'] + ', ' : '';
-    var html = '<div class="flex items-center gap-2 mb-3"><span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full" style="background:#FEF0EA; color:#E66A40;">' + r.tag + '</span></div>';
-    html += '<p class="text-sm leading-relaxed" style="color:#282C37;">' + (name ? '<strong>' + answers['firstname'] + '</strong>, v' : 'V') + r.text.slice(1) + '</p>';
-    html += '<ul class="mt-3 space-y-1.5">' + r.options.map(function(o) { return '<li class="text-sm" style="color:#40424D;">' + o + '</li>'; }).join('') + '</ul>';
-    html += urgencyMsg;
-
-    document.getElementById('sim-result-content').innerHTML = html;
-    document.getElementById('sim-card').classList.add('hidden');
-    document.getElementById('sim-result').classList.remove('hidden');
-
-    // Mise à jour progression à 100%
-    document.getElementById('sim-progress-bar').style.width = '100%';
-    document.getElementById('sim-step-label').textContent = 'Simulation terminée';
-    document.getElementById('sim-pct-label').textContent = '100%';
-
-    // Soumission en arrière-plan vers Tally
-    submitToTally();
-  }
-
-  // Bind clicks
-  document.getElementById('sim-card').addEventListener('click', function(e) {
-    var btn = e.target.closest('.sim-btn');
-    if (!btn) return;
-
-    // Highlight selected
-    btn.closest('.space-y-2').querySelectorAll('.sim-btn').forEach(function(b) {
-      b.style.borderColor = '';
-      b.style.background = '';
-    });
-    btn.style.borderColor = '#E66A40';
-    btn.style.background = 'rgba(239,119,56,.07)';
-
-    var val = btn.getAttribute('data-val');
-    answers[currentQ] = val;
-
-    setTimeout(function() {
-      if (currentQ < totalQ) {
-        showQ(currentQ + 1);
-      } else if (currentQ === totalQ) {
-        showQ(6);  // email step
-      }
-    }, 280);
-  });
-
-  window.simBack = function() {
-    if (currentQ === 6) showQ(5);
-    else if (currentQ > 1) showQ(currentQ - 1);
-  };
-
-  window.simSubmitEmail = function() {
-    var email = document.getElementById('sim-email').value.trim();
-    var firstname = document.getElementById('sim-firstname').value.trim();
-    var err = document.getElementById('sim-email-error');
-
-    // Validate email
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      err.classList.remove('hidden');
-      document.getElementById('sim-email').focus();
-      return;
-    }
-    err.classList.add('hidden');
-    answers['email'] = email;
-    answers['firstname'] = firstname;
-
-    // Submit to Tally silently
-    submitToTally();
-
-    // Envoi vers Make (Google Sheets + Brevo email + contact)
-    fetch('https://hook.eu1.make.com/isd64paoph9wkmicqojymnhgs9tjoums', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        firstname: firstname,
-        email: email,
-        q1: answers[1] || '',
-        q2: answers[2] || '',
-        q3: answers[3] || '',
-        q4: answers[4] || '',
-        q5: answers[5] || '',
-        source: 'formation-reseaux-sociaux'
-      })
-    }).catch(function() {});
-
-    // Show result
-    showResult();
-  };
-
-  updateProgress(1);
-})();
-</script>
-
 <!-- ============ FAQ ============ -->
 <section id="faq" class="py-20 bg-cream relative">
   <div class="absolute inset-0 grain opacity-40"></div>
@@ -1839,7 +1670,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span data-cms="faq1_q">Combien coûte vraiment la formation ?</span>
           <svg class="chev w-5 h-5 text-ink/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
         </summary>
-        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq1_a">Notre formation Réseaux Sociaux &amp; Canva est à 1 490€. Votre conseiller pédagogique vous présente la solution la plus adaptée lors de l'appel gratuit afin de réduire votre reste à charge au maximum.</div>
+        <div class="px-6 pb-6 text-sm text-ink/70 leading-relaxed" data-cms="faq1_a">Notre formation Réseaux Sociaux &amp; Canva est à tarif sur mesure : votre conseiller pédagogique établit la solution la plus adaptée à votre projet lors de l'appel gratuit, afin de réduire votre reste à charge au maximum.</div>
       </details>
       <details class="group bg-white rounded-2xl border border-ink/5 shadow-card anim-in" data-anim="" open="">
         <summary class="p-6 cursor-pointer flex items-center justify-between gap-4 list-none font-semibold">
@@ -1926,7 +1757,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
 </div>
 
-<script>
+<script>/*OL-TRY*/try{
+
 // ── Sticky topbar CTA ──────────────────────────
 (function() {
   var heroCta = document.getElementById('hero-cta');
@@ -1937,9 +1769,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }, { threshold: 0 });
   observer.observe(heroCta);
 })();
-</script>
 
-<script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script>/*OL-TRY*/try{
+
 (function(){
   var m = document.querySelector('.marquee');
   if(!m) return;
@@ -1952,9 +1786,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   if(document.readyState === 'complete') initMarquee();
   else window.addEventListener('load', initMarquee);
 })();
-</script>
 
-<script id="_scroll_anim_js">
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script id="_scroll_anim_js">/*OL-TRY*/try{
+
 (function(){
   // Marquer les éléments à animer
   var selectors = [
@@ -2008,310 +1844,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.querySelectorAll('[data-anim]').forEach(function(el) { io.observe(el); });
 })();
-</script>
 
-<script id="_ed_script">
-(function(){
-  if(!location.search.includes('edit'))return;
-  if(sessionStorage.getItem('_ed_auth')!=='1'){
-    document.addEventListener('DOMContentLoaded',function(){
-      var ov=document.createElement('div');
-      ov.style.cssText='position:fixed;inset:0;background:rgba(34,36,77,.97);z-index:99999;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;';
-      ov.innerHTML='<div style="background:#fff;border-radius:20px;padding:36px 40px;width:340px;max-width:90vw;box-shadow:0 25px 60px rgba(0,0,0,.5);">'
-        +'<div style="text-align:center;margin-bottom:24px;">'
-        +'<svg style="width:40px;height:40px;margin:0 auto 12px;display:block;" fill="none" viewBox="0 0 24 24" stroke="#545AC0" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>'
-        +'<h2 style="font-size:18px;font-weight:700;color:#22244D;margin:0 0 4px;">Mode \u00e9dition</h2>'
-        +'<p style="font-size:13px;color:#888;margin:0;">Identifiez-vous pour continuer</p></div>'
-        +'<input id="_glogin" type="email" placeholder="Email" autocomplete="email" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:10px;outline:none;display:block;">'
-        +'<input id="_glpass" type="password" placeholder="Mot de passe" style="width:100%;box-sizing:border-box;padding:11px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:14px;margin-bottom:6px;outline:none;display:block;">'
-        +'<p id="_glerr" style="color:#ef4444;font-size:12px;margin:0 0 14px;display:none;">Identifiants incorrects.</p>'
-        +'<button id="_glbtn" style="width:100%;padding:13px;background:linear-gradient(135deg,#545AC0,#43489A);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;">Se connecter</button>'
-        +'</div>';
-      document.body.appendChild(ov);
-      function _try(){
-        var l=document.getElementById('_glogin').value.trim();
-        var p=document.getElementById('_glpass').value;
-        if(l==='juliette@one-learn.fr'&&p==='#Onelearn.040297.88'){sessionStorage.setItem('_ed_auth','1');location.reload();}
-        else{document.getElementById('_glerr').style.display='block';}
-      }
-      document.getElementById('_glbtn').addEventListener('click',_try);
-      document.getElementById('_glpass').addEventListener('keydown',function(e){if(e.key==='Enter')_try();});
-    });
-    return;
-  }
-  var REPO='juliette-stack-onelearn/onelearn-solidworks';
-  var FILE='formation-reseaux-sociaux/index.html';
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
-  /* ── Styles ── */
-  var s=document.createElement('style');
-  s.id='_ed_style';
-  s.textContent=[
-    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
-    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
-    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
-    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
-    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
-    '._ed-btn:hover{background:#CD5025;}',
-    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
-    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
-    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
-    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
-    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
-    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
-    'animation:_ed-fadein .2s ease;}',
-    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
-    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
-    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;',
-    'border-radius:3px;}'
-  ].join('');
-  document.head.appendChild(s);
+<div id="batBeacon184795560794" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon961528103359" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=7ea71430-970a-4681-a66e-3bb6966e4045&amp;bo=2&amp;sid=847df6d03c8a11f1a1cc9bdc38dc670e&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20R%C3%A9seaux%20Sociaux%20%26%20Canva%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fformation-reseaux-sociaux%2F%3Fedit&amp;r=&amp;lt=319&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=603674" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div>
 
-  /* ── Toast ── */
-  function toast(msg){
-    var t=document.createElement('div');
-    t.className='_ed-toast';t.textContent=msg;
-    document.body.appendChild(t);
-    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';
-    setTimeout(function(){t.remove();},300);},3000);
-  }
-
-  /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
-  document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL)||el.classList.contains('photo-slot'))return;
-    el.contentEditable='true';
-    el.spellcheck=false;
-  });
-
-  /* ── Images remplaçables ── */
-  document.querySelectorAll('img[data-cms],img.rec-logo,img.hero-img').forEach(function(img){
-    var container=img.parentElement;
-    container.style.cursor='pointer';
-    container.title='Cliquer pour remplacer l\'image';
-    container.addEventListener('click',function(e){
-      if(e.target.closest('[contenteditable]'))return;
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
-      document.body.appendChild(inp);
-      inp.addEventListener('change',function(){
-        var file=inp.files[0];
-        document.body.removeChild(inp);
-        if(!file)return;
-        _compressImg(file,function(dataUrl){img.src=dataUrl;toast('📷 Image mise à jour');});
-      });
-      inp.click();
-    });
-  });
-
-  /* ── Photo slots ── */
-  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
-    // Ajoute un bouton caméra visible sur la carte parente
-    var card = slot.closest('.persona-card') || slot.parentElement;
-    if(!card) return;
-    if(card.style.position !== 'absolute') card.style.position = 'relative';
-
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" clip-rule="evenodd"/></svg>';
-    btn.title = 'Changer la photo';
-    btn.style.cssText = 'position:absolute;top:10px;right:10px;z-index:50;background:rgba(255,255,255,0.9);'
-      + 'border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;'
-      + 'align-items:center;justify-content:center;color:#22244D;box-shadow:0 2px 8px rgba(0,0,0,.25);'
-      + 'transition:background .15s;';
-    btn.onmouseover = function(){ btn.style.background='rgba(255,255,255,1)'; };
-    btn.onmouseout = function(){ btn.style.background='rgba(255,255,255,0.9)'; };
-
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      e.preventDefault();
-      var inp = document.createElement('input');
-      inp.type = 'file'; inp.accept = 'image/*';
-      inp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
-      document.body.appendChild(inp);
-      inp.addEventListener('change', function(){
-        var file = inp.files[0];
-        document.body.removeChild(inp);
-        if(!file) return;
-        _compressImg(file, function(dataUrl){
-          slot.innerHTML = '';
-          var img = document.createElement('img');
-          img.src = dataUrl;
-          img.className = 'w-full h-full object-cover';
-          img.style.borderRadius = '1.5rem';
-          slot.appendChild(img);
-          toast('📷 Photo ajoutée');
-        });
-      });
-      inp.click();
-    });
-
-    card.appendChild(btn);
-  });
-
-  /* ── Sauvegarde GitHub ── */
-  function save(){
-    var token=localStorage.getItem('_ol_token');
-    if(!token){token=prompt('Token GitHub (ghp_...) — sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
-    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
-
-    var clone=document.documentElement.cloneNode(true);
-    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
-    clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
-    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
-    clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.removeAttribute('title');});
-    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
-
-    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    /* ── Strip scripts injectés runtime ── */
-    // 1. GTM
-    raw=raw.replace(//g,'');
-    raw=raw.replace(/<script[^>]*src=["'][^"']*googletagmanager\.com\/gtm\.js[^"']*["'][^>]*><\/script>/g,'');
-    raw=raw.replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/g,'');
-    raw=raw.replace(/<noscript><iframe src=["'][^"']*googletagmanager\.com\/ns\.html[^"']*["'][^>]*><\/iframe><\/noscript>/g,'');
-    // 2. Pixels & trackers injectés (Bing, Google Ads, FB, TikTok, Pinterest, Clarity, Axeptio...)
-    raw=raw.replace(/<script\b[^>]*\bsrc=["'][^"']*(connect\.facebook\.net|fbevents|pinterest\.com\/pinit|analytics\.tiktok\.com|clarity\.ms|browser\.dd-rum|axeptio|snap\.licdn|bat\.bing\.com|googleads\.g\.doubleclick\.net)[^"']*["'][^>]*>[\s\S]*?<\/script>/gi,'');
-    raw=raw.replace(/<script\b[^>]*>([\s\S]*?(fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\.)[\s\S]*?)<\/script>/gi,'');
-    raw=raw.replace(/<noscript>[\s\S]*?(pixel|fbq|pintrk|tfa_)[\s\S]*?<\/noscript>/gi,'');
-    // 3. Axeptio mount divs (injectés dans le DOM live)
-    raw=raw.replace(/<!--googleoff: index--><div class="axeptio_mount[\s\S]*?<!--googleon: index-->/g,'');
-    // 4. iClosed CSS dedup
-    var _icss='<link rel="stylesheet" href="https://app.iclosed.io/assets/widget.css">';
-    var _fi=raw.indexOf(_icss);
-    if(_fi!==-1){raw=raw.slice(0,_fi+_icss.length)+raw.slice(_fi+_icss.length).split(_icss).join('');}
-    // 5. iClosed JS dedup
-    raw=raw.replace(/(<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js"[^>]*>)([\s\S]*?)(?=<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js")/gi,'$1$2<!-- dup_removed -->');
-    raw=raw.replace(/<script[^>]*src="https:\/\/app\.iclosed\.io\/assets\/widget\.js"[^>]*><!-- dup_removed -->/gi,'');
-    // 6. Réinsérer GTM propre
-    var _GTM_H='';
-    var _GTM_B='';
-    raw=raw.replace('<head>\n','<head>\n'+_GTM_H+'\n');
-    raw=raw.replace(/(<body[^>]*>)/,'$1\n'+_GTM_B);
-    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
-    console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
-    toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
-
-    var reader=new FileReader();
-    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
-    reader.onload=function(){
-      var encoded=reader.result.split(',')[1];
-      console.log('[save] base64 length:',encoded.length);
-      var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
-      var base='https://api.github.com/repos/'+REPO;
-
-      function fail(step,r){
-        console.error('[save] fail at step:',step,r);
-        var msg=r&&r.message?r.message:(typeof r==='string'?r:'erreur inconnue');
-        toast('\u274C \u00C9tape '+step+' : '+msg);
-        if(step==='blob'||step==='ref')localStorage.removeItem('_ol_token');
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      }
-
-      /* 1. Créer le blob */
-      console.log('[save] step 1: create blob');
-      fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
-      .then(function(r){
-        console.log('[save] blob status:',r.status);
-        return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});
-      })
-      .then(function(res){
-        if(!res.ok)return fail('blob ('+res.status+')',res.data);
-        var blobSha=res.data.sha;
-        console.log('[save] blob sha:',blobSha);
-
-        /* 2. Récupérer HEAD */
-        return fetch(base+'/git/refs/heads/main',{headers:h})
-        .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-        .then(function(res){
-          if(!res.ok)return fail('ref',res.data);
-          var commitSha=res.data.object.sha;
-          console.log('[save] head commit:',commitSha);
-
-          /* 3. Tree du commit */
-          return fetch(base+'/git/commits/'+commitSha,{headers:h})
-          .then(function(r){return r.json();})
-          .then(function(commit){
-            console.log('[save] tree sha:',commit.tree.sha);
-
-            /* 4. Nouveau tree */
-            return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
-              base_tree:commit.tree.sha,
-              tree:[{path:FILE,mode:'100644',type:'blob',sha:blobSha}]
-            })})
-            .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-            .then(function(res){
-              if(!res.ok)return fail('tree',res.data);
-              console.log('[save] new tree:',res.data.sha);
-
-              /* 5. Commit */
-              return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
-                message:'update: inline edit',tree:res.data.sha,parents:[commitSha]
-              })})
-              .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-              .then(function(res){
-                if(!res.ok)return fail('commit',res.data);
-                console.log('[save] new commit:',res.data.sha);
-
-                /* 6. Avancer la branche */
-                return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
-                  body:JSON.stringify({sha:res.data.sha,force:false})})
-                .then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});})
-                .then(function(res){
-                  if(!res.ok)return fail('push ('+res.status+')',res.data);
-                  console.log('[save] \u2705 done!');
-                  toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');
-                  saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-                });
-              });
-            });
-          });
-        });
-      })
-      .catch(function(e){
-        console.error('[save] catch:',e);
-        toast('\u274C R\u00E9seau : '+e.message);
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      });
-    };
-    reader.readAsDataURL(blob);
-  }
-
-      function _compressImg(file, cb){
-        var MAX=900, Q=0.78;
-        var r=new FileReader();
-        r.onload=function(e){
-          var img=new Image();
-          img.onload=function(){
-            var w=img.width,h=img.height;
-            if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
-            if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
-            var c=document.createElement('canvas');c.width=w;c.height=h;
-            c.getContext('2d').drawImage(img,0,0,w,h);
-            cb(c.toDataURL('image/jpeg',Q));
-          };
-          img.src=e.target.result;
-        };
-        r.readAsDataURL(file);
-      }
-
-  /* ── Toolbar ── */
-  var bar=document.createElement('div');
-  bar.id='_ed_bar';bar.className='_ed-bar';
-  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
-  var saveBtn=document.createElement('button');
-  saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';
-  saveBtn.addEventListener('click',save);
-  var resetBtn=document.createElement('button');
-  resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';
-  resetBtn.addEventListener('click',function(){
-    localStorage.removeItem('_ol_token');toast('Token effacé');
-  });
-  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
-  document.body.appendChild(bar);
-
-  toast('✏️ Mode édition actif — cliquez sur un texte ou une image pour modifier');
-})();
-</script><div id="batBeacon184795560794" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon961528103359" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=7ea71430-970a-4681-a66e-3bb6966e4045&amp;bo=2&amp;sid=847df6d03c8a11f1a1cc9bdc38dc670e&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1920&amp;sh=1080&amp;sc=24&amp;tl=Formation%20R%C3%A9seaux%20Sociaux%20%26%20Canva%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fformation-reseaux-sociaux%2F%3Fedit&amp;r=&amp;lt=319&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=603674" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div>
-
-<script type="text/javascript" id="" charset="">(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();</script><div id="batBeacon676102183138" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon82853130803" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=38e3b4f9-9c98-4af9-b951-90a32936ede0&amp;bo=2&amp;sid=bf188770420d11f1a57a37ba0687d043&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1470&amp;sh=956&amp;sc=30&amp;tl=Formation%20R%C3%A9seaux%20Sociaux%20%26%20Canva%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fformation-reseaux-sociaux%2F%3Fedit&amp;r=&amp;lt=478&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=607482" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div></body></html>
+<script type="text/javascript" id="" charset="">/*OL-TRY*/try{
+(function(){if(!document.cookie.includes("first_page_path\x3d")){var a=window.location.pathname;document.cookie="first_page_path\x3d"+encodeURIComponent(a)+"; path\x3d/; max-age\x3d2592000;"}})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script><div id="batBeacon676102183138" style="width: 0px; height: 0px; display: none; visibility: hidden;"><img id="batBeacon82853130803" width="0" height="0" alt="" src="https://bat.bing.com/action/0?ti=97075862&amp;tm=gtm002&amp;Ver=2&amp;mid=38e3b4f9-9c98-4af9-b951-90a32936ede0&amp;bo=2&amp;sid=bf188770420d11f1a57a37ba0687d043&amp;vid=906f287026bf11f18ed1035c88e36643&amp;vids=0&amp;msclkid=N&amp;gtm_tag_source=1&amp;pi=918639831&amp;lg=fr-FR&amp;sw=1470&amp;sh=956&amp;sc=30&amp;tl=Formation%20R%C3%A9seaux%20Sociaux%20%26%20Canva%20en%20ligne%20%E2%80%93%20Certifiante%20%26%20financ%C3%A9e%20%C3%A0%20100%25%20%7C%20One%20Learn&amp;p=https%3A%2F%2Fgo.one-learn.fr%2Fformation-reseaux-sociaux%2F%3Fedit&amp;r=&amp;lt=478&amp;evt=pageLoad&amp;sv=2&amp;asc=G&amp;cdb=AQAS&amp;rn=607482" style="width: 0px; height: 0px; display: none; visibility: hidden;"></div></body></html>

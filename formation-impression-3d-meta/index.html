@@ -8,6 +8,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+<link rel="stylesheet" href="/assets/onelearn-tw.css">
+
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
 
 <meta name="robots" content="noindex, follow">
 
@@ -17,7 +47,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>Formation Impression 3D en ligne – Certifiante &amp; financée à 100% | One Learn</title>
 <meta name="description" content="Formez-vous à l'impression 3D en 6 semaines avec un formateur dédié. 97% de réussite, financement CPF à 100%. Réservez votre appel gratuit.">
 
-<script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -25,29 +54,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <!-- iClosed widget (inline + popup) -->
 <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async=""></script>
-
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: { DEFAULT: '#545AC0', 50:'#EDEDFB', 100:'#DDDEF2', 600:'#545AC0', 700:'#43489A', 900:'#22244D' },
-        orange: { DEFAULT: '#EF7738', 50:'#FEF4F1', 100:'#FBDED4', 600:'#E66A40', 700:'#CD5025' },
-        cream: '#ffffff',
-        ink: '#282C37',
-      },
-      fontFamily: {
-        display: ['"Satoshi"', '"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif'],
-      },
-      boxShadow: {
-        'card': '0 1px 0 rgba(34,36,77,.04), 0 8px 24px -12px rgba(34,36,77,.12)',
-        'cta': '0 10px 30px -10px rgba(230,106,64,.5)',
-      }
-    }
-  }
-}
-</script>
 
 <style>
   html { scroll-behavior: smooth; }
@@ -134,13 +140,15 @@ tailwind.config = {
 </style>
 
 <!-- Microsoft Clarity -->
-<script type="text/javascript">
+<script type="text/javascript">/*OL-TRY*/try{
+
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wy6s0jj04t");
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- End Microsoft Clarity -->
 
 <!-- Axeptio Cookie Consent -->
@@ -333,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
   <!-- Scroll indicator -->
   <div class="flex justify-center pb-4">
-    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="document.getElementById('stats-bar').scrollIntoView({behavior:'smooth'})">
+    <div class="flex flex-col items-center gap-1 opacity-35 hover:opacity-60 transition cursor-pointer" onclick="$('stats-bar').scrollIntoView({behavior:'smooth'})">
       <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#9DA2B3;">Découvrir</span>
       <svg class="w-4 h-4 animate-bounce" style="color:#9DA2B3;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
@@ -756,7 +764,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       </div>
-<script>(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();</script>
+<script>/*OL-TRY*/try{
+(function(){var el=document.getElementById('certif-img-bloc');if(!el||!window._fireConfetti)return;var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(window._fireConfetti,400);o.disconnect();}},{threshold:0.15});o.observe(el);})();
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
       <!-- Contenu -->
       <div>
@@ -1614,7 +1624,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script>
+<script>/*OL-TRY*/try{
+
 // ── Smooth scroll vers le formulaire (compense le header sticky) ──────
 window.scrollToRdvForm = function() {
   var el = document.getElementById('rdv-form') || document.getElementById('rdv');
@@ -1645,9 +1656,11 @@ window.scrollToRdvForm = function() {
   }, { threshold: 0 });
   observer.observe(heroCta);
 })();
-</script>
 
-<script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script>/*OL-TRY*/try{
+
 (function(){
   var m = document.querySelector('.marquee');
   if(!m) return;
@@ -1660,9 +1673,11 @@ window.scrollToRdvForm = function() {
   if(document.readyState === 'complete') initMarquee();
   else window.addEventListener('load', initMarquee);
 })();
-</script>
 
-<script id="_scroll_anim_js">
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
+<script id="_scroll_anim_js">/*OL-TRY*/try{
+
 (function(){
   // Marquer les éléments à animer
   var selectors = [
@@ -1716,292 +1731,8 @@ window.scrollToRdvForm = function() {
 
   document.querySelectorAll('[data-anim]').forEach(function(el) { io.observe(el); });
 })();
-</script>
 
-<script id="_ed_script">
-(function(){
-  if(!location.search.includes('edit'))return;
-  var REPO='juliette-stack-onelearn/onelearn-solidworks';
-  var FILE='formation-impression-3d-meta/index.html';
-
-  /* ── Styles ── */
-  var s=document.createElement('style');
-  s.id='_ed_style';
-  s.textContent=[
-    '._ed-bar{position:fixed;bottom:20px;right:20px;z-index:99999;background:#22244D;color:#fff;',
-    'padding:10px 14px;border-radius:14px;display:flex;gap:8px;align-items:center;',
-    'box-shadow:0 8px 32px rgba(0,0,0,.45);font-family:Inter,sans-serif;font-size:13px;}',
-    '._ed-btn{background:#E66A40;color:#fff;border:none;padding:7px 16px;border-radius:50px;',
-    'cursor:pointer;font-weight:700;font-size:12px;transition:.15s;}',
-    '._ed-btn:hover{background:#CD5025;}',
-    '._ed-btn:disabled{opacity:.5;cursor:not-allowed;}',
-    '._ed-btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;}',
-    '._ed-btn.ghost:hover{background:rgba(255,255,255,.1);}',
-    '._ed-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);',
-    'background:#22244D;color:#fff;padding:9px 22px;border-radius:50px;z-index:999999;',
-    'font-size:13px;font-family:Inter,sans-serif;pointer-events:none;',
-    'animation:_ed-fadein .2s ease;}',
-    '@keyframes _ed-fadein{from{opacity:0;transform:translateX(-50%) translateY(-8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}',
-    '[contenteditable]:hover{outline:1px dashed rgba(84,90,192,.5);border-radius:3px;cursor:text;}',
-    '[contenteditable]:focus{outline:2px dashed #545AC0!important;background:rgba(84,90,192,.07)!important;',
-    'border-radius:3px;}'
-  ].join('');
-  document.head.appendChild(s);
-
-  /* ── Toast ── */
-  function toast(msg){
-    var t=document.createElement('div');
-    t.className='_ed-toast';t.textContent=msg;
-    document.body.appendChild(t);
-    setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .3s';
-    setTimeout(function(){t.remove();},300);},3000);
-  }
-
-  /* ── Make editable ── */
-  var SEL='h1,h2,h3,h4,h5,p,li,span[data-cms],div[data-cms],td,th';
-  document.querySelectorAll(SEL).forEach(function(el){
-    if(el.closest('script,style,#_ed_bar,#_ed_script,.marquee')||el.querySelector(SEL)||el.classList.contains('photo-slot'))return;
-    el.contentEditable='true';
-    el.spellcheck=false;
-  });
-
-  /* ── Images remplaçables (toutes les <img> de la page) ── */
-  document.querySelectorAll('img').forEach(function(img){
-    if(img.closest('#_ed_bar,script,style,head'))return;
-    img.style.cursor='pointer';
-    img.style.outline='2px dashed transparent';
-    img.style.outlineOffset='2px';
-    img.style.transition='outline-color .15s';
-    img.title='Cliquer pour remplacer l\'image';
-    img.addEventListener('mouseenter',function(){img.style.outlineColor='rgba(239,119,56,.7)';});
-    img.addEventListener('mouseleave',function(){img.style.outlineColor='transparent';});
-    img.addEventListener('click',function(e){
-      if(e.target.closest('[contenteditable]'))return;
-      e.preventDefault();
-      e.stopPropagation();
-      var inp=document.createElement('input');
-      inp.type='file';inp.accept='image/*';
-      inp.style.cssText='position:fixed;top:-9999px;left:-9999px;opacity:0;';
-      document.body.appendChild(inp);
-      inp.addEventListener('change',function(){
-        var file=inp.files[0];
-        document.body.removeChild(inp);
-        if(!file)return;
-        _compressImg(file,function(dataUrl){img.src=dataUrl;toast('📷 Image mise à jour');});
-      });
-      inp.click();
-    });
-  });
-
-  /* ── Photo slots ── */
-  document.querySelectorAll('.photo-slot[data-cms]').forEach(function(slot){
-    // Ajoute un bouton caméra visible sur la carte parente
-    var card = slot.closest('.persona-card') || slot.parentElement;
-    if(!card) return;
-    if(card.style.position !== 'absolute') card.style.position = 'relative';
-
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/><path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Z" clip-rule="evenodd"/></svg>';
-    btn.title = 'Changer la photo';
-    btn.style.cssText = 'position:absolute;top:10px;right:10px;z-index:50;background:rgba(255,255,255,0.9);'
-      + 'border:none;border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;'
-      + 'align-items:center;justify-content:center;color:#22244D;box-shadow:0 2px 8px rgba(0,0,0,.25);'
-      + 'transition:background .15s;';
-    btn.onmouseover = function(){ btn.style.background='rgba(255,255,255,1)'; };
-    btn.onmouseout = function(){ btn.style.background='rgba(255,255,255,0.9)'; };
-
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      e.preventDefault();
-      var inp = document.createElement('input');
-      inp.type = 'file'; inp.accept = 'image/*';
-      inp.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
-      document.body.appendChild(inp);
-      inp.addEventListener('change', function(){
-        var file = inp.files[0];
-        document.body.removeChild(inp);
-        if(!file) return;
-        _compressImg(file, function(dataUrl){
-          slot.innerHTML = '';
-          var img = document.createElement('img');
-          img.src = dataUrl;
-          img.className = 'w-full h-full object-cover';
-          img.style.borderRadius = '1.5rem';
-          slot.appendChild(img);
-          toast('📷 Photo ajoutée');
-        });
-      });
-      inp.click();
-    });
-
-    card.appendChild(btn);
-  });
-
-  /* ── Sauvegarde GitHub ── */
-  function save(){
-    var token=localStorage.getItem('_ol_token');
-    if(!token){token=prompt('Token GitHub (ghp_...), sera mémorisé dans ce navigateur :');if(!token)return;localStorage.setItem('_ol_token',token);}
-    saveBtn.disabled=true;saveBtn.textContent='Enregistrement\u2026';
-
-    var clone=document.documentElement.cloneNode(true);
-    ['_ed_bar','_ed_style'].forEach(function(id){var el=clone.querySelector('#'+id);if(el)el.remove();});
-    clone.querySelectorAll('[contenteditable]').forEach(function(el){el.removeAttribute('contenteditable');el.removeAttribute('spellcheck');});
-    clone.querySelectorAll('.marquee').forEach(function(m){m.style.animationPlayState='';});
-    clone.querySelectorAll('[style*="cursor: pointer"],[style*="cursor:pointer"]').forEach(function(el){el.style.cursor='';});
-    clone.querySelectorAll('img').forEach(function(img){img.style.cursor='';img.style.outline='';img.style.outlineOffset='';img.style.transition='';img.removeAttribute('title');});
-    clone.querySelectorAll('button[title="Changer la photo"]').forEach(function(b){b.remove();});
-
-    /* ── Strip runtime-injected stuff (DOM-based, safe) ── */
-    // Scripts trackers (par src OU par contenu inline)
-    var BAD_SRC=/connect\.facebook\.net|fbevents|pinterest\.com\/pinit|analytics\.tiktok\.com|clarity\.ms|browser\.dd-rum|axeptio|snap\.licdn|bat\.bing\.com|googleads\.g\.doubleclick\.net|googletagmanager\.com\/gtm\.js/i;
-    var BAD_INLINE=/fbq\(|_tfa\.|pintrk\(|clarity\(|DD_RUM\./;
-    clone.querySelectorAll('script').forEach(function(s){
-      if(s.src){ if(BAD_SRC.test(s.src)) s.remove(); }
-      else { if(BAD_INLINE.test(s.textContent||'')) s.remove(); }
-    });
-    // Noscript pixels
-    clone.querySelectorAll('noscript').forEach(function(n){
-      var html=n.innerHTML||'';
-      if(/pixel|fbq|pintrk|tfa_|googletagmanager\.com\/ns\.html|facebook\.com\/tr/i.test(html)) n.remove();
-    });
-    // Axeptio mount divs
-    clone.querySelectorAll('div.axeptio_mount,div[class*="axeptio"]').forEach(function(d){d.remove();});
-    // iClosed CSS dedup (garde le premier)
-    var _icssNodes=clone.querySelectorAll('link[rel="stylesheet"][href*="iclosed.io/assets/widget.css"]');
-    for(var i=1;i<_icssNodes.length;i++) _icssNodes[i].remove();
-    // iClosed JS dedup (garde le premier)
-    var _ijsNodes=clone.querySelectorAll('script[src*="iclosed.io/assets/widget.js"]');
-    for(var j=1;j<_ijsNodes.length;j++) _ijsNodes[j].remove();
-    // Bing batBeacon divs injectés
-    clone.querySelectorAll('div[id^="batBeacon"]').forEach(function(d){d.remove();});
-
-    var raw='<!DOCTYPE html>\n'+clone.outerHTML;
-    var blob=new Blob([raw],{type:'text/html;charset=utf-8'});
-    console.log('[save] taille fichier:',Math.round(raw.length/1024),'KB');
-    toast('\uD83D\uDCE4 Upload en cours\u2026 ('+(Math.round(raw.length/1024/1024*10)/10)+' MB)');
-
-    var reader=new FileReader();
-    reader.onerror=function(){toast('\u274C Erreur encodage');saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';};
-    reader.onload=function(){
-      var encoded=reader.result.split(',')[1];
-      console.log('[save] base64 length:',encoded.length);
-      var h={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json'};
-      var base='https://api.github.com/repos/'+REPO;
-
-      function fail(step,r){
-        console.error('[save] fail at step:',step,r);
-        var msg=r&&r.message?r.message:(typeof r==='string'?r:'erreur inconnue');
-        toast('\u274C \u00C9tape '+step+' : '+msg);
-        if(step==='blob'||step==='ref')localStorage.removeItem('_ol_token');
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      }
-
-      /* 1. Créer le blob */
-      console.log('[save] step 1: create blob');
-      fetch(base+'/git/blobs',{method:'POST',headers:h,body:JSON.stringify({content:encoded,encoding:'base64'})})
-      .then(function(r){
-        console.log('[save] blob status:',r.status);
-        return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});
-      })
-      .then(function(res){
-        if(!res.ok)return fail('blob ('+res.status+')',res.data);
-        var blobSha=res.data.sha;
-        console.log('[save] blob sha:',blobSha);
-
-        /* 2. Récupérer HEAD */
-        return fetch(base+'/git/refs/heads/main',{headers:h})
-        .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-        .then(function(res){
-          if(!res.ok)return fail('ref',res.data);
-          var commitSha=res.data.object.sha;
-          console.log('[save] head commit:',commitSha);
-
-          /* 3. Tree du commit */
-          return fetch(base+'/git/commits/'+commitSha,{headers:h})
-          .then(function(r){return r.json();})
-          .then(function(commit){
-            console.log('[save] tree sha:',commit.tree.sha);
-
-            /* 4. Nouveau tree */
-            return fetch(base+'/git/trees',{method:'POST',headers:h,body:JSON.stringify({
-              base_tree:commit.tree.sha,
-              tree:[{path:FILE,mode:'100644',type:'blob',sha:blobSha}]
-            })})
-            .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-            .then(function(res){
-              if(!res.ok)return fail('tree',res.data);
-              console.log('[save] new tree:',res.data.sha);
-
-              /* 5. Commit */
-              return fetch(base+'/git/commits',{method:'POST',headers:h,body:JSON.stringify({
-                message:'update: inline edit',tree:res.data.sha,parents:[commitSha]
-              })})
-              .then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};});})
-              .then(function(res){
-                if(!res.ok)return fail('commit',res.data);
-                console.log('[save] new commit:',res.data.sha);
-
-                /* 6. Avancer la branche */
-                return fetch(base+'/git/refs/heads/main',{method:'PATCH',headers:h,
-                  body:JSON.stringify({sha:res.data.sha,force:false})})
-                .then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d};});})
-                .then(function(res){
-                  if(!res.ok)return fail('push ('+res.status+')',res.data);
-                  console.log('[save] \u2705 done!');
-                  toast('\u2705 Enregistr\u00E9 ! Visible dans ~30 sec.');
-                  saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-                });
-              });
-            });
-          });
-        });
-      })
-      .catch(function(e){
-        console.error('[save] catch:',e);
-        toast('\u274C R\u00E9seau : '+e.message);
-        saveBtn.disabled=false;saveBtn.textContent='\uD83D\uDCBE Sauvegarder';
-      });
-    };
-    reader.readAsDataURL(blob);
-  }
-
-      function _compressImg(file, cb){
-        var MAX=900, Q=0.78;
-        var r=new FileReader();
-        r.onload=function(e){
-          var img=new Image();
-          img.onload=function(){
-            var w=img.width,h=img.height;
-            if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
-            if(h>MAX){w=Math.round(w*MAX/h);h=MAX;}
-            var c=document.createElement('canvas');c.width=w;c.height=h;
-            c.getContext('2d').drawImage(img,0,0,w,h);
-            cb(c.toDataURL('image/jpeg',Q));
-          };
-          img.src=e.target.result;
-        };
-        r.readAsDataURL(file);
-      }
-
-  /* ── Toolbar ── */
-  var bar=document.createElement('div');
-  bar.id='_ed_bar';bar.className='_ed-bar';
-  var lbl=document.createElement('span');lbl.textContent='✏️ Mode édition';
-  var saveBtn=document.createElement('button');
-  saveBtn.className='_ed-btn';saveBtn.textContent='💾 Sauvegarder';
-  saveBtn.addEventListener('click',save);
-  var resetBtn=document.createElement('button');
-  resetBtn.className='_ed-btn ghost';resetBtn.textContent='↺ Token';
-  resetBtn.addEventListener('click',function(){
-    localStorage.removeItem('_ol_token');toast('Token effacé');
-  });
-  bar.appendChild(lbl);bar.appendChild(saveBtn);bar.appendChild(resetBtn);
-  document.body.appendChild(bar);
-
-  toast('✏️ Mode édition actif, cliquez sur un texte ou une image pour modifier');
-})();
-</script>
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- Scroll animations -->
 <style id="__ol_scroll_anim_css">
@@ -2019,7 +1750,8 @@ window.scrollToRdvForm = function() {
     .has-scroll-anim .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
   }
 </style>
-<script>
+<script>/*OL-TRY*/try{
+
 (function() {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const html = document.documentElement;
@@ -2070,10 +1802,12 @@ window.scrollToRdvForm = function() {
     }
   });
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 
 <!-- One Learn — Unified GA4 dataLayer tracker v1 (__OL_TRACKER_V1__) -->
-<script>
+<script>/*OL-TRY*/try{
+
 (function(){
   'use strict';
   if (window.__ol_tracker_v1) return;
@@ -2283,6 +2017,7 @@ window.scrollToRdvForm = function() {
     }
   } catch(e){}
 })();
-</script>
+
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
 <!-- /__OL_TRACKER_V1__ -->
 </body></html>

@@ -9,12 +9,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+<link rel="stylesheet" href="/assets/onelearn-tw.css">
+
+<script>/*OL-GARDE-FOU*/
+(function(){
+  // Stub no-op chaînable : $('id-absent').style.x=…/.classList.add()/.addEventListener() ne plantent jamais.
+  function makeStub(){
+    var s = {};
+    var noop = function(){ return s; };
+    s.style={}; s.dataset={};
+    s.classList={add:noop,remove:noop,toggle:noop,contains:function(){return false;}};
+    s.addEventListener=noop; s.removeEventListener=noop;
+    s.setAttribute=noop; s.removeAttribute=noop; s.getAttribute=function(){return null;};
+    s.querySelector=function(){return null;}; s.querySelectorAll=function(){return [];};
+    s.appendChild=noop; s.removeChild=noop; s.insertAdjacentHTML=noop;
+    s.focus=noop; s.blur=noop; s.click=noop; s.scrollIntoView=noop;
+    s.getBoundingClientRect=function(){return {top:0,left:0,right:0,bottom:0,width:0,height:0};};
+    s.value=''; s.textContent=''; s.innerHTML=''; s.innerText='';
+    s.checked=false; s.offsetWidth=0; s.offsetHeight=0; s.classNameStub=true;
+    return s;
+  }
+  window.$ = function(id){ return document.getElementById(id) || makeStub(); };
+  // Dernière ligne de défense : une erreur non catchée est journalisée, jamais propagée à l'utilisateur.
+  window.addEventListener('error', function(e){
+    try{
+      if(!e.filename && e.message==='Script error.') return; // ignore le bruit cross-origin tiers
+      if(window.console&&console.warn) console.warn('[OL] erreur JS interceptee:', e.message, (e.filename||'')+':'+(e.lineno||''));
+    }catch(_){}
+  });
+})();
+</script>
+
 <meta charset="UTF-8">
 <title>Redirection — Formation Blender | One Learn</title>
 <link rel="canonical" href="https://go.one-learn.fr/formation-blender/">
 <meta http-equiv="refresh" content="0; url=https://go.one-learn.fr/formation-blender/">
 <meta name="robots" content="noindex,follow">
-<script>window.location.replace('https://go.one-learn.fr/formation-blender/');</script>
+<script>/*OL-TRY*/try{
+window.location.replace('https://go.one-learn.fr/formation-blender/');
+}catch(olErr){if(window.console&&console.warn)console.warn("[OL] bloc:",olErr);}</script>
+
 <!-- Axeptio Cookie Consent -->
 <script>
 window.axeptioSettings = {
@@ -35,6 +69,7 @@ window.axeptioSettings = {
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M9FPBBB"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
 
 <p>Cette page a déménagé : <a href="https://go.one-learn.fr/formation-blender/">go.one-learn.fr/formation-blender/</a></p>
 </body>
