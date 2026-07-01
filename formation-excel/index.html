@@ -558,54 +558,293 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
   </div>
-    <!-- Déroulé semaine par semaine -->
-    <div class="mt-16 max-w-6xl mx-auto">
-      <div class="text-center mb-10 anim-in" data-anim="">
-        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Le déroulé</p>
-        <h3 class="font-display text-2xl md:text-3xl font-semibold leading-tight">6 semaines, étape par étape.</h3>
+    <!-- Programme détaillé — timeline semaine par semaine (style formation-reseaux-sociaux) -->
+    <div class="mt-16 max-w-4xl mx-auto">
+      <div class="max-w-3xl mb-12 anim-in" data-anim="">
+        <p class="text-orange font-semibold uppercase tracking-wider text-xs mb-3">Semaine après semaine</p>
+        <h3 class="font-display text-3xl md:text-4xl font-semibold leading-tight">Le programme complet de votre formation Excel.</h3>
+        <p class="mt-4 text-base text-ink/60 leading-relaxed">6 semaines progressives, du tableur aux tableaux de bord et à l'IA. Chaque semaine, un cap clair et des acquis concrets.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S1</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Prendre Excel en main</h4>
+      <div id="timeline-container" class="relative">
+
+      <!-- STEP 01 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="0" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">01</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 1</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Prise en main</p>
+          </div>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">Interface, saisie, mise en forme et calculs simples (SOMME, MOYENNE). Vous êtes à l'aise avec le tableur.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="" open>
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">01</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Prendre Excel en main</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 1</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Interface, saisie, mise en forme et premiers calculs : vous êtes enfin à l'aise avec le tableur.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· Naviguer dans l'interface, le ruban et les onglets</span>
+            <span>· Saisir, copier, recopier et mettre en forme</span>
+            <span>· Les calculs de base : SOMME, MOYENNE, MIN, MAX</span>
+            <span>· Références relatives et absolues (le fameux $)</span>
+            <span>· Mettre en page et imprimer proprement</span>
+            <span>· Formats de fichiers et bonnes pratiques</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Livrable de la semaine</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Un premier tableau propre, calculé et présentable.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="" data-delay="1">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S2</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Formules &amp; fonctions clés</h4>
+      <!-- STEP 02 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="1" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">02</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 2</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Formules clés</p>
+          </div>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">SI, RECHERCHEX, SOMME.SI, références absolues : vous automatisez vos calculs sans erreur.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">02</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Formules &amp; fonctions essentielles</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 2</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">SI, RECHERCHEX, SOMME.SI… vous automatisez vos calculs sans erreur.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· La logique conditionnelle : SI, SI.CONDITIONS</span>
+            <span>· Compter et sommer sous condition : NB.SI, SOMME.SI.ENS</span>
+            <span>· Rechercher une valeur : RECHERCHEX (et RECHERCHEV)</span>
+            <span>· Manipuler le texte : GAUCHE, DROITE, CONCAT, STXT</span>
+            <span>· Gérer les dates et les durées</span>
+            <span>· Comprendre et corriger les erreurs (#N/A, #REF!)</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Livrable de la semaine</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Une feuille de calculs automatisés réutilisable.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="" data-delay="2">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S3</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Nettoyer &amp; structurer vos données</h4>
+      <!-- STEP 03 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="2" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">03</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 3</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Données propres</p>
+          </div>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">Tri, filtres, mise en forme conditionnelle et import de données avec Power Query.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">03</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Nettoyer &amp; structurer vos données</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 3</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Tri, filtres, mise en forme conditionnelle et import avec Power Query.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· Trier et filtrer de grands tableaux</span>
+            <span>· Mise en forme conditionnelle (alertes, barres, icônes)</span>
+            <span>· Supprimer les doublons et fiabiliser la saisie</span>
+            <span>· Listes déroulantes et validation des données</span>
+            <span>· Tableaux structurés (mise en Tableau)</span>
+            <span>· Importer et nettoyer avec Power Query</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Livrable de la semaine</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Un jeu de données propre, prêt à analyser.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="" data-delay="0">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S4</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Tableaux croisés dynamiques</h4>
+      <!-- STEP 04 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="3" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">04</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 4</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">TCD</p>
+          </div>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">Synthétisez et analysez de gros fichiers en quelques clics, sans une seule formule.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">04</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Tableaux croisés dynamiques</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 4</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Synthétisez et analysez de gros fichiers en quelques clics, sans une formule.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· Créer un TCD en trois clics</span>
+            <span>· Regrouper par catégorie, date, région…</span>
+            <span>· Calculs : somme, moyenne, %, cumul</span>
+            <span>· Segments et chronologies pour filtrer</span>
+            <span>· Champs et éléments calculés</span>
+            <span>· Actualiser et fiabiliser ses analyses</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Livrable de la semaine</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Un tableau croisé dynamique d'analyse de ventes.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="" data-delay="1">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S5</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Graphiques &amp; tableaux de bord</h4>
+      <!-- STEP 05 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="4" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">05</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 5</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">Tableaux de bord</p>
+          </div>
+          <div class="timeline-segment relative mt-3 w-0.5 flex-1 bg-ink/10 overflow-hidden" style="min-height:2rem;">
+            <div class="timeline-fill absolute inset-x-0 top-0 h-0 bg-orange transition-all duration-700 ease-in-out"></div>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">Des visuels clairs et des tableaux de bord dynamiques pour présenter vos chiffres.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">05</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Graphiques &amp; tableaux de bord</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-navy/10 text-navy px-2 py-1 rounded-full">Semaine 5</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Des visuels clairs et des tableaux de bord dynamiques pour présenter vos chiffres.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· Choisir le bon graphique selon le message</span>
+            <span>· Histogrammes, courbes, secteurs, combinés</span>
+            <span>· Graphiques croisés dynamiques</span>
+            <span>· Une mise en forme au rendu pro</span>
+            <span>· Construire un tableau de bord synthétique</span>
+            <span>· Définir et suivre ses KPIs</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Livrable de la semaine</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Un tableau de bord visuel prêt à présenter.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
-      <div class="bg-white rounded-2xl border border-ink/5 shadow-card p-6 anim-in" data-anim="" data-delay="2">
-        <div class="flex items-center gap-3 mb-3">
-          <span class="w-11 h-11 rounded-full font-display font-bold grid place-items-center shrink-0" style="background:rgba(239,119,56,.12);color:#EF7738;">S6</span>
-          <h4 class="font-display text-lg font-semibold text-ink leading-tight">Automatisation, IA Copilot &amp; certification</h4>
+      <!-- STEP 06 -->
+      <div class="timeline-step relative flex gap-6 lg:gap-10 is-active anim-in" data-step="5" data-anim="">
+        <div class="flex flex-col items-center shrink-0 w-14">
+          <div class="timeline-dot relative z-10 w-10 h-10 rounded-full border-2 border-orange bg-white text-orange flex items-center justify-center font-display font-bold text-sm" style="transition: background-color .4s, color .4s, box-shadow .4s;">06</div>
+          <div class="mt-2 text-center">
+            <p class="text-[9px] uppercase tracking-wider text-ink/40 font-semibold leading-tight">Semaine 6</p>
+            <p class="text-xs font-semibold text-ink/70 leading-tight mt-0.5">IA &amp; certif</p>
+          </div>
         </div>
-        <p class="text-sm text-ink/60 leading-relaxed">Gagnez des heures avec Copilot et passez votre certification en confiance.</p>
+        <div class="flex-1 pb-10">
+          <details class="group bg-white rounded-2xl border border-ink/5 shadow-card overflow-hidden anim-in" data-anim="">
+            <summary class="p-7 cursor-pointer flex items-start justify-between gap-4 list-none">
+              <div class="flex gap-6 flex-1">
+                <span class="font-display text-4xl text-orange font-semibold leading-none">06</span>
+                <div class="flex-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="font-display text-xl font-semibold">Automatisation, IA Copilot &amp; certification</h3>
+                    <span class="text-[10px] uppercase tracking-wider font-bold bg-orange text-white px-2 py-1 rounded-full">Semaine 6</span>
+                  </div>
+                  <p class="text-sm text-ink/60 mt-1.5">Gagnez des heures avec Copilot et passez votre certification en confiance.</p>
+                </div>
+              </div>
+              <svg class="chev w-5 h-5 text-ink/40 shrink-0 mt-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+            </summary>
+            <div class="px-7 pb-7 pl-[88px]">
+              <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-ink/70 mb-5">
+            <span>· Automatiser l'import et la transformation (Power Query)</span>
+            <span>· Découverte des macros et du VBA</span>
+            <span>· Générer formules, TCD et graphiques avec Copilot</span>
+            <span>· Nettoyer et analyser en langage naturel</span>
+            <span>· Réviser sur des cas pratiques type examen</span>
+            <span>· Préparer et passer la certification</span>
+              </div>
+              <div class="bg-orange-50 border border-orange/20 rounded-xl p-4 flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange text-white grid place-items-center shrink-0"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg></div>
+                <div>
+                  <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Certification</p>
+                  <p class="text-sm text-ink/80 mt-0.5">Votre certification Excel reconnue à France Compétences.</p>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
       </div>
       </div>
     </div>
@@ -1093,8 +1332,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- iClosed inline widget -->
     <div class="mt-10 bg-white rounded-3xl p-2 sm:p-4 shadow-2xl">
       <!-- iClosed inline widget begin -->
-      <!-- ⚠️ À VÉRIFIER : créer/confirmer le lien iClosed Excel (ici placeholder one-learn-excel) -->
-      <div id="rdv-form" class="iclosed-widget" data-url="https://app.iclosed.io/e/damien/one-learn-excel" title="Échanger avec un conseiller One Learn - Excel" style="width: 100%; height: 620px"></div>
+      <div id="rdv-form" class="iclosed-widget" data-url="https://app.iclosed.io/e/damien/changer-avec-un-conseiller-one-learn-excel" title="Échanger avec un conseiller One Learn Excel" style="width: 100%; height: 620px"></div>
       <script type="text/javascript" src="https://app.iclosed.io/assets/widget.js" async></script>
       <!-- iClosed inline widget end -->
     </div>
