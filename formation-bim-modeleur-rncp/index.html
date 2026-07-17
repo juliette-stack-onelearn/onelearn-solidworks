@@ -8,6 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-M9FPBBB');</script>
 <!-- End Google Tag Manager -->
 
+
 <link rel="stylesheet" href="/assets/onelearn-tw.css">
 
 <script>/*OL-GARDE-FOU*/
@@ -358,7 +359,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
           </div>
-          <span><strong>1 diplôme d'État</strong> BIM Modeleur du Bâtiment (RNCP39520BC03) <strong>+ 2 certifications</strong></span>
+          <span><strong>1 diplôme d'État</strong> BIM Modeleur du Bâtiment (RNCP39520) <strong>+ 2 certifications</strong></span>
         </li>
         <li class="flex items-start gap-3">
           <div class="w-6 h-6 rounded-full bg-navy text-cream grid place-items-center mt-0.5 shrink-0">
@@ -501,10 +502,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     @media (prefers-reduced-motion: reduce) {
       #hybride .total-card { animation: none; }
     }
+    /* Layout piloté en CSS pur : les utilitaires Tailwind lg: de ce bloc
+       (lg:grid-cols-[...] et lg:flex des séparateurs) ne sont pas compilés
+       dans la feuille de style, ce qui écrasait les cartes de droite. */
+    #hybride .stats-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    #hybride .stats-sep { display: none; }
+    @media (min-width: 640px) {
+      #hybride .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (min-width: 1024px) {
+      #hybride .stats-grid {
+        grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.1fr);
+        gap: 0.75rem;
+      }
+      #hybride .stats-sep { display: flex; }
+    }
   </style>
 
   <div class="relative max-w-7xl mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1.1fr] gap-5 lg:gap-3 items-stretch">
+    <div class="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1.1fr] gap-5 lg:gap-3 items-stretch">
 
       <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="">
         <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">185h</p>
@@ -512,7 +528,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-sm text-ink/70 mt-3 leading-relaxed">Cours vidéo, exercices et ressources 24h/24, à votre rythme.</p>
       </div>
 
-      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+      <div class="stats-sep hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
 
       <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="1">
         <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">60h</p>
@@ -520,7 +536,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-sm text-ink/70 mt-3 leading-relaxed">Cas réels, projets guidés et mises en situation pro.</p>
       </div>
 
-      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+      <div class="stats-sep hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
 
       <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="2">
         <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">35h</p>
@@ -528,7 +544,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-sm text-ink/70 mt-3 leading-relaxed">Sessions live en groupe (6-8) : corrections, Q&amp;A.</p>
       </div>
 
-      <div class="hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
+      <div class="stats-sep hidden lg:flex font-display text-2xl font-light items-center justify-center select-none" style="color:rgba(34,36,77,.30);" aria-hidden="true">+</div>
 
       <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center bg-white" style="border:1.5px solid rgba(239,119,56,.20);box-shadow:0 8px 28px rgba(239,119,56,.10);" data-anim="" data-delay="3">
         <p class="font-display font-semibold leading-none num-gradient" style="font-size:clamp(3rem,4.5vw,4rem);">20h</p>
@@ -536,7 +552,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="text-sm text-ink/70 mt-3 leading-relaxed">Accompagnement personnalisé illimité.</p>
       </div>
 
-      <div class="hidden lg:flex font-display text-3xl font-medium items-center justify-center select-none" style="color:#D85F22;" aria-hidden="true">=</div>
+      <div class="stats-sep hidden lg:flex font-display text-3xl font-medium items-center justify-center select-none" style="color:#D85F22;" aria-hidden="true">=</div>
 
       <!-- Total : card cream/light orange + chiffre en dark orange gradient + glow pulse -->
       <div class="rounded-2xl p-6 lg:p-7 text-center anim-in flex flex-col justify-center relative overflow-hidden total-card" style="background:linear-gradient(135deg,#FFF4EE 0%,#FFE2D1 100%);border:1.5px solid rgba(216,95,34,.30);" data-anim="" data-delay="4">
@@ -853,12 +869,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Bulle flottante en bas avec infos diplôme -->
         <div class="absolute bottom-4 left-4 right-4 z-10 pointer-events-none">
           <div class="bg-white/95 backdrop-blur rounded-2xl p-4 shadow-2xl border border-white/40">
-            <p class="text-[10px] uppercase tracking-wider text-orange font-bold mb-1">1 Titre Professionnel · Niveau 5</p>
-            <h3 class="font-display text-lg lg:text-xl font-semibold text-ink leading-tight mb-3">BIM Modeleur du Bâtiment</h3>
+            <p class="text-[10px] uppercase tracking-wider text-orange font-bold mb-1">Titre Professionnel · Niveau 5</p>
+            <h3 class="font-display text-lg lg:text-xl font-semibold text-ink leading-tight mb-2">TP — BIM Modeleur du Bâtiment</h3>
+            <p class="text-xs text-ink/70 leading-snug mb-3"><span class="font-semibold text-ink">Bloc 3</span> · Réaliser le dossier graphique d'un bâtiment existant selon la convention BIM</p>
 
             <!-- Bulles : RNCP code + reconnu par l'État (style identique aux badges des 4 certifs) -->
             <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="font-mono text-[10px] uppercase tracking-wider text-white font-bold bg-orange px-2.5 py-1 rounded-full shadow">RNCP39520BC03</span>
+              <span class="font-mono text-[10px] uppercase tracking-wider text-white font-bold bg-orange px-2.5 py-1 rounded-full shadow">RNCP39520</span>
               <span class="text-[10px] uppercase tracking-wider text-emerald-700 font-bold bg-emerald-50 px-2.5 py-1 rounded-full">✓ Reconnu par l'État</span>
             </div>
           </div>
@@ -1048,7 +1065,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
         </div>
         <h3 class="font-display text-xl font-semibold mb-2" data-cms="adv1_title">3 certifications dont titre RNCP, garantie</h3>
-        <p class="text-sm text-ink/70 leading-relaxed" data-cms="adv1_desc"><strong class="text-ink">Autodesk, RS6877 Collaborer en BIM, titre RNCP39520BC03</strong>. <strong class="text-ink">97% de réussite</strong>, sinon remboursé intégralement.</p>
+        <p class="text-sm text-ink/70 leading-relaxed" data-cms="adv1_desc"><strong class="text-ink">Autodesk, RS6877 Collaborer en BIM, titre RNCP39520</strong>. <strong class="text-ink">97% de réussite</strong>, sinon remboursé intégralement.</p>
       </div>
 
       <div class="bg-white rounded-3xl p-7 border border-ink/5 shadow-card anim-in" data-anim="" data-delay="3">
@@ -1337,7 +1354,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div>
               <p class="text-xs uppercase tracking-wider font-bold text-orange-700">Projet final &amp; certifications</p>
-              <p class="text-sm text-ink mt-0.5"><strong>Dossier complet : plans 2D + modèle 3D + maquette BIM intégrée + portfolio.</strong> Validation du titre <strong>RNCP39520BC03, BIM Modeleur du Bâtiment</strong>, le sésame qui ouvre les portes des cabinets et bureaux d'études.</p>
+              <p class="text-sm text-ink mt-0.5"><strong>Dossier complet : plans 2D + modèle 3D + maquette BIM intégrée + portfolio.</strong> Validation du titre <strong>RNCP39520, BIM Modeleur du Bâtiment</strong>, le sésame qui ouvre les portes des cabinets et bureaux d'études.</p>
             </div>
           </div>
         </div>
@@ -2171,7 +2188,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </li>
             <li class="flex gap-3">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></span>
-              <span><strong>3 certifications</strong> : Autodesk, RS6877 Collaborer en BIM, et le titre <strong>RNCP39520BC03</strong></span>
+              <span><strong>3 certifications</strong> : Autodesk, RS6877 Collaborer en BIM, et le titre <strong>RNCP39520</strong></span>
             </li>
             <li class="flex gap-3">
               <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center shrink-0 mt-0.5"><svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg></span>
